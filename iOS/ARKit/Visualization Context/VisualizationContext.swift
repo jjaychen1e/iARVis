@@ -19,7 +19,7 @@ class VisualizationContext {
         var node = SCNNode()
     }
 
-    var imageNodePairMap: [String: NodePair] = [:]
+    private var imageNodePairMap: [String: NodePair] = [:]
 
     func reset() {
         visConfiguration = nil
@@ -81,5 +81,33 @@ class VisualizationContext {
                 printDebug(level: .warning, error.localizedDescription)
             }
         }
+    }
+}
+
+extension VisualizationContext {
+    // MARK: - Node pair utils
+
+    func nodePair(url: String) -> NodePair? {
+        imageNodePairMap[url]
+    }
+
+    func nodePair(url: URL) -> NodePair? {
+        imageNodePairMap[url.absoluteString]
+    }
+
+    func set(nodePair: NodePair?, for url: String) {
+        imageNodePairMap[url] = nodePair
+    }
+
+    func set(nodePair: NodePair?, for url: URL) {
+        imageNodePairMap[url.absoluteString] = nodePair
+    }
+
+    func imageTrackingConfiguration(url: String) -> ImageTrackingConfiguration? {
+        visConfiguration?.findImageConfiguration(url: url)
+    }
+
+    func imageTrackingConfiguration(url: URL) -> ImageTrackingConfiguration? {
+        visConfiguration?.findImageConfiguration(url: url)
     }
 }

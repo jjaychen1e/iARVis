@@ -81,6 +81,42 @@ class ARKitViewController: UIViewController {
         let configuration = generateConfiguration(trackedImages: trackedImages, trackedObjects: trackedObjects)
         session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
     }
+
+    // MARK: - Widget position
+
+    private func updateWidgetTransform(conf: ImageTrackingConfiguration, nodePair: VisualizationContext.NodePair, imageAnchor: ARImageAnchor) {
+        nodePair._node.position = conf.relativePosition + conf.positionOffset
+
+        guard let plane = nodePair.node.geometry as? SCNPlane else {
+            fatalErrorDebug()
+            return
+        }
+
+        let targetImageSize = imageAnchor.referenceImage.physicalSize * imageAnchor.estimatedScaleFactor
+        var xOffset: CGFloat
+        var yOffset: CGFloat
+        switch conf.relativeAnchorPoint {
+        case .bottom:
+            xOffset = -plane.width / 2
+            yOffset = -targetImageSize.height / 2 - plane.height / 2
+        case .center:
+            xOffset = -plane.width / 2
+            yOffset = 0
+        case .leading:
+            xOffset = -targetImageSize.width / 2 - plane.width
+            yOffset = 0
+        case .top:
+            xOffset = -plane.width / 2
+            yOffset = targetImageSize.height / 2 + plane.height / 2
+        case .trailing:
+            xOffset = targetImageSize.width / 2
+            yOffset = 0
+        }
+        nodePair.node.pivot = SCNMatrix4Identity
+            .translated(x: Float(-xOffset), y: Float(-yOffset), z: 0)
+            .rotated(angle: Float.pi / 2, axis: SCNVector3(1, 0, 0))
+        nodePair.node.setWorldTransform(nodePair._node.worldTransform)
+    }
 }
 
 // MARK: - Visualization Configuration
@@ -117,17 +153,21 @@ extension ARKitViewController: ARSCNViewDelegate {
 
             let nodePair = VisualizationContext.NodePair()
 
-            visContext.imageNodePairMap[conf.imageURL.absoluteString] = nodePair
+            visContext.set(nodePair: nodePair, for: conf.imageURL)
 
             DispatchQueue.main.async {
                 // Debug setup
-                nodePair.node.addChildNode(VirtualObjectNode())
+                nodePair.node.geometry = {
+                    let plane = SCNPlane()
+                    plane.width = 0.4
+                    plane.height = 0.3
+                    return plane
+                }()
 
                 node.addChildNode(nodePair._node)
                 self.sceneView.scene.rootNode.addChildNode(nodePair.node)
 
-                nodePair._node.position = conf.relativePosition + conf.positionOffset
-                nodePair.node.setWorldTransform(nodePair._node.worldTransform)
+                self.updateWidgetTransform(conf: conf, nodePair: nodePair, imageAnchor: imageAnchor)
             }
         } else if let objectAnchor = anchor as? ARObjectAnchor {
             printDebug("New ARObjectAnchor: \(objectAnchor.description)")
@@ -143,14 +183,14 @@ extension ARKitViewController: ARSCNViewDelegate {
                 return
             }
 
-            guard let nodePair = visContext.imageNodePairMap[conf.imageURL.absoluteString] else {
+            guard let nodePair = visContext.nodePair(url: conf.imageURL) else {
                 fatalErrorDebug("Cannot find node pair for anchor: \(imageAnchor)")
                 return
             }
 
             DispatchQueue.main.async {
                 if self.trackingSwitch.isOn {
-                    nodePair.node.setWorldTransform(nodePair._node.worldTransform)
+                    self.updateWidgetTransform(conf: conf, nodePair: nodePair, imageAnchor: imageAnchor)
                 }
             }
         } else if let objectAnchor = anchor as? ARObjectAnchor {
@@ -168,14 +208,14 @@ extension ARKitViewController: ARSCNViewDelegate {
                 return
             }
 
-            guard let nodePair = visContext.imageNodePairMap[conf.imageURL.absoluteString] else {
+            guard let nodePair = visContext.nodePair(url: conf.imageURL) else {
                 fatalErrorDebug("Cannot find node pair for anchor: \(imageAnchor)")
                 return
             }
 
             nodePair._node.removeFromParentNode()
             nodePair.node.removeFromParentNode()
-            visContext.imageNodePairMap[conf.imageURL.absoluteString] = nil
+            visContext.set(nodePair: nil, for: conf.imageURL)
         } else if let objectAnchor = anchor as? ARObjectAnchor {
             printDebug("New ARObjectAnchor: \(objectAnchor.description)")
         }
