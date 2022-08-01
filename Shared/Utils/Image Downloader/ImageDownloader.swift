@@ -37,7 +37,7 @@ class ImageDownloader {
         return try await withTaskCancellationHandler(handler: {
             taskCache.cancel(url: url)
         }, operation: {
-            // Check cancellation first because cancellation handler could be called before operation starts.
+            // Check cancellation first because cancellation handler could be called before the operation starts.
             try Task.checkCancellation()
             return try await withCheckedThrowingContinuation { continuation in
                 // Needed because Kingfisher can in some cases incorrectly call the completion handler multiple times.

@@ -58,12 +58,6 @@ class ARKitViewController: UIViewController {
         UIApplication.shared.isIdleTimerDisabled = true
 
         setVisualizationConfiguration(.example1)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0) {
-            self.setVisualizationConfiguration(.example1)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0) {
-                self.setVisualizationConfiguration(.example1)
-            }
-        }
     }
 
     // MARK: - Session management
