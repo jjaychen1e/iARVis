@@ -139,7 +139,6 @@ extension ARKitViewController {
 // MARK: - ARSCNViewDelegate
 
 extension ARKitViewController: ARSCNViewDelegate {
-    // TODO: There are more than one image node, how to respond correspondingly?
     func renderer(_: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         if let imageAnchor = anchor as? ARImageAnchor {
             printDebug("New ARImageAnchor Added: \(imageAnchor.referenceImage.name ?? "No name provided.")")
