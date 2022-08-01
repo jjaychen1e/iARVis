@@ -8,9 +8,9 @@
 import ARKit
 import UIKit
 
-extension ARKitViewController: ARSessionDelegate {
-    // MARK: - ARSessionDelegate
+// MARK: - ARSessionDelegate
 
+extension ARKitViewController: ARSessionDelegate {
     func session(_: ARSession, didFailWithError error: Error) {
         guard error is ARError else { return }
 

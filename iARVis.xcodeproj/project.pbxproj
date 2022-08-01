@@ -15,9 +15,20 @@
 		630BD1A42892C4AC00C9BEAC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630BD17A2892C4A900C9BEAC /* ContentView.swift */; };
 		630BD1A52892C4AC00C9BEAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 630BD17B2892C4AC00C9BEAC /* Assets.xcassets */; };
 		630BD1A62892C4AC00C9BEAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 630BD17B2892C4AC00C9BEAC /* Assets.xcassets */; };
+		635F52612896769700FF40B6 /* DebugCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635F52602896769700FF40B6 /* DebugCommon.swift */; };
+		635F52632896775300FF40B6 /* models.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 635F52622896775300FF40B6 /* models.scnassets */; };
+		635F526628967BE600FF40B6 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 635F526528967BE600FF40B6 /* SnapKit */; };
+		635F526B2896AA4100FF40B6 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635F526A2896AA4100FF40B6 /* Debug.swift */; };
+		635F526F2896B29A00FF40B6 /* SceneKitUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635F526E2896B29A00FF40B6 /* SceneKitUtils.swift */; };
+		635F52722896D38600FF40B6 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 635F52712896D38600FF40B6 /* Kingfisher */; };
+		636EDDC028964FF100639195 /* ImageTrackingExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636EDDBF28964FF100639195 /* ImageTrackingExample.swift */; };
+		636EDDC22896542A00639195 /* ImageTrackingConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636EDDC12896542A00639195 /* ImageTrackingConfiguration.swift */; };
+		636EDDC42896559F00639195 /* VisualizationConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636EDDC32896559F00639195 /* VisualizationConfiguration.swift */; };
 		638DA98A2892C6030030D494 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638DA9892892C6030030D494 /* AppDelegate.swift */; };
 		638DA98D2892C63D0030D494 /* ARKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638DA98C2892C63D0030D494 /* ARKitViewController.swift */; };
 		638DA98F2892CA490030D494 /* ARKitViewController+ARSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638DA98E2892CA490030D494 /* ARKitViewController+ARSessionDelegate.swift */; };
+		63AE065C2896DAF80061404E /* VisualizationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AE065B2896DAF80061404E /* VisualizationContext.swift */; };
+		63AE06602896DDCE0061404E /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AE065F2896DDCE0061404E /* ImageDownloader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,10 +61,19 @@
 		630BD1992892C4AC00C9BEAC /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		630BD19D2892C4AC00C9BEAC /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		630BD19F2892C4AC00C9BEAC /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
+		635F52602896769700FF40B6 /* DebugCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugCommon.swift; sourceTree = "<group>"; };
+		635F52622896775300FF40B6 /* models.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = models.scnassets; sourceTree = "<group>"; };
+		635F526A2896AA4100FF40B6 /* Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
+		635F526E2896B29A00FF40B6 /* SceneKitUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitUtils.swift; sourceTree = "<group>"; };
+		636EDDBF28964FF100639195 /* ImageTrackingExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTrackingExample.swift; sourceTree = "<group>"; };
+		636EDDC12896542A00639195 /* ImageTrackingConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTrackingConfiguration.swift; sourceTree = "<group>"; };
+		636EDDC32896559F00639195 /* VisualizationConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualizationConfiguration.swift; sourceTree = "<group>"; };
 		638DA9882892C6030030D494 /* iARVis (iOS)-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iARVis (iOS)-Bridging-Header.h"; sourceTree = "<group>"; };
 		638DA9892892C6030030D494 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		638DA98C2892C63D0030D494 /* ARKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARKitViewController.swift; sourceTree = "<group>"; };
 		638DA98E2892CA490030D494 /* ARKitViewController+ARSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ARKitViewController+ARSessionDelegate.swift"; sourceTree = "<group>"; };
+		63AE065B2896DAF80061404E /* VisualizationContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualizationContext.swift; sourceTree = "<group>"; };
+		63AE065F2896DDCE0061404E /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +81,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				635F52722896D38600FF40B6 /* Kingfisher in Frameworks */,
+				635F526628967BE600FF40B6 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +125,8 @@
 		630BD1782892C4A900C9BEAC /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				63AE065D2896DDC00061404E /* Utils */,
+				635F52692896AA1900FF40B6 /* Debug */,
 				630BD17B2892C4AC00C9BEAC /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -147,12 +171,63 @@
 			path = "Tests macOS";
 			sourceTree = "<group>";
 		};
+		635F526828967C7100FF40B6 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				635F52602896769700FF40B6 /* DebugCommon.swift */,
+				635F52622896775300FF40B6 /* models.scnassets */,
+			);
+			path = Debug;
+			sourceTree = "<group>";
+		};
+		635F52692896AA1900FF40B6 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				635F526A2896AA4100FF40B6 /* Debug.swift */,
+			);
+			path = Debug;
+			sourceTree = "<group>";
+		};
+		635F526C2896B28300FF40B6 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				635F526D2896B29100FF40B6 /* SceneKit */,
+				635F526828967C7100FF40B6 /* Debug */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		635F526D2896B29100FF40B6 /* SceneKit */ = {
+			isa = PBXGroup;
+			children = (
+				635F526E2896B29A00FF40B6 /* SceneKitUtils.swift */,
+			);
+			path = SceneKit;
+			sourceTree = "<group>";
+		};
+		636EDDBB28964FC200639195 /* Image Tracking */ = {
+			isa = PBXGroup;
+			children = (
+				636EDDBC28964FC700639195 /* Help */,
+				636EDDC12896542A00639195 /* ImageTrackingConfiguration.swift */,
+			);
+			path = "Image Tracking";
+			sourceTree = "<group>";
+		};
+		636EDDBC28964FC700639195 /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				636EDDBF28964FF100639195 /* ImageTrackingExample.swift */,
+			);
+			path = Help;
+			sourceTree = "<group>";
+		};
 		638DA9862892C5BC0030D494 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				638DA98B2892C62C0030D494 /* ARKit */,
-				638DA9892892C6030030D494 /* AppDelegate.swift */,
 				638DA9882892C6030030D494 /* iARVis (iOS)-Bridging-Header.h */,
+				638DA9892892C6030030D494 /* AppDelegate.swift */,
+				638DA98B2892C62C0030D494 /* ARKit */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -160,10 +235,38 @@
 		638DA98B2892C62C0030D494 /* ARKit */ = {
 			isa = PBXGroup;
 			children = (
+				63AE065A2896DAE90061404E /* Visualization Context */,
+				635F526C2896B28300FF40B6 /* Utils */,
+				636EDDBB28964FC200639195 /* Image Tracking */,
 				638DA98C2892C63D0030D494 /* ARKitViewController.swift */,
 				638DA98E2892CA490030D494 /* ARKitViewController+ARSessionDelegate.swift */,
 			);
 			path = ARKit;
+			sourceTree = "<group>";
+		};
+		63AE065A2896DAE90061404E /* Visualization Context */ = {
+			isa = PBXGroup;
+			children = (
+				636EDDC32896559F00639195 /* VisualizationConfiguration.swift */,
+				63AE065B2896DAF80061404E /* VisualizationContext.swift */,
+			);
+			path = "Visualization Context";
+			sourceTree = "<group>";
+		};
+		63AE065D2896DDC00061404E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				63AE065E2896DDC40061404E /* Image Downloader */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		63AE065E2896DDC40061404E /* Image Downloader */ = {
+			isa = PBXGroup;
+			children = (
+				63AE065F2896DDCE0061404E /* ImageDownloader.swift */,
+			);
+			path = "Image Downloader";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,6 +285,10 @@
 			dependencies = (
 			);
 			name = "iARVis (iOS)";
+			packageProductDependencies = (
+				635F526528967BE600FF40B6 /* SnapKit */,
+				635F52712896D38600FF40B6 /* Kingfisher */,
+			);
 			productName = "iARVis (iOS)";
 			productReference = 630BD1802892C4AC00C9BEAC /* iARVis.app */;
 			productType = "com.apple.product-type.application";
@@ -275,6 +382,10 @@
 				Base,
 			);
 			mainGroup = 630BD1732892C4A900C9BEAC;
+			packageReferences = (
+				635F526428967BE600FF40B6 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				635F52702896D38600FF40B6 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 630BD1812892C4AC00C9BEAC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -293,6 +404,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				630BD1A52892C4AC00C9BEAC /* Assets.xcassets in Resources */,
+				635F52632896775300FF40B6 /* models.scnassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,9 +437,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				635F526F2896B29A00FF40B6 /* SceneKitUtils.swift in Sources */,
 				638DA98D2892C63D0030D494 /* ARKitViewController.swift in Sources */,
+				63AE065C2896DAF80061404E /* VisualizationContext.swift in Sources */,
+				635F52612896769700FF40B6 /* DebugCommon.swift in Sources */,
 				638DA98F2892CA490030D494 /* ARKitViewController+ARSessionDelegate.swift in Sources */,
+				636EDDC42896559F00639195 /* VisualizationConfiguration.swift in Sources */,
+				63AE06602896DDCE0061404E /* ImageDownloader.swift in Sources */,
+				636EDDC22896542A00639195 /* ImageTrackingConfiguration.swift in Sources */,
+				635F526B2896AA4100FF40B6 /* Debug.swift in Sources */,
 				638DA98A2892C6030030D494 /* AppDelegate.swift in Sources */,
+				636EDDC028964FF100639195 /* ImageTrackingExample.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -739,6 +859,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		635F526428967BE600FF40B6 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		635F52702896D38600FF40B6 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		635F526528967BE600FF40B6 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 635F526428967BE600FF40B6 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		635F52712896D38600FF40B6 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 635F52702896D38600FF40B6 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 630BD1742892C4A900C9BEAC /* Project object */;
 }
