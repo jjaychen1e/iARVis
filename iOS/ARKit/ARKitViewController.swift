@@ -57,7 +57,7 @@ class ARKitViewController: UIViewController {
         // Prevent the screen from being dimmed to avoid interrupting the AR experience.
         UIApplication.shared.isIdleTimerDisabled = true
 
-        setVisualizationConfiguration(.example1)
+        setVisualizationConfiguration(.example2)
     }
 
     // MARK: - Session management

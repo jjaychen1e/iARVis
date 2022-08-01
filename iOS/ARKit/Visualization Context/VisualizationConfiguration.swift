@@ -5,8 +5,8 @@
 //  Created by Junjie Chen on 2022/7/31.
 //
 
-import Foundation
 import ARKit
+import Foundation
 
 class VisualizationConfiguration {
     var imageTrackingConfigurations: [ImageTrackingConfiguration]
@@ -26,7 +26,7 @@ extension VisualizationConfiguration {
     func findImageConfiguration(url: URL) -> ImageTrackingConfiguration? {
         findImageConfiguration(url: url.absoluteString)
     }
-    
+
     func findImageConfiguration(anchor: ARImageAnchor) -> ImageTrackingConfiguration? {
         findImageConfiguration(url: anchor.referenceImage.name ?? anchor.referenceImage.name ?? "")
     }
@@ -34,4 +34,6 @@ extension VisualizationConfiguration {
 
 extension VisualizationConfiguration {
     static let example1 = VisualizationConfiguration(imageTrackingConfigurations: [.example1])
+
+    static let example2 = VisualizationConfiguration(imageTrackingConfigurations: [.example1, .example2])
 }
