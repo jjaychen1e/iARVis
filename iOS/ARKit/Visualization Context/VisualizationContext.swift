@@ -14,9 +14,10 @@ class VisualizationContext {
     var visConfiguration: VisualizationConfiguration?
     var visConfigurationProcessingTask: Task<Void, Never>?
 
-    struct NodePair {
+    class NodePair {
         var _node = SCNNode()
         var node = SCNNode()
+        var widgetViewController: UIViewController?
     }
 
     private var imageNodePairMap: [String: NodePair] = [:]
@@ -43,7 +44,7 @@ class VisualizationContext {
             do {
                 guard !Task.isCancelled else { throw VisualizationConfigurationProcessingError.cancelled }
 
-                let fetchResults = try await withThrowingTaskGroup(of: (URL, UIImage).self, body: { group in
+                let fetchResults = try await withThrowingTaskGroup(of: (URL, UIImage).self, body: { group -> [(URL, UIImage)] in
                     var dataArray = [(URL, UIImage)]()
 
                     guard let imageTrackingConfigurations = visConfiguration?.imageTrackingConfigurations else {
@@ -68,9 +69,9 @@ class VisualizationContext {
 
                 guard !Task.isCancelled else { throw VisualizationConfigurationProcessingError.cancelled }
 
-                let referenceImages = fetchResults.map {
-                    let referenceImage = ARReferenceImage($0.1.cgImage!, orientation: .up, physicalWidth: 0.2)
-                    referenceImage.name = $0.0.absoluteString
+                let referenceImages: [ARReferenceImage] = fetchResults.map { input -> ARReferenceImage in
+                    let referenceImage = ARReferenceImage(input.1.cgImage!, orientation: .up, physicalWidth: 0.2)
+                    referenceImage.name = input.0.absoluteString
                     return referenceImage
                 }
 

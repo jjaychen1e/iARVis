@@ -39,6 +39,9 @@
 		63AE066B28979F580061404E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 63AE066A28979F580061404E /* Kingfisher */; };
 		63AE066F2897A0C90061404E /* Tests_macOSImageDownloaderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AE066E2897A0C90061404E /* Tests_macOSImageDownloaderTest.swift */; };
 		63AE067228980D8F0061404E /* CGSize+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AE067128980D8F0061404E /* CGSize+Operators.swift */; };
+		63AE0675289823880061404E /* WidgetExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AE0674289823880061404E /* WidgetExampleViewController.swift */; };
+		63AE067A2898260B0061404E /* UIViewControllerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AE06792898260B0061404E /* UIViewControllerUtils.swift */; };
+		63AE067D289839630061404E /* UIHostingController+SafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AE067C289839630061404E /* UIHostingController+SafeArea.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +89,9 @@
 		63AE065F2896DDCE0061404E /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		63AE066E2897A0C90061404E /* Tests_macOSImageDownloaderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSImageDownloaderTest.swift; sourceTree = "<group>"; };
 		63AE067128980D8F0061404E /* CGSize+Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Operators.swift"; sourceTree = "<group>"; };
+		63AE0674289823880061404E /* WidgetExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetExampleViewController.swift; sourceTree = "<group>"; };
+		63AE06792898260B0061404E /* UIViewControllerUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerUtils.swift; sourceTree = "<group>"; };
+		63AE067C289839630061404E /* UIHostingController+SafeArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIHostingController+SafeArea.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +247,7 @@
 		638DA9862892C5BC0030D494 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				63AE0676289825F90061404E /* Utils */,
 				638DA9882892C6030030D494 /* iARVis (iOS)-Bridging-Header.h */,
 				638DA9892892C6030030D494 /* AppDelegate.swift */,
 				638DA98B2892C62C0030D494 /* ARKit */,
@@ -251,6 +258,7 @@
 		638DA98B2892C62C0030D494 /* ARKit */ = {
 			isa = PBXGroup;
 			children = (
+				63AE06732898236F0061404E /* Debug */,
 				63AE065A2896DAE90061404E /* Visualization Context */,
 				635F526C2896B28300FF40B6 /* Utils */,
 				636EDDBB28964FC200639195 /* Image Tracking */,
@@ -315,6 +323,47 @@
 				63AE067128980D8F0061404E /* CGSize+Operators.swift */,
 			);
 			path = Operators;
+			sourceTree = "<group>";
+		};
+		63AE06732898236F0061404E /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				63AE0674289823880061404E /* WidgetExampleViewController.swift */,
+			);
+			path = Debug;
+			sourceTree = "<group>";
+		};
+		63AE0676289825F90061404E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				63AE067B289839520061404E /* SwiftUI */,
+				63AE0677289825FC0061404E /* UIKit */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		63AE0677289825FC0061404E /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				63AE0678289826010061404E /* UIViewController */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		63AE0678289826010061404E /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				63AE06792898260B0061404E /* UIViewControllerUtils.swift */,
+			);
+			path = UIViewController;
+			sourceTree = "<group>";
+		};
+		63AE067B289839520061404E /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				63AE067C289839630061404E /* UIHostingController+SafeArea.swift */,
+			);
+			path = SwiftUI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -492,6 +541,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				63AE067228980D8F0061404E /* CGSize+Operators.swift in Sources */,
+				63AE0675289823880061404E /* WidgetExampleViewController.swift in Sources */,
+				63AE067A2898260B0061404E /* UIViewControllerUtils.swift in Sources */,
+				63AE067D289839630061404E /* UIHostingController+SafeArea.swift in Sources */,
 				635F526F2896B29A00FF40B6 /* SceneKitUtils.swift in Sources */,
 				638DA98D2892C63D0030D494 /* ARKitViewController.swift in Sources */,
 				63AE065C2896DAF80061404E /* VisualizationContext.swift in Sources */,

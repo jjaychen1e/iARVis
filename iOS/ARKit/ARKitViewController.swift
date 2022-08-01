@@ -7,6 +7,7 @@
 
 import ARKit
 import SnapKit
+import SwiftUI
 import UIKit
 
 class ARKitViewController: UIViewController {
@@ -155,13 +156,23 @@ extension ARKitViewController: ARSCNViewDelegate {
             visContext.set(nodePair: nodePair, for: conf.imageURL)
 
             DispatchQueue.main.async {
-                // Debug setup
                 nodePair.node.geometry = {
                     let plane = SCNPlane()
                     plane.width = 0.4
                     plane.height = 0.3
                     return plane
                 }()
+                let widgetViewController = WidgetExampleViewController()
+                nodePair.widgetViewController = widgetViewController
+                // TODO: Change the frame with plane's size using a fixed DPI.
+                widgetViewController.view.frame = CGRect(x: 0, y: 0, width: 720, height: 540)
+
+                let material: SCNMaterial = {
+                    let material = SCNMaterial()
+                    material.diffuse.contents = widgetViewController.view
+                    return material
+                }()
+                nodePair.node.geometry?.materials = [material]
 
                 node.addChildNode(nodePair._node)
                 self.sceneView.scene.rootNode.addChildNode(nodePair.node)
