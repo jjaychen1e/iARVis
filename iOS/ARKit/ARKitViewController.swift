@@ -164,8 +164,6 @@ extension ARKitViewController: ARSCNViewDelegate {
                 }()
                 let widgetViewController = WidgetExampleViewController()
                 nodePair.widgetViewController = widgetViewController
-                // TODO: Change the frame with plane's size using a fixed DPI.
-                widgetViewController.view.frame = CGRect(x: 0, y: 0, width: 720, height: 540)
 
                 let material: SCNMaterial = {
                     let material = SCNMaterial()
