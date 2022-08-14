@@ -12,11 +12,7 @@ import UIKit
 
 struct WidgetExampleView: View {
     var body: some View {
-//        ComponentView(.example1)
-        ARVisTableView(tableData: .example1, orientation: .vertical)
-            .onTapGesture { point in
-                print(point)
-            }
+        ComponentView(.example1)
     }
 }
 
