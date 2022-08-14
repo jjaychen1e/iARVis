@@ -26,7 +26,7 @@ enum ARVisVerticalAlignment: String, Codable {
 }
 
 extension SwiftUI.VerticalAlignment {
-    init(_ verticalAlignment: ARVisVerticalAlignment) {
-        self = verticalAlignment.toSwiftUIVerticalAlignment()
+    init(_ verticalAlignment: ARVisVerticalAlignment?) {
+        self = verticalAlignment?.toSwiftUIVerticalAlignment() ?? .center
     }
 }

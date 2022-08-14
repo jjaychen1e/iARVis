@@ -39,6 +39,31 @@
 		638DA98A2892C6030030D494 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638DA9892892C6030030D494 /* AppDelegate.swift */; };
 		638DA98D2892C63D0030D494 /* ARKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638DA98C2892C63D0030D494 /* ARKitViewController.swift */; };
 		638DA98F2892CA490030D494 /* ARKitViewController+ARSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638DA98E2892CA490030D494 /* ARKitViewController+ARSessionDelegate.swift */; };
+		63952BF728A92977008183BF /* Testsd_macOSViewElementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63952BF628A92977008183BF /* Testsd_macOSViewElementComponent.swift */; };
+		63952BF828A929B1008183BF /* ViewElementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CB2BB628A3F39300BF7A1B /* ViewElementComponent.swift */; };
+		63952BF928A929B2008183BF /* ViewElementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CB2BB628A3F39300BF7A1B /* ViewElementComponent.swift */; };
+		63952BFA28A929B4008183BF /* ComonentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DEB5628A414610019D3FF /* ComonentView.swift */; };
+		63952BFB28A929B5008183BF /* ComonentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DEB5628A414610019D3FF /* ComonentView.swift */; };
+		63952BFC28A929B8008183BF /* ARVisTextAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CB2BB928A409DD00BF7A1B /* ARVisTextAlignment.swift */; };
+		63952BFD28A929B8008183BF /* ARVisVerticalAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CB2BC628A40E5500BF7A1B /* ARVisVerticalAlignment.swift */; };
+		63952BFE28A929B8008183BF /* ARVisFontStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CB2BBB28A40A8000BF7A1B /* ARVisFontStyle.swift */; };
+		63952BFF28A929B8008183BF /* ARVisContentMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CB2BC428A40DB100BF7A1B /* ARVisContentMode.swift */; };
+		63952C0028A929B8008183BF /* ARVisHorizontalAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CB2BC228A40D6500BF7A1B /* ARVisHorizontalAlignment.swift */; };
+		63952C0128A929B8008183BF /* ARVisColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CB2BBD28A40A9600BF7A1B /* ARVisColor.swift */; };
+		63952C0228A929B9008183BF /* ARVisTextAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CB2BB928A409DD00BF7A1B /* ARVisTextAlignment.swift */; };
+		63952C0328A929B9008183BF /* ARVisVerticalAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CB2BC628A40E5500BF7A1B /* ARVisVerticalAlignment.swift */; };
+		63952C0428A929B9008183BF /* ARVisFontStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CB2BBB28A40A8000BF7A1B /* ARVisFontStyle.swift */; };
+		63952C0528A929B9008183BF /* ARVisContentMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CB2BC428A40DB100BF7A1B /* ARVisContentMode.swift */; };
+		63952C0628A929B9008183BF /* ARVisHorizontalAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CB2BC228A40D6500BF7A1B /* ARVisHorizontalAlignment.swift */; };
+		63952C0728A929B9008183BF /* ARVisColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CB2BBD28A40A9600BF7A1B /* ARVisColor.swift */; };
+		63952C0828A929BC008183BF /* ViewElementComponent+Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DEB5A28A415160019D3FF /* ViewElementComponent+Example.swift */; };
+		63952C0928A929BC008183BF /* ViewElementComponent+Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DEB5A28A415160019D3FF /* ViewElementComponent+Example.swift */; };
+		63952C0A28A929C6008183BF /* TableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6376123628A56261008901C0 /* TableData.swift */; };
+		63952C0B28A929C6008183BF /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6376123928A5627D008901C0 /* TableView.swift */; };
+		63952C0C28A929C6008183BF /* TableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6376123628A56261008901C0 /* TableData.swift */; };
+		63952C0D28A929C6008183BF /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6376123928A5627D008901C0 /* TableView.swift */; };
+		63952C0F28A92A91008183BF /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 63952C0E28A92A91008183BF /* SwiftyJSON */; };
+		63952C1128A92A9F008183BF /* UIColorHexSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 63952C1028A92A9F008183BF /* UIColorHexSwift */; };
 		63AE065C2896DAF80061404E /* VisualizationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AE065B2896DAF80061404E /* VisualizationContext.swift */; };
 		63AE06602896DDCE0061404E /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AE065F2896DDCE0061404E /* ImageDownloader.swift */; };
 		63AE066128979D690061404E /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AE065F2896DDCE0061404E /* ImageDownloader.swift */; };
@@ -115,6 +140,7 @@
 		638DA9892892C6030030D494 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		638DA98C2892C63D0030D494 /* ARKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARKitViewController.swift; sourceTree = "<group>"; };
 		638DA98E2892CA490030D494 /* ARKitViewController+ARSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ARKitViewController+ARSessionDelegate.swift"; sourceTree = "<group>"; };
+		63952BF628A92977008183BF /* Testsd_macOSViewElementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testsd_macOSViewElementComponent.swift; sourceTree = "<group>"; };
 		63AE065B2896DAF80061404E /* VisualizationContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualizationContext.swift; sourceTree = "<group>"; };
 		63AE065F2896DDCE0061404E /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		63AE066E2897A0C90061404E /* Tests_macOSImageDownloaderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSImageDownloaderTest.swift; sourceTree = "<group>"; };
@@ -164,6 +190,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63952C1128A92A9F008183BF /* UIColorHexSwift in Frameworks */,
+				63952C0F28A92A91008183BF /* SwiftyJSON in Frameworks */,
 				63AE066B28979F580061404E /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -228,6 +256,7 @@
 		630BD19C2892C4AC00C9BEAC /* Tests macOS */ = {
 			isa = PBXGroup;
 			children = (
+				63952BF528A92941008183BF /* View Components */,
 				63AE066C2897A0AB0061404E /* Utils */,
 				630BD19D2892C4AC00C9BEAC /* Tests_macOS.swift */,
 				630BD19F2892C4AC00C9BEAC /* Tests_macOSLaunchTests.swift */,
@@ -333,6 +362,14 @@
 				638DA98E2892CA490030D494 /* ARKitViewController+ARSessionDelegate.swift */,
 			);
 			path = ARKit;
+			sourceTree = "<group>";
+		};
+		63952BF528A92941008183BF /* View Components */ = {
+			isa = PBXGroup;
+			children = (
+				63952BF628A92977008183BF /* Testsd_macOSViewElementComponent.swift */,
+			);
+			path = "View Components";
 			sourceTree = "<group>";
 		};
 		63AE065A2896DAE90061404E /* Visualization Context */ = {
@@ -540,6 +577,8 @@
 			name = "Tests macOS";
 			packageProductDependencies = (
 				63AE066A28979F580061404E /* Kingfisher */,
+				63952C0E28A92A91008183BF /* SwiftyJSON */,
+				63952C1028A92A9F008183BF /* UIColorHexSwift */,
 			);
 			productName = "Tests macOS";
 			productReference = 630BD1992892C4AC00C9BEAC /* Tests macOS.xctest */;
@@ -693,10 +732,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63952C0528A929B9008183BF /* ARVisContentMode.swift in Sources */,
+				63952C0B28A929C6008183BF /* TableView.swift in Sources */,
 				630BD1942892C4AC00C9BEAC /* Tests_iOSLaunchTests.swift in Sources */,
 				63AE066828979EF20061404E /* Debug.swift in Sources */,
 				63AE066328979D6B0061404E /* ImageDownloader.swift in Sources */,
+				63952C0A28A929C6008183BF /* TableData.swift in Sources */,
+				63952C0928A929BC008183BF /* ViewElementComponent+Example.swift in Sources */,
 				630BD1922892C4AC00C9BEAC /* Tests_iOS.swift in Sources */,
+				63952C0628A929B9008183BF /* ARVisHorizontalAlignment.swift in Sources */,
+				63952C0428A929B9008183BF /* ARVisFontStyle.swift in Sources */,
+				63952BF828A929B1008183BF /* ViewElementComponent.swift in Sources */,
+				63952C0328A929B9008183BF /* ARVisVerticalAlignment.swift in Sources */,
+				63952BFB28A929B5008183BF /* ComonentView.swift in Sources */,
+				63952C0228A929B9008183BF /* ARVisTextAlignment.swift in Sources */,
+				63952C0728A929B9008183BF /* ARVisColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -704,11 +754,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63952BFC28A929B8008183BF /* ARVisTextAlignment.swift in Sources */,
+				63952BFD28A929B8008183BF /* ARVisVerticalAlignment.swift in Sources */,
+				63952BFF28A929B8008183BF /* ARVisContentMode.swift in Sources */,
 				630BD1A02892C4AC00C9BEAC /* Tests_macOSLaunchTests.swift in Sources */,
 				63AE066928979EF20061404E /* Debug.swift in Sources */,
+				63952BF928A929B2008183BF /* ViewElementComponent.swift in Sources */,
+				63952BFE28A929B8008183BF /* ARVisFontStyle.swift in Sources */,
+				63952BFA28A929B4008183BF /* ComonentView.swift in Sources */,
+				63952C0828A929BC008183BF /* ViewElementComponent+Example.swift in Sources */,
+				63952C0028A929B8008183BF /* ARVisHorizontalAlignment.swift in Sources */,
 				63AE066228979D6A0061404E /* ImageDownloader.swift in Sources */,
 				63AE066F2897A0C90061404E /* Tests_macOSImageDownloaderTest.swift in Sources */,
+				63952C0D28A929C6008183BF /* TableView.swift in Sources */,
+				63952C0C28A929C6008183BF /* TableData.swift in Sources */,
+				63952BF728A92977008183BF /* Testsd_macOSViewElementComponent.swift in Sources */,
 				630BD19E2892C4AC00C9BEAC /* Tests_macOS.swift in Sources */,
+				63952C0128A929B8008183BF /* ARVisColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1159,6 +1221,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6376122A28A555A3008901C0 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
+		};
+		63952C0E28A92A91008183BF /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6376122A28A555A3008901C0 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+		63952C1028A92A9F008183BF /* UIColorHexSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6376122228A4C1EF008901C0 /* XCRemoteSwiftPackageReference "UIColor-Hex-Swift" */;
+			productName = UIColorHexSwift;
 		};
 		63AE066528979E1E0061404E /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;

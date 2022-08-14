@@ -11,13 +11,13 @@ import AVKit
 
 enum ViewElementComponent: Codable, Equatable {
     // font
-    case text(content: String, multilineTextAlignment: ARVisTextAlignment = .leading, fontStyle: ARVisFontStyle? = nil)
+    case text(content: String, multilineTextAlignment: ARVisTextAlignment? = nil, fontStyle: ARVisFontStyle? = nil)
     case image(url: String, contentMode: ARVisContentMode = .fit)
     case video(url: String)
     case link(url: String) // how to integrate into text?
     //    case superLink(link: AnyView)
-    case hStack(elements: [ViewElementComponent], alignment: ARVisVerticalAlignment = .center, spacing: CGFloat? = nil)
-    case vStack(elements: [ViewElementComponent], alignment: ARVisHorizontalAlignment = .center, spacing: CGFloat? = nil)
+    case hStack(elements: [ViewElementComponent], alignment: ARVisVerticalAlignment? = nil, spacing: CGFloat? = nil)
+    case vStack(elements: [ViewElementComponent], alignment: ARVisHorizontalAlignment? = nil, spacing: CGFloat? = nil)
     case spacer
 }
 

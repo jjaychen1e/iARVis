@@ -26,7 +26,7 @@ enum ARVisHorizontalAlignment: String, Codable {
 }
 
 extension SwiftUI.HorizontalAlignment {
-    init(_ horizontalAlignment: ARVisHorizontalAlignment) {
-        self = horizontalAlignment.toSwiftUIHorizontalAlignment()
+    init(_ horizontalAlignment: ARVisHorizontalAlignment?) {
+        self = horizontalAlignment?.toSwiftUIHorizontalAlignment() ?? .center
     }
 }
