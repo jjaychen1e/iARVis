@@ -6,17 +6,17 @@
 //
 
 import Foundation
-import SwiftyJSON
 import SwiftUI
+import SwiftyJSON
 
 struct ChartConfiguration: Codable {
-    var chartData: ChartData
+    var chartData = ChartData()
     var components: [ChartComponent] = []
     var interactionData = ChartInteractionData()
-    var chartXScale: ChartXScale = .init()
+    var chartXScale = ChartXScale()
     var styleConfiguration = ChartStyleConfiguration()
 
-    init(chartData: ChartData, components: [ChartComponent] = [], chartXScale: ChartXScale = .init(), styleConfiguration: ChartStyleConfiguration = ChartStyleConfiguration()) {
+    init(chartData: ChartData = .init(), components: [ChartComponent] = [], chartXScale: ChartXScale = .init(), styleConfiguration: ChartStyleConfiguration = ChartStyleConfiguration()) {
         self.chartData = chartData
         self.components = components
         self.chartXScale = chartXScale
@@ -30,7 +30,8 @@ struct ChartData: Codable {
     let titles: [String]
     let length: Int
 
-    init(data: JSON, titles: [String]? = nil) {
+    init(data: JSON? = nil, titles: [String]? = nil) {
+        let data = data ?? JSON()
         self.data = data
 
         if let titles = titles {
@@ -58,11 +59,49 @@ struct ChartXScale: Codable {
     var domain: [JSON]?
 }
 
+struct ChartInteractionHoverTooltipManualConfig {
+    var field: String
+    var value: String
+    var content: ViewElementComponent
+}
+
+enum ChartInteractionHoverTooltipType: String, RawRepresentable {
+    case manual = "Manual"
+    case auto = "Auto"
+}
+
+enum ChartInteractionHoverTooltip {
+    case manual(contents: [ChartInteractionHoverTooltipManualConfig])
+    case auto(content: ViewElementComponent)
+}
+
+enum ChartInteractionClickActionType: String, RawRepresentable {
+    case openURL = "OpenURL"
+}
+
+enum ChartInteractionClickAction {
+    case openURL(url: URL)
+}
+
+enum ChartInteractionType: String, RawRepresentable {
+    case hover = "Hover"
+    case click = "Click"
+}
+
+enum ChartInteraction {
+    case hover(tooltip: ChartInteractionHoverTooltip)
+    case click(action: ChartInteractionClickAction)
+}
+
 struct ChartInteractionData: Codable {
     var componentSelectedElement: [ChartComponent: JSON] = [:]
-    var componentElementSelectedView: [ChartComponent: AnyView] = [:]
+    var componentInteraction: [ChartComponent: [ChartInteraction]] = [:]
 
     init() {}
+
+    init(componentInteraction: [ChartComponent: [ChartInteraction]]) {
+        self.componentInteraction = componentInteraction
+    }
 
     enum CodingKeys: CodingKey {
         case componentSelectedElement

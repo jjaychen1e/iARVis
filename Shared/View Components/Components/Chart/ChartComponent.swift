@@ -10,7 +10,11 @@ import SwiftUI
 import Charts
 
 enum ChartComponent: Codable, Hashable {
-    case barMarkRepeat1(xStart: ARVisPlottableValueFieldPair, xEnd: ARVisPlottableValueFieldPair, y: ARVisPlottableValueFieldPair, height: CGFloat)
+    case barMarkRepeat1(xStart: ARVisPlottableValueFieldPair, xEnd: ARVisPlottableValueFieldPair, y: ARVisPlottableValueFieldPair, height: CGFloat?)
+}
+
+enum ChartComponentType: String, RawRepresentable {
+    case barMark = "BarMark"
 }
 
 extension ChartComponent {
@@ -28,33 +32,33 @@ extension ChartComponent {
                     // Date, String; Date, Int; Date, Double; Date, Date;
                     if let xStartIntValue = xStart.plottableInt(xStartJSONValue), let xEndIntValue = xEnd.plottableInt(xEndJSONValue) {
                         if let yIntValue = y.plottableInt(yJSONValue) {
-                            BarMark(xStart: xStartIntValue, xEnd: xEndIntValue, y: yIntValue, height: .fixed(height))
+                            BarMark(xStart: xStartIntValue, xEnd: xEndIntValue, y: yIntValue, height: height != nil ? .fixed(height!) : .automatic)
                         } else if let yDoubleValue = y.plottableDouble(yJSONValue) {
-                            BarMark(xStart: xStartIntValue, xEnd: xEndIntValue, y: yDoubleValue, height: .fixed(height))
+                            BarMark(xStart: xStartIntValue, xEnd: xEndIntValue, y: yDoubleValue, height: height != nil ? .fixed(height!) : .automatic)
                         } else if let yDateValue = y.plottableDate(yJSONValue) {
-                            BarMark(xStart: xStartIntValue, xEnd: xEndIntValue, y: yDateValue, height: .fixed(height))
+                            BarMark(xStart: xStartIntValue, xEnd: xEndIntValue, y: yDateValue, height: height != nil ? .fixed(height!) : .automatic)
                         } else if let yStringValue = y.plottableString(yJSONValue) {
-                            BarMark(xStart: xStartIntValue, xEnd: xEndIntValue, y: yStringValue, height: .fixed(height))
+                            BarMark(xStart: xStartIntValue, xEnd: xEndIntValue, y: yStringValue, height: height != nil ? .fixed(height!) : .automatic)
                         }
                     } else if let xStartDoubleValue = xStart.plottableDouble(xStartJSONValue), let xEndDoubleValue = xEnd.plottableDouble(xEndJSONValue) {
                         if let yIntValue = y.plottableInt(yJSONValue) {
-                            BarMark(xStart: xStartDoubleValue, xEnd: xEndDoubleValue, y: yIntValue, height: .fixed(height))
+                            BarMark(xStart: xStartDoubleValue, xEnd: xEndDoubleValue, y: yIntValue, height: height != nil ? .fixed(height!) : .automatic)
                         } else if let yDoubleValue = y.plottableDouble(yJSONValue) {
-                            BarMark(xStart: xStartDoubleValue, xEnd: xEndDoubleValue, y: yDoubleValue, height: .fixed(height))
+                            BarMark(xStart: xStartDoubleValue, xEnd: xEndDoubleValue, y: yDoubleValue, height: height != nil ? .fixed(height!) : .automatic)
                         } else if let yDateValue = y.plottableDate(yJSONValue) {
-                            BarMark(xStart: xStartDoubleValue, xEnd: xEndDoubleValue, y: yDateValue, height: .fixed(height))
+                            BarMark(xStart: xStartDoubleValue, xEnd: xEndDoubleValue, y: yDateValue, height: height != nil ? .fixed(height!) : .automatic)
                         } else if let yStringValue = y.plottableString(yJSONValue) {
-                            BarMark(xStart: xStartDoubleValue, xEnd: xEndDoubleValue, y: yStringValue, height: .fixed(height))
+                            BarMark(xStart: xStartDoubleValue, xEnd: xEndDoubleValue, y: yStringValue, height: height != nil ? .fixed(height!) : .automatic)
                         }
                     } else if let xStartDateValue = xStart.plottableDate(xStartJSONValue), let xEndDateValue = xEnd.plottableDate(xEndJSONValue) {
                         if let yIntValue = y.plottableInt(yJSONValue) {
-                            BarMark(xStart: xStartDateValue, xEnd: xEndDateValue, y: yIntValue, height: .fixed(height))
+                            BarMark(xStart: xStartDateValue, xEnd: xEndDateValue, y: yIntValue, height: height != nil ? .fixed(height!) : .automatic)
                         } else if let yDoubleValue = y.plottableDouble(yJSONValue) {
-                            BarMark(xStart: xStartDateValue, xEnd: xEndDateValue, y: yDoubleValue, height: .fixed(height))
+                            BarMark(xStart: xStartDateValue, xEnd: xEndDateValue, y: yDoubleValue, height: height != nil ? .fixed(height!) : .automatic)
                         } else if let yDateValue = y.plottableDate(yJSONValue) {
-                            BarMark(xStart: xStartDateValue, xEnd: xEndDateValue, y: yDateValue, height: .fixed(height))
+                            BarMark(xStart: xStartDateValue, xEnd: xEndDateValue, y: yDateValue, height: height != nil ? .fixed(height!) : .automatic)
                         } else if let yStringValue = y.plottableString(yJSONValue) {
-                            BarMark(xStart: xStartDateValue, xEnd: xEndDateValue, y: yStringValue, height: .fixed(height))
+                            BarMark(xStart: xStartDateValue, xEnd: xEndDateValue, y: yStringValue, height: height != nil ? .fixed(height!) : .automatic)
                         }
                     }
                 }

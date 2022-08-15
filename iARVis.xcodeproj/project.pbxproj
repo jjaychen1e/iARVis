@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		140A4CC430A5AA327B38685E /* Pods_iARVis__macOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85ADFFD37D1063EB4EBF6285 /* Pods_iARVis__macOS_.framework */; };
 		63027A5428A9338900B06CFE /* Collection+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63027A5328A9338900B06CFE /* Collection+Safe.swift */; };
 		63027A5528A9338900B06CFE /* Collection+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63027A5328A9338900B06CFE /* Collection+Safe.swift */; };
 		63027A5628A9338900B06CFE /* Collection+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63027A5328A9338900B06CFE /* Collection+Safe.swift */; };
@@ -27,6 +28,12 @@
 		63027A6C28A934AC00B06CFE /* ChartConfigurationJSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63027A6A28A934AC00B06CFE /* ChartConfigurationJSONParser.swift */; };
 		63027A6D28A934AC00B06CFE /* ChartConfigurationJSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63027A6A28A934AC00B06CFE /* ChartConfigurationJSONParser.swift */; };
 		63027A6E28A934AC00B06CFE /* ChartConfigurationJSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63027A6A28A934AC00B06CFE /* ChartConfigurationJSONParser.swift */; };
+		63027A7228A93AFB00B06CFE /* SwiftyJSON+Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63027A7128A93AFB00B06CFE /* SwiftyJSON+Decode.swift */; };
+		63027A7328A93AFB00B06CFE /* SwiftyJSON+Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63027A7128A93AFB00B06CFE /* SwiftyJSON+Decode.swift */; };
+		63027A7428A93AFB00B06CFE /* SwiftyJSON+Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63027A7128A93AFB00B06CFE /* SwiftyJSON+Decode.swift */; };
+		63027A7528A93AFB00B06CFE /* SwiftyJSON+Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63027A7128A93AFB00B06CFE /* SwiftyJSON+Decode.swift */; };
+		63027A7828A93DD400B06CFE /* Tests_macOSChartConfigurationJSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63027A7728A93DD400B06CFE /* Tests_macOSChartConfigurationJSONParser.swift */; };
+		63027A7928A93E6B00B06CFE /* Tests_macOSChartConfigurationJSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63027A7728A93DD400B06CFE /* Tests_macOSChartConfigurationJSONParser.swift */; };
 		630BD1922892C4AC00C9BEAC /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630BD1912892C4AC00C9BEAC /* Tests_iOS.swift */; };
 		630BD1942892C4AC00C9BEAC /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630BD1932892C4AC00C9BEAC /* Tests_iOSLaunchTests.swift */; };
 		630BD19E2892C4AC00C9BEAC /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630BD19D2892C4AC00C9BEAC /* Tests_macOS.swift */; };
@@ -59,7 +66,10 @@
 		638DA98A2892C6030030D494 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638DA9892892C6030030D494 /* AppDelegate.swift */; };
 		638DA98D2892C63D0030D494 /* ARKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638DA98C2892C63D0030D494 /* ARKitViewController.swift */; };
 		638DA98F2892CA490030D494 /* ARKitViewController+ARSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638DA98E2892CA490030D494 /* ARKitViewController+ARSessionDelegate.swift */; };
-		63952BF728A92977008183BF /* Testsd_macOSViewElementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63952BF628A92977008183BF /* Testsd_macOSViewElementComponent.swift */; };
+		6392E20728A93FFA00FCB90D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 6392E20628A93FFA00FCB90D /* Kingfisher */; };
+		6392E20928A93FFA00FCB90D /* UIColorHexSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6392E20828A93FFA00FCB90D /* UIColorHexSwift */; };
+		6392E20B28A93FFA00FCB90D /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 6392E20A28A93FFA00FCB90D /* SwiftyJSON */; };
+		63952BF728A92977008183BF /* Tests_macOSViewElementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63952BF628A92977008183BF /* Tests_macOSViewElementComponent.swift */; };
 		63952BF828A929B1008183BF /* ViewElementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CB2BB628A3F39300BF7A1B /* ViewElementComponent.swift */; };
 		63952BF928A929B2008183BF /* ViewElementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CB2BB628A3F39300BF7A1B /* ViewElementComponent.swift */; };
 		63952BFA28A929B4008183BF /* ComonentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DEB5628A414610019D3FF /* ComonentView.swift */; };
@@ -133,8 +143,9 @@
 		63CB2BCC28A40EA400BF7A1B /* ARVisTextAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CB2BB928A409DD00BF7A1B /* ARVisTextAlignment.swift */; };
 		63CB2BCD28A40EA400BF7A1B /* ARVisVerticalAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CB2BC628A40E5500BF7A1B /* ARVisVerticalAlignment.swift */; };
 		63CB2BCE28A40EA400BF7A1B /* ViewElementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CB2BB628A3F39300BF7A1B /* ViewElementComponent.swift */; };
-		CE612B769F84BF0F729FBD96 /* Pods_iARVis__macOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACF9715DB62B34A9FAA46B8 /* Pods_iARVis__macOS_.framework */; };
-		D5B07DD5AAD7169B36706EBA /* Pods_iARVis__iOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D37DB4A36ADD45C91DD91BF /* Pods_iARVis__iOS_.framework */; };
+		A27EF0F9CA5585916C2B213A /* Pods_iARVis__iOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 632ACE6928A93EE1001418E5 /* Pods_iARVis__iOS_.framework */; };
+		AF6FC7AF450C9D7E38018FB7 /* libPods-Tests macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCD857A6C7BBAC43BBCE38BA /* libPods-Tests macOS.a */; };
+		FA8F786AC0AC4C57A1B4CC55 /* libPods-Tests iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B3673010D918F972199821 /* libPods-Tests iOS.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,13 +167,16 @@
 
 /* Begin PBXFileReference section */
 		07B8F69E856BC1720CB42033 /* Pods-iARVis (macOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iARVis (macOS).release.xcconfig"; path = "Target Support Files/Pods-iARVis (macOS)/Pods-iARVis (macOS).release.xcconfig"; sourceTree = "<group>"; };
-		3ACF9715DB62B34A9FAA46B8 /* Pods_iARVis__macOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iARVis__macOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4D37DB4A36ADD45C91DD91BF /* Pods_iARVis__iOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iARVis__iOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4035FC106CD155E631864D7D /* Pods-Tests macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests macOS.release.xcconfig"; path = "Target Support Files/Pods-Tests macOS/Pods-Tests macOS.release.xcconfig"; sourceTree = "<group>"; };
+		62B3673010D918F972199821 /* libPods-Tests iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		63027A5328A9338900B06CFE /* Collection+Safe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Safe.swift"; sourceTree = "<group>"; };
 		63027A5A28A933B800B06CFE /* View+if.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+if.swift"; sourceTree = "<group>"; };
 		63027A6028A933E100B06CFE /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		63027A6528A9340900B06CFE /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		63027A6A28A934AC00B06CFE /* ChartConfigurationJSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartConfigurationJSONParser.swift; sourceTree = "<group>"; };
+		63027A7128A93AFB00B06CFE /* SwiftyJSON+Decode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftyJSON+Decode.swift"; sourceTree = "<group>"; };
+		63027A7728A93DD400B06CFE /* Tests_macOSChartConfigurationJSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSChartConfigurationJSONParser.swift; sourceTree = "<group>"; };
+		63027A7A28A93E8A00B06CFE /* SwiftDate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftDate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		630BD1792892C4A900C9BEAC /* iARVisApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iARVisApp.swift; sourceTree = "<group>"; };
 		630BD17A2892C4A900C9BEAC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		630BD17B2892C4AC00C9BEAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -175,6 +189,7 @@
 		630BD1992892C4AC00C9BEAC /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		630BD19D2892C4AC00C9BEAC /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		630BD19F2892C4AC00C9BEAC /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
+		632ACE6928A93EE1001418E5 /* Pods_iARVis__iOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_iARVis__iOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		634DEB5628A414610019D3FF /* ComonentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComonentView.swift; sourceTree = "<group>"; };
 		634DEB5A28A415160019D3FF /* ViewElementComponent+Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewElementComponent+Example.swift"; sourceTree = "<group>"; };
 		635F52602896769700FF40B6 /* DebugCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugCommon.swift; sourceTree = "<group>"; };
@@ -190,7 +205,7 @@
 		638DA9892892C6030030D494 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		638DA98C2892C63D0030D494 /* ARKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARKitViewController.swift; sourceTree = "<group>"; };
 		638DA98E2892CA490030D494 /* ARKitViewController+ARSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ARKitViewController+ARSessionDelegate.swift"; sourceTree = "<group>"; };
-		63952BF628A92977008183BF /* Testsd_macOSViewElementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testsd_macOSViewElementComponent.swift; sourceTree = "<group>"; };
+		63952BF628A92977008183BF /* Tests_macOSViewElementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSViewElementComponent.swift; sourceTree = "<group>"; };
 		63952C1328A931BF008183BF /* ChartConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartConfiguration.swift; sourceTree = "<group>"; };
 		63952C1928A931FA008183BF /* ChartConfiguration+Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartConfiguration+Example.swift"; sourceTree = "<group>"; };
 		63952C1E28A93211008183BF /* ChartComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartComponent.swift; sourceTree = "<group>"; };
@@ -210,7 +225,12 @@
 		63CB2BC228A40D6500BF7A1B /* ARVisHorizontalAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARVisHorizontalAlignment.swift; sourceTree = "<group>"; };
 		63CB2BC428A40DB100BF7A1B /* ARVisContentMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARVisContentMode.swift; sourceTree = "<group>"; };
 		63CB2BC628A40E5500BF7A1B /* ARVisVerticalAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARVisVerticalAlignment.swift; sourceTree = "<group>"; };
+		76220422FED15D91588C9B52 /* Pods-Tests iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests iOS.debug.xcconfig"; path = "Target Support Files/Pods-Tests iOS/Pods-Tests iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		85ADFFD37D1063EB4EBF6285 /* Pods_iARVis__macOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iARVis__macOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C82AD3DA41262670E0F237B /* Pods-Tests iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests iOS.release.xcconfig"; path = "Target Support Files/Pods-Tests iOS/Pods-Tests iOS.release.xcconfig"; sourceTree = "<group>"; };
 		AA142732A2A2F9A6080BA7CE /* Pods-iARVis (macOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iARVis (macOS).debug.xcconfig"; path = "Target Support Files/Pods-iARVis (macOS)/Pods-iARVis (macOS).debug.xcconfig"; sourceTree = "<group>"; };
+		CCD857A6C7BBAC43BBCE38BA /* libPods-Tests macOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests macOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFAF3DA33D93FC0E09647AD9 /* Pods-Tests macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests macOS.debug.xcconfig"; path = "Target Support Files/Pods-Tests macOS/Pods-Tests macOS.debug.xcconfig"; sourceTree = "<group>"; };
 		E9CFDE555FB6C6E58F65BE5F /* Pods-iARVis (iOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iARVis (iOS).release.xcconfig"; path = "Target Support Files/Pods-iARVis (iOS)/Pods-iARVis (iOS).release.xcconfig"; sourceTree = "<group>"; };
 		F4720106B0C4E432E0AF9365 /* Pods-iARVis (iOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iARVis (iOS).debug.xcconfig"; path = "Target Support Files/Pods-iARVis (iOS)/Pods-iARVis (iOS).debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -224,7 +244,7 @@
 				635F52722896D38600FF40B6 /* Kingfisher in Frameworks */,
 				6376122C28A555A3008901C0 /* SwiftyJSON in Frameworks */,
 				635F526628967BE600FF40B6 /* SnapKit in Frameworks */,
-				D5B07DD5AAD7169B36706EBA /* Pods_iARVis__iOS_.framework in Frameworks */,
+				A27EF0F9CA5585916C2B213A /* Pods_iARVis__iOS_.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,7 +255,7 @@
 				6376122E28A555AC008901C0 /* SwiftyJSON in Frameworks */,
 				6376122628A4C1F4008901C0 /* UIColorHexSwift in Frameworks */,
 				63AE066628979E1E0061404E /* Kingfisher in Frameworks */,
-				CE612B769F84BF0F729FBD96 /* Pods_iARVis__macOS_.framework in Frameworks */,
+				140A4CC430A5AA327B38685E /* Pods_iARVis__macOS_.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +263,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6392E20928A93FFA00FCB90D /* UIColorHexSwift in Frameworks */,
+				6392E20728A93FFA00FCB90D /* Kingfisher in Frameworks */,
+				6392E20B28A93FFA00FCB90D /* SwiftyJSON in Frameworks */,
+				FA8F786AC0AC4C57A1B4CC55 /* libPods-Tests iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +277,7 @@
 				63952C1128A92A9F008183BF /* UIColorHexSwift in Frameworks */,
 				63952C0F28A92A91008183BF /* SwiftyJSON in Frameworks */,
 				63AE066B28979F580061404E /* Kingfisher in Frameworks */,
+				AF6FC7AF450C9D7E38018FB7 /* libPods-Tests macOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +287,7 @@
 		63027A5228A9337F00B06CFE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				63027A7028A93AF000B06CFE /* SwiftyJSON */,
 				63027A5928A933AC00B06CFE /* SwiftUI */,
 				63027A5828A933A100B06CFE /* Swift */,
 			);
@@ -290,6 +316,22 @@
 				63027A6028A933E100B06CFE /* Date.swift */,
 			);
 			path = Functions;
+			sourceTree = "<group>";
+		};
+		63027A7028A93AF000B06CFE /* SwiftyJSON */ = {
+			isa = PBXGroup;
+			children = (
+				63027A7128A93AFB00B06CFE /* SwiftyJSON+Decode.swift */,
+			);
+			path = SwiftyJSON;
+			sourceTree = "<group>";
+		};
+		63027A7628A93BE500B06CFE /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				63027A7728A93DD400B06CFE /* Tests_macOSChartConfigurationJSONParser.swift */,
+			);
+			path = Chart;
 			sourceTree = "<group>";
 		};
 		630BD1732892C4A900C9BEAC = {
@@ -463,7 +505,8 @@
 		63952BF528A92941008183BF /* View Components */ = {
 			isa = PBXGroup;
 			children = (
-				63952BF628A92977008183BF /* Testsd_macOSViewElementComponent.swift */,
+				63027A7628A93BE500B06CFE /* Chart */,
+				63952BF628A92977008183BF /* Tests_macOSViewElementComponent.swift */,
 			);
 			path = "View Components";
 			sourceTree = "<group>";
@@ -528,8 +571,11 @@
 		63AE066428979E1E0061404E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4D37DB4A36ADD45C91DD91BF /* Pods_iARVis__iOS_.framework */,
-				3ACF9715DB62B34A9FAA46B8 /* Pods_iARVis__macOS_.framework */,
+				632ACE6928A93EE1001418E5 /* Pods_iARVis__iOS_.framework */,
+				63027A7A28A93E8A00B06CFE /* SwiftDate.framework */,
+				62B3673010D918F972199821 /* libPods-Tests iOS.a */,
+				CCD857A6C7BBAC43BBCE38BA /* libPods-Tests macOS.a */,
+				85ADFFD37D1063EB4EBF6285 /* Pods_iARVis__macOS_.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -631,6 +677,10 @@
 				E9CFDE555FB6C6E58F65BE5F /* Pods-iARVis (iOS).release.xcconfig */,
 				AA142732A2A2F9A6080BA7CE /* Pods-iARVis (macOS).debug.xcconfig */,
 				07B8F69E856BC1720CB42033 /* Pods-iARVis (macOS).release.xcconfig */,
+				76220422FED15D91588C9B52 /* Pods-Tests iOS.debug.xcconfig */,
+				8C82AD3DA41262670E0F237B /* Pods-Tests iOS.release.xcconfig */,
+				DFAF3DA33D93FC0E09647AD9 /* Pods-Tests macOS.debug.xcconfig */,
+				4035FC106CD155E631864D7D /* Pods-Tests macOS.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -646,7 +696,7 @@
 				630BD17C2892C4AC00C9BEAC /* Sources */,
 				630BD17D2892C4AC00C9BEAC /* Frameworks */,
 				630BD17E2892C4AC00C9BEAC /* Resources */,
-				AA03FF1AF2402B71566879CD /* [CP] Embed Pods Frameworks */,
+				B58FA418D8DB22E0325F4064 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -671,7 +721,7 @@
 				630BD1822892C4AC00C9BEAC /* Sources */,
 				630BD1832892C4AC00C9BEAC /* Frameworks */,
 				630BD1842892C4AC00C9BEAC /* Resources */,
-				A420D193600BA17D0A84D27C /* [CP] Embed Pods Frameworks */,
+				B77DC86F2A9B929FA3C0355D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -691,9 +741,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 630BD1AF2892C4AC00C9BEAC /* Build configuration list for PBXNativeTarget "Tests iOS" */;
 			buildPhases = (
+				49F6430A8C64C0CE54F2999C /* [CP] Check Pods Manifest.lock */,
 				630BD1892892C4AC00C9BEAC /* Sources */,
 				630BD18A2892C4AC00C9BEAC /* Frameworks */,
 				630BD18B2892C4AC00C9BEAC /* Resources */,
+				DCF9C52EB71A2EA2242F92B1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -701,6 +753,11 @@
 				630BD18F2892C4AC00C9BEAC /* PBXTargetDependency */,
 			);
 			name = "Tests iOS";
+			packageProductDependencies = (
+				6392E20628A93FFA00FCB90D /* Kingfisher */,
+				6392E20828A93FFA00FCB90D /* UIColorHexSwift */,
+				6392E20A28A93FFA00FCB90D /* SwiftyJSON */,
+			);
 			productName = "Tests iOS";
 			productReference = 630BD18D2892C4AC00C9BEAC /* Tests iOS.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -709,9 +766,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 630BD1B22892C4AC00C9BEAC /* Build configuration list for PBXNativeTarget "Tests macOS" */;
 			buildPhases = (
+				3AEB8C4FE7AAEB0385B8168F /* [CP] Check Pods Manifest.lock */,
 				630BD1952892C4AC00C9BEAC /* Sources */,
 				630BD1962892C4AC00C9BEAC /* Frameworks */,
 				630BD1972892C4AC00C9BEAC /* Resources */,
+				B21EE7C44F7C0EF957B3F8CA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -765,10 +824,10 @@
 			);
 			mainGroup = 630BD1732892C4A900C9BEAC;
 			packageReferences = (
-				635F526428967BE600FF40B6 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				635F526428967BE600FF40B6 /* XCRemoteSwiftPackageReference "SnapKit.git" */,
 				635F52702896D38600FF40B6 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				6376122228A4C1EF008901C0 /* XCRemoteSwiftPackageReference "UIColor-Hex-Swift" */,
-				6376122A28A555A3008901C0 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				6376122A28A555A3008901C0 /* XCRemoteSwiftPackageReference "SwiftyJSON.git" */,
 			);
 			productRefGroup = 630BD1812892C4AC00C9BEAC /* Products */;
 			projectDirPath = "";
@@ -839,6 +898,50 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		3AEB8C4FE7AAEB0385B8168F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Tests macOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		49F6430A8C64C0CE54F2999C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Tests iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		4FE516C4D0F04117721797FA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -861,7 +964,41 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A420D193600BA17D0A84D27C /* [CP] Embed Pods Frameworks */ = {
+		B21EE7C44F7C0EF957B3F8CA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tests macOS/Pods-Tests macOS-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tests macOS/Pods-Tests macOS-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tests macOS/Pods-Tests macOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B58FA418D8DB22E0325F4064 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iARVis (iOS)/Pods-iARVis (iOS)-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iARVis (iOS)/Pods-iARVis (iOS)-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iARVis (iOS)/Pods-iARVis (iOS)-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B77DC86F2A9B929FA3C0355D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -878,21 +1015,21 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iARVis (macOS)/Pods-iARVis (macOS)-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AA03FF1AF2402B71566879CD /* [CP] Embed Pods Frameworks */ = {
+		DCF9C52EB71A2EA2242F92B1 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-iARVis (iOS)/Pods-iARVis (iOS)-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Tests iOS/Pods-Tests iOS-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-iARVis (iOS)/Pods-iARVis (iOS)-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Tests iOS/Pods-Tests iOS-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iARVis (iOS)/Pods-iARVis (iOS)-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tests iOS/Pods-Tests iOS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -921,6 +1058,7 @@
 				63AE065C2896DAF80061404E /* VisualizationContext.swift in Sources */,
 				635F52612896769700FF40B6 /* DebugCommon.swift in Sources */,
 				638DA98F2892CA490030D494 /* ARKitViewController+ARSessionDelegate.swift in Sources */,
+				63027A7228A93AFB00B06CFE /* SwiftyJSON+Decode.swift in Sources */,
 				636EDDC42896559F00639195 /* VisualizationConfiguration.swift in Sources */,
 				63AE06602896DDCE0061404E /* ImageDownloader.swift in Sources */,
 				636EDDC22896542A00639195 /* ImageTrackingConfiguration.swift in Sources */,
@@ -962,6 +1100,7 @@
 				63AE066728979EF10061404E /* Debug.swift in Sources */,
 				63AE066128979D690061404E /* ImageDownloader.swift in Sources */,
 				63CB2BC928A40EA400BF7A1B /* ARVisFontStyle.swift in Sources */,
+				63027A7328A93AFB00B06CFE /* SwiftyJSON+Decode.swift in Sources */,
 				63952C2028A93211008183BF /* ChartComponent.swift in Sources */,
 				63CB2BCA28A40EA400BF7A1B /* ARVisContentMode.swift in Sources */,
 				630BD1A22892C4AC00C9BEAC /* iARVisApp.swift in Sources */,
@@ -987,6 +1126,7 @@
 				63AE066828979EF20061404E /* Debug.swift in Sources */,
 				63AE066328979D6B0061404E /* ImageDownloader.swift in Sources */,
 				63952C0A28A929C6008183BF /* TableData.swift in Sources */,
+				63027A7928A93E6B00B06CFE /* Tests_macOSChartConfigurationJSONParser.swift in Sources */,
 				63027A6D28A934AC00B06CFE /* ChartConfigurationJSONParser.swift in Sources */,
 				63952C0928A929BC008183BF /* ViewElementComponent+Example.swift in Sources */,
 				630BD1922892C4AC00C9BEAC /* Tests_iOS.swift in Sources */,
@@ -994,6 +1134,7 @@
 				63952C0628A929B9008183BF /* ARVisHorizontalAlignment.swift in Sources */,
 				63952C0428A929B9008183BF /* ARVisFontStyle.swift in Sources */,
 				63952BF828A929B1008183BF /* ViewElementComponent.swift in Sources */,
+				63027A7428A93AFB00B06CFE /* SwiftyJSON+Decode.swift in Sources */,
 				63952C2128A93211008183BF /* ChartComponent.swift in Sources */,
 				63952C0328A929B9008183BF /* ARVisVerticalAlignment.swift in Sources */,
 				63952BFB28A929B5008183BF /* ComonentView.swift in Sources */,
@@ -1018,8 +1159,10 @@
 				63027A5E28A933B800B06CFE /* View+if.swift in Sources */,
 				63027A6428A933E100B06CFE /* Date.swift in Sources */,
 				63952C2D28A93280008183BF /* JSON+Type.swift in Sources */,
+				63027A7528A93AFB00B06CFE /* SwiftyJSON+Decode.swift in Sources */,
 				63952BF928A929B2008183BF /* ViewElementComponent.swift in Sources */,
 				63952BFE28A929B8008183BF /* ARVisFontStyle.swift in Sources */,
+				63027A7828A93DD400B06CFE /* Tests_macOSChartConfigurationJSONParser.swift in Sources */,
 				63027A5728A9338900B06CFE /* Collection+Safe.swift in Sources */,
 				63952BFA28A929B4008183BF /* ComonentView.swift in Sources */,
 				63952C0828A929BC008183BF /* ViewElementComponent+Example.swift in Sources */,
@@ -1031,7 +1174,7 @@
 				63952C0D28A929C6008183BF /* TableView.swift in Sources */,
 				63952C1D28A931FA008183BF /* ChartConfiguration+Example.swift in Sources */,
 				63952C0C28A929C6008183BF /* TableData.swift in Sources */,
-				63952BF728A92977008183BF /* Testsd_macOSViewElementComponent.swift in Sources */,
+				63952BF728A92977008183BF /* Tests_macOSViewElementComponent.swift in Sources */,
 				63952C1728A931BF008183BF /* ChartConfiguration.swift in Sources */,
 				630BD19E2892C4AC00C9BEAC /* Tests_macOS.swift in Sources */,
 				63952C2728A9322B008183BF /* ARVisPlottableValueFieldPair.swift in Sources */,
@@ -1298,13 +1441,14 @@
 		};
 		630BD1B02892C4AC00C9BEAC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 76220422FED15D91588C9B52 /* Pods-Tests iOS.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XKUVHTJ3W8;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.jjaychen.Tests-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1318,13 +1462,14 @@
 		};
 		630BD1B12892C4AC00C9BEAC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C82AD3DA41262670E0F237B /* Pods-Tests iOS.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XKUVHTJ3W8;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.jjaychen.Tests-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1339,13 +1484,14 @@
 		};
 		630BD1B32892C4AC00C9BEAC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DFAF3DA33D93FC0E09647AD9 /* Pods-Tests macOS.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XKUVHTJ3W8;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.jjaychen.Tests-macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1358,13 +1504,14 @@
 		};
 		630BD1B42892C4AC00C9BEAC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4035FC106CD155E631864D7D /* Pods-Tests macOS.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XKUVHTJ3W8;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.jjaychen.Tests-macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1426,7 +1573,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		635F526428967BE600FF40B6 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		635F526428967BE600FF40B6 /* XCRemoteSwiftPackageReference "SnapKit.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
@@ -1450,7 +1597,7 @@
 				kind = branch;
 			};
 		};
-		6376122A28A555A3008901C0 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+		6376122A28A555A3008901C0 /* XCRemoteSwiftPackageReference "SwiftyJSON.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
 			requirement = {
@@ -1463,7 +1610,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		635F526528967BE600FF40B6 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 635F526428967BE600FF40B6 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = 635F526428967BE600FF40B6 /* XCRemoteSwiftPackageReference "SnapKit.git" */;
 			productName = SnapKit;
 		};
 		635F52712896D38600FF40B6 /* Kingfisher */ = {
@@ -1483,17 +1630,32 @@
 		};
 		6376122B28A555A3008901C0 /* SwiftyJSON */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6376122A28A555A3008901C0 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			package = 6376122A28A555A3008901C0 /* XCRemoteSwiftPackageReference "SwiftyJSON.git" */;
 			productName = SwiftyJSON;
 		};
 		6376122D28A555AC008901C0 /* SwiftyJSON */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6376122A28A555A3008901C0 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			package = 6376122A28A555A3008901C0 /* XCRemoteSwiftPackageReference "SwiftyJSON.git" */;
+			productName = SwiftyJSON;
+		};
+		6392E20628A93FFA00FCB90D /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 635F52702896D38600FF40B6 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		6392E20828A93FFA00FCB90D /* UIColorHexSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6376122228A4C1EF008901C0 /* XCRemoteSwiftPackageReference "UIColor-Hex-Swift" */;
+			productName = UIColorHexSwift;
+		};
+		6392E20A28A93FFA00FCB90D /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6376122A28A555A3008901C0 /* XCRemoteSwiftPackageReference "SwiftyJSON.git" */;
 			productName = SwiftyJSON;
 		};
 		63952C0E28A92A91008183BF /* SwiftyJSON */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6376122A28A555A3008901C0 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			package = 6376122A28A555A3008901C0 /* XCRemoteSwiftPackageReference "SwiftyJSON.git" */;
 			productName = SwiftyJSON;
 		};
 		63952C1028A92A9F008183BF /* UIColorHexSwift */ = {

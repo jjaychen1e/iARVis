@@ -1,5 +1,5 @@
 //
-//  Testsd_macOSViewElementComponent.swift
+//  Tests_macOSViewElementComponent.swift
 //  Tests macOS
 //
 //  Created by Junjie Chen on 2022/8/14.
