@@ -33,9 +33,42 @@ struct ChartTooltipView: View {
             )
             .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
             .shadow(color: .primary.opacity(0.1), radius: 15)
-            .overlay(alignment: .bottomTrailing) {
+            .overlay(alignment: .topTrailing) {
                 Button {
-                    print("放大")
+                    let nvc = UINavigationController()
+                    nvc.setNavigationBarHidden(true, animated: false)
+                    nvc.viewControllers = [UIHostingController(rootView:
+                        ComponentView(component)
+                            .overlay(alignment: .topTrailing) {
+                                Button { [weak nvc] in
+                                    if let nvc = nvc {
+                                        nvc.dismiss(animated: true)
+                                    }
+                                } label: {
+                                    Image(systemName: "xmark")
+                                        .font(.system(size: 15))
+                                        .foregroundColor(.gray)
+                                        .padding(.all, 8)
+                                        .background(
+                                            Circle()
+                                                .stroke(Asset.DynamicColors.dynamicWhite.swiftUIColor, lineWidth: 1)
+                                                .background(Asset.DynamicColors.dynamicWhite.swiftUIColor)
+                                        )
+                                        .clipShape(Circle())
+                                        .shadow(color: .primary.opacity(0.1), radius: 5)
+                                        .offset(x: -16, y: 16)
+                                }
+                            }
+                    )]
+                    UIApplication.shared.presentOnTop(nvc, detents: [
+                        .custom { context in
+                            context.maximumDetentValue * 0.3
+                        },
+                        .custom { context in
+                            context.maximumDetentValue * 0.5
+                        },
+                        .large(),
+                    ])
                 } label: {
                     Image(systemName: "arrow.up.left.and.arrow.down.right")
                         .font(.system(size: 12))
@@ -48,7 +81,7 @@ struct ChartTooltipView: View {
                         )
                         .clipShape(Circle())
                         .shadow(color: .primary.opacity(0.1), radius: 5)
-                        .offset(x: -6, y: -6)
+                        .offset(x: -6, y: 6)
                 }
             }
     }

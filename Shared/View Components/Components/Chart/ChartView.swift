@@ -95,7 +95,7 @@ struct ChartView: View {
                                                 switch action {
                                                 case let .openURL(url):
                                                     if let _ = chartConfiguration.interactionData.componentSelectedElementInXY[component] {
-//                                                        UIApplication.shared.open(url)
+                                                        UIApplication.shared.open(url)
                                                     }
                                                 }
                                             case let .hover(tooltip):
@@ -256,34 +256,39 @@ struct ChartView: View {
                     )
             }
         }
-        .chartOverlay { _ in
-            #if DEBUG
-                GeometryReader { _ in
-                    ForEach(0 ..< chartConfiguration.components.count, id: \.self) { index in
-                        let component = chartConfiguration.components[index]
-                        if let selectedElement = chartConfiguration.interactionData.componentSelectedElementInRangeX[component] {
+//        .chartOverlay { _ in
+//            #if DEBUG
+//                GeometryReader { _ in
+//                    ForEach(0 ..< chartConfiguration.components.count, id: \.self) { index in
+//                        let component = chartConfiguration.components[index]
+//                        if let selectedElement = chartConfiguration.interactionData.componentSelectedElementInRangeX[component] {
 //                            Text(selectedElement.description)
-                        }
-                    }
-                }
-            #endif
-        }
+//                        }
+//                    }
+//                }
+//            #endif
+//        }
         .chartOverlay { proxy in
             GeometryReader { geoProxy in
                 let topOffset = -geoProxy.frame(in: .global).origin.y
                 ForEach(0 ..< chartConfiguration.components.count, id: \.self) { index in
                     let component = chartConfiguration.components[index]
-                    if let viewComponent = chartConfiguration.interactionData.componentSelectedElementView[component] {
+                    let viewComponent: ViewElementComponent? = chartConfiguration.interactionData.componentSelectedElementView[component]
+                    if let viewComponent = viewComponent {
                         switch component {
                         case let .barMarkRepeat1(xStart, xEnd, y, _):
-                            if let selectedElement = chartConfiguration.interactionData.componentSelectedElementInRangeX[component] {
+                            let selectedElement: JSON? = chartConfiguration.interactionData.componentSelectedElementInRangeX[component]
+                            if let selectedElement = selectedElement {
                                 if let leftPoint = proxy.position(at: (selectedElement[xStart.field], selectedElement[y.field])),
                                    let rightPoint = proxy.position(at: (selectedElement[xEnd.field], selectedElement[y.field])) {
-                                    let centerPoint = (leftPoint + rightPoint) / 2
-                                    let targetSize = ChartTooltipView(viewComponent).adaptiveSizeThatFits(in: .init(width: 300, height: 250), for: .regular)
+                                    let centerPoint: CGPoint = (leftPoint + rightPoint) / 2
+                                    let targetSize: CGSize = ChartTooltipView(viewComponent).adaptiveSizeThatFits(in: .init(width: 250, height: 140), for: .regular)
+                                    let maxTooltipX: CGFloat = geoProxy.size.width - targetSize.width
+                                    let offsetX: CGFloat = min(maxTooltipX, max(0, centerPoint.x - targetSize.width / 2))
+                                    let offsetY: CGFloat = max(topOffset + 8, centerPoint.y - targetSize.height - 8)
                                     ChartTooltipView(viewComponent)
                                         .frame(width: targetSize.width, height: targetSize.height)
-                                        .offset(x: max(0, centerPoint.x - targetSize.width / 2), y: max(topOffset + 8, centerPoint.y - targetSize.height))
+                                        .offset(x: offsetX, y: offsetY)
                                         .id(selectedElement.rawString(options: []))
                                 }
                             }
@@ -291,7 +296,7 @@ struct ChartView: View {
                     }
                 }
             }
-            .animation(.default, value: chartConfiguration.interactionData.componentSelectedElementView)
+            .animation(.default, value: UUID())
             .transition(.opacity)
         }
         .frame(maxWidth: chartConfiguration.styleConfiguration.maxWidth, maxHeight: chartConfiguration.styleConfiguration.maxHeight)

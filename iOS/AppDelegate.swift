@@ -5,9 +5,9 @@
 //  Created by Junjie Chen on 2022/7/28.
 //
 
-import UIKit
 import SwiftUI
 import SwiftyJSON
+import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -28,5 +28,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         self.window = window
         return true
+    }
+}
+
+extension UIApplication {
+    func topController() -> UIViewController? {
+        let keyWindow = sceneWindows.filter { $0.isKeyWindow }.first
+
+        if var topController = keyWindow?.rootViewController {
+            while let presentedViewController = topController.presentedViewController {
+                topController = presentedViewController
+            }
+            return topController
+        }
+        return nil
+    }
+
+    var sceneWindows: [UIWindow] {
+        UIApplication.shared.connectedScenes
+            .first(where: { $0 is UIWindowScene })
+            .flatMap { $0 as? UIWindowScene }?.windows ?? []
+    }
+
+    func presentOnTop(_ viewController: UIViewController, animated: Bool = true) {
+        topController()?.present(viewController, animated: animated)
+    }
+
+    func presentOnTop(_ viewController: UIViewController, detents: [UISheetPresentationController.Detent], animated: Bool = true) {
+        viewController.modalPresentationStyle = .pageSheet
+        if let sheet = viewController.sheetPresentationController {
+            sheet.detents = detents
+        }
+
+        topController()?.present(viewController, animated: animated)
     }
 }
