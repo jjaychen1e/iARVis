@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SwiftUI
+import SwiftyJSON
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,8 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let window = UIWindow(frame: UIScreen.main.bounds)
 
-        let rootVC = ARKitViewController()
-        window.rootViewController = rootVC
+        #if !targetEnvironment(simulator)
+            let rootVC = ARKitViewController()
+            window.rootViewController = rootVC
+        #else
+            let chartConfiguration = ChartConfigurationJSONParser.default.parse(JSON(ChartConfigurationJSONParser.exampleJSONString1.data(using: .utf8)!)["chartConfig"])
+            let rootVC = UIHostingController(rootView: ChartView(chartConfiguration: chartConfiguration))
+            window.rootViewController = rootVC
+        #endif
         window.makeKeyAndVisible()
 
         self.window = window

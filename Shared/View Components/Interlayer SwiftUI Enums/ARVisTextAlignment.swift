@@ -27,6 +27,6 @@ enum ARVisTextAlignment: String, Codable {
 
 extension SwiftUI.TextAlignment {
     init(_ textAlignment: ARVisTextAlignment?) {
-        self = textAlignment?.toSwiftUITextAlignment() ?? .leading
+        self = textAlignment?.toSwiftUITextAlignment() ?? .center
     }
 }

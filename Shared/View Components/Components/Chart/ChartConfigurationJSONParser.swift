@@ -61,8 +61,9 @@ class ChartConfigurationJSONParser {
                                             if let hoverManualConfigJSONArray = tooltipJSON["config"].array {
                                                 for hoverManualConfig in hoverManualConfigJSONArray {
                                                     if let fieldString = hoverManualConfig["field"].string,
-                                                       let valueString = hoverManualConfig["value"].string,
+                                                       hoverManualConfig["value"] != .null,
                                                        let contentViewElementComponent = hoverManualConfig["content"].decode(ViewElementComponent.self) {
+                                                        let valueString = hoverManualConfig["value"]
                                                         hoverManualConfigArray.append(.init(field: fieldString, value: valueString, content: contentViewElementComponent))
                                                     }
                                                 }
@@ -93,6 +94,7 @@ class ChartConfigurationJSONParser {
                 }
             }
         }
+        chartConfig.components = components
 
         // ChartXScale
         if let chartXScale = json["xScale"].decode(ChartXScale.self) {
@@ -117,116 +119,8 @@ class ChartConfigurationJSONParser {
 }
 
 extension ChartConfigurationJSONParser {
-    static let exampleJSONString1 = """
-    {
-      "chartConfig": {
-        "data": {
-          "Name": [
-            "James Ensor",
-            "Alexandra Daveluy",
-            "Casino Communal",
-            "Louis Franck",
-            "Foudation Socindec",
-            "Getty Museum"
-          ],
-          "Start": [
-            "1888-01-01",
-            "1949-01-01",
-            "1950-01-01",
-            "1954-01-01",
-            "1969-01-01",
-            "1987-01-01"
-          ],
-          "End": [
-            "1949-01-01",
-            "1950-01-01",
-            "1954-01-01",
-            "1969-01-01",
-            "1987-01-01",
-            "2022-01-01"
-          ]
-        },
-        "components": [
-          {
-            "type": "BarMark",
-            "config": {
-              "xStart": {
-                "field": "Start"
-              },
-              "xEnd": {
-                "field": "End"
-              },
-              "y": {
-                "field": "Name"
-              },
-              "height": 20
-            },
-            "interactions": [
-              {
-                "type": "Hover",
-                "content": {
-                  "type": "Manual",
-                  "config": [
-                    {
-                      "field": "Name",
-                      "value": "James Ensor",
-                      "content": {}
-                    }
-                  ]
-                }
-              },
-              {
-                "type": "Hover",
-                "tooltip": {
-                  "type": "Manual",
-                  "config": [
-                    {
-                      "field": "Name",
-                      "value": "Alexandra Daveluy",
-                      "content": {
-                        "vStack": {
-                          "elements": [
-                            {
-                              "text": {
-                                "content": "Alexandra Daveluy"
-                              }
-                            },
-                            {
-                              "text": {
-                                "content": "Alexandra Daveluy, who is James Ensor's niece, inherited the painting from James Ensor."
-                              }
-                            },
-                            {
-                              "text": {
-                                "content": "1949-01-01 to 1950-01-01"
-                              }
-                            }
-                          ]
-                        }
-                      }
-                    }
-                  ]
-                }
-              },
-              {
-                "type": "Click",
-                "action": {
-                  "type": "OpenURL",
-                  "config": {
-                    "url": "https://www.google.com"
-                  }
-                }
-              }
-            ]
-          }
-        ],
-        "xScale": {
-          "domain": [10, 20]
-        },
-        "styleConfig": {
-          "maxHeight": 250
-        }
-      }
-    }
-    """
+    static let exampleJSONString1: String = {
+        let path = Bundle.main.bundleURL.appending(path: "chartConfigurationExample1.json")
+        return try! String(contentsOfFile: path.path)
+    }()
 }

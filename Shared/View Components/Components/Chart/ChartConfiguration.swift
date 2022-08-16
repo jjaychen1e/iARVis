@@ -61,7 +61,7 @@ struct ChartXScale: Codable {
 
 struct ChartInteractionHoverTooltipManualConfig {
     var field: String
-    var value: String
+    var value: JSON
     var content: ViewElementComponent
 }
 
@@ -94,8 +94,11 @@ enum ChartInteraction {
 }
 
 struct ChartInteractionData: Codable {
-    var componentSelectedElement: [ChartComponent: JSON] = [:]
+    var componentSelectedElementInRangeX: [ChartComponent: JSON] = [:]
+    var componentSelectedElementInRangeY: [ChartComponent: JSON] = [:]
+    var componentSelectedElementInXY: [ChartComponent: JSON] = [:]
     var componentInteraction: [ChartComponent: [ChartInteraction]] = [:]
+    var componentSelectedElementView: [ChartComponent: ViewElementComponent] = [:]
 
     init() {}
 
@@ -103,21 +106,8 @@ struct ChartInteractionData: Codable {
         self.componentInteraction = componentInteraction
     }
 
-    enum CodingKeys: CodingKey {
-        case componentSelectedElement
-    }
-
-    init(from decoder: Decoder) throws {
-        let container: KeyedDecodingContainer<ChartInteractionData.CodingKeys> = try decoder.container(keyedBy: ChartInteractionData.CodingKeys.self)
-
-        componentSelectedElement = try container.decode([ChartComponent: JSON].self, forKey: ChartInteractionData.CodingKeys.componentSelectedElement)
-    }
-
-    func encode(to encoder: Encoder) throws {
-        var container: KeyedEncodingContainer<ChartInteractionData.CodingKeys> = encoder.container(keyedBy: ChartInteractionData.CodingKeys.self)
-
-        try container.encode(componentSelectedElement, forKey: ChartInteractionData.CodingKeys.componentSelectedElement)
-    }
+    // TODO: Codable?
+    enum CodingKeys: CodingKey {}
 }
 
 struct ChartStyleConfiguration: Codable {

@@ -1,22 +1,25 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
 
 target 'iARVis (iOS)' do
-  # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
-
-  pod 'SwiftDate'
+    platform :ios, '16.0'
+    # Comment the next line if you don't want to use dynamic frameworks
+    use_frameworks!
+    
+    pod 'SwiftDate'
+    pod 'SwiftGen', '~> 6.0'
 end
 
 target 'Tests iOS' do
-  pod 'SwiftDate'
+    pod 'SwiftDate'
 end
 
 target 'iARVis (macOS)' do
-  # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
-
-  pod 'SwiftDate'
+    platform :osx, '13.0'
+    # Comment the next line if you don't want to use dynamic frameworks
+    use_frameworks!
+    
+    pod 'SwiftDate'
+    pod 'SwiftGen', '~> 6.0'
 end
 
 target 'Tests macOS' do

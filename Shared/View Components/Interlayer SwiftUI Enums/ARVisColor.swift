@@ -253,11 +253,10 @@ extension ARVisColor: Codable {
 
 extension SwiftUI.Color {
     init?(_ color: ARVisColor?) {
-        if let color = color {
-            self = color.toSwiftUIColor()
-        } else {
+        guard let color = color else {
             return nil
         }
+        self = color.toSwiftUIColor()
     }
 
     init(_ color: ARVisColor) {

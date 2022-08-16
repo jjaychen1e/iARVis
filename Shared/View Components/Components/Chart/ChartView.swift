@@ -42,19 +42,112 @@ struct ChartView: View {
                                 let location = value.location
                                 for component in chartConfiguration.components {
                                     switch component {
-                                    case let .barMarkRepeat1(xStart, xEnd, _, _):
-                                        if let dataItem = getElementInRangeX(proxy: proxy,
-                                                                             location: location,
-                                                                             geo: geo,
-                                                                             chartData: chartConfiguration.chartData,
-                                                                             xStartField: xStart.field,
-                                                                             xEndField: xEnd.field)
+                                    case let .barMarkRepeat1(xStart, xEnd, y, _):
+                                        if let dataItemRangeX = getElementInRangeX(proxy: proxy,
+                                                                                   location: location,
+                                                                                   geo: geo,
+                                                                                   chartData: chartConfiguration.chartData,
+                                                                                   xStartField: xStart.field,
+                                                                                   xEndField: xEnd.field)
                                         {
-                                            // TODO: 这部分逻辑在拥有第二种 component 之后抽离出去，把 switch 部分放在一个函数中，返回找到的 dataItem
-                                            if chartConfiguration.interactionData.componentSelectedElement[component] == dataItem {
-                                                chartConfiguration.interactionData.componentSelectedElement[component] = nil
+                                            // TODO: 这部分逻辑在拥有第二种 component 之后抽离出去
+                                            if chartConfiguration.interactionData.componentSelectedElementInRangeX[component] == dataItemRangeX {
+                                                chartConfiguration.interactionData.componentSelectedElementInRangeX[component] = nil
                                             } else {
-                                                chartConfiguration.interactionData.componentSelectedElement[component] = dataItem
+                                                chartConfiguration.interactionData.componentSelectedElementInRangeX[component] = dataItemRangeX
+                                            }
+                                        } else {
+                                            chartConfiguration.interactionData.componentSelectedElementInRangeX[component] = nil
+                                        }
+
+                                        if let dataItemRangeY = getElementInRangeY(proxy: proxy,
+                                                                                   location: location,
+                                                                                   geo: geo,
+                                                                                   chartData: chartConfiguration.chartData,
+                                                                                   yStartField: y.field,
+                                                                                   yEndField: y.field) {
+                                            // Click on the bar!
+                                            if chartConfiguration.interactionData.componentSelectedElementInRangeY[component] == dataItemRangeY {
+                                                chartConfiguration.interactionData.componentSelectedElementInRangeY[component] = nil
+                                            } else {
+                                                chartConfiguration.interactionData.componentSelectedElementInRangeY[component] = dataItemRangeY
+                                            }
+
+                                            if chartConfiguration.interactionData.componentSelectedElementInRangeX[component] == dataItemRangeY {
+                                                if chartConfiguration.interactionData.componentSelectedElementInXY[component] == dataItemRangeY {
+                                                    chartConfiguration.interactionData.componentSelectedElementInXY[component] = nil
+                                                } else {
+                                                    chartConfiguration.interactionData.componentSelectedElementInXY[component] = dataItemRangeY
+                                                }
+                                            } else {
+                                                chartConfiguration.interactionData.componentSelectedElementInXY[component] = nil
+                                            }
+                                        } else {
+                                            chartConfiguration.interactionData.componentSelectedElementInRangeY[component] = nil
+                                        }
+                                    }
+
+                                    // Tap gesture can trigger click and hover!
+                                    if let interactions = chartConfiguration.interactionData.componentInteraction[component] {
+                                        for interaction in interactions {
+                                            switch interaction {
+                                            case let .click(action):
+                                                switch action {
+                                                case let .openURL(url):
+                                                    if let _ = chartConfiguration.interactionData.componentSelectedElementInXY[component] {
+//                                                        UIApplication.shared.open(url)
+                                                    }
+                                                }
+                                            case let .hover(tooltip):
+                                                switch tooltip {
+                                                case .auto:
+                                                    fatalErrorDebug("Not implemented yet.")
+                                                case let .manual(contents):
+                                                    switch component.hoverType {
+                                                    case .rangeX:
+                                                        if let dataItem = chartConfiguration.interactionData.componentSelectedElementInRangeX[component] {
+                                                            var found = false
+                                                            for content in contents {
+                                                                if dataItem[content.field] == content.value {
+                                                                    chartConfiguration.interactionData.componentSelectedElementView[component] = content.content
+                                                                    found = true
+                                                                    break
+                                                                }
+                                                            }
+                                                            if !found {
+                                                                chartConfiguration.interactionData.componentSelectedElementView[component] = nil
+                                                            }
+                                                        }
+                                                    case .rangeY:
+                                                        if let dataItem = chartConfiguration.interactionData.componentSelectedElementInRangeY[component] {
+                                                            var found = false
+                                                            for content in contents {
+                                                                if dataItem[content.field] == content.value {
+                                                                    chartConfiguration.interactionData.componentSelectedElementView[component] = content.content
+                                                                    found = true
+                                                                    break
+                                                                }
+                                                            }
+                                                            if !found {
+                                                                chartConfiguration.interactionData.componentSelectedElementView[component] = nil
+                                                            }
+                                                        }
+                                                    case .xy:
+                                                        if let dataItem = chartConfiguration.interactionData.componentSelectedElementInXY[component] {
+                                                            var found = false
+                                                            for content in contents {
+                                                                if dataItem[content.field] == content.value {
+                                                                    chartConfiguration.interactionData.componentSelectedElementView[component] = content.content
+                                                                    found = true
+                                                                    break
+                                                                }
+                                                            }
+                                                            if !found {
+                                                                chartConfiguration.interactionData.componentSelectedElementView[component] = nil
+                                                            }
+                                                        }
+                                                    }
+                                                }
                                             }
                                         }
                                     }
@@ -66,15 +159,95 @@ struct ChartView: View {
                                         let location = value.location
                                         for component in chartConfiguration.components {
                                             switch component {
-                                            case let .barMarkRepeat1(xStart, xEnd, _, _):
-                                                if let dataItem = getElementInRangeX(proxy: proxy,
-                                                                                     location: location,
-                                                                                     geo: geo,
-                                                                                     chartData: chartConfiguration.chartData,
-                                                                                     xStartField: xStart.field,
-                                                                                     xEndField: xEnd.field)
+                                            case let .barMarkRepeat1(xStart, xEnd, y, _):
+                                                if let dataItemRangeX = getElementInRangeX(proxy: proxy,
+                                                                                           location: location,
+                                                                                           geo: geo,
+                                                                                           chartData: chartConfiguration.chartData,
+                                                                                           xStartField: xStart.field,
+                                                                                           xEndField: xEnd.field)
                                                 {
-                                                    chartConfiguration.interactionData.componentSelectedElement[component] = dataItem
+                                                    chartConfiguration.interactionData.componentSelectedElementInRangeX[component] = dataItemRangeX
+                                                } else {
+                                                    chartConfiguration.interactionData.componentSelectedElementInRangeX[component] = nil
+                                                }
+
+                                                if let dataItemRangeY = getElementInRangeY(proxy: proxy,
+                                                                                           location: location,
+                                                                                           geo: geo,
+                                                                                           chartData: chartConfiguration.chartData,
+                                                                                           yStartField: y.field,
+                                                                                           yEndField: y.field) {
+                                                    // Click on the bar!
+                                                    chartConfiguration.interactionData.componentSelectedElementInRangeY[component] = dataItemRangeY
+
+                                                    if chartConfiguration.interactionData.componentSelectedElementInRangeX[component] == dataItemRangeY {
+                                                        chartConfiguration.interactionData.componentSelectedElementInXY[component] = dataItemRangeY
+                                                    } else {
+                                                        chartConfiguration.interactionData.componentSelectedElementInXY[component] = nil
+                                                    }
+                                                } else {
+                                                    chartConfiguration.interactionData.componentSelectedElementInRangeY[component] = nil
+                                                }
+                                            }
+
+                                            // Drag gesture can only trigger hover!
+                                            if let interactions = chartConfiguration.interactionData.componentInteraction[component] {
+                                                for interaction in interactions {
+                                                    switch interaction {
+                                                    case let .hover(tooltip):
+                                                        switch tooltip {
+                                                        case .auto:
+                                                            fatalErrorDebug("Not implemented yet.")
+                                                        case let .manual(contents):
+                                                            switch component.hoverType {
+                                                            case .rangeX:
+                                                                if let dataItem = chartConfiguration.interactionData.componentSelectedElementInRangeX[component] {
+                                                                    var found = false
+                                                                    for content in contents {
+                                                                        if dataItem[content.field] == content.value {
+                                                                            chartConfiguration.interactionData.componentSelectedElementView[component] = content.content
+                                                                            found = true
+                                                                            break
+                                                                        }
+                                                                    }
+                                                                    if !found {
+                                                                        chartConfiguration.interactionData.componentSelectedElementView[component] = nil
+                                                                    }
+                                                                }
+                                                            case .rangeY:
+                                                                if let dataItem = chartConfiguration.interactionData.componentSelectedElementInRangeY[component] {
+                                                                    var found = false
+                                                                    for content in contents {
+                                                                        if dataItem[content.field] == content.value {
+                                                                            chartConfiguration.interactionData.componentSelectedElementView[component] = content.content
+                                                                            found = true
+                                                                            break
+                                                                        }
+                                                                    }
+                                                                    if !found {
+                                                                        chartConfiguration.interactionData.componentSelectedElementView[component] = nil
+                                                                    }
+                                                                }
+                                                            case .xy:
+                                                                if let dataItem = chartConfiguration.interactionData.componentSelectedElementInXY[component] {
+                                                                    var found = false
+                                                                    for content in contents {
+                                                                        if dataItem[content.field] == content.value {
+                                                                            chartConfiguration.interactionData.componentSelectedElementView[component] = content.content
+                                                                            found = true
+                                                                            break
+                                                                        }
+                                                                    }
+                                                                    if !found {
+                                                                        chartConfiguration.interactionData.componentSelectedElementView[component] = nil
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    default:
+                                                        break
+                                                    }
                                                 }
                                             }
                                         }
@@ -84,70 +257,52 @@ struct ChartView: View {
             }
         }
         .chartOverlay { _ in
-            ForEach(0 ..< chartConfiguration.components.count, id: \.self) { index in
-                let component = chartConfiguration.components[index]
-                if let selectedElement = chartConfiguration.interactionData.componentSelectedElement[component] {
-                    Text(selectedElement.description)
+            #if DEBUG
+                GeometryReader { _ in
+                    ForEach(0 ..< chartConfiguration.components.count, id: \.self) { index in
+                        let component = chartConfiguration.components[index]
+                        if let selectedElement = chartConfiguration.interactionData.componentSelectedElementInRangeX[component] {
+//                            Text(selectedElement.description)
+                        }
+                    }
+                }
+            #endif
+        }
+        .chartOverlay { proxy in
+            GeometryReader { geoProxy in
+                let topOffset = -geoProxy.frame(in: .global).origin.y
+                ForEach(0 ..< chartConfiguration.components.count, id: \.self) { index in
+                    let component = chartConfiguration.components[index]
+                    if let viewComponent = chartConfiguration.interactionData.componentSelectedElementView[component] {
+                        switch component {
+                        case let .barMarkRepeat1(xStart, xEnd, y, _):
+                            if let selectedElement = chartConfiguration.interactionData.componentSelectedElementInRangeX[component] {
+                                if let leftPoint = proxy.position(at: (selectedElement[xStart.field], selectedElement[y.field])),
+                                   let rightPoint = proxy.position(at: (selectedElement[xEnd.field], selectedElement[y.field])) {
+                                    let centerPoint = (leftPoint + rightPoint) / 2
+                                    let targetSize = ChartTooltipView(viewComponent).adaptiveSizeThatFits(in: .init(width: 300, height: 250), for: .regular)
+                                    ChartTooltipView(viewComponent)
+                                        .frame(width: targetSize.width, height: targetSize.height)
+                                        .offset(x: max(0, centerPoint.x - targetSize.width / 2), y: max(topOffset + 8, centerPoint.y - targetSize.height))
+                                        .id(selectedElement.rawString(options: []))
+                                }
+                            }
+                        }
+                    }
                 }
             }
+            .animation(.default, value: chartConfiguration.interactionData.componentSelectedElementView)
+            .transition(.opacity)
         }
         .frame(maxWidth: chartConfiguration.styleConfiguration.maxWidth, maxHeight: chartConfiguration.styleConfiguration.maxHeight)
         .padding()
     }
 }
 
-private func getElementInRangeX(proxy: ChartProxy, location: CGPoint, geo: GeometryProxy, chartData: ChartData, xStartField: String, xEndField: String) -> JSON? {
-    let relativeX = location.x - geo[proxy.plotAreaFrame].origin.x
-    // Int, Double, Date
-    if chartData.data[xStartField].array?[safe: 0]?.int != nil {
-        if let dateValue: Int = proxy.value(atX: relativeX) {
-            for i in 0 ..< chartData.length {
-                if let xStartInt = chartData.data[xStartField].array?[safe: i]?.int,
-                   let xEndInt = chartData.data[xEndField].array?[safe: i]?.int,
-                   dateValue >= xStartInt, dateValue <= xEndInt {
-                    var dict: [String: JSON] = [:]
-                    for title in chartData.titles {
-                        dict[title] = chartData.data[title].array?[safe: i]
-                    }
-                    return JSON(dict)
-                }
-            }
-        }
-    } else if chartData.data[xStartField].array?[safe: 0]?.double != nil {
-        if let dateValue: Double = proxy.value(atX: relativeX) {
-            for i in 0 ..< chartData.length {
-                if let xStartDouble = chartData.data[xStartField].array?[safe: i]?.double,
-                   let xEndDouble = chartData.data[xEndField].array?[safe: i]?.double,
-                   dateValue >= xStartDouble, dateValue <= xEndDouble {
-                    var dict: [String: JSON] = [:]
-                    for title in chartData.titles {
-                        dict[title] = chartData.data[title].array?[safe: i]
-                    }
-                    return JSON(dict)
-                }
-            }
-        }
-    } else if chartData.data[xStartField].array?[safe: 0]?.date != nil {
-        if let dateValue: Date = proxy.value(atX: relativeX) {
-            for i in 0 ..< chartData.length {
-                if let xStartDate = chartData.data[xStartField].array?[safe: i]?.date,
-                   let xEndDate = chartData.data[xEndField].array?[safe: i]?.date,
-                   dateValue >= xStartDate, dateValue <= xEndDate {
-                    var dict: [String: JSON] = [:]
-                    for title in chartData.titles {
-                        dict[title] = chartData.data[title].array?[safe: i]
-                    }
-                    return JSON(dict)
-                }
-            }
-        }
-    }
-    return nil
-}
-
 struct ChartView_Previews: PreviewProvider {
     static var previews: some View {
-        ChartView(chartConfiguration: .example1)
+        let chartConfiguration = ChartConfigurationJSONParser.default.parse(JSON(ChartConfigurationJSONParser.exampleJSONString1.data(using: .utf8)!)["chartConfig"])
+        ChartView(chartConfiguration: chartConfiguration)
             .previewLayout(.fixed(width: 720, height: 540))
     }
 }

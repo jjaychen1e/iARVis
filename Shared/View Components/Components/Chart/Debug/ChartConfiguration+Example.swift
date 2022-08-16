@@ -8,6 +8,7 @@
 import Foundation
 
 extension ChartConfiguration {
+    @available(*, deprecated, message: "Use ` ChartConfigurationJSONParser` instead.")
     static let example1 = ChartConfiguration(
         chartData: ChartData(
             data: [

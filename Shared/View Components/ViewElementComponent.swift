@@ -5,9 +5,9 @@
 //  Created by Junjie Chen on 2022/8/10.
 //
 
+import AVKit
 import Foundation
 import SwiftUI
-import AVKit
 
 enum ViewElementComponent: Codable, Equatable {
     // font
@@ -26,9 +26,11 @@ extension ViewElementComponent {
     func view() -> some View {
         switch self {
         case let .text(content, multilineTextAlignment, fontStyle):
-            Text(LocalizedStringKey(content), tableName: nil)
+            Text(.init(content))
                 .font(.init(fontStyle))
-                .foregroundColor(.init(fontStyle?.color))
+                .if(fontStyle?.color != nil, transform: { view in
+                    view.foregroundColor(.init(fontStyle?.color))
+                })
                 .multilineTextAlignment(.init(multilineTextAlignment))
         case let .image(url, contentMode):
             AsyncImage(url: URL(string: url)) { image in
