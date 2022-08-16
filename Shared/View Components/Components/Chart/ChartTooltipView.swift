@@ -35,32 +35,7 @@ struct ChartTooltipView: View {
             .shadow(color: .primary.opacity(0.1), radius: 15)
             .overlay(alignment: .topTrailing) {
                 Button {
-                    let nvc = UINavigationController()
-                    nvc.setNavigationBarHidden(true, animated: false)
-                    nvc.viewControllers = [UIHostingController(rootView:
-                        ComponentView(component)
-                            .overlay(alignment: .topTrailing) {
-                                Button { [weak nvc] in
-                                    if let nvc = nvc {
-                                        nvc.dismiss(animated: true)
-                                    }
-                                } label: {
-                                    Image(systemName: "xmark")
-                                        .font(.system(size: 15))
-                                        .foregroundColor(.gray)
-                                        .padding(.all, 8)
-                                        .background(
-                                            Circle()
-                                                .stroke(Asset.DynamicColors.dynamicWhite.swiftUIColor, lineWidth: 1)
-                                                .background(Asset.DynamicColors.dynamicWhite.swiftUIColor)
-                                        )
-                                        .clipShape(Circle())
-                                        .shadow(color: .primary.opacity(0.1), radius: 5)
-                                        .offset(x: -16, y: 16)
-                                }
-                            }
-                    )]
-                    UIApplication.shared.presentOnTop(nvc, detents: [
+                    UIApplication.shared.presentOnTop(ChartTooltipPresentationViewController(component: component), detents: [
                         .custom { context in
                             context.maximumDetentValue * 0.3
                         },

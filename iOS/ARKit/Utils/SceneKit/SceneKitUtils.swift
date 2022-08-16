@@ -23,6 +23,18 @@ func * (vector: SCNVector3, scalar: Float) -> SCNVector3 {
     return SCNVector3Make(vector.x * scalar, vector.y * scalar, vector.z * scalar)
 }
 
+func * (scalar: Float, vector: SCNVector3) -> SCNVector3 {
+    return SCNVector3Make(vector.x * scalar, vector.y * scalar, vector.z * scalar)
+}
+
+func * (vector: SCNVector3, scalar: CGFloat) -> SCNVector3 {
+    return SCNVector3Make(vector.x * Float(scalar), vector.y * Float(scalar), vector.z * Float(scalar))
+}
+
+func * (scalar: CGFloat, vector: SCNVector3) -> SCNVector3 {
+    return SCNVector3Make(vector.x * Float(scalar), vector.y * Float(scalar), vector.z * Float(scalar))
+}
+
 infix operator +*
 func +* (left: SCNVector3, right: SCNVector3) -> SCNVector3 {
     return SCNVector3Make(left.x * right.x, left.y * right.y, left.z * right.z)
@@ -39,6 +51,10 @@ func /= (left: inout SCNVector3, right: Float) {
 extension SCNVector3 {
     var length: Float {
         sqrtf(x * x + y * y + z * z)
+    }
+
+    var normalized: SCNVector3 {
+        self / length
     }
 }
 

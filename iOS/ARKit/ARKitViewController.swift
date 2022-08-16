@@ -86,8 +86,6 @@ class ARKitViewController: UIViewController {
     // MARK: - Widget position
 
     private func updateWidgetTransform(conf: ImageTrackingConfiguration, nodePair: VisualizationContext.NodePair, imageAnchor: ARImageAnchor) {
-        nodePair._node.position = conf.relativePosition + conf.positionOffset
-
         guard let plane = nodePair.node.geometry as? SCNPlane else {
             fatalErrorDebug()
             return
@@ -113,9 +111,8 @@ class ARKitViewController: UIViewController {
             xOffset = targetImageSize.width / 2
             yOffset = 0
         }
-        nodePair.node.pivot = SCNMatrix4Identity
-            .translated(x: Float(-xOffset), y: Float(-yOffset), z: 0)
-            .rotated(angle: Float.pi / 2, axis: SCNVector3(1, 0, 0))
+        nodePair._node.position = conf.relativePosition + conf.positionOffset + SCNVector3(Float(xOffset), Float(yOffset), 0)
+        nodePair._node.eulerAngles = SCNVector3(-CGFloat.pi / 2, 0, 0)
         nodePair.node.setWorldTransform(nodePair._node.worldTransform)
     }
 }
@@ -159,10 +156,11 @@ extension ARKitViewController: ARSCNViewDelegate {
                 nodePair.node.geometry = {
                     let plane = SCNPlane()
                     plane.width = 0.4
-                    plane.height = 0.3
+                    plane.height = 0.4
                     return plane
                 }()
                 let widgetViewController = WidgetExampleViewController()
+                widgetViewController.node = nodePair.node
                 nodePair.widgetViewController = widgetViewController
 
                 let material: SCNMaterial = {
