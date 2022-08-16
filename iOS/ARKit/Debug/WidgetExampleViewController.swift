@@ -39,7 +39,6 @@ private class WidgetExampleContainerView: UIView {
                 let bottomLeft = SCNVector3(min.x, min.y, 0)
                 let topRight = SCNVector3(max.x, max.y, 0)
                 let topLeft = SCNVector3(min.x, max.y, 0)
-                let bottomRight = SCNVector3(max.x, min.y, 0)
 
                 let worldBottomLeft = node.convertPosition(bottomLeft, to: nil)
                 let worldTopRight = node.convertPosition(topRight, to: nil)
