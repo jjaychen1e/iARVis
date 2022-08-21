@@ -24,6 +24,10 @@ struct ChartTooltipView: View {
 
     var body: some View {
         component.view()
+            .environment(\.openURL, OpenURLAction { url in
+                UIApplication.shared.open(url)
+                return .handled
+            })
             .padding(.vertical, 8)
             .padding(.horizontal, 8)
             .background(

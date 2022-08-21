@@ -5,11 +5,23 @@
 //  Created by Junjie Chen on 2022/7/28.
 //
 
+import SafariServices
 import SwiftUI
 import SwiftyJSON
 import UIKit
 
-@UIApplicationMain
+class MyApplication: UIApplication {
+    override func open(_ url: URL, options: [UIApplication.OpenExternalURLOptionsKey: Any] = [:], completionHandler completion: ((Bool) -> Void)? = nil) {
+        let safariViewController = SFSafariViewController(url: url)
+        safariViewController.modalPresentationStyle = .popover
+        presentOnTop(safariViewController)
+    }
+}
+
+extension MyApplication: UIViewControllerTransitioningDelegate {
+    
+}
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 

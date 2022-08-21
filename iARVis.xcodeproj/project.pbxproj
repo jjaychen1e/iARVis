@@ -127,6 +127,8 @@
 		634B730728B138DB000BBB05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638DA9892892C6030030D494 /* AppDelegate.swift */; };
 		634B730928B13900000BBB05 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 634B730828B13900000BBB05 /* SnapKit */; };
 		634B730A28B139F4000BBB05 /* View+SizeThatFits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639A6D8F28AB7FF400527C37 /* View+SizeThatFits.swift */; };
+		634B730D28B1FF05000BBB05 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634B730C28B1FF05000BBB05 /* main.swift */; };
+		634B730E28B1FF05000BBB05 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634B730C28B1FF05000BBB05 /* main.swift */; };
 		634DEB5728A414610019D3FF /* ComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DEB5628A414610019D3FF /* ComponentView.swift */; };
 		634DEB5828A414610019D3FF /* ComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DEB5628A414610019D3FF /* ComponentView.swift */; };
 		634DEB5B28A415160019D3FF /* ViewElementComponent+Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DEB5A28A415160019D3FF /* ViewElementComponent+Example.swift */; };
@@ -259,6 +261,7 @@
 		6339435828ABA9FB008A5ED1 /* View+Execute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Execute.swift"; sourceTree = "<group>"; };
 		634B72B428B119EE000BBB05 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		634B72B528B119EE000BBB05 /* CodableExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableExtensions.swift; sourceTree = "<group>"; };
+		634B730C28B1FF05000BBB05 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		634DEB5628A414610019D3FF /* ComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentView.swift; sourceTree = "<group>"; };
 		634DEB5A28A415160019D3FF /* ViewElementComponent+Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewElementComponent+Example.swift"; sourceTree = "<group>"; };
 		635F52602896769700FF40B6 /* DebugCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugCommon.swift; sourceTree = "<group>"; };
@@ -610,6 +613,7 @@
 				638DA9882892C6030030D494 /* iARVis (iOS)-Bridging-Header.h */,
 				638DA9892892C6030030D494 /* AppDelegate.swift */,
 				638DA98B2892C62C0030D494 /* ARKit */,
+				634B730C28B1FF05000BBB05 /* main.swift */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -1219,6 +1223,7 @@
 				63AE067D289839630061404E /* UIHostingController+SafeArea.swift in Sources */,
 				639A6D9028AB7FF400527C37 /* View+SizeThatFits.swift in Sources */,
 				634B72FF28B13869000BBB05 /* ChartConfiguration.swift in Sources */,
+				634B730D28B1FF05000BBB05 /* main.swift in Sources */,
 				63CB2BC528A40DB100BF7A1B /* ARVisContentMode.swift in Sources */,
 				635F526F2896B29A00FF40B6 /* SceneKitUtils.swift in Sources */,
 				63254E0028AB8869005E7599 /* CGPoint+Operations.swift in Sources */,
@@ -1289,6 +1294,7 @@
 				63AE066128979D690061404E /* ImageDownloader.swift in Sources */,
 				634B72EF28B13869000BBB05 /* ChartView+GetElement.swift in Sources */,
 				63CB2BC928A40EA400BF7A1B /* ARVisFontStyle.swift in Sources */,
+				634B730E28B1FF05000BBB05 /* main.swift in Sources */,
 				63027A7328A93AFB00B06CFE /* JSON+Decode.swift in Sources */,
 				639A6D8E28AB62F100527C37 /* SwiftGen+Color.swift in Sources */,
 				634B72F328B13869000BBB05 /* TableConfiguration.swift in Sources */,

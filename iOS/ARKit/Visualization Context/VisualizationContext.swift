@@ -89,11 +89,11 @@ class VisualizationContext {
 extension VisualizationContext {
     // MARK: - Node pair utils
 
-    func nodePair(url: String) -> [WidgetImageRelationship: NodePair]? {
+    func nodePairs(url: String) -> [WidgetImageRelationship: NodePair]? {
         imageNodePairMap[url]
     }
 
-    func nodePair(url: URL) -> [WidgetImageRelationship: NodePair]? {
+    func nodePairs(url: URL) -> [WidgetImageRelationship: NodePair]? {
         imageNodePairMap[url.absoluteString]
     }
 

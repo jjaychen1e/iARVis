@@ -50,6 +50,8 @@ class ARKitViewController: UIViewController {
             make.leading.equalTo(trackingLabel.snp.trailing)
             make.centerY.equalTo(trackingLabel)
         }
+
+        setVisualizationConfiguration(.example2)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -57,8 +59,6 @@ class ARKitViewController: UIViewController {
 
         // Prevent the screen from being dimmed to avoid interrupting the AR experience.
         UIApplication.shared.isIdleTimerDisabled = true
-
-        setVisualizationConfiguration(.example2)
     }
 
     // MARK: - Session management
@@ -139,7 +139,7 @@ extension ARKitViewController {
 extension ARKitViewController: ARSCNViewDelegate {
     func renderer(_: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         if let imageAnchor = anchor as? ARImageAnchor {
-            printDebug("New ARImageAnchor Added: \(imageAnchor.referenceImage.name ?? "No name provided.")")
+            printDebug("New ARImageAnchor(\(imageAnchor) Added: \(imageAnchor.referenceImage.name ?? "No name provided.")")
 
             guard let conf = visContext.visConfiguration?.findImageConfiguration(anchor: imageAnchor) else {
                 fatalErrorDebug("Cannot find corresponding image configuration for anchor: \(imageAnchor)")
@@ -192,7 +192,7 @@ extension ARKitViewController: ARSCNViewDelegate {
                 return
             }
 
-            guard let nodePairs = visContext.nodePair(url: conf.imageURL) else {
+            guard let nodePairs = visContext.nodePairs(url: conf.imageURL) else {
                 fatalErrorDebug("Cannot find node pair for anchor: \(imageAnchor)")
                 return
             }
@@ -219,7 +219,7 @@ extension ARKitViewController: ARSCNViewDelegate {
                 return
             }
 
-            guard let nodePairs = visContext.nodePair(url: conf.imageURL) else {
+            guard let nodePairs = visContext.nodePairs(url: conf.imageURL) else {
                 fatalErrorDebug("Cannot find node pair for anchor: \(imageAnchor)")
                 return
             }
