@@ -13,10 +13,9 @@ import SwiftyJSON
 import UIKit
 
 struct WidgetExampleView: View {
+    @State var widgetConfiguration: WidgetConfiguration?
     var body: some View {
-//        ComponentView(.example1)
-        let chartConfiguration = ChartConfigurationJSONParser.default.parse(JSON(ChartConfigurationJSONParser.exampleJSONString1.data(using: .utf8)!)["chartConfig"])
-        ChartView(chartConfiguration: chartConfiguration)
+        ComponentView(widgetConfiguration?.components ?? [])
     }
 }
 
@@ -75,6 +74,7 @@ class WidgetExampleViewController: UIViewController {
     }
 
     weak var node: SCNNode?
+    weak var widgetConfiguration: WidgetConfiguration?
 
     override func loadView() {
         view = {
@@ -92,7 +92,7 @@ class WidgetExampleViewController: UIViewController {
         view.isOpaque = false
         view.backgroundColor = .clear
 
-        let hostingViewController = UIHostingController(rootView: WidgetExampleView(), ignoreSafeArea: true)
+        let hostingViewController = UIHostingController(rootView: WidgetExampleView(widgetConfiguration: widgetConfiguration), ignoreSafeArea: true)
         hostingViewController.view.backgroundColor = .white
         addChildViewController(hostingViewController)
         hostingViewController.view.snp.makeConstraints { make in

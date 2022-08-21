@@ -270,7 +270,7 @@ struct ChartView: View {
 //        }
         .chartOverlay { proxy in
             GeometryReader { geoProxy in
-                let topOffset = -geoProxy.frame(in: .global).origin.y
+                let topOffset = -geoProxy.frame(in: .named("Widget")).origin.y
                 ForEach(0 ..< chartConfiguration.components.count, id: \.self) { index in
                     let component = chartConfiguration.components[index]
                     let viewComponent: ViewElementComponent? = chartConfiguration.interactionData.componentSelectedElementView[component]
@@ -299,14 +299,13 @@ struct ChartView: View {
             .animation(.default, value: UUID())
             .transition(.opacity)
         }
-        .frame(maxWidth: chartConfiguration.styleConfiguration.maxWidth, maxHeight: chartConfiguration.styleConfiguration.maxHeight)
-        .padding()
+        .frame(width: chartConfiguration.styleConfiguration.maxWidth, height: chartConfiguration.styleConfiguration.maxHeight ?? 200)
     }
 }
 
 struct ChartView_Previews: PreviewProvider {
     static var previews: some View {
-        let chartConfiguration = ChartConfigurationJSONParser.default.parse(JSON(ChartConfigurationJSONParser.exampleJSONString1.data(using: .utf8)!)["chartConfig"])
+        let chartConfiguration = ChartConfigurationJSONParser.default.parse(JSON(ChartConfigurationJSONParser.exampleJSONString1.data(using: .utf8)!))
         ChartView(chartConfiguration: chartConfiguration)
             .previewLayout(.fixed(width: 720, height: 540))
     }

@@ -120,7 +120,7 @@ class ChartConfigurationJSONParser {
 
 extension ChartConfigurationJSONParser {
     static let exampleJSONString1: String = {
-        let path = Bundle.main.bundleURL.appending(path: "chartConfigurationExample1.json")
+        let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample1.json")
         return try! String(contentsOfFile: path.path)
     }()
 }

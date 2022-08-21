@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-struct TableData: Codable {
+struct TableData: Codable, Equatable {
     let data: JSON
     let titles: [String]
     let length: Int

@@ -8,27 +8,44 @@
 import Foundation
 import SceneKit
 
-class ImageTrackingConfiguration {
+class ImageTrackingConfiguration: Codable {
     var imageURL: URL
-    var relativeAnchorPoint: AnchorPoint
-    var relativePosition: SCNVector3
-    var positionOffset: SCNVector3 = .init(x: 0, y: 0, z: 0)
+    var relationships: [WidgetImageRelationship] = []
 
-    init(imageURL: URL, relativeAnchorPoint: AnchorPoint, relativePosition: SCNVector3) {
+    init(imageURL: URL, relationships: [WidgetImageRelationship] = []) {
         self.imageURL = imageURL
-        self.relativeAnchorPoint = relativeAnchorPoint
-        self.relativePosition = relativePosition
+        self.relationships = relationships
     }
 }
 
-extension ImageTrackingConfiguration {
-    enum AnchorPoint {
-        case center
-        case leading
-        case trailing
-        case top
-        case bottom
+class WidgetImageRelationship: Codable, Hashable {
+    static func == (lhs: WidgetImageRelationship, rhs: WidgetImageRelationship) -> Bool {
+        lhs.id == rhs.id
     }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+
+    var id = UUID()
+    var relativeAnchorPoint: ImageTrackingAnchorPoint
+    var relativePosition: SCNVector3
+    var positionOffset: SCNVector3 = .init(x: 0, y: 0, z: 0)
+    var widgetConfiguration: WidgetConfiguration
+
+    init(relativeAnchorPoint: ImageTrackingAnchorPoint, relativePosition: SCNVector3, widgetConfiguration: WidgetConfiguration) {
+        self.relativeAnchorPoint = relativeAnchorPoint
+        self.relativePosition = relativePosition
+        self.widgetConfiguration = widgetConfiguration
+    }
+}
+
+enum ImageTrackingAnchorPoint: Codable {
+    case center
+    case leading
+    case trailing
+    case top
+    case bottom
 }
 
 extension ImageTrackingConfiguration {

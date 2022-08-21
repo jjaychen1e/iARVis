@@ -60,4 +60,8 @@ class Testsd_macOSViewElementComponent: XCTestCase {
         let viewElementComponent = try! JSONDecoder().decode(ViewElementComponent.self, from: jsonData)
         XCTAssertEqual(viewElementComponent, .exampleArtworkTimeSheetTooltip)
     }
+
+    func testViewElementComponentChartConfiguration() {
+        XCTAssertNoThrow(ViewElementComponent.exampleDecode)
+    }
 }

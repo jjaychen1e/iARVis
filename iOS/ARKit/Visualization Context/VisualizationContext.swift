@@ -20,7 +20,8 @@ class VisualizationContext {
         var widgetViewController: UIViewController?
     }
 
-    private var imageNodePairMap: [String: NodePair] = [:]
+    // TODO: Should we use the conf as the key?
+    private var imageNodePairMap: [String: [WidgetImageRelationship: NodePair]] = [:]
 
     func reset() {
         visConfiguration = nil
@@ -88,20 +89,20 @@ class VisualizationContext {
 extension VisualizationContext {
     // MARK: - Node pair utils
 
-    func nodePair(url: String) -> NodePair? {
+    func nodePair(url: String) -> [WidgetImageRelationship: NodePair]? {
         imageNodePairMap[url]
     }
 
-    func nodePair(url: URL) -> NodePair? {
+    func nodePair(url: URL) -> [WidgetImageRelationship: NodePair]? {
         imageNodePairMap[url.absoluteString]
     }
 
-    func set(nodePair: NodePair?, for url: String) {
-        imageNodePairMap[url] = nodePair
+    func set(nodePair: NodePair?, for url: String, relationship: WidgetImageRelationship) {
+        imageNodePairMap[url, default: [:]][relationship] = nodePair
     }
 
-    func set(nodePair: NodePair?, for url: URL) {
-        imageNodePairMap[url.absoluteString] = nodePair
+    func set(nodePair: NodePair?, for url: URL, relationship: WidgetImageRelationship) {
+        imageNodePairMap[url.absoluteString, default: [:]][relationship] = nodePair
     }
 
     func imageTrackingConfiguration(url: String) -> ImageTrackingConfiguration? {

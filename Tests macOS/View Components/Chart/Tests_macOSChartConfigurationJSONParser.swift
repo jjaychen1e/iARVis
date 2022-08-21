@@ -11,7 +11,7 @@ import iARVis
 
 final class Tests_macOSChartConfigurationJSONParser: XCTestCase {
     func testParseExample1() {
-        let res = ChartConfigurationJSONParser.default.parse(JSON(ChartConfigurationJSONParser.exampleJSONString1.data(using: .utf8)!)["chartConfig"])
+        let res = ChartConfigurationJSONParser.default.parse(JSON(ChartConfigurationJSONParser.exampleJSONString1.data(using: .utf8)!))
         print(res)
     }
 }

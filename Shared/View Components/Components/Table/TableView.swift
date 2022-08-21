@@ -7,17 +7,18 @@
 
 import SwiftUI
 
-struct ARVisTableView: View {
-    enum Orientation {
-        case horizontal
-        case vertical
-    }
+enum ARVisTableViewOrientation: Codable {
+    case horizontal
+    case vertical
+}
 
-    @State var tableData: TableData
-    @State var orientation: Orientation = .vertical
+struct ARVisTableView: View {
+    @State var configuration: TableConfiguration
 
     var body: some View {
         Group {
+            let orientation = configuration.orientation
+            let tableData = configuration.tableData
             if orientation == .horizontal {
                 Divider()
                 HStack {

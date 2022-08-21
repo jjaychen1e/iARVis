@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import SwiftyJSON
 
-struct ChartConfiguration: Codable {
+struct ChartConfiguration: Codable, Equatable {
     var chartData = ChartData()
     var components: [ChartComponent] = []
     var interactionData = ChartInteractionData()
@@ -25,7 +25,7 @@ struct ChartConfiguration: Codable {
     }
 }
 
-struct ChartData: Codable {
+struct ChartData: Codable, Equatable {
     let data: JSON
     let titles: [String]
     let length: Int
@@ -54,12 +54,12 @@ struct ChartData: Codable {
     }
 }
 
-struct ChartXScale: Codable {
+struct ChartXScale: Codable, Equatable {
     var includingZero: Bool?
     var domain: [JSON]?
 }
 
-struct ChartInteractionHoverTooltipManualConfig {
+struct ChartInteractionHoverTooltipManualConfig: Equatable {
     var field: String
     var value: JSON
     var content: ViewElementComponent
@@ -70,7 +70,7 @@ enum ChartInteractionHoverTooltipType: String, RawRepresentable {
     case auto = "Auto"
 }
 
-enum ChartInteractionHoverTooltip {
+enum ChartInteractionHoverTooltip: Equatable {
     case manual(contents: [ChartInteractionHoverTooltipManualConfig])
     case auto(content: ViewElementComponent)
 }
@@ -79,7 +79,7 @@ enum ChartInteractionClickActionType: String, RawRepresentable {
     case openURL = "OpenURL"
 }
 
-enum ChartInteractionClickAction {
+enum ChartInteractionClickAction: Equatable {
     case openURL(url: URL)
 }
 
@@ -88,12 +88,12 @@ enum ChartInteractionType: String, RawRepresentable {
     case click = "Click"
 }
 
-enum ChartInteraction {
+enum ChartInteraction: Equatable {
     case hover(tooltip: ChartInteractionHoverTooltip)
     case click(action: ChartInteractionClickAction)
 }
 
-struct ChartInteractionData: Codable {
+struct ChartInteractionData: Codable, Equatable {
     var componentSelectedElementInRangeX: [ChartComponent: JSON] = [:]
     var componentSelectedElementInRangeY: [ChartComponent: JSON] = [:]
     var componentSelectedElementInXY: [ChartComponent: JSON] = [:]
@@ -110,7 +110,7 @@ struct ChartInteractionData: Codable {
     enum CodingKeys: CodingKey {}
 }
 
-struct ChartStyleConfiguration: Codable {
+struct ChartStyleConfiguration: Codable, Equatable {
     var maxWidth: CGFloat?
     var maxHeight: CGFloat?
 }

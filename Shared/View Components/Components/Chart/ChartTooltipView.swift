@@ -33,7 +33,7 @@ struct ChartTooltipView: View {
             )
             .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
             .shadow(color: .primary.opacity(0.1), radius: 15)
-            .overlay(alignment: .topTrailing) {
+            .overlay(alignment: .topLeading) {
                 Button {
                     UIApplication.shared.presentOnTop(ChartTooltipPresentationViewController(component: component), detents: [
                         .custom { context in
@@ -56,7 +56,7 @@ struct ChartTooltipView: View {
                         )
                         .clipShape(Circle())
                         .shadow(color: .primary.opacity(0.1), radius: 5)
-                        .offset(x: -6, y: 6)
+                        .offset(x: 6, y: 6)
                 }
             }
     }

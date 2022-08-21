@@ -8,7 +8,7 @@
 import ARKit
 import Foundation
 
-class VisualizationConfiguration {
+class VisualizationConfiguration: Codable {
     var imageTrackingConfigurations: [ImageTrackingConfiguration]
 
     init(imageTrackingConfigurations: [ImageTrackingConfiguration]) {

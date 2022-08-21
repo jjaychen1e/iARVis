@@ -20,8 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let rootVC = ARKitViewController()
             window.rootViewController = rootVC
         #else
-            let chartConfiguration = ChartConfigurationJSONParser.default.parse(JSON(ChartConfigurationJSONParser.exampleJSONString1.data(using: .utf8)!)["chartConfig"])
-            let rootVC = UIHostingController(rootView: ChartView(chartConfiguration: chartConfiguration))
+            let rootVC = UIHostingController(rootView: ComponentView(.exampleChartConfigurationDecode))
             window.rootViewController = rootVC
         #endif
         window.makeKeyAndVisible()

@@ -1,5 +1,5 @@
 //
-//  ComonentView.swift
+//  ComponentView.swift
 //  iARVis
 //
 //  Created by Junjie Chen on 2022/8/11.
@@ -16,7 +16,7 @@ struct ComponentView: View {
     }
 
     init(_ components: [ViewElementComponent]) {
-        if components.count == 0 {
+        if components.count == 1 {
             component = components[0]
         } else {
             component = .vStack(elements: components, alignment: .center)
@@ -27,6 +27,7 @@ struct ComponentView: View {
         ScrollView {
             component.view()
         }
+        .coordinateSpace(name: "Widget")
         .padding(.vertical)
         .padding(.horizontal)
     }
@@ -34,6 +35,6 @@ struct ComponentView: View {
 
 struct ComponentView_Previews: PreviewProvider {
     static var previews: some View {
-        ComponentView(.example1)
+        ComponentView(.exampleChartConfigurationDecode)
     }
 }
