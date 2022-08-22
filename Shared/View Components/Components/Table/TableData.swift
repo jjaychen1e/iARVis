@@ -14,21 +14,30 @@ struct TableData: Codable, Equatable {
     let length: Int
     
     init(data: JSON, titles: [String]? = nil) {
-        self.data = data
 
         if let titles = titles {
             self.titles = titles
         } else {
             if let keys = data.dictionary?.keys {
-                self.titles = Array(keys)
+                self.titles = Array(keys).sorted()
             } else {
                 self.titles = []
             }
         }
+        
+        var processedData = data
+        for title in self.titles {
+            if let _ = data[title].array {
+                continue
+            } else if data[title] != .null {
+                processedData[title] = [data[title]]
+            }
+        }
+        self.data = processedData
 
         var maxLength = 0
         for title in self.titles {
-            if let array = data[title].array {
+            if let array = self.data[title].array {
                 maxLength = max(maxLength, array.count)
             }
         }

@@ -7,21 +7,25 @@
 
 import AVKit
 import Foundation
+import Kingfisher
 import SwiftUI
 import SwiftyJSON
 
 enum ViewElementComponent: Codable, Equatable {
     // font
     case text(content: String, multilineTextAlignment: ARVisTextAlignment? = nil, fontStyle: ARVisFontStyle? = nil)
-    case image(url: String, contentMode: ARVisContentMode = .fit)
+    case image(url: String, contentMode: ARVisContentMode = .fit, width: CGFloat? = nil, height: CGFloat? = nil)
+    case audio(title: String? = nil, url: String)
     case video(url: String)
     case link(url: String) // how to integrate into text?
     //    case superLink(link: AnyView)
     case hStack(elements: [ViewElementComponent], alignment: ARVisVerticalAlignment? = nil, spacing: CGFloat? = nil)
     case vStack(elements: [ViewElementComponent], alignment: ARVisHorizontalAlignment? = nil, spacing: CGFloat? = nil)
     case spacer
+    case divider
     case table(configuration: TableConfiguration)
     case chart(configuration: ChartConfiguration) // This should be manually decoded/encoded
+    case segmentedControl(items: [ARVisSegmentedControlItem])
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -35,7 +39,10 @@ enum ViewElementComponent: Codable, Equatable {
             self = ViewElementComponent.text(content: try nestedContainer.decode(String.self, forKey: ViewElementComponent.TextCodingKeys.content), multilineTextAlignment: try nestedContainer.decodeIfPresent(ARVisTextAlignment.self, forKey: ViewElementComponent.TextCodingKeys.multilineTextAlignment), fontStyle: try nestedContainer.decodeIfPresent(ARVisFontStyle.self, forKey: ViewElementComponent.TextCodingKeys.fontStyle))
         case .image:
             let nestedContainer = try container.nestedContainer(keyedBy: ViewElementComponent.ImageCodingKeys.self, forKey: .image)
-            self = ViewElementComponent.image(url: try nestedContainer.decode(String.self, forKey: ViewElementComponent.ImageCodingKeys.url), contentMode: try nestedContainer.decode(ARVisContentMode.self, forKey: ViewElementComponent.ImageCodingKeys.contentMode))
+            self = ViewElementComponent.image(url: try nestedContainer.decode(String.self, forKey: ViewElementComponent.ImageCodingKeys.url), contentMode: try nestedContainer.decode(ARVisContentMode.self, forKey: ViewElementComponent.ImageCodingKeys.contentMode), width: try nestedContainer.decodeIfPresent(CGFloat.self, forKey: ViewElementComponent.ImageCodingKeys.width), height: try nestedContainer.decodeIfPresent(CGFloat.self, forKey: ViewElementComponent.ImageCodingKeys.height))
+        case .audio:
+            let nestedContainer = try container.nestedContainer(keyedBy: ViewElementComponent.AudioCodingKeys.self, forKey: .audio)
+            self = ViewElementComponent.audio(title: try nestedContainer.decodeIfPresent(String.self, forKey: ViewElementComponent.AudioCodingKeys.title), url: try nestedContainer.decode(String.self, forKey: ViewElementComponent.AudioCodingKeys.url))
         case .video:
             let nestedContainer = try container.nestedContainer(keyedBy: ViewElementComponent.VideoCodingKeys.self, forKey: .video)
             self = ViewElementComponent.video(url: try nestedContainer.decode(String.self, forKey: ViewElementComponent.VideoCodingKeys.url))
@@ -51,6 +58,9 @@ enum ViewElementComponent: Codable, Equatable {
         case .spacer:
             _ = try container.nestedContainer(keyedBy: ViewElementComponent.SpacerCodingKeys.self, forKey: .spacer)
             self = ViewElementComponent.spacer
+        case .divider:
+            _ = try container.nestedContainer(keyedBy: ViewElementComponent.DividerCodingKeys.self, forKey: .divider)
+            self = ViewElementComponent.divider
         case .table:
             let nestedContainer = try container.nestedContainer(keyedBy: ViewElementComponent.TableCodingKeys.self, forKey: .table)
             self = ViewElementComponent.table(configuration: try nestedContainer.decode(TableConfiguration.self, forKey: ViewElementComponent.TableCodingKeys.configuration))
@@ -58,6 +68,9 @@ enum ViewElementComponent: Codable, Equatable {
             let dict = try container.decode([String: Any].self, forKey: .chart)
             let json = JSON(dict)
             self = ViewElementComponent.chart(configuration: ChartConfigurationJSONParser.default.parse(json))
+        case .segmentedControl:
+            let nestedContainer = try container.nestedContainer(keyedBy: ViewElementComponent.SegmentedControlCodingKeys.self, forKey: .segmentedControl)
+            self = ViewElementComponent.segmentedControl(items: try nestedContainer.decode([ARVisSegmentedControlItem].self, forKey: ViewElementComponent.SegmentedControlCodingKeys.items))
         }
     }
 }
@@ -65,45 +78,58 @@ enum ViewElementComponent: Codable, Equatable {
 extension ViewElementComponent {
     @ViewBuilder
     func view() -> some View {
-        switch self {
-        case let .text(content, multilineTextAlignment, fontStyle):
-            Text(.init(content))
-                .font(.init(fontStyle))
-                .if(fontStyle?.color != nil, transform: { view in
-                    view.foregroundColor(.init(fontStyle?.color))
-                })
-                .multilineTextAlignment(.init(multilineTextAlignment))
-        case let .image(url, contentMode):
-            AsyncImage(url: URL(string: url)) { image in
-                image
+        Group {
+            switch self {
+            case let .text(content, multilineTextAlignment, fontStyle):
+                Text(.init(content))
+                    .font(.init(fontStyle))
+                    .if(fontStyle?.color != nil, transform: { view in
+                        view.foregroundColor(.init(fontStyle?.color))
+                    })
+                    .multilineTextAlignment(.init(multilineTextAlignment))
+            case let .image(url, contentMode, width, height):
+                KFImage(URL(string: url))
+                    .placeholder {
+                        Image(systemName: "arrow.2.circlepath.circle")
+                            .font(.largeTitle)
+                            .opacity(0.3)
+                    }
                     .resizable()
                     .aspectRatio(contentMode: .init(contentMode))
-            } placeholder: {
-                ProgressView()
-            }
-        case let .video(url):
-            VideoPlayer(player: URL(string: url) != nil ? AVPlayer(url: URL(string: url)!) : nil)
-                .frame(minHeight: 200, maxHeight: 900)
-        case .link(url: _):
-            fatalError()
-        case let .hStack(elements, alignment, spacing):
-            HStack(alignment: .init(alignment), spacing: spacing) {
-                ForEach(Array(zip(elements.indices, elements)), id: \.0) { _, element in
-                    AnyView(element.view())
+                    .frame(width: width, height: height)
+            case let .audio(title, url):
+                AudioPlayerView(title: title, audioUrl: url)
+            case let .video(url):
+                VideoPlayer(player: URL(string: url) != nil ? AVPlayer(url: URL(string: url)!) : nil)
+                    .frame(minHeight: 200, maxHeight: 900)
+            case .link(url: _):
+                fatalError()
+            case let .hStack(elements, alignment, spacing):
+                HStack(alignment: .init(alignment), spacing: spacing) {
+                    ForEach(Array(zip(elements.indices, elements)), id: \.0) { _, element in
+                        AnyView(element.view())
+                    }
                 }
-            }
-        case let .vStack(elements, alignment, spacing):
-            VStack(alignment: .init(alignment), spacing: spacing) {
-                ForEach(Array(zip(elements.indices, elements)), id: \.0) { _, element in
-                    AnyView(element.view())
+            case let .vStack(elements, alignment, spacing):
+                VStack(alignment: .init(alignment), spacing: spacing) {
+                    ForEach(Array(zip(elements.indices, elements)), id: \.0) { _, element in
+                        AnyView(element.view())
+                    }
                 }
+            case .spacer:
+                Spacer()
+            case .divider:
+                Rectangle()
+                    .fill(Color.primary.opacity(0.5))
+                    .frame(height: 1)
+                    .padding(.vertical, 8)
+            case let .table(configuration):
+                ARVisTableView(configuration: configuration)
+            case let .chart(configuration):
+                ChartView(chartConfiguration: configuration)
+            case let .segmentedControl(items):
+                ARVisSegmentedControlView(items: items)
             }
-        case .spacer:
-            Spacer()
-        case let .table(configuration):
-            ARVisTableView(configuration: configuration)
-        case let .chart(configuration):
-            ChartView(chartConfiguration: configuration)
         }
     }
 }

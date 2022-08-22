@@ -28,24 +28,20 @@ class WidgetImageRelationship: Codable, Hashable {
     }
 
     var id = UUID()
-    var relativeAnchorPoint: ImageTrackingAnchorPoint
-    var relativePosition: SCNVector3
-    var positionOffset: SCNVector3 = .init(x: 0, y: 0, z: 0)
     var widgetConfiguration: WidgetConfiguration
 
-    init(relativeAnchorPoint: ImageTrackingAnchorPoint, relativePosition: SCNVector3, widgetConfiguration: WidgetConfiguration) {
-        self.relativeAnchorPoint = relativeAnchorPoint
-        self.relativePosition = relativePosition
+    init(widgetConfiguration: WidgetConfiguration) {
         self.widgetConfiguration = widgetConfiguration
     }
 }
 
-enum ImageTrackingAnchorPoint: Codable {
+enum WidgetAnchorPoint: String, Codable, Equatable, CaseIterable {
     case center
     case leading
     case trailing
     case top
     case bottom
+    case auto
 }
 
 extension ImageTrackingConfiguration {

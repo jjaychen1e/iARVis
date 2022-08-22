@@ -15,17 +15,17 @@ struct ImageTrackingExample {
     static let exampleConfiguration1: ImageTrackingConfiguration = .init(
         imageURL: exampleImageURL1,
         relationships: [
-            .init(relativeAnchorPoint: .trailing,
-                  relativePosition: SCNVector3(0.2, 0, 0),
-                  widgetConfiguration: .init(component: .exampleChartConfigurationDecode))
+            .init(widgetConfiguration: .init(component: .exampleArtworkWidget,
+                                             relativeAnchorPoint: .trailing,
+                                             relativePosition: SCNVector3(0.2, 0, 0))),
         ]
     )
     static let exampleConfiguration2: ImageTrackingConfiguration = .init(
         imageURL: exampleImageURL2,
         relationships: [
-            .init(relativeAnchorPoint: .leading,
-                  relativePosition: SCNVector3(0.2, 0, 0),
-                  widgetConfiguration: .init(component: .exampleChartConfigurationDecode))
+            .init(widgetConfiguration: .init(component: .exampleArtworkWidget,
+                                             relativeAnchorPoint: .leading,
+                                             relativePosition: SCNVector3(0.2, 0, 0))),
         ]
     )
 }

@@ -300,6 +300,7 @@ struct ChartView: View {
             .transition(.opacity)
         }
         .frame(width: chartConfiguration.styleConfiguration.maxWidth, height: chartConfiguration.styleConfiguration.maxHeight ?? 200)
+        .padding(.vertical)
     }
 }
 

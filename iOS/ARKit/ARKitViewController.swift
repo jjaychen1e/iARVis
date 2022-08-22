@@ -11,10 +11,10 @@ import SwiftUI
 import UIKit
 
 class ARKitViewController: UIViewController {
-    private var visContext = VisualizationContext()
+    var visContext = VisualizationContext()
 
-    private let trackingSwitch = UISwitch()
-    private let trackingLabel = UILabel()
+    let trackingSwitch = UISwitch()
+    let trackingLabel = UILabel()
 
     override func loadView() {
         view = ARSCNView()
@@ -82,39 +82,6 @@ class ARKitViewController: UIViewController {
         let configuration = generateConfiguration(trackedImages: trackedImages, trackedObjects: trackedObjects)
         session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
     }
-
-    // MARK: - Widget position
-
-    private func updateWidgetTransform(conf: ImageTrackingConfiguration, relationship: WidgetImageRelationship, nodePair: VisualizationContext.NodePair, imageAnchor: ARImageAnchor) {
-        guard let plane = nodePair.node.geometry as? SCNPlane else {
-            fatalErrorDebug()
-            return
-        }
-
-        let targetImageSize = imageAnchor.referenceImage.physicalSize * imageAnchor.estimatedScaleFactor
-        var xOffset: CGFloat
-        var yOffset: CGFloat
-        switch relationship.relativeAnchorPoint {
-        case .bottom:
-            xOffset = -plane.width / 2
-            yOffset = -targetImageSize.height / 2 - plane.height / 2
-        case .center:
-            xOffset = -plane.width / 2
-            yOffset = 0
-        case .leading:
-            xOffset = -targetImageSize.width / 2 - plane.width
-            yOffset = 0
-        case .top:
-            xOffset = -plane.width / 2
-            yOffset = targetImageSize.height / 2 + plane.height / 2
-        case .trailing:
-            xOffset = targetImageSize.width / 2
-            yOffset = 0
-        }
-        nodePair._node.position = relationship.relativePosition + relationship.positionOffset + SCNVector3(Float(xOffset), Float(yOffset), 0)
-        nodePair._node.eulerAngles = SCNVector3(-CGFloat.pi / 2, 0, 0)
-        nodePair.node.setWorldTransform(nodePair._node.worldTransform)
-    }
 }
 
 // MARK: - Visualization Configuration
@@ -134,104 +101,3 @@ extension ARKitViewController {
     }
 }
 
-// MARK: - ARSCNViewDelegate
-
-extension ARKitViewController: ARSCNViewDelegate {
-    func renderer(_: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        if let imageAnchor = anchor as? ARImageAnchor {
-            printDebug("New ARImageAnchor(\(imageAnchor) Added: \(imageAnchor.referenceImage.name ?? "No name provided.")")
-
-            guard let conf = visContext.visConfiguration?.findImageConfiguration(anchor: imageAnchor) else {
-                fatalErrorDebug("Cannot find corresponding image configuration for anchor: \(imageAnchor)")
-                return
-            }
-
-            imageAnchor.addPlaneNode(on: node, color: UIColor.blue.withAlphaComponent(0.5))
-
-            for relationship in conf.relationships {
-                let nodePair = VisualizationContext.NodePair()
-
-                visContext.set(nodePair: nodePair, for: conf.imageURL, relationship: relationship)
-
-                DispatchQueue.main.async {
-                    nodePair.node.geometry = {
-                        let plane = SCNPlane()
-                        plane.width = 0.4
-                        plane.height = 0.4
-                        return plane
-                    }()
-                    let widgetViewController = WidgetExampleViewController()
-                    widgetViewController.node = nodePair.node
-                    widgetViewController.widgetConfiguration = relationship.widgetConfiguration
-                    nodePair.widgetViewController = widgetViewController
-
-                    let material: SCNMaterial = {
-                        let material = SCNMaterial()
-                        material.diffuse.contents = widgetViewController.view
-                        return material
-                    }()
-                    nodePair.node.geometry?.materials = [material]
-
-                    node.addChildNode(nodePair._node)
-                    self.sceneView.scene.rootNode.addChildNode(nodePair.node)
-
-                    self.updateWidgetTransform(conf: conf, relationship: relationship, nodePair: nodePair, imageAnchor: imageAnchor)
-                }
-            }
-        } else if let objectAnchor = anchor as? ARObjectAnchor {
-            printDebug("New ARObjectAnchor: \(objectAnchor.description)")
-        }
-    }
-
-    func renderer(_: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
-        if let imageAnchor = anchor as? ARImageAnchor {
-            imageAnchor.updatePlaneNode(on: node, scale: imageAnchor.estimatedScaleFactor)
-
-            guard let conf = visContext.visConfiguration?.findImageConfiguration(anchor: imageAnchor) else {
-                fatalErrorDebug("Cannot find corresponding image configuration for anchor: \(imageAnchor)")
-                return
-            }
-
-            guard let nodePairs = visContext.nodePairs(url: conf.imageURL) else {
-                fatalErrorDebug("Cannot find node pair for anchor: \(imageAnchor)")
-                return
-            }
-
-            DispatchQueue.main.async {
-                if self.trackingSwitch.isOn {
-                    for (relationship, nodePair) in nodePairs {
-                        self.updateWidgetTransform(conf: conf, relationship: relationship, nodePair: nodePair, imageAnchor: imageAnchor)
-                    }
-                }
-            }
-        } else if let objectAnchor = anchor as? ARObjectAnchor {
-            printDebug("New ARObjectAnchor: \(objectAnchor.description)")
-        }
-    }
-
-    func renderer(_: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
-        if let imageAnchor = anchor as? ARImageAnchor {
-            printDebug(level: .warning, "New ARImageAnchor Removed: \(imageAnchor.referenceImage.name ?? "No name provided.")")
-            imageAnchor.removePlaneNode(on: node)
-
-            guard let conf = visContext.visConfiguration?.findImageConfiguration(anchor: imageAnchor) else {
-                fatalErrorDebug("Cannot find corresponding image configuration for anchor: \(imageAnchor)")
-                return
-            }
-
-            guard let nodePairs = visContext.nodePairs(url: conf.imageURL) else {
-                fatalErrorDebug("Cannot find node pair for anchor: \(imageAnchor)")
-                return
-            }
-            for (_, nodePair) in nodePairs {
-                nodePair._node.removeFromParentNode()
-                nodePair.node.removeFromParentNode()
-            }
-            for relationship in conf.relationships {
-                visContext.set(nodePair: nil, for: conf.imageURL, relationship: relationship)
-            }
-        } else if let objectAnchor = anchor as? ARObjectAnchor {
-            printDebug("New ARObjectAnchor: \(objectAnchor.description)")
-        }
-    }
-}

@@ -1,15 +1,15 @@
 //
-//  Tests_macOSImageDownloaderTest.swift
-//  Tests macOS
+//  Tests_ImageDownloaderTest.swift
+//  Tests_ImageDownloaderTest
 //
 //  Created by Junjie Chen on 2022/8/1.
 //
 
-import iARVis
+@testable import iARVis
 import Kingfisher
 import XCTest
 
-class Tests_macOSImageDownloaderTest: XCTestCase {
+class Tests_ImageDownloaderTest: XCTestCase {
     actor SingleTaskCache {
         var task: Task<Void, Error>?
         func cancel() {
@@ -26,7 +26,7 @@ class Tests_macOSImageDownloaderTest: XCTestCase {
     let exampleImageURL1 = URL(string: "https://cdn.jsdelivr.net/gh/JJAYCHEN1e/Image@2022/default/namecard.png")!
     
     func testImageDownloaderCancellation() async {
-        let imageDownloader = ImageDownloader.default
+        let imageDownloader = iARVis.ImageDownloader.default
         let singleTaskCache = SingleTaskCache()
 
         await singleTaskCache.start(task:
@@ -34,7 +34,7 @@ class Tests_macOSImageDownloaderTest: XCTestCase {
                 do {
                     let _ = try await imageDownloader.download(url: exampleImageURL1)
                 } catch {
-                    printDebug(error.localizedDescription)
+                    iARVis.printDebug(error.localizedDescription)
                     XCTAssert(error is CancellationError)
                 }
             }
@@ -46,7 +46,7 @@ class Tests_macOSImageDownloaderTest: XCTestCase {
                 do {
                     let _ = try await imageDownloader.download(url: exampleImageURL1)
                 } catch {
-                    printDebug(error.localizedDescription)
+                    iARVis.printDebug(error.localizedDescription)
                     XCTAssert(error is CancellationError)
                 }
             }
@@ -58,7 +58,7 @@ class Tests_macOSImageDownloaderTest: XCTestCase {
                 do {
                     let _ = try await imageDownloader.download(url: exampleImageURL1)
                 } catch {
-                    printDebug(error.localizedDescription)
+                    iARVis.printDebug(error.localizedDescription)
                     XCTFail("No error should be thrown.")
                 }
             }
@@ -67,7 +67,7 @@ class Tests_macOSImageDownloaderTest: XCTestCase {
     }
 
     func testImageDownloaderCancellation2() async {
-        let imageDownloader = ImageDownloader.default
+        let imageDownloader = iARVis.ImageDownloader.default
         let singleTaskCache = SingleTaskCache()
 
         await singleTaskCache.start(task:
@@ -75,7 +75,7 @@ class Tests_macOSImageDownloaderTest: XCTestCase {
                 do {
                     let _ = try await imageDownloader.download(url: exampleImageURL1)
                 } catch {
-                    printDebug(error.localizedDescription)
+                    iARVis.printDebug(error.localizedDescription)
                     XCTAssert(error is KingfisherError)
                 }
             }
@@ -88,7 +88,7 @@ class Tests_macOSImageDownloaderTest: XCTestCase {
                 do {
                     let _ = try await imageDownloader.download(url: exampleImageURL1)
                 } catch {
-                    printDebug(error.localizedDescription)
+                    iARVis.printDebug(error.localizedDescription)
                     XCTAssert(error is KingfisherError)
                 }
             }
@@ -101,7 +101,7 @@ class Tests_macOSImageDownloaderTest: XCTestCase {
                 do {
                     let _ = try await imageDownloader.download(url: exampleImageURL1)
                 } catch {
-                    printDebug(error.localizedDescription)
+                    iARVis.printDebug(error.localizedDescription)
                     XCTFail("No error should be thrown.")
                 }
             }

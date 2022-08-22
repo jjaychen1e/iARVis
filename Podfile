@@ -9,10 +9,6 @@ target 'iARVis (iOS)' do
     pod 'SwiftGen', '~> 6.0'
 end
 
-target 'Tests iOS' do
-    pod 'SwiftDate'
-end
-
 target 'iARVis (macOS)' do
     platform :osx, '13.0'
     # Comment the next line if you don't want to use dynamic frameworks
@@ -22,6 +18,6 @@ target 'iARVis (macOS)' do
     pod 'SwiftGen', '~> 6.0'
 end
 
-target 'Tests macOS' do
-  pod 'SwiftDate'
+target 'iARVisTests' do
+    pod 'SwiftDate'
 end

@@ -27,7 +27,7 @@ extension SwiftUI.Font {
         if let fontStyle = fontStyle {
             self = .system(size: fontStyle.size,
                            weight: fontStyle.weight != nil ? .init(fontStyle.weight!) : .regular,
-                           design: fontStyle.design != nil ? .init(fontStyle.design!) : .default)
+                           design: fontStyle.design != nil ? .init(fontStyle.design!) : .rounded)
         } else {
             return nil
         }

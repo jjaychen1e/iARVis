@@ -18,9 +18,7 @@ class MyApplication: UIApplication {
     }
 }
 
-extension MyApplication: UIViewControllerTransitioningDelegate {
-    
-}
+extension MyApplication: UIViewControllerTransitioningDelegate {}
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
@@ -32,7 +30,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let rootVC = ARKitViewController()
             window.rootViewController = rootVC
         #else
-            let rootVC = UIHostingController(rootView: ComponentView(.exampleChartConfigurationDecode))
+            let rootVC = UIHostingController(rootView:
+                ComponentView(.exampleArtworkWidget)
+                    .environment(\.openURL, OpenURLAction { url in
+                        return .handled
+                    })
+            )
             window.rootViewController = rootVC
         #endif
         window.makeKeyAndVisible()
@@ -62,6 +65,7 @@ extension UIApplication {
     }
 
     func presentOnTop(_ viewController: UIViewController, animated: Bool = true) {
+        viewController.modalPresentationStyle = .popover
         topController()?.present(viewController, animated: animated)
     }
 

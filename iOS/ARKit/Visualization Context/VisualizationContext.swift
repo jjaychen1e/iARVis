@@ -10,14 +10,33 @@ import SceneKit
 
 typealias VisualizationConfigurationProcessResult = (referenceImages: [ARReferenceImage], referenceObjects: [ARReferenceObject])
 
+class SCNWidgetNode: SCNNode {
+    var widgetConfiguration: WidgetConfiguration
+    var widgetViewController: UIViewController?
+    var additionalWidgetNodes: [String: SCNWidgetNode] = [:]
+
+    init(widgetConfiguration: WidgetConfiguration) {
+        self.widgetConfiguration = widgetConfiguration
+        super.init()
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
 class VisualizationContext {
     var visConfiguration: VisualizationConfiguration?
     var visConfigurationProcessingTask: Task<Void, Never>?
 
     class NodePair {
         var _node = SCNNode()
-        var node = SCNNode()
-        var widgetViewController: UIViewController?
+        var node: SCNWidgetNode
+
+        init(node: SCNWidgetNode) {
+            self.node = node
+        }
     }
 
     // TODO: Should we use the conf as the key?

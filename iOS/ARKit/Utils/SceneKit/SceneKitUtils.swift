@@ -7,60 +7,56 @@
 
 import SceneKit
 
-func + (left: SCNVector3, right: SCNVector3) -> SCNVector3 {
+public func + (left: SCNVector3, right: SCNVector3) -> SCNVector3 {
     return SCNVector3Make(left.x + right.x, left.y + right.y, left.z + right.z)
 }
 
-func += (left: inout SCNVector3, right: SCNVector3) {
+public func += (left: inout SCNVector3, right: SCNVector3) {
     left = left + right
 }
 
-func - (left: SCNVector3, right: SCNVector3) -> SCNVector3 {
+public func - (left: SCNVector3, right: SCNVector3) -> SCNVector3 {
     return SCNVector3Make(left.x - right.x, left.y - right.y, left.z - right.z)
 }
 
-func * (vector: SCNVector3, scalar: Float) -> SCNVector3 {
+public func * (vector: SCNVector3, scalar: Float) -> SCNVector3 {
     return SCNVector3Make(vector.x * scalar, vector.y * scalar, vector.z * scalar)
 }
 
-func * (scalar: Float, vector: SCNVector3) -> SCNVector3 {
+public func * (scalar: Float, vector: SCNVector3) -> SCNVector3 {
     return SCNVector3Make(vector.x * scalar, vector.y * scalar, vector.z * scalar)
 }
 
-func * (vector: SCNVector3, scalar: CGFloat) -> SCNVector3 {
+public func * (vector: SCNVector3, scalar: CGFloat) -> SCNVector3 {
     return SCNVector3Make(vector.x * Float(scalar), vector.y * Float(scalar), vector.z * Float(scalar))
 }
 
-func * (scalar: CGFloat, vector: SCNVector3) -> SCNVector3 {
+public func * (scalar: CGFloat, vector: SCNVector3) -> SCNVector3 {
     return SCNVector3Make(vector.x * Float(scalar), vector.y * Float(scalar), vector.z * Float(scalar))
 }
 
 infix operator +*
-func +* (left: SCNVector3, right: SCNVector3) -> SCNVector3 {
+public func +* (left: SCNVector3, right: SCNVector3) -> SCNVector3 {
     return SCNVector3Make(left.x * right.x, left.y * right.y, left.z * right.z)
 }
 
-func / (left: SCNVector3, right: Float) -> SCNVector3 {
+public func / (left: SCNVector3, right: Float) -> SCNVector3 {
     return SCNVector3Make(left.x / right, left.y / right, left.z / right)
 }
 
-func /= (left: inout SCNVector3, right: Float) {
+public func /= (left: inout SCNVector3, right: Float) {
     left = left / right
 }
 
-extension SCNVector3 {
+public extension SCNVector3 {
+    static let zero = SCNVector3(0, 0, 0)
+
     var length: Float {
         sqrtf(x * x + y * y + z * z)
     }
 
     var normalized: SCNVector3 {
         self / length
-    }
-}
-
-extension SCNVector3: CustomStringConvertible {
-    public var description: String {
-        "SCNVector3: (x: \(x), y: \(y), z: \(z))"
     }
 }
 

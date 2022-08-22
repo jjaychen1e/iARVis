@@ -36,13 +36,6 @@ extension ChartComponent {
 extension ChartComponent {
     private func barkMark<X: Plottable, Y: Plottable>(configuration: ChartConfiguration, dataElement: JSON, xStart: PlottableValue<X>, xEnd: PlottableValue<X>, y: PlottableValue<Y>, height: CGFloat?) -> some ChartContent {
         BarMark(xStart: xStart, xEnd: xEnd, y: y, height: height != nil ? .fixed(height!) : .automatic)
-//            .annotation {
-//                if let selectedElement = configuration.interactionData.componentSelectedElementInRangeX[self],
-//                   dataElement == selectedElement,
-//                   let viewComponent = configuration.interactionData.componentSelectedElementView[self] {
-//                    ChartTooltipView(viewComponent)
-//                }
-//            }
     }
 
     @ChartContentBuilder

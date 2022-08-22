@@ -1,15 +1,15 @@
 //
-//  Tests_macOSViewElementComponent.swift
-//  Tests macOS
+//  Tests_ViewElementComponent.swift
+//  Tests_ViewElementComponent
 //
 //  Created by Junjie Chen on 2022/8/14.
 //
 
 import Foundation
-import iARVis
+@testable import iARVis
 import XCTest
 
-class Testsd_macOSViewElementComponent: XCTestCase {
+class Tests_ViewElementComponent: XCTestCase {
     func testViewElementComponentJsonfyVStack() {
         let elementComponent = ViewElementComponent.exampleVStack
         let data = try! JSONEncoder().encode(elementComponent)
@@ -62,6 +62,6 @@ class Testsd_macOSViewElementComponent: XCTestCase {
     }
 
     func testViewElementComponentChartConfiguration() {
-        XCTAssertNoThrow(ViewElementComponent.exampleDecode)
+        XCTAssertNoThrow(ViewElementComponent.exampleChartConfigurationDecode)
     }
 }

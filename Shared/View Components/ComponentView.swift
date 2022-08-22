@@ -26,6 +26,7 @@ struct ComponentView: View {
     var body: some View {
         ScrollView {
             component.view()
+                .frame(maxWidth: .infinity, alignment: .leading)
         }
         .coordinateSpace(name: "Widget")
         .padding(.vertical)
@@ -35,6 +36,7 @@ struct ComponentView: View {
 
 struct ComponentView_Previews: PreviewProvider {
     static var previews: some View {
-        ComponentView(.exampleChartConfigurationDecode)
+        ComponentView(.exampleArtworkWidget)
+            .previewLayout(.fixed(width: 720, height: 540))
     }
 }

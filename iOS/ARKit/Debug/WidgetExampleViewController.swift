@@ -14,8 +14,56 @@ import UIKit
 
 struct WidgetExampleView: View {
     @State var widgetConfiguration: WidgetConfiguration?
+
     var body: some View {
-        ComponentView(widgetConfiguration?.components ?? [])
+        if let component = widgetConfiguration?.component {
+            ComponentView(component)
+                .environment(\.openURL, OpenURLAction { url in
+                    if url.absoluteString.hasPrefix(URLService.scheme) {
+                        if let service = url.urlService {
+                            switch service {
+                            case .link:
+                                UIApplication.shared.open(url)
+                            case let .openComponent(config, anchor, position):
+                                Task {
+                                    switch config {
+                                    case let .url(url):
+                                        if let configURL = url.url,
+                                           let (data, _) = try? await URLSession.shared.data(from: configURL),
+                                           let component = try? JSONDecoder().decode(ViewElementComponent.self, from: data) {
+                                            if widgetConfiguration?.additionalWidgetConfiguration[configURL.absoluteString] == nil {
+                                                widgetConfiguration?.additionalWidgetConfiguration[configURL.absoluteString] = .init(key: configURL.absoluteString,
+                                                                                                                                     widgetConfiguration: .init(
+                                                                                                                                         component: component,
+                                                                                                                                         relativeAnchorPoint: anchor,
+                                                                                                                                         relativePosition: position
+                                                                                                                                     ))
+                                            }
+                                        }
+                                    case let .json(json):
+                                        if let data = json.data(using: .utf8) {
+                                            let component = try! JSONDecoder().decode(ViewElementComponent.self, from: data)
+                                            if widgetConfiguration?.additionalWidgetConfiguration[json] == nil {
+                                                widgetConfiguration?.additionalWidgetConfiguration[json] = .init(key: json,
+                                                                                                                 widgetConfiguration: .init(
+                                                                                                                     component: component,
+                                                                                                                     relativeAnchorPoint: anchor,
+                                                                                                                     relativePosition: position
+                                                                                                                 ))
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        if let url = URLService.link(href: url.absoluteString).url.url {
+                            UIApplication.shared.open(url)
+                        }
+                    }
+                    return .handled
+                })
+        }
     }
 }
 
@@ -66,15 +114,25 @@ private class WidgetExampleContainerView: UIView {
 }
 
 class WidgetExampleViewController: UIViewController {
-    // TODO: Change the frame with plane's size using a fixed DPI.
-    private let width: CGFloat = 720
-    private let height: CGFloat = 540
-    private var squareWidth: CGFloat {
-        max(width, height)
+    init(node: SCNWidgetNode) {
+        self.node = node
+        super.init(nibName: nil, bundle: nil)
     }
 
-    weak var node: SCNNode?
-    weak var widgetConfiguration: WidgetConfiguration?
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // TODO: Change the frame with plane's size using a fixed DPI.
+    private var squareWidth: CGFloat {
+        max(widgetConfiguration.size.width, widgetConfiguration.size.height)
+    }
+
+    var node: SCNWidgetNode
+    var widgetConfiguration: WidgetConfiguration {
+        node.widgetConfiguration
+    }
 
     override func loadView() {
         view = {
@@ -97,8 +155,7 @@ class WidgetExampleViewController: UIViewController {
         addChildViewController(hostingViewController)
         hostingViewController.view.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()
-            make.width.equalTo(width)
-            make.height.equalTo(height)
+            make.size.equalTo(widgetConfiguration.size)
         }
     }
 }
