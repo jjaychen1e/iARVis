@@ -17,91 +17,7 @@ extension ARKitViewController: ARSessionDelegate {
                 guard let nodePair = visContext.nodePairs(url: imageTrackingConfig.imageURL)?[relationship] else {
                     return
                 }
-
-                for (key, config) in relationship.widgetConfiguration.additionalWidgetConfiguration {
-                    if nodePair.node.additionalWidgetNodes[key] == nil {
-                        // Add new additional widget!
-                        DispatchQueue.main.async {
-                            let node = SCNWidgetNode(widgetConfiguration: config.widgetConfiguration)
-                            node.geometry = {
-                                let plane = SCNPlane()
-                                plane.width = 0.4
-                                plane.height = 0.4
-                                return plane
-                            }()
-                            let widgetViewController = WidgetExampleViewController(node: node)
-                            nodePair.node.additionalWidgetNodes[key] = node
-                            nodePair.node.additionalWidgetNodes[key]?.widgetViewController = widgetViewController
-
-                            let material: SCNMaterial = {
-                                let material = SCNMaterial()
-                                material.diffuse.contents = widgetViewController.view
-                                return material
-                            }()
-                            node.geometry?.materials = [material]
-                            nodePair.node.addChildNode(node)
-
-                            let anchor: WidgetAnchorPoint = {
-                                if config.widgetConfiguration.relativeAnchorPoint == .auto {
-                                    let usedAnchorPoints = relationship.widgetConfiguration.additionalWidgetConfiguration.map { $0.1.widgetConfiguration.relativeAnchorPoint }
-                                    return WidgetAnchorPoint.allCases.first(where: { !usedAnchorPoints.contains($0) }) ?? .top
-                                } else {
-                                    return config.widgetConfiguration.relativeAnchorPoint
-                                }
-                            }()
-
-                            guard let originalNodePlane = nodePair.node.geometry as? SCNPlane,
-                                  let newNodePlane = nodePair.node.geometry as? SCNPlane else {
-                                fatalErrorDebug()
-                                return
-                            }
-
-                            var oPlaneRealSize: CGSize = {
-                                if let oWidgetConfig = nodePair.node.widgetConfiguration {
-                                    let oWidgetSize = oWidgetConfig.size
-                                    let oPlaneSize = originalNodePlane.size
-                                    let oSquareSize = max(oWidgetSize.width, oWidgetSize.height)
-                                    return CGSize(width: oPlaneSize.width * oWidgetSize.width / oSquareSize, height: oPlaneSize.height * oWidgetSize.height / oSquareSize)
-                                }
-                                return .zero
-                            }()
-
-                            var nPlaneRealSize: CGSize = {
-                                let nWidgetConfig = config.widgetConfiguration
-                                let nWidgetSize = nWidgetConfig.size
-                                let nPlaneSize = newNodePlane.size
-                                let nSquareSize = max(nWidgetSize.width, nWidgetSize.height)
-                                return CGSize(width: nPlaneSize.width * nWidgetSize.width / nSquareSize, height: nPlaneSize.height * nWidgetSize.height / nSquareSize)
-                            }()
-
-                            var xOffset: CGFloat
-                            var yOffset: CGFloat
-                            switch anchor {
-                            case .bottom:
-                                xOffset = 0
-                                yOffset = -oPlaneRealSize.height / 2 - nPlaneRealSize.height / 2
-                            case .center:
-                                xOffset = 0
-                                yOffset = 0
-                            case .leading:
-                                xOffset = -oPlaneRealSize.width / 2 - nPlaneRealSize.width / 2
-                                yOffset = 0
-                            case .top:
-                                xOffset = 0
-                                yOffset = oPlaneRealSize.height / 2 + nPlaneRealSize.height / 2
-                            case .trailing:
-                                xOffset = oPlaneRealSize.width / 2 + nPlaneRealSize.width / 2
-                                yOffset = 0
-                            case .auto:
-                                xOffset = 0
-                                yOffset = 0
-                            }
-                            node.position = config.widgetConfiguration.relativePosition +
-                                config.widgetConfiguration.positionOffset +
-                                SCNVector3(Float(xOffset), Float(yOffset), 0)
-                        }
-                    }
-                }
+                updateAdditionalWidgetViewController(node: nodePair.node, widgetConfiguration: relationship.widgetConfiguration)
             }
         }
     }
@@ -135,5 +51,95 @@ extension ARKitViewController: ARSessionDelegate {
         }
         alertController.addAction(restartAction)
         present(alertController, animated: true, completion: nil)
+    }
+}
+
+extension ARKitViewController {
+    func updateAdditionalWidgetViewController(node: SCNWidgetNode, widgetConfiguration: WidgetConfiguration) {
+        for (key, config) in widgetConfiguration.additionalWidgetConfiguration {
+            if node.additionalWidgetNodes[key] == nil {
+                // Add new additional widget!
+                DispatchQueue.main.async {
+                    let newNode = SCNWidgetNode(widgetConfiguration: config.widgetConfiguration)
+                    newNode.geometry = {
+                        let plane = SCNPlane()
+                        plane.width = 0.4
+                        plane.height = 0.4
+                        return plane
+                    }()
+                    let widgetViewController = WidgetExampleViewController(node: newNode)
+                    node.additionalWidgetNodes[key] = newNode
+                    node.additionalWidgetNodes[key]?.widgetViewController = widgetViewController
+
+                    let material: SCNMaterial = {
+                        let material = SCNMaterial()
+                        material.diffuse.contents = widgetViewController.view
+                        return material
+                    }()
+                    newNode.geometry?.materials = [material]
+                    node.addChildNode(newNode)
+
+                    let anchor: WidgetAnchorPoint = {
+                        if config.widgetConfiguration.relativeAnchorPoint == .auto {
+                            let usedAnchorPoints = widgetConfiguration.additionalWidgetConfiguration.map { $0.1.widgetConfiguration.relativeAnchorPoint }
+                            return WidgetAnchorPoint.allCases.first(where: { !usedAnchorPoints.contains($0) }) ?? .top
+                        } else {
+                            return config.widgetConfiguration.relativeAnchorPoint
+                        }
+                    }()
+
+                    guard let originalNodePlane = node.geometry as? SCNPlane,
+                          let newNodePlane = newNode.geometry as? SCNPlane else {
+                        fatalErrorDebug()
+                        return
+                    }
+
+                    let oPlaneRealSize: CGSize = {
+                        let oWidgetConfig = node.widgetConfiguration
+                        let oWidgetSize = oWidgetConfig.size
+                        let oPlaneSize = originalNodePlane.size
+                        let oSquareSize = max(oWidgetSize.width, oWidgetSize.height)
+                        return CGSize(width: oPlaneSize.width * oWidgetSize.width / oSquareSize, height: oPlaneSize.height * oWidgetSize.height / oSquareSize)
+                    }()
+
+                    let nPlaneRealSize: CGSize = {
+                        let nWidgetConfig = config.widgetConfiguration
+                        let nWidgetSize = nWidgetConfig.size
+                        let nPlaneSize = newNodePlane.size
+                        let nSquareSize = max(nWidgetSize.width, nWidgetSize.height)
+                        return CGSize(width: nPlaneSize.width * nWidgetSize.width / nSquareSize, height: nPlaneSize.height * nWidgetSize.height / nSquareSize)
+                    }()
+
+                    var xOffset: CGFloat
+                    var yOffset: CGFloat
+                    switch anchor {
+                    case .bottom:
+                        xOffset = 0
+                        yOffset = -oPlaneRealSize.height / 2 - nPlaneRealSize.height / 2
+                    case .center:
+                        xOffset = 0
+                        yOffset = 0
+                    case .leading:
+                        xOffset = -oPlaneRealSize.width / 2 - nPlaneRealSize.width / 2
+                        yOffset = 0
+                    case .top:
+                        xOffset = 0
+                        yOffset = oPlaneRealSize.height / 2 + nPlaneRealSize.height / 2
+                    case .trailing:
+                        xOffset = oPlaneRealSize.width / 2 + nPlaneRealSize.width / 2
+                        yOffset = 0
+                    case .auto:
+                        xOffset = 0
+                        yOffset = 0
+                    }
+                    newNode.position = config.widgetConfiguration.relativePosition +
+                        config.widgetConfiguration.positionOffset +
+                        SCNVector3(Float(xOffset), Float(yOffset), 0)
+                }
+            }
+            if let childNode = node.additionalWidgetNodes[key] {
+                updateAdditionalWidgetViewController(node: childNode, widgetConfiguration: config.widgetConfiguration)
+            }
+        }
     }
 }

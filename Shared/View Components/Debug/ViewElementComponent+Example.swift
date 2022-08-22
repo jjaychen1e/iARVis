@@ -41,7 +41,8 @@ extension ViewElementComponent {
                             "weight": "light"
                         }
                     }
-                }
+                },
+                \(ViewElementComponent.text(content: "[Additional Widget Test](\(URLService.openComponent(config: .json(json: exampleArtworkTimeSheetTooltip.prettyJSON), anchor: .leading, relativePosition: .zero).url))", fontStyle: ARVisFontStyle(size: 24, weight: .bold)).prettyJSON)
             ]
         }
     }
