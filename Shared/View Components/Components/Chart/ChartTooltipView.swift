@@ -26,8 +26,8 @@ struct ChartTooltipView: View {
 
     var body: some View {
         component.view()
-            .padding(.vertical, 8)
-            .padding(.horizontal, 8)
+            .padding(.horizontal)
+            .padding(.vertical, 12)
             .background(
                 RoundedRectangle(cornerRadius: 16, style: .continuous)
                     .stroke(Asset.DynamicColors.dynamicWhite.swiftUIColor, lineWidth: 1)
