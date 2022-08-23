@@ -26,17 +26,17 @@ struct ComponentView: View {
     var body: some View {
         ScrollView {
             component.view()
-                .frame(maxWidth: .infinity, alignment: .leading)
+//                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                .padding(.vertical)
+                .padding(.horizontal)
         }
         .coordinateSpace(name: "Widget")
-        .padding(.vertical)
-        .padding(.horizontal)
     }
 }
 
 struct ComponentView_Previews: PreviewProvider {
     static var previews: some View {
         ComponentView(.exampleArtworkWidget)
-            .previewLayout(.fixed(width: 720, height: 540))
+            .previewLayout(.fixed(width: 1024, height: 768))
     }
 }

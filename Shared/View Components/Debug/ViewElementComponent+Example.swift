@@ -47,8 +47,31 @@ extension ViewElementComponent {
         }
     }
     """
+    
+    static let exampleLineChartConfigurationDecodeJSONStr = """
+    {
+        "vStack": {
+            "elements": [
+                {
+                    "chart": \(ChartConfigurationJSONParser.exampleJSONString2)
+                },
+                {
+                    "text": {
+                        "content": "History of this Artwork - Historical Price",
+                        "fontStyle" : {
+                            "size": 15,
+                            "weight": "light"
+                        }
+                    }
+                }
+            ]
+        }
+    }
+    """
 
     static let exampleChartConfigurationDecode: ViewElementComponent = try! JSONDecoder().decode(ViewElementComponent.self, from: exampleChartConfigurationDecodeJSONStr.data(using: .utf8)!)
+    
+    static let exampleLineChartConfigurationDecode: ViewElementComponent = try! JSONDecoder().decode(ViewElementComponent.self, from: exampleLineChartConfigurationDecodeJSONStr.data(using: .utf8)!)
 
     static let exampleArtworkWidget: ViewElementComponent = {
         .vStack(elements: [
@@ -60,12 +83,12 @@ extension ViewElementComponent {
                     .text(content: "[James Ensor](https://www.getty.edu/art/collection/person/103JT2) (Belgian, 1860 - 1949)",
                           fontStyle: ARVisFontStyle(size: 20)),
                     .text(content: "On view at [Getty Center, Museum West Pavilion, Gallery W103](https://www.getty.edu/art/collection/gallery/103M5Q)"),
-                    .image(url: "https://uploads8.wikiart.org/images/james-ensor.jpg", width: 100),
+                    .spacer,
+                    .text(content: "Introduction audio(English):", fontStyle: ARVisFontStyle(size: 20, weight: .regular)),
+                    .audio(title: "Christ's Entry into Brussels in 1889 (Highlights)", url: "https://dea3n992em6cn.cloudfront.net/museumcollection/000932-en-20210324-v1.mp3"),
                 ], alignment: .leading, spacing: 4),
                 .image(url: "https://media.getty.edu/iiif/image/ce4d5a1f-ee25-44b3-afa2-d597d43056ff/full/1024,/0/default.jpg?download=ce4d5a1f-ee25-44b3-afa2-d597d43056ff_1024.jpg&size=small"),
             ], alignment: .top),
-            .divider,
-            .audio(title: "Christ's Entry into Brussels in 1889 (Highlights)", url: "https://dea3n992em6cn.cloudfront.net/museumcollection/000932-en-20210324-v1.mp3"),
             .divider,
             .segmentedControl(items: [
                 ARVisSegmentedControlItem(title: "Introduction", component: .vStack(elements: [
@@ -77,6 +100,10 @@ extension ViewElementComponent {
                 ARVisSegmentedControlItem(title: "Provenance", component: .vStack(elements: [
                     .text(content: "Provenance", fontStyle: ARVisFontStyle(size: 22, weight: .medium)),
                     exampleChartConfigurationDecode,
+                ], alignment: .leading, spacing: 4)),
+                ARVisSegmentedControlItem(title: "Historical Price", component: .vStack(elements: [
+                    .text(content: "Historical Price", fontStyle: ARVisFontStyle(size: 22, weight: .medium)),
+                    exampleLineChartConfigurationDecode,
                 ], alignment: .leading, spacing: 4)),
                 ARVisSegmentedControlItem(title: "Full Artwork Details", component: .table(configuration:
                     TableConfiguration(tableData: TableData(data: [

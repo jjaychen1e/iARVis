@@ -5,15 +5,23 @@
 //  Created by Junjie Chen on 2022/8/14.
 //
 
+import Charts
 import SwiftUI
 
 extension View {
-    /// Applies the given transform if the given condition evaluates to `true`.
-    /// - Parameters:
-    ///   - condition: The condition to evaluate.
-    ///   - transform: The transform to apply to the source `View`.
-    /// - Returns: Either the original `View` or the modified `View` if the condition is `true`.
-    @ViewBuilder func `if`<Content: View>(_ condition: @autoclosure () -> Bool, @ViewBuilder transform: (Self) -> Content) -> some View {
+    @ViewBuilder
+    func `if`<Content: View>(_ condition: @autoclosure () -> Bool, @ViewBuilder transform: (Self) -> Content) -> some View {
+        if condition() {
+            transform(self)
+        } else {
+            self
+        }
+    }
+}
+
+extension ChartContent {
+    @ChartContentBuilder
+    func `if`<Content: ChartContent>(_ condition: @autoclosure () -> Bool, @ChartContentBuilder transform: (Self) -> Content) -> some ChartContent {
         if condition() {
             transform(self)
         } else {

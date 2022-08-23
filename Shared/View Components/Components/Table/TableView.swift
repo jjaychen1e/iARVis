@@ -24,65 +24,75 @@ private struct MyDivider: View {
 struct ARVisTableView: View {
     @State var configuration: TableConfiguration
 
-    var body: some View {
-        Group {
-            let orientation = configuration.orientation
+    var horizontalTableView: some View {
+        VStack(spacing: 0) {
             let tableData = configuration.tableData
-            if orientation == .horizontal {
-                VStack(spacing: 0) {
+            MyDivider()
+            HStack {
+                ForEach(0 ..< tableData.titles.count, id: \.self) { indexTitle in
+                    let title = tableData.titles[indexTitle]
+                    Text(title)
+                        .bold()
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                }
+            }
+            Group {
+                ForEach(0 ..< tableData.length, id: \.self) { index in
                     MyDivider()
                     HStack {
                         ForEach(0 ..< tableData.titles.count, id: \.self) { indexTitle in
                             let title = tableData.titles[indexTitle]
-                            Text(title)
-                                .bold()
-                                .frame(maxWidth: .infinity, alignment: .trailing)
-                        }
-                    }
-                    ForEach(0 ..< tableData.length, id: \.self) { index in
-                        MyDivider()
-                        HStack {
-                            ForEach(0 ..< tableData.titles.count, id: \.self) { indexTitle in
-                                let title = tableData.titles[indexTitle]
-                                if let value = tableData.data[title].array?[index] {
-                                    Text(.init("\(value.stringValue)"))
-                                        .fixedSize(horizontal: false, vertical: true)
-                                        .frame(maxWidth: .infinity, alignment: .trailing)
-                                } else {
-                                    Text("-")
-                                        .frame(maxWidth: .infinity, alignment: .trailing)
-                                }
+                            if let value = tableData.data[title].array?[index] {
+                                Text(.init("\(value.stringValue)"))
+                                    .fixedSize(horizontal: false, vertical: true)
+                                    .frame(maxWidth: .infinity, alignment: .trailing)
+                            } else {
+                                Text("-")
+                                    .frame(maxWidth: .infinity, alignment: .trailing)
                             }
                         }
                     }
-                    MyDivider()
                 }
-                EmptyView()
-            } else if orientation == .vertical {
-                VStack(spacing: 0) {
-                    MyDivider()
-                    ForEach(0 ..< tableData.titles.count, id: \.self) { indexTitle in
-                        HStack {
-                            let title = tableData.titles[indexTitle]
-                            Text(title)
-                                .bold()
-                                .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            MyDivider()
+        }
+    }
 
-                            ForEach(0 ..< tableData.length, id: \.self) { index in
-                                let title = tableData.titles[indexTitle]
-                                if let value = tableData.data[title].array?[index] {
-                                    Text(.init("\(value.stringValue)"))
-                                        .fixedSize(horizontal: false, vertical: true)
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                } else {
-                                    Text("-")
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                }
-                            }
+    var verticalTableView: some View {
+        VStack(spacing: 0) {
+            let tableData = configuration.tableData
+            MyDivider()
+            ForEach(0 ..< tableData.titles.count, id: \.self) { indexTitle in
+                HStack {
+                    let title = tableData.titles[indexTitle]
+                    Text(title)
+                        .bold()
+                        .frame(maxWidth: .infinity, alignment: .leading)
+
+                    ForEach(0 ..< tableData.length, id: \.self) { index in
+                        let title = tableData.titles[indexTitle]
+                        if let value = tableData.data[title].array?[index] {
+                            Text(.init("\(value.stringValue)"))
+                                .fixedSize(horizontal: false, vertical: true)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        } else {
+                            Text("-")
+                                .frame(maxWidth: .infinity, alignment: .leading)
                         }
-                        MyDivider()
                     }
                 }
+                MyDivider()
+            }
+        }
+    }
+
+    var body: some View {
+        Group {
+            let orientation = configuration.orientation
+            if orientation == .horizontal {
+                horizontalTableView
+            } else if orientation == .vertical {
+                verticalTableView
             }
         }
     }

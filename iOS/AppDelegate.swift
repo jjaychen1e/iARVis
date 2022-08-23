@@ -12,9 +12,34 @@ import UIKit
 
 class MyApplication: UIApplication {
     override func open(_ url: URL, options: [UIApplication.OpenExternalURLOptionsKey: Any] = [:], completionHandler completion: ((Bool) -> Void)? = nil) {
-        let safariViewController = SFSafariViewController(url: url)
-        safariViewController.modalPresentationStyle = .popover
-        presentOnTop(safariViewController)
+        if let components = URLComponents(url: url, resolvingAgainstBaseURL: true),
+           components.scheme == URLService.scheme {
+            if let urlService = url.urlService {
+                switch urlService {
+                case let .link(href: href):
+                    if let url = URL(string: href) {
+                        let safariViewController = SFSafariViewController(url: url)
+                        if UIDevice.current.userInterfaceIdiom == .phone {
+                            safariViewController.modalPresentationStyle = .popover
+                        } else {
+                            safariViewController.modalPresentationStyle = .pageSheet
+                        }
+                        presentOnTop(safariViewController)
+                    }
+                case .openComponent:
+                    break
+                }
+            }
+        } else {
+            if !["http", "https"].contains(URLComponents(url: url, resolvingAgainstBaseURL: true)?.scheme) {
+                super.open(url, options: options, completionHandler: completion)
+            } else {
+                // As a normal link
+                if let url = URLService.link(href: url.absoluteString).url.url {
+                    super.open(url, options: options, completionHandler: completion)
+                }
+            }
+        }
     }
 }
 
@@ -33,6 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let rootVC = UIHostingController(rootView:
                 ComponentView(.exampleArtworkWidget)
                     .environment(\.openURL, OpenURLAction { url in
+                        openURL(url, widgetConfiguration: nil)
                         return .handled
                     })
             )
@@ -65,7 +91,6 @@ extension UIApplication {
     }
 
     func presentOnTop(_ viewController: UIViewController, animated: Bool = true) {
-        viewController.modalPresentationStyle = .popover
         topController()?.present(viewController, animated: animated)
     }
 

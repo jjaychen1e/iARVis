@@ -5,6 +5,7 @@ import SwiftUI
 /// to scrub through the audio.
 struct AudioPlayerView: View {
     @State var title: String?
+    @State private var titleWidth: CGFloat?
 
     /// The player, which wraps an AVPlayer
     @ObservedObject private var player: Player
@@ -29,6 +30,16 @@ struct AudioPlayerView: View {
                 Text(title)
                     .font(.system(size: 18, weight: .medium, design: .rounded))
                     .multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .background {
+                        GeometryReader { geo in
+                            executeAsync {
+                                if titleWidth != geo.size.width {
+                                    titleWidth = geo.size.width
+                                }
+                            }
+                        }
+                    }
             }
             /// This is a bit of a hack, but it takes a moment for the AVPlayerItem to load
             /// the duration, so we need to avoid adding the slider until the range
@@ -69,12 +80,12 @@ struct AudioPlayerView: View {
                             .font(.system(size: 14, weight: .medium, design: .monospaced))
                     }
                 }
+                .frame(width: (titleWidth ?? 0) + 32)
             } else {
                 Text("Slider will appear here when the player is ready")
                     .font(.footnote)
             }
         }
-        .frame(maxWidth: 500)
         .padding()
         .background(
             RoundedRectangle(cornerRadius: 12, style: .continuous)
@@ -84,7 +95,6 @@ struct AudioPlayerView: View {
         .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
         .shadow(color: .primary.opacity(0.1), radius: 10)
         .padding()
-        .frame(maxWidth: .infinity, alignment: .center)
     }
 
     /// Return a formatter for durations.
@@ -98,7 +108,7 @@ struct AudioPlayerView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct AudioPlayerView_Previews: PreviewProvider {
     static var previews: some View {
         AudioPlayerView(title: "Introduction audio(English)", audioUrl: "https://dea3n992em6cn.cloudfront.net/museumcollection/000932-en-20210324-v1.mp3")
             .padding()

@@ -19,7 +19,7 @@ extension ARKitViewController: ARSCNViewDelegate {
                 return
             }
 
-            imageAnchor.addPlaneNode(on: node, color: UIColor.blue.withAlphaComponent(0.5))
+//            imageAnchor.addPlaneNode(on: node, color: UIColor.blue.withAlphaComponent(0.5))
 
             for relationship in conf.relationships {
                 let widgetNode = SCNWidgetNode(widgetConfiguration: relationship.widgetConfiguration)

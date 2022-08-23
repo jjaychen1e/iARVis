@@ -97,6 +97,7 @@ extension ViewElementComponent {
                     .resizable()
                     .aspectRatio(contentMode: .init(contentMode))
                     .frame(width: width, height: height)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
             case let .audio(title, url):
                 AudioPlayerView(title: title, audioUrl: url)
             case let .video(url):
@@ -127,6 +128,7 @@ extension ViewElementComponent {
                 ARVisTableView(configuration: configuration)
             case let .chart(configuration):
                 ChartView(chartConfiguration: configuration)
+                    .id(UUID())
             case let .segmentedControl(items):
                 ARVisSegmentedControlView(items: items)
             }

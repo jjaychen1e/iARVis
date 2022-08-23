@@ -10,9 +10,11 @@ import SwiftUI
 import UIKit
 
 class ChartTooltipPresentationViewController: UIViewController {
+    var widgetConfiguration: WidgetConfiguration?
     var component: ViewElementComponent
 
-    init(component: ViewElementComponent) {
+    init(widgetConfiguration: WidgetConfiguration?, component: ViewElementComponent) {
+        self.widgetConfiguration = widgetConfiguration
         self.component = component
         super.init(nibName: nil, bundle: nil)
     }
@@ -47,6 +49,13 @@ class ChartTooltipPresentationViewController: UIViewController {
                             .offset(x: -16, y: 16)
                     }
                 }
+                .environment(\.openURL, OpenURLAction { [weak self] url in
+                    if let self = self,
+                       let widgetConfiguration = self.widgetConfiguration {
+                        openURL(url, widgetConfiguration: widgetConfiguration)
+                    }
+                    return .handled
+                })
         )
         addChildViewController(hvc, addConstrains: true)
     }

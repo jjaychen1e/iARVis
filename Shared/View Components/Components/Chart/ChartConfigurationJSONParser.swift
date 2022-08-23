@@ -42,6 +42,23 @@ class ChartConfigurationJSONParser {
                                                          height: height)
                         components.append(chartComponent!)
                     }
+                case .lineMark:
+                    let config = component["config"]
+                    if let xField = config["x"]["field"].string,
+                       let yField = config["y"]["field"].string {
+                        var interpolationMethod = ARVisInterpolationMethod.linear
+                        if let interpolationMethodStr = config["interpolationMethod"].string,
+                           let interpolationMethodValue = ARVisInterpolationMethod(rawValue: interpolationMethodStr) {
+                            interpolationMethod = interpolationMethodValue
+                        }
+                        var symbol: ARVisSymbol?
+                        if let symbolType = config["symbol"]["type"].string,
+                           let symbolValue = ARVisSymbol(rawValue: symbolType) {
+                            symbol = symbolValue
+                        }
+                        chartComponent = .lineMarkRepeat1(x: .value(xField), y: .value(yField), interpolationMethod: interpolationMethod, symbol: symbol)
+                        components.append(chartComponent!)
+                    }
                 }
                 // Interaction
                 if let chartComponent = chartComponent {
@@ -121,6 +138,11 @@ class ChartConfigurationJSONParser {
 extension ChartConfigurationJSONParser {
     static let exampleJSONString1: String = {
         let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample1.json")
+        return try! String(contentsOfFile: path.path)
+    }()
+
+    static let exampleJSONString2: String = {
+        let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample2.json")
         return try! String(contentsOfFile: path.path)
     }()
 }

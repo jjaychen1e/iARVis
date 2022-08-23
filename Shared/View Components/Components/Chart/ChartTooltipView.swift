@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import SwiftUIX
 
 struct ChartTooltipView: View {
+    @OptionalEnvironmentObject var widgetConfiguration: WidgetConfiguration?
     let component: ViewElementComponent
 
     init(_ component: ViewElementComponent) {
@@ -35,7 +37,7 @@ struct ChartTooltipView: View {
             .shadow(color: .primary.opacity(0.1), radius: 15)
             .overlay(alignment: .topLeading) {
                 Button {
-                    UIApplication.shared.presentOnTop(ChartTooltipPresentationViewController(component: component), detents: [
+                    UIApplication.shared.presentOnTop(ChartTooltipPresentationViewController(widgetConfiguration: widgetConfiguration, component: component), detents: [
                         .custom { context in
                             context.maximumDetentValue * 0.3
                         },

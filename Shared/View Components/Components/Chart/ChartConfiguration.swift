@@ -54,6 +54,16 @@ struct ChartData: Codable, Equatable {
     }
 }
 
+extension ChartData {
+    func dataItem(at index: Int) -> JSON {
+        var dict: [String: JSON] = [:]
+        for title in titles {
+            dict[title] = data[title].array?[safe: index]
+        }
+        return JSON(dict)
+    }
+}
+
 struct ChartXScale: Codable, Equatable {
     var includingZero: Bool?
     var domain: [JSON]?

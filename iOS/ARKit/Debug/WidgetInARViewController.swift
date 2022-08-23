@@ -97,8 +97,9 @@ class WidgetInARViewController: UIViewController {
                 }
                 return .handled
             })
+            .environmentObject(widgetConfiguration)
 
-        let hostingViewController = UIHostingController(rootView: widgetView, ignoreSafeArea: true)
+        let hostingViewController = UIHostingController(rootView: widgetView)
         hostingViewController.view.backgroundColor = .white
         addChildViewController(hostingViewController)
         hostingViewController.view.snp.makeConstraints { make in
