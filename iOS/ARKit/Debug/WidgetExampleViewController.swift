@@ -12,67 +12,6 @@ import SwiftUI
 import SwiftyJSON
 import UIKit
 
-struct WidgetExampleView: View {
-    @State var widgetConfiguration: WidgetConfiguration?
-
-    var body: some View {
-        if let component = widgetConfiguration?.component {
-            ComponentView(component)
-                .environment(\.openURL, OpenURLAction { url in
-                    if url.absoluteString.hasPrefix(URLService.scheme) {
-                        if let service = url.urlService {
-                            switch service {
-                            case .link:
-                                UIApplication.shared.open(url)
-                            case let .openComponent(config, anchor, position):
-                                Task {
-                                    switch config {
-                                    case let .url(url):
-                                        if let configURL = url.url,
-                                           let (data, _) = try? await URLSession.shared.data(from: configURL),
-                                           let component = try? JSONDecoder().decode(ViewElementComponent.self, from: data) {
-                                            if widgetConfiguration?.additionalWidgetConfiguration[configURL.absoluteString] == nil {
-                                                widgetConfiguration?.additionalWidgetConfiguration[configURL.absoluteString] = .init(key: configURL.absoluteString,
-                                                                                                                                     widgetConfiguration: .init(
-                                                                                                                                         component: component,
-                                                                                                                                         relativeAnchorPoint: anchor,
-                                                                                                                                         relativePosition: position
-                                                                                                                                     ))
-                                            }
-                                        }
-                                    case let .json(json):
-                                        if let data = json.data(using: .utf8) {
-                                            let component = try! JSONDecoder().decode(ViewElementComponent.self, from: data)
-                                            if widgetConfiguration?.additionalWidgetConfiguration[json] == nil {
-                                                widgetConfiguration?.additionalWidgetConfiguration[json] = .init(key: json,
-                                                                                                                 widgetConfiguration: .init(
-                                                                                                                     component: component,
-                                                                                                                     relativeAnchorPoint: anchor,
-                                                                                                                     relativePosition: position
-                                                                                                                 ))
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    } else {
-                        if let url = URLService.link(href: url.absoluteString).url.url {
-                            UIApplication.shared.open(url)
-                        }
-                    }
-                    return .handled
-                })
-        }
-    }
-}
-
-struct WidgetExampleView_Previews: PreviewProvider {
-    static var previews: some View {
-        WidgetExampleView()
-    }
-}
-
 private class WidgetExampleContainerView: UIView {
     weak var viewController: WidgetExampleViewController?
 
@@ -150,12 +89,105 @@ class WidgetExampleViewController: UIViewController {
         view.isOpaque = false
         view.backgroundColor = .clear
 
-        let hostingViewController = UIHostingController(rootView: WidgetExampleView(widgetConfiguration: widgetConfiguration), ignoreSafeArea: true)
+        let widgetView = ComponentView(widgetConfiguration.component)
+            .environment(\.openURL, OpenURLAction { [weak self] url in
+                if let self = self {
+                    let widgetConfiguration = self.widgetConfiguration
+                    openURL(url, widgetConfiguration: widgetConfiguration)
+                }
+                return .handled
+            })
+
+        let hostingViewController = UIHostingController(rootView: widgetView, ignoreSafeArea: true)
         hostingViewController.view.backgroundColor = .white
         addChildViewController(hostingViewController)
         hostingViewController.view.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()
             make.size.equalTo(widgetConfiguration.size)
+        }
+    }
+}
+
+@MainActor
+func openURL(_ url: URL, widgetConfiguration: WidgetConfiguration? = nil) {
+    let processWidget = { (widgetConfiguration: WidgetConfiguration, key: String, component: ViewElementComponent, anchor: WidgetAnchorPoint, position: SCNVector3) in
+        let newWidgetConfiguration = WidgetConfiguration(
+            component: component,
+            relativeAnchorPoint: anchor,
+            relativePosition: position
+        )
+
+        let isPresentationMode: Bool = {
+            if let topController = UIApplication.shared.topController(),
+               topController.presentingViewController != nil,
+               topController is WidgetOnScreenViewController {
+                return true
+            }
+            return false
+        }()
+        let isDisplayingInAR = widgetConfiguration.additionalWidgetConfiguration[key] != nil
+        let isPresentingOnScreen = {
+            if let topController = UIApplication.shared.topController(),
+               topController.isBeingPresented,
+               let topWidgetVC = topController as? WidgetOnScreenViewController,
+               topWidgetVC.widgetConfiguration.component == component {
+                return true
+            }
+            return false
+        }()
+        let canOpenInAR = !isPresentationMode && !isDisplayingInAR
+        let canPresent: Bool = !isPresentingOnScreen && !isDisplayingInAR
+        let openInAR = {
+            widgetConfiguration.additionalWidgetConfiguration[key] = .init(key: key,
+                                                                           widgetConfiguration: newWidgetConfiguration)
+        }
+        let presentOnScreen = {
+            UIApplication.shared.presentOnTop(WidgetOnScreenViewController(widgetConfiguration: newWidgetConfiguration))
+        }
+        if canOpenInAR, canPresent {
+            let alertController = UIAlertController(title: "Open", message: "Would you like to open the widget in AR, or display it on the screen?", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Open in AR", style: .default, handler: { action in
+                openInAR()
+            }))
+            alertController.addAction(UIAlertAction(title: "Display on screen", style: .default, handler: { action in
+                presentOnScreen()
+            }))
+            UIApplication.shared.presentOnTop(alertController, animated: true)
+        } else if canOpenInAR {
+            openInAR()
+        } else if canPresent {
+            presentOnScreen()
+        }
+    }
+
+    if url.absoluteString.hasPrefix(URLService.scheme) {
+        if let service = url.urlService {
+            switch service {
+            case .link:
+                UIApplication.shared.open(url)
+            case let .openComponent(config, anchor, position):
+                if let widgetConfiguration = widgetConfiguration {
+                    Task {
+                        switch config {
+                        case let .url(url):
+                            if let configURL = url.url,
+                               let (data, _) = try? await URLSession.shared.data(from: configURL),
+                               let component = try? JSONDecoder().decode(ViewElementComponent.self, from: data) {
+                                processWidget(widgetConfiguration, configURL.absoluteString, component, anchor, position)
+                            }
+                        case let .json(json):
+                            if let data = json.data(using: .utf8) {
+                                let component = try! JSONDecoder().decode(ViewElementComponent.self, from: data)
+                                processWidget(widgetConfiguration, json, component, anchor, position)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    } else {
+        if let url = URLService.link(href: url.absoluteString).url.url {
+            UIApplication.shared.open(url)
         }
     }
 }

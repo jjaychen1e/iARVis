@@ -89,6 +89,7 @@
 		635F526628967BE600FF40B6 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 635F526528967BE600FF40B6 /* SnapKit */; };
 		635F526B2896AA4100FF40B6 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635F526A2896AA4100FF40B6 /* Debug.swift */; };
 		635F52722896D38600FF40B6 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 635F52712896D38600FF40B6 /* Kingfisher */; };
+		636C3EC928B49BD8001412FE /* WidgetOnScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636C3EC828B49BD8001412FE /* WidgetOnScreenViewController.swift */; };
 		636EDDC028964FF100639195 /* ImageTrackingExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636EDDBF28964FF100639195 /* ImageTrackingExample.swift */; };
 		636EDDC22896542A00639195 /* ImageTrackingConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636EDDC12896542A00639195 /* ImageTrackingConfiguration.swift */; };
 		636EDDC42896559F00639195 /* VisualizationConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636EDDC32896559F00639195 /* VisualizationConfiguration.swift */; };
@@ -189,6 +190,7 @@
 		635F52622896775300FF40B6 /* models.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = models.scnassets; sourceTree = "<group>"; };
 		635F526A2896AA4100FF40B6 /* Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		635F526E2896B29A00FF40B6 /* SceneKitUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitUtils.swift; sourceTree = "<group>"; };
+		636C3EC828B49BD8001412FE /* WidgetOnScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetOnScreenViewController.swift; sourceTree = "<group>"; };
 		636EDDBF28964FF100639195 /* ImageTrackingExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTrackingExample.swift; sourceTree = "<group>"; };
 		636EDDC12896542A00639195 /* ImageTrackingConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTrackingConfiguration.swift; sourceTree = "<group>"; };
 		636EDDC32896559F00639195 /* VisualizationConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualizationConfiguration.swift; sourceTree = "<group>"; };
@@ -703,6 +705,7 @@
 			isa = PBXGroup;
 			children = (
 				63AE0674289823880061404E /* WidgetExampleViewController.swift */,
+				636C3EC828B49BD8001412FE /* WidgetOnScreenViewController.swift */,
 			);
 			path = Debug;
 			sourceTree = "<group>";
@@ -896,10 +899,10 @@
 			);
 			mainGroup = 630BD1732892C4A900C9BEAC;
 			packageReferences = (
-				635F526428967BE600FF40B6 /* XCRemoteSwiftPackageReference "SnapKit.git" */,
+				635F526428967BE600FF40B6 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				635F52702896D38600FF40B6 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				6376122228A4C1EF008901C0 /* XCRemoteSwiftPackageReference "UIColor-Hex-Swift" */,
-				6376122A28A555A3008901C0 /* XCRemoteSwiftPackageReference "SwiftyJSON.git" */,
+				6376122A28A555A3008901C0 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 			);
 			productRefGroup = 630BD1812892C4AC00C9BEAC /* Products */;
 			projectDirPath = "";
@@ -1141,6 +1144,7 @@
 				63027A5428A9338900B06CFE /* Collection+Safe.swift in Sources */,
 				634B72FC28B13869000BBB05 /* TableView.swift in Sources */,
 				634B730128B13869000BBB05 /* TableConfiguration.swift in Sources */,
+				636C3EC928B49BD8001412FE /* WidgetOnScreenViewController.swift in Sources */,
 				6339435928ABA9FB008A5ED1 /* View+Execute.swift in Sources */,
 				635F526B2896AA4100FF40B6 /* Debug.swift in Sources */,
 				63027A6128A933E100B06CFE /* Date.swift in Sources */,
@@ -1550,7 +1554,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		635F526428967BE600FF40B6 /* XCRemoteSwiftPackageReference "SnapKit.git" */ = {
+		635F526428967BE600FF40B6 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
@@ -1574,7 +1578,7 @@
 				kind = branch;
 			};
 		};
-		6376122A28A555A3008901C0 /* XCRemoteSwiftPackageReference "SwiftyJSON.git" */ = {
+		6376122A28A555A3008901C0 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
 			requirement = {
@@ -1597,22 +1601,22 @@
 		};
 		6301B46828B3353D00212FD8 /* SwiftyJSON */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6376122A28A555A3008901C0 /* XCRemoteSwiftPackageReference "SwiftyJSON.git" */;
+			package = 6376122A28A555A3008901C0 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
 		};
 		6301B46A28B3354D00212FD8 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 635F526428967BE600FF40B6 /* XCRemoteSwiftPackageReference "SnapKit.git" */;
+			package = 635F526428967BE600FF40B6 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
 		634B730528B138B9000BBB05 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 635F526428967BE600FF40B6 /* XCRemoteSwiftPackageReference "SnapKit.git" */;
+			package = 635F526428967BE600FF40B6 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
 		635F526528967BE600FF40B6 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 635F526428967BE600FF40B6 /* XCRemoteSwiftPackageReference "SnapKit.git" */;
+			package = 635F526428967BE600FF40B6 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
 		635F52712896D38600FF40B6 /* Kingfisher */ = {
@@ -1632,12 +1636,12 @@
 		};
 		6376122B28A555A3008901C0 /* SwiftyJSON */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6376122A28A555A3008901C0 /* XCRemoteSwiftPackageReference "SwiftyJSON.git" */;
+			package = 6376122A28A555A3008901C0 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
 		};
 		6376122D28A555AC008901C0 /* SwiftyJSON */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6376122A28A555A3008901C0 /* XCRemoteSwiftPackageReference "SwiftyJSON.git" */;
+			package = 6376122A28A555A3008901C0 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
 		};
 		63AE066528979E1E0061404E /* Kingfisher */ = {
