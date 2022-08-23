@@ -1,5 +1,5 @@
 //
-//  WidgetExampleViewController.swift
+//  WidgetInARViewController.swift
 //  iARVis (iOS)
 //
 //  Created by Junjie Chen on 2022/8/1.
@@ -12,8 +12,8 @@ import SwiftUI
 import SwiftyJSON
 import UIKit
 
-private class WidgetExampleContainerView: UIView {
-    weak var viewController: WidgetExampleViewController?
+private class WidgetInARContainerView: UIView {
+    weak var viewController: WidgetInARViewController?
 
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
         if let arKitVC = UIApplication.shared.topController() as? ARKitViewController {
@@ -52,7 +52,7 @@ private class WidgetExampleContainerView: UIView {
     }
 }
 
-class WidgetExampleViewController: UIViewController {
+class WidgetInARViewController: UIViewController {
     init(node: SCNWidgetNode) {
         self.node = node
         super.init(nibName: nil, bundle: nil)
@@ -75,7 +75,7 @@ class WidgetExampleViewController: UIViewController {
 
     override func loadView() {
         view = {
-            let view = WidgetExampleContainerView()
+            let view = WidgetInARContainerView()
             view.viewController = self
             return view
         }()

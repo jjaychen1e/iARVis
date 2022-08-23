@@ -67,7 +67,7 @@ extension ARKitViewController {
                         plane.height = 0.4
                         return plane
                     }()
-                    let widgetViewController = WidgetExampleViewController(node: newNode)
+                    let widgetViewController = WidgetInARViewController(node: newNode)
                     node.additionalWidgetNodes[key] = newNode
                     node.additionalWidgetNodes[key]?.widgetViewController = widgetViewController
 

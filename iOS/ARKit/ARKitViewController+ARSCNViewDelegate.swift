@@ -32,7 +32,7 @@ extension ARKitViewController: ARSCNViewDelegate {
                         plane.height = 0.4
                         return plane
                     }()
-                    let widgetViewController = WidgetExampleViewController(node: widgetNode)
+                    let widgetViewController = WidgetInARViewController(node: widgetNode)
                     widgetViewController.node = widgetNode
                     nodePair.node.widgetViewController = widgetViewController
 
