@@ -16,19 +16,32 @@ class ChartConfigurationJSONParser {
         var chartConfig = ChartConfiguration()
 
         // Chart Data
-        let chartData = ChartData(data: json["data"])
-        chartConfig.chartData = chartData
+        if let dataSources = json["dataSources"].array {
+            let chartData = ChartData(dataSources)
+            chartConfig.chartData = chartData
+        }
 
         // Components
-        var components: [ChartComponent] = []
+        var componentConfigs: [ChartComponentConfiguration] = []
         for component in json["components"].arrayValue {
             if let typeString = component["type"].string,
                let componentType = ChartComponentType(rawValue: typeString) {
+                let config = component["config"]
+                var dataKey = "default"
+                if let extractedDataKey = config["dataKey"].string {
+                    dataKey = extractedDataKey
+                }
+
+                guard chartConfig.chartData.dataItems.keys.contains(dataKey) else {
+                    continue
+                }
+
+                let chartComponentCommonConfig = config.decode(ChartComponentCommonConfig.self) ?? .init()
+
                 // Mark
                 var chartComponent: ChartComponent?
                 switch componentType {
                 case .barMark:
-                    let config = component["config"]
                     if let xStartField = config["xStart"]["field"].string,
                        let xEndField = config["xEnd"]["field"].string,
                        let yField = config["y"]["field"].string {
@@ -36,30 +49,59 @@ class ChartConfigurationJSONParser {
                         if let heightDouble = config["height"].double {
                             height = heightDouble
                         }
-                        chartComponent = .barMarkRepeat1(xStart: .value(xStartField),
+                        chartComponent = .barMarkRepeat1(dataKey: dataKey,
+                                                         xStart: .value(xStartField),
                                                          xEnd: .value(xEndField),
                                                          y: .value(yField),
                                                          height: height)
-                        components.append(chartComponent!)
+                        componentConfigs.append(.init(component: chartComponent!, commonConfig: chartComponentCommonConfig))
                     }
                 case .lineMark:
                     let config = component["config"]
                     if let xField = config["x"]["field"].string,
                        let yField = config["y"]["field"].string {
-                        var interpolationMethod = ARVisInterpolationMethod.linear
-                        if let interpolationMethodStr = config["interpolationMethod"].string,
-                           let interpolationMethodValue = ARVisInterpolationMethod(rawValue: interpolationMethodStr) {
-                            interpolationMethod = interpolationMethodValue
+                        chartComponent = .lineMarkRepeat1(dataKey: dataKey,
+                                                          x: .value(xField),
+                                                          y: .value(yField))
+                        componentConfigs.append(.init(component: chartComponent!, commonConfig: chartComponentCommonConfig))
+                    }
+                case .rectangleMark:
+                    let config = component["config"]
+                    if let xStartField = config["xStart"]["field"].string,
+                       let xEndField = config["xEnd"]["field"].string,
+                       let yStartField = config["yStart"]["field"].string,
+                       let yEndField = config["yEnd"]["field"].string {
+                        chartComponent = .rectangleMarkRepeat1(dataKey: dataKey,
+                                                               xStart: .value(xStartField),
+                                                               xEnd: .value(xEndField),
+                                                               yStart: .value(yStartField),
+                                                               yEnd: .value(yEndField))
+                        componentConfigs.append(.init(component: chartComponent!, commonConfig: chartComponentCommonConfig))
+                    }
+                case .ruleMark:
+                    let config = component["config"]
+                    if let xField = config["x"]["field"].string {
+                        if let yStartField = config["yStart"]["field"].string,
+                           let yEndField = config["yEnd"]["field"].string {
+                            chartComponent = .ruleMarkRepeat1(dataKey: dataKey,
+                                                              x: .value(xField),
+                                                              yStart: .value(yStartField),
+                                                              yEnd: .value(yEndField))
+                        } else {
+                            chartComponent = .ruleMarkRepeat1(dataKey: dataKey,
+                                                              x: .value(xField))
                         }
-                        var symbol: ARVisSymbol?
-                        if let symbolType = config["symbol"]["type"].string,
-                           let symbolValue = ARVisSymbol(rawValue: symbolType) {
-                            symbol = symbolValue
-                        }
-                        chartComponent = .lineMarkRepeat1(x: .value(xField), y: .value(yField), interpolationMethod: interpolationMethod, symbol: symbol)
-                        components.append(chartComponent!)
+                        componentConfigs.append(.init(component: chartComponent!, commonConfig: chartComponentCommonConfig))
+                    }
+                case .pointMark:
+                    let config = component["config"]
+                    if let xField = config["x"]["field"].string,
+                       let yField = config["y"]["field"].string {
+                        chartComponent = .pointMarkRepeat1(dataKey: dataKey, x: .value(xField), y: .value(yField))
+                        componentConfigs.append(.init(component: chartComponent!, commonConfig: chartComponentCommonConfig))
                     }
                 }
+
                 // Interaction
                 if let chartComponent = chartComponent {
                     var interactions: [ChartComponent: [ChartInteraction]] = [:]
@@ -111,13 +153,31 @@ class ChartConfigurationJSONParser {
                 }
             }
         }
-        chartConfig.components = components
+        chartConfig.componentConfigs = componentConfigs
 
         // ChartXScale
         if let chartXScale = json["xScale"].decode(ChartXScale.self) {
             chartConfig.chartXScale = chartXScale
         } else {
             if json["xScale"] != .null {
+                fatalErrorDebug()
+            }
+        }
+
+        // ChartXAxis
+        if let chartXAxis = json["chartXAxis"].decode(ChartXAxis.self) {
+            chartConfig.chartXAxis = chartXAxis
+        } else {
+            if json["chartXAxis"] != .null {
+                fatalErrorDebug()
+            }
+        }
+
+        // ChartYAxis
+        if let chartYAxis = json["chartYAxis"].decode(ChartYAxis.self) {
+            chartConfig.chartYAxis = chartYAxis
+        } else {
+            if json["chartYAxis"] != .null {
                 fatalErrorDebug()
             }
         }
@@ -143,6 +203,11 @@ extension ChartConfigurationJSONParser {
 
     static let exampleJSONString2: String = {
         let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample2.json")
+        return try! String(contentsOfFile: path.path)
+    }()
+
+    static let exampleJSONString3: String = {
+        let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample3.json")
         return try! String(contentsOfFile: path.path)
     }()
 }

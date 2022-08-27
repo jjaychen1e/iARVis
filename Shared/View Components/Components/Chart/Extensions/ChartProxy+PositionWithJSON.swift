@@ -19,9 +19,9 @@ extension ChartProxy {
     }
 
     func position(atX x: JSON) -> CGFloat? {
-        if let intValue = x.int {
+        if let intValue = x.strictInt {
             return position(forX: intValue)
-        } else if let doubleValue = x.double {
+        } else if let doubleValue = x.strictDouble {
             return position(forX: doubleValue)
         } else if let dateValue = x.date {
             return position(forX: dateValue)
@@ -32,9 +32,9 @@ extension ChartProxy {
     }
 
     func position(atY y: JSON) -> CGFloat? {
-        if let intValue = y.int {
+        if let intValue = y.strictInt {
             return position(forY: intValue)
-        } else if let doubleValue = y.double {
+        } else if let doubleValue = y.strictDouble {
             return position(forY: doubleValue)
         } else if let dateValue = y.date {
             return position(forY: dateValue)

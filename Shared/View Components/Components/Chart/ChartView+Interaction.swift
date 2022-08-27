@@ -8,62 +8,89 @@
 import Charts
 import Foundation
 import SwiftUI
+import SwiftyJSON
 
 extension ChartView {
     private func updateInteractionData(component: ChartComponent,
                                        location: CGPoint,
                                        proxy: ChartProxy,
                                        geo: GeometryProxy,
-                                       xStartField: String,
-                                       xEndField: String,
-                                       yStartField: String,
-                                       yEndField: String,
+                                       xStartField: String?,
+                                       xEndField: String?,
+                                       yStartField: String?,
+                                       yEndField: String?,
                                        isClick: Bool,
                                        modeX: GetElementMode = .accurate,
                                        modeY: GetElementMode = .accurate) {
-        if let dataItemRangeX = getElementInRangeX(proxy: proxy,
-                                                   location: location,
-                                                   geo: geo,
-                                                   chartData: chartConfiguration.chartData,
-                                                   xStartField: xStartField,
-                                                   xEndField: xEndField,
-                                                   mode: modeX) {
-            if isClick,
-               chartConfiguration.interactionData.componentSelectedElementInRangeX[component] == dataItemRangeX {
+        var dataItemsRangeX: [JSON] = []
+        if let xStartField = xStartField,
+           let xEndField = xEndField {
+            dataItemsRangeX = getElementInRangeX(proxy: proxy,
+                                                 location: location,
+                                                 geo: geo,
+                                                 chartData: chartConfiguration.chartData.dataItems[component.dataKey],
+                                                 xStartField: xStartField,
+                                                 xEndField: xEndField,
+                                                 mode: modeX)
+            if dataItemsRangeX.count == 0 {
                 chartConfiguration.interactionData.componentSelectedElementInRangeX[component] = nil
             } else {
-                chartConfiguration.interactionData.componentSelectedElementInRangeX[component] = dataItemRangeX
+                if isClick,
+                   let selected = chartConfiguration.interactionData.componentSelectedElementInRangeX[component],
+                   dataItemsRangeX.contains(selected) {
+                    chartConfiguration.interactionData.componentSelectedElementInRangeX[component] = nil
+                } else {
+                    chartConfiguration.interactionData.componentSelectedElementInRangeX[component] = dataItemsRangeX.first
+                }
             }
         } else {
-            chartConfiguration.interactionData.componentSelectedElementInRangeX[component] = nil
+            chartConfiguration.interactionData.componentSelectedElementInRangeX[component] = dataItemsRangeX.first
         }
 
-        if let dataItemRangeY = getElementInRangeY(proxy: proxy,
-                                                   location: location,
-                                                   geo: geo,
-                                                   chartData: chartConfiguration.chartData,
-                                                   yStartField: yStartField,
-                                                   yEndField: yEndField,
-                                                   mode: modeY) {
-            if isClick,
-               chartConfiguration.interactionData.componentSelectedElementInRangeY[component] == dataItemRangeY {
+        var dataItemsRangeY: [JSON] = []
+        if let yStartField = yStartField,
+           let yEndField = yEndField {
+            dataItemsRangeY = getElementInRangeY(proxy: proxy,
+                                                 location: location,
+                                                 geo: geo,
+                                                 chartData: chartConfiguration.chartData.dataItems[component.dataKey],
+                                                 yStartField: yStartField,
+                                                 yEndField: yEndField,
+                                                 mode: modeY)
+            if dataItemsRangeY.count == 0 {
                 chartConfiguration.interactionData.componentSelectedElementInRangeY[component] = nil
             } else {
-                chartConfiguration.interactionData.componentSelectedElementInRangeY[component] = dataItemRangeY
-            }
-
-            if chartConfiguration.interactionData.componentSelectedElementInRangeX[component] == dataItemRangeY {
                 if isClick,
-                   chartConfiguration.interactionData.componentSelectedElementInXY[component] == dataItemRangeY {
-                    chartConfiguration.interactionData.componentSelectedElementInXY[component] = nil
+                   let selected = chartConfiguration.interactionData.componentSelectedElementInRangeY[component],
+                   dataItemsRangeY.contains(selected) {
+                    chartConfiguration.interactionData.componentSelectedElementInRangeY[component] = nil
                 } else {
-                    chartConfiguration.interactionData.componentSelectedElementInXY[component] = dataItemRangeY
+                    chartConfiguration.interactionData.componentSelectedElementInRangeY[component] = dataItemsRangeY.first
                 }
-            } else {
-                chartConfiguration.interactionData.componentSelectedElementInXY[component] = nil
             }
         } else {
-            chartConfiguration.interactionData.componentSelectedElementInRangeY[component] = nil
+            chartConfiguration.interactionData.componentSelectedElementInRangeY[component] = dataItemsRangeX.first
+        }
+
+        var found = false
+        outerLoop: for jsonX in dataItemsRangeX {
+            for jsonY in dataItemsRangeY {
+                if jsonX == jsonY {
+                    found = true
+                    if isClick,
+                       let selected = chartConfiguration.interactionData.componentSelectedElementInXY[component],
+                       selected == jsonX {
+                        chartConfiguration.interactionData.componentSelectedElementInXY[component] = nil
+                    } else {
+                        chartConfiguration.interactionData.componentSelectedElementInXY[component] = jsonX
+                    }
+                    break outerLoop
+                }
+            }
+        }
+
+        if !found {
+            chartConfiguration.interactionData.componentSelectedElementInXY[component] = nil
         }
     }
 
@@ -99,6 +126,8 @@ extension ChartView {
                                 if !found {
                                     chartConfiguration.interactionData.componentSelectedElementView[component] = nil
                                 }
+                            } else {
+                                chartConfiguration.interactionData.componentSelectedElementView[component] = nil
                             }
                         case .rangeY:
                             if let dataItem = chartConfiguration.interactionData.componentSelectedElementInRangeY[component] {
@@ -113,6 +142,8 @@ extension ChartView {
                                 if !found {
                                     chartConfiguration.interactionData.componentSelectedElementView[component] = nil
                                 }
+                            } else {
+                                chartConfiguration.interactionData.componentSelectedElementView[component] = nil
                             }
                         case .xy:
                             if let dataItem = chartConfiguration.interactionData.componentSelectedElementInXY[component] {
@@ -127,6 +158,8 @@ extension ChartView {
                                 if !found {
                                     chartConfiguration.interactionData.componentSelectedElementView[component] = nil
                                 }
+                            } else {
+                                chartConfiguration.interactionData.componentSelectedElementView[component] = nil
                             }
                         }
                     }
@@ -143,10 +176,10 @@ extension ChartView {
                     SpatialTapGesture()
                         .onEnded { value in
                             let location = value.location
-                            for component in chartConfiguration.components {
-                                switch component {
-                                case let .barMarkRepeat1(xStart, xEnd, y, _):
-                                    updateInteractionData(component: component,
+                            for componentConfig in chartConfiguration.componentConfigs {
+                                switch componentConfig.component {
+                                case let .barMarkRepeat1(_, xStart, xEnd, y, _):
+                                    updateInteractionData(component: componentConfig.component,
                                                           location: location,
                                                           proxy: proxy,
                                                           geo: geo,
@@ -155,8 +188,8 @@ extension ChartView {
                                                           yStartField: y.field,
                                                           yEndField: y.field,
                                                           isClick: true)
-                                case let .lineMarkRepeat1(x, y, _, _):
-                                    updateInteractionData(component: component,
+                                case let .lineMarkRepeat1(_, x, y):
+                                    updateInteractionData(component: componentConfig.component,
                                                           location: location,
                                                           proxy: proxy,
                                                           geo: geo,
@@ -167,18 +200,50 @@ extension ChartView {
                                                           isClick: true,
                                                           modeX: .nearest,
                                                           modeY: .accurate)
+                                case let .rectangleMarkRepeat1(_, xStart, xEnd, yStart, yEnd):
+                                    updateInteractionData(component: componentConfig.component,
+                                                          location: location,
+                                                          proxy: proxy,
+                                                          geo: geo,
+                                                          xStartField: xStart.field,
+                                                          xEndField: xEnd.field,
+                                                          yStartField: yStart.field,
+                                                          yEndField: yEnd.field,
+                                                          isClick: true)
+                                case let .ruleMarkRepeat1(_, x, yStart, yEnd):
+                                    updateInteractionData(component: componentConfig.component,
+                                                          location: location,
+                                                          proxy: proxy,
+                                                          geo: geo,
+                                                          xStartField: x.field,
+                                                          xEndField: x.field,
+                                                          yStartField: yStart?.field,
+                                                          yEndField: yEnd?.field,
+                                                          isClick: true)
+                                case let .pointMarkRepeat1(_, x, y):
+                                    updateInteractionData(component: componentConfig.component,
+                                                          location: location,
+                                                          proxy: proxy,
+                                                          geo: geo,
+                                                          xStartField: x.field,
+                                                          xEndField: x.field,
+                                                          yStartField: y.field,
+                                                          yEndField: y.field,
+                                                          isClick: true,
+                                                          modeX: .nearest,
+                                                          modeY: .nearest)
                                 }
-                                updateInteractionOverlay(component: component, isClick: true)
+                                updateInteractionOverlay(component: componentConfig.component, isClick: true)
                             }
                         }
                         .exclusively(
                             before: DragGesture()
                                 .onChanged { value in
                                     let location = value.location
-                                    for component in chartConfiguration.components {
-                                        switch component {
-                                        case let .barMarkRepeat1(xStart, xEnd, y, _):
-                                            updateInteractionData(component: component,
+                                    for componentConfig in chartConfiguration.componentConfigs {
+                                        switch componentConfig.component {
+                                        case let .barMarkRepeat1(_, xStart, xEnd, y, _):
+                                            updateInteractionData(component: componentConfig.component,
                                                                   location: location,
                                                                   proxy: proxy,
                                                                   geo: geo,
@@ -187,8 +252,8 @@ extension ChartView {
                                                                   yStartField: y.field,
                                                                   yEndField: y.field,
                                                                   isClick: false)
-                                        case let .lineMarkRepeat1(x, y, _, _):
-                                            updateInteractionData(component: component,
+                                        case let .lineMarkRepeat1(_, x, y):
+                                            updateInteractionData(component: componentConfig.component,
                                                                   location: location,
                                                                   proxy: proxy,
                                                                   geo: geo,
@@ -199,8 +264,40 @@ extension ChartView {
                                                                   isClick: false,
                                                                   modeX: .nearest,
                                                                   modeY: .accurate)
+                                        case let .rectangleMarkRepeat1(_, xStart, xEnd, yStart, yEnd):
+                                            updateInteractionData(component: componentConfig.component,
+                                                                  location: location,
+                                                                  proxy: proxy,
+                                                                  geo: geo,
+                                                                  xStartField: xStart.field,
+                                                                  xEndField: xEnd.field,
+                                                                  yStartField: yStart.field,
+                                                                  yEndField: yEnd.field,
+                                                                  isClick: false)
+                                        case let .ruleMarkRepeat1(_, x, yStart, yEnd):
+                                            updateInteractionData(component: componentConfig.component,
+                                                                  location: location,
+                                                                  proxy: proxy,
+                                                                  geo: geo,
+                                                                  xStartField: x.field,
+                                                                  xEndField: x.field,
+                                                                  yStartField: yStart?.field,
+                                                                  yEndField: yEnd?.field,
+                                                                  isClick: false)
+                                        case let .pointMarkRepeat1(_, x, y):
+                                            updateInteractionData(component: componentConfig.component,
+                                                                  location: location,
+                                                                  proxy: proxy,
+                                                                  geo: geo,
+                                                                  xStartField: x.field,
+                                                                  xEndField: x.field,
+                                                                  yStartField: y.field,
+                                                                  yEndField: y.field,
+                                                                  isClick: false,
+                                                                  modeX: .nearest,
+                                                                  modeY: .nearest)
                                         }
-                                        updateInteractionOverlay(component: component, isClick: false)
+                                        updateInteractionOverlay(component: componentConfig.component, isClick: false)
                                     }
                                 }
                         )

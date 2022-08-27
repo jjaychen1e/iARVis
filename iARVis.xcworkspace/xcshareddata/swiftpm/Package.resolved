@@ -1,6 +1,24 @@
 {
   "pins" : [
     {
+      "identity" : "defaultcodable",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/gonzalezreal/DefaultCodable",
+      "state" : {
+        "revision" : "b75cdb44b772cdd278ea0d029d3f079384b0d87d",
+        "version" : "1.2.1"
+      }
+    },
+    {
+      "identity" : "gsplayer",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/wxxsw/GSPlayer.git",
+      "state" : {
+        "revision" : "5904551cf33e0c38831fdc56c6a2c9770eadc30d",
+        "version" : "0.2.25"
+      }
+    },
+    {
       "identity" : "kingfisher",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/onevcat/Kingfisher",
@@ -43,6 +61,24 @@
       "state" : {
         "branch" : "master",
         "revision" : "f37f97bc1a5b545b39ab5330e133e56fa4f38cff"
+      }
+    },
+    {
+      "identity" : "videoplayer",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/wxxsw/VideoPlayer",
+      "state" : {
+        "revision" : "3c5b9531ee20e34d3a86142ca2c076a5b99afdb2",
+        "version" : "1.2.3"
+      }
+    },
+    {
+      "identity" : "youtubeplayerkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SvenTiigi/YouTubePlayerKit",
+      "state" : {
+        "revision" : "6ecaaeb9409152ddda5807835d557cbf5ba5ead6",
+        "version" : "1.2.0"
       }
     }
   ],

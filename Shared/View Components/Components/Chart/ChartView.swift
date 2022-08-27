@@ -14,16 +14,78 @@ struct ChartView: View {
 
     var body: some View {
         Chart {
-            ForEach(0 ..< chartConfiguration.components.count, id: \.self) { index in
-                let component = chartConfiguration.components[index]
-                component.toChartContent(configuration: chartConfiguration)
+            ForEach(0 ..< chartConfiguration.componentConfigs.count, id: \.self) { index in
+                let componentConfig = chartConfiguration.componentConfigs[index]
+                componentConfig.toChartContent(configuration: chartConfiguration)
             }
         }
-        .if(chartConfiguration.chartXScale.includingZero != nil) { view in
-            view.chartXScale(domain: .automatic(includesZero: chartConfiguration.chartXScale.includingZero!))
+        .if(chartConfiguration.chartXAxis != nil) { view in
+            if let chartXAxis = chartConfiguration.chartXAxis {
+                if chartXAxis.hidden == true {
+                    view.chartXAxis(.hidden)
+                } else {
+                    if let axisMarks = chartXAxis.axisMarks {
+                        let values: AxisMarkValues = {
+                            switch axisMarks.axisMarksValues {
+                            case let .strideByDateComponent(component, count):
+                                return AxisMarkValues.stride(by: .init(component), count: count)
+                            }
+                        }()
+                        view
+                            .chartXAxis {
+                                AxisMarks(values: values) { _ in
+                                    AxisGridLine()
+                                    AxisTick()
+                                    switch axisMarks.axisValueLabel.format {
+                                    case let .year(format):
+                                        switch format {
+                                        case .defaultDigits:
+                                            AxisValueLabel(format: .dateTime.year(.defaultDigits))
+                                        }
+                                    }
+                                }
+                            }
+                    }
+                }
+            }
         }
-        .if(chartConfiguration.chartXScale.domain != nil) { view in
-            if let domain = chartConfiguration.chartXScale.domain, domain.count >= 2 {
+        .if(chartConfiguration.chartYAxis != nil) { view in
+            if let chartYAxis = chartConfiguration.chartYAxis {
+                if chartYAxis.hidden == true {
+                    view.chartYAxis(.hidden)
+                } else {
+                    if let axisMarks = chartYAxis.axisMarks {
+                        let values: AxisMarkValues = {
+                            switch axisMarks.axisMarksValues {
+                            case let .strideByDateComponent(component, count):
+                                return AxisMarkValues.stride(by: .init(component), count: count)
+                            }
+                        }()
+                        view
+                            .chartYAxis {
+                                AxisMarks(values: values) { _ in
+                                    AxisGridLine()
+                                    AxisTick()
+                                    switch axisMarks.axisValueLabel.format {
+                                    case let .year(format):
+                                        switch format {
+                                        case .defaultDigits:
+                                            AxisValueLabel(format: .dateTime.year(.defaultDigits))
+                                        }
+                                    }
+                                }
+                            }
+                    }
+                }
+            }
+        }
+        .if(chartConfiguration.chartXScale?.includingZero != nil) { view in
+            if let includingZero = chartConfiguration.chartXScale?.includingZero {
+                view.chartXScale(domain: .automatic(includesZero: includingZero))
+            }
+        }
+        .if(chartConfiguration.chartXScale?.domain != nil) { view in
+            if let domain = chartConfiguration.chartXScale?.domain, domain.count >= 2 {
                 if let xStart = domain[0].int, let xEnd = domain[1].int {
                     view.chartXScale(domain: min(xStart, xEnd) ... max(xStart, xEnd))
                 } else if let xStart = domain[0].double, let xEnd = domain[1].double {
@@ -51,8 +113,19 @@ struct ChartView: View {
 //                }
 //            #endif
 //        }
-        .frame(width: chartConfiguration.styleConfiguration.maxWidth, height: chartConfiguration.styleConfiguration.maxHeight ?? 200)
-        .padding(.vertical)
+        .frame(width: chartConfiguration.styleConfiguration?.maxWidth, height: chartConfiguration.styleConfiguration?.maxHeight ?? nil)
+        .frame(maxHeight: chartConfiguration.styleConfiguration?.maxHeight == nil ? 200 : nil)
+        .if(true) { view in
+            if let padding = chartConfiguration.styleConfiguration?.padding {
+                view
+                    .padding(.leading, padding[safe: 0])
+                    .padding(.top, padding[safe: 1])
+                    .padding(.trailing, padding[safe: 2])
+                    .padding(.bottom, padding[safe: 3])
+            } else {
+                view.padding(.vertical)
+            }
+        }
     }
 }
 

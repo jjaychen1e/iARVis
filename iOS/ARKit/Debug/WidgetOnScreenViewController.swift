@@ -23,6 +23,7 @@ class WidgetOnScreenViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .light
         view.backgroundColor = .white
 
         let widgetView = ComponentView(widgetConfiguration.component)

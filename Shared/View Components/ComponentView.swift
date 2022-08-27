@@ -26,7 +26,8 @@ struct ComponentView: View {
     var body: some View {
         ScrollView {
             component.view()
-//                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                .fixedSize(horizontal: false, vertical: true)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                 .padding(.vertical)
                 .padding(.horizontal)
         }
@@ -36,7 +37,7 @@ struct ComponentView: View {
 
 struct ComponentView_Previews: PreviewProvider {
     static var previews: some View {
-        ComponentView(.exampleArtworkWidget)
+        ComponentView(.exampleJamesEnsorWidget)
             .previewLayout(.fixed(width: 1024, height: 768))
     }
 }

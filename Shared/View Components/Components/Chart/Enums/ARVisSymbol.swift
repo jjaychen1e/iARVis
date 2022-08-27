@@ -38,12 +38,16 @@ struct Square: ChartSymbolShape, InsettableShape {
     }
 }
 
-enum ARVisSymbol: String, RawRepresentable, Codable {
+struct ARVisSymbol: Codable, Equatable {
+    var type: ARVisSymbolType
+}
+
+enum ARVisSymbolType: String, RawRepresentable, Codable {
     case circle = "Circle"
     case square = "Square"
 }
 
-extension ARVisSymbol {
+extension ARVisSymbolType {
     var symbol: some ChartSymbolShape {
         switch self {
         case .circle:
@@ -51,5 +55,16 @@ extension ARVisSymbol {
         case .square:
             return AnyChartSymbolShape(Square())
         }
+    }
+}
+
+struct ARVisSymbolSize: Codable, Equatable {
+    var width: CGFloat
+    var height: CGFloat
+}
+
+extension CGSize {
+    init(_ size: ARVisSymbolSize){
+        self = .init(width: size.width, height: size.height)
     }
 }
