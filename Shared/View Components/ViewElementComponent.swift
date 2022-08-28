@@ -28,6 +28,8 @@ enum ViewElementComponent: Codable, Equatable {
     case table(configuration: TableConfiguration)
     case chart(configuration: ChartConfiguration) // This should be manually decoded/encoded
     case segmentedControl(items: [ARVisSegmentedControlItem])
+    case grid(rows: [ViewElementComponent])
+    case gridRow(rowElements: [ViewElementComponent])
 
     init(from decoder: Decoder) throws {
         let container: KeyedDecodingContainer<ViewElementComponent.CodingKeys> = try decoder.container(keyedBy: ViewElementComponent.CodingKeys.self)
@@ -73,6 +75,12 @@ enum ViewElementComponent: Codable, Equatable {
         case .segmentedControl:
             let nestedContainer: KeyedDecodingContainer<ViewElementComponent.SegmentedControlCodingKeys> = try container.nestedContainer(keyedBy: ViewElementComponent.SegmentedControlCodingKeys.self, forKey: ViewElementComponent.CodingKeys.segmentedControl)
             self = ViewElementComponent.segmentedControl(items: try nestedContainer.decode([ARVisSegmentedControlItem].self, forKey: ViewElementComponent.SegmentedControlCodingKeys.items))
+        case .grid:
+            let nestedContainer: KeyedDecodingContainer<ViewElementComponent.GridCodingKeys> = try container.nestedContainer(keyedBy: ViewElementComponent.GridCodingKeys.self, forKey: ViewElementComponent.CodingKeys.grid)
+            self = ViewElementComponent.grid(rows: try nestedContainer.decode([ViewElementComponent].self, forKey: ViewElementComponent.GridCodingKeys.rows))
+        case .gridRow:
+            let nestedContainer: KeyedDecodingContainer<ViewElementComponent.GridRowCodingKeys> = try container.nestedContainer(keyedBy: ViewElementComponent.GridRowCodingKeys.self, forKey: ViewElementComponent.CodingKeys.gridRow)
+            self = ViewElementComponent.gridRow(rowElements: try nestedContainer.decode([ViewElementComponent].self, forKey: ViewElementComponent.GridRowCodingKeys.rowElements))
         }
     }
 }
@@ -141,6 +149,18 @@ extension ViewElementComponent {
                     .id(UUID())
             case let .segmentedControl(items):
                 ARVisSegmentedControlView(items: items)
+            case let .grid(rows):
+                Grid {
+                    ForEach(Array(zip(rows.indices, rows)), id: \.0) { _, row in
+                        AnyView(row.view())
+                    }
+                }
+            case let .gridRow(rowElements):
+                GridRow {
+                    ForEach(Array(zip(rowElements.indices, rowElements)), id: \.0) { _, rowElement in
+                        AnyView(rowElement.view())
+                    }
+                }
             }
         }
     }

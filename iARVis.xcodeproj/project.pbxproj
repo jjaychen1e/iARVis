@@ -171,6 +171,8 @@
 		63CB2BCD28A40EA400BF7A1B /* ARVisVerticalAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CB2BC628A40E5500BF7A1B /* ARVisVerticalAlignment.swift */; };
 		63CB2BCE28A40EA400BF7A1B /* ViewElementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CB2BB628A3F39300BF7A1B /* ViewElementComponent.swift */; };
 		63E726AE28B53D5100998DA9 /* YoutubeThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E726AD28B53D5100998DA9 /* YoutubeThumbnailView.swift */; };
+		63EBEF5F28BB536600F112D5 /* KeyedCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EBEF5E28BB536500F112D5 /* KeyedCodable.swift */; };
+		63EBEF6028BB536600F112D5 /* KeyedCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EBEF5E28BB536500F112D5 /* KeyedCodable.swift */; };
 		63F7C99A28B5F6A600841EFA /* YoutubeVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F7C99928B5F6A600841EFA /* YoutubeVideoViewController.swift */; };
 		A27EF0F9CA5585916C2B213A /* Pods_iARVis__iOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 632ACE6928A93EE1001418E5 /* Pods_iARVis__iOS_.framework */; };
 /* End PBXBuildFile section */
@@ -285,6 +287,7 @@
 		63CB2BC428A40DB100BF7A1B /* ARVisContentMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARVisContentMode.swift; sourceTree = "<group>"; };
 		63CB2BC628A40E5500BF7A1B /* ARVisVerticalAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARVisVerticalAlignment.swift; sourceTree = "<group>"; };
 		63E726AD28B53D5100998DA9 /* YoutubeThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeThumbnailView.swift; sourceTree = "<group>"; };
+		63EBEF5E28BB536500F112D5 /* KeyedCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyedCodable.swift; sourceTree = "<group>"; };
 		63F7C99928B5F6A600841EFA /* YoutubeVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeVideoViewController.swift; sourceTree = "<group>"; };
 		76220422FED15D91588C9B52 /* Pods-Tests iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests iOS.debug.xcconfig"; path = "Target Support Files/Pods-Tests iOS/Pods-Tests iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		85ADFFD37D1063EB4EBF6285 /* Pods_iARVis__macOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iARVis__macOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -484,6 +487,7 @@
 			children = (
 				634B72B528B119EE000BBB05 /* CodableExtensions.swift */,
 				634B72B428B119EE000BBB05 /* Utility.swift */,
+				63EBEF5E28BB536500F112D5 /* KeyedCodable.swift */,
 			);
 			path = Codable;
 			sourceTree = "<group>";
@@ -613,6 +617,7 @@
 		6376123428A56252008901C0 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				63EBEF6128BB55B700F112D5 /* Grid */,
 				63E726AB28B53D4200998DA9 /* Video */,
 				634B731F28B22522000BBB05 /* Audio */,
 				634B731928B2158B000BBB05 /* Segmented Control */,
@@ -869,6 +874,13 @@
 				63F7C99928B5F6A600841EFA /* YoutubeVideoViewController.swift */,
 			);
 			path = Video;
+			sourceTree = "<group>";
+		};
+		63EBEF6128BB55B700F112D5 /* Grid */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Grid;
 			sourceTree = "<group>";
 		};
 		84DF972565C0F2425A7701FA /* Pods */ = {
@@ -1262,6 +1274,7 @@
 				63AE06602896DDCE0061404E /* ImageDownloader.swift in Sources */,
 				636C3EDF28B50C0F001412FE /* ARVisSymbol.swift in Sources */,
 				634B732128B22528000BBB05 /* Player.swift in Sources */,
+				63EBEF5F28BB536600F112D5 /* KeyedCodable.swift in Sources */,
 				636EDDC22896542A00639195 /* ImageTrackingConfiguration.swift in Sources */,
 				634B730328B13869000BBB05 /* ChartComponent.swift in Sources */,
 				634B730028B13869000BBB05 /* ChartConfigurationJSONParser.swift in Sources */,
@@ -1350,6 +1363,7 @@
 				630BD1A22892C4AC00C9BEAC /* iARVisApp.swift in Sources */,
 				634B731628B214EE000BBB05 /* ARVisSegmentedControlItem.swift in Sources */,
 				6339435A28ABA9FB008A5ED1 /* View+Execute.swift in Sources */,
+				63EBEF6028BB536600F112D5 /* KeyedCodable.swift in Sources */,
 				63CB2BCB28A40EA400BF7A1B /* ARVisColor.swift in Sources */,
 				6379F41128B8F1A70020BB1B /* ARVisLineStyle.swift in Sources */,
 				634B732228B22528000BBB05 /* Player.swift in Sources */,

@@ -1,0 +1,34 @@
+//
+//  KeyedCodable.swift
+//  iARVis
+//
+//  Created by Junjie Chen on 2022/8/28.
+//
+
+import Foundation
+
+protocol KeyedCodableSource {
+    static func encode(_: Self) -> [String: Any]
+    static func decode(_: [String: Any]) -> Self?
+}
+
+@propertyWrapper
+struct KeyedCodable<T: KeyedCodableSource>: Codable {
+    enum KeyedCodableError: Error {
+        case failed
+    }
+
+    var wrappedValue: T
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: JSONCodingKeys.self)
+        let json = try container.decode([String: Any].self)
+        if let decoded = T.decode(json) {
+            wrappedValue = decoded
+        } else {
+            throw KeyedCodableError.failed
+        }
+    }
+
+    func encode(to encoder: Encoder) throws {}
+}

@@ -4,7 +4,6 @@
 //
 //  Created by Junjie Chen on 2022/8/11.
 //
-
 import Foundation
 
 extension ViewElementComponent {
@@ -150,7 +149,7 @@ extension ViewElementComponent {
                           fontStyle: ARVisFontStyle(size: 22)),
                     .text(content: "**Movements and Styles**: [Realism](https://www.theartstory.org/movement/realism/), [Impressionism](https://www.theartstory.org/movement/impressionism/), [Neo-Impressionism](https://www.theartstory.org/movement/neo-impressionism/), [Expressionism](https://www.theartstory.org/movement/expressionism/)",
                           fontStyle: ARVisFontStyle(size: 22)),
-                    exampleJamesEnsorLifeChart
+                    exampleJamesEnsorLifeChart,
                 ], alignment: .leading, spacing: 4),
                 .spacer,
                 .image(url: "https://uploads8.wikiart.org/images/james-ensor.jpg", height: 300),
@@ -293,7 +292,285 @@ extension ViewElementComponent {
                             .divider(opacity: 0.2),
                         ], alignment: .leading)
                     ),
-                    ARVisSegmentedControlItem(title: "Related Work", component: .spacer),
+                    ARVisSegmentedControlItem(title: "Related Work", component: .grid(rows: [
+                        .gridRow(rowElements: [
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjEzNTU4NSJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=735729b6201042cb"),
+                                .text(content: "Cathedral", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1886", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjE0OTgzOCJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=9043f7a23eeaf279"),
+                                .text(content: "Tribulations of Saint Anthony", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1887", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjE4MTY0NSJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=fbc4f06f00009249"),
+                                .text(content: "Devil's Sabbath", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1887", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjEyMjc5MyJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=073a2126d3735068"),
+                                .text(content: "House on the Boulevard Anspach", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1888", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjEyMjc5NyJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=6868ed2b576f495a"),
+                                .text(content: "Capture of a Strange Town", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1888", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                        ]),
+                        .gridRow(rowElements: [
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjEyMjc5OCJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=2668be64bd7b2dc6"),
+                                .text(content: "The Winds", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1888", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjE0OTgzMyJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=fd0f6f974dc10303"),
+                                .text(content: "Masks Confronting Death", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1888", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjE3OTk0NSJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=b31009944f81a1e5"),
+                                .text(content: "Stars in the Cemetery", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1888", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjEzNTU2NiJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=a72c48b84f3aa49c"),
+                                .text(content: "Peculiar Insects", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1888", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjE4MTY1NCJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=0123e2bbb376326b"),
+                                .text(content: "Devils Thrashing Angels and Archangels", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1888", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                        ]),
+                        .gridRow(rowElements: [
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjE0MDUzMCJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=ddeb4c0aaf54153e"),
+                                .text(content: "Small Bizarre Figures", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1888", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjE4MTY0OSJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=e20fdf6c45ae50bc"),
+                                .text(content: "Combat of the Rascals Désir and Rissolé", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1888", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjE3OTgyMyJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=ae4d39ba26d62157"),
+                                .text(content: "The Terrible Archer", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1888", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjE4MTY0MCJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=f2fbcd7305eff795"),
+                                .text(content: "The Haunted Furniture (Le meuble hanté)", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1888", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjE4MTU4NiJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=4317bbb4b5b0c61b"),
+                                .text(content: "The Gendarmes", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1888", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                        ]),
+                        .gridRow(rowElements: [
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjY0Njg4Il0sWyJwIiwiY29udmVydCIsIi1xdWFsaXR5IDcwIC1yZXNpemUgMzcyeDM3Mlx1MDAzZSJdXQ.jpg?sha=4bc9e339436ef479"),
+                                .text(content: "The Assassination", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1888", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjE4MTU3NiJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=a602689519d0abac"),
+                                .text(content: "The Assassination", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1888", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjEyMjgxNSJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=29e8833c685a0a05"),
+                                .text(content: "Roman Victory", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1889", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjE4MTU3NyJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=a257b796485512a4"),
+                                .text(content: "The Fantastic Ball", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1889", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjEzNTU4NCJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=100f84b5a550cf48"),
+                                .text(content: "My Portrait as a Skeleton", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1889", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                        ]),
+                        .gridRow(rowElements: [
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjEyMjc5NCJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=a19a6c9347913e1f"),
+                                .text(content: "The Music in the Rue de Flandre, Ostend", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1890", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjE3OTkwNiJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=c48af401e37b8ae5"),
+                                .text(content: "The Multiplication of the Fishes", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1891", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjE4MTY1MCJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=c2a4be9e0c8c0722"),
+                                .text(content: "Windmill at Slykens", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1891", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjE4MTU3OCJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=a5065e61b39bd409"),
+                                .text(content: "Auto-da-Fé", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1893", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjE4MTY0MSJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=eb229e93f0e26639"),
+                                .text(content: "Demons Teasing Me", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1895", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                        ]),
+                        .gridRow(rowElements: [
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjE3OTkxNCJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=0b070cbf7dc24fe0"),
+                                .text(content: "The Battle of the Golden Spurs", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1895", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjE4MTU4MCJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=eb653993773297b7"),
+                                .text(content: "Fridolin and Gragapança of Yperdamme", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1895", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjUxNzY1MyJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=a1ef1463c12c26ca"),
+                                .text(content: "The Bad Doctors", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1895", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjE4MTU4MSJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=5c32188a09632fdc"),
+                                .text(content: "Christ Descending to Hell", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1895", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjE4MTY1MSJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=d7bcd1213d0450f4"),
+                                .text(content: "The Old Rascals", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1895", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                        ]),
+                        .gridRow(rowElements: [
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjE4MTUwMiJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=e412d6f86373a8d5"),
+                                .text(content: "King Pest", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1895", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjUxNzc0MyJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=be94129ea84cfe29"),
+                                .text(content: "Death Chasing the Flock of Mortals", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1896", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjE4MTU4MiJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=47f90a29a24b95ef"),
+                                .text(content: "The Scoundrels", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1896", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjIxNTA3NiJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=ed4fe4467906edaf"),
+                                .text(content: "Self Portrait with Demons", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1898", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjIxMDIwNyJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=d32c3dc1186d45ee"),
+                                .text(content: "The Entrance of Christ into Brussels (L'Entrée du Christ à Bruxelles)", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1898", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                        ]),
+                        .gridRow(rowElements: [
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjE4MTU2NCJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=84daa1ba1eddf0d9"),
+                                .text(content: "Hop-Frog's Revenge", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1898", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjIzMzE5NyJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=157b24971e6edb4f"),
+                                .text(content: "Hop-Frog's Revenge", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1898", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjI0MzI2OSJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=950e94a119a48674"),
+                                .text(content: "The Baths at Ostend", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1899", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjE4MTY1MiJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=389ef9ba6c415b60"),
+                                .text(content: "The Queen Parysatis", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1900", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjE3OTk1OSJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=2f4870920a06ebbc"),
+                                .text(content: "Sloth", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1902", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                        ]),
+                        .gridRow(rowElements: [
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjE4MTY1MyJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=11a63d47db3ab86d"),
+                                .text(content: "The Beach at La Panne", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1904", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjI0MzY5NyJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=a8f02f968efc7fa6"),
+                                .text(content: "The Deadly Sins", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1888–1904", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjI0MzY5NyJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=a8f02f968efc7fa6"),
+                                .text(content: "The Deadly Sins Dominated by Death", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1904", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjI0NDA1MCJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=3ad7f493b8d7bebe"),
+                                .text(content: "Gluttony", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1904", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjI0MzY5OCJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=707f02a8b96ff95b"),
+                                .text(content: "Sloth", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1902", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                        ]),
+                        .gridRow(rowElements: [
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjI0NDA1MSJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=c29d4d92d0c134d9"),
+                                .text(content: "Pride", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1904", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjI0MzY5OSJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=f6ce50a1b9d3cc90"),
+                                .text(content: "Anger", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1904", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjI0NDA1MiJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=67547e0e5f48bc20"),
+                                .text(content: "Avarice", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1904", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjI0NDA1MyJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=795cefb7f2225cea"),
+                                .text(content: "Envy", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1904", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjI0NDA1NCJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=7896a5112ba93ec3"),
+                                .text(content: "Lust", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1888 (portfolio published 1904)", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                        ]),
+                        .gridRow(rowElements: [
+                            .vStack(elements: [
+                                .image(url: "https://www.moma.org/media/W1siZiIsIjE4MTU5MCJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA3MCAtcmVzaXplIDM3MngzNzJcdTAwM2UiXV0.jpg?sha=de09c7bea5a657f5"),
+                                .text(content: "Carnival at Ostende", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                                .text(content: "1931", fontStyle: ARVisFontStyle(size: 15, weight: .light)),
+                            ]),
+                        ]),
+                    ])),
                 ]),
                 .spacer,
             ]),
