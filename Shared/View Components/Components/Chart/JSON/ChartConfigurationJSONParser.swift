@@ -193,6 +193,151 @@ class ChartConfigurationJSONParser {
 
         return chartConfig
     }
+
+    func encode(_ chartConfiguration: ChartConfiguration) -> JSON {
+        var result = JSON([:])
+
+        // Chart Data
+        result["dataSources"] = JSON(chartConfiguration.chartData.dataItems.map { label, item in
+            [
+                "label": label,
+                "titles": item.titles,
+                "data": item.data,
+            ]
+        })
+
+        // Components
+        result["components"] = JSON(chartConfiguration.componentConfigs.map { componentConfig in
+            var componentJSON = JSON()
+            componentJSON["config"] = [:]
+
+            let component = componentConfig.component
+            let commonConfig = componentConfig.commonConfig
+
+            // Component Mark
+            switch component {
+            case let .barMarkRepeat1(dataKey, xStart, xEnd, y, height):
+                componentJSON["type"] = "BarMark"
+                componentJSON["config"]["dataKey"] = JSON(dataKey)
+                componentJSON["config"]["xStart"] = [:]
+                componentJSON["config"]["xStart"]["field"] = JSON(xStart.field)
+                componentJSON["config"]["xEnd"] = [:]
+                componentJSON["config"]["xEnd"]["field"] = JSON(xEnd.field)
+                componentJSON["config"]["y"] = [:]
+                componentJSON["config"]["y"]["field"] = JSON(y.field)
+                if let height = height {
+                    componentJSON["config"]["height"] = JSON(height)
+                }
+            case let .lineMarkRepeat1(dataKey, x, y):
+                componentJSON["type"] = "LineMark"
+                componentJSON["config"]["dataKey"] = JSON(dataKey)
+                componentJSON["config"]["x"] = [:]
+                componentJSON["config"]["x"]["field"] = JSON(x.field)
+                componentJSON["config"]["y"] = [:]
+                componentJSON["config"]["y"]["field"] = JSON(y.field)
+            case let .rectangleMarkRepeat1(dataKey, xStart, xEnd, yStart, yEnd):
+                componentJSON["type"] = "RectangleMark"
+                componentJSON["config"]["dataKey"] = JSON(dataKey)
+                componentJSON["config"]["xStart"] = [:]
+                componentJSON["config"]["xStart"]["field"] = JSON(xStart.field)
+                componentJSON["config"]["xEnd"] = [:]
+                componentJSON["config"]["xEnd"]["field"] = JSON(xEnd.field)
+                componentJSON["config"]["yStart"] = [:]
+                componentJSON["config"]["yStart"]["field"] = JSON(yStart.field)
+                componentJSON["config"]["yEnd"] = [:]
+                componentJSON["config"]["yEnd"]["field"] = JSON(yEnd.field)
+            case let .ruleMarkRepeat1(dataKey, x, yStart, yEnd):
+                componentJSON["type"] = "RuleMark"
+                componentJSON["config"]["dataKey"] = JSON(dataKey)
+                componentJSON["config"]["x"] = [:]
+                componentJSON["config"]["x"]["field"] = JSON(x.field)
+                if let yStart = yStart {
+                    componentJSON["config"]["yStart"] = [:]
+                    componentJSON["config"]["yStart"]["field"] = JSON(yStart.field)
+                }
+                if let yEnd = yEnd {
+                    componentJSON["config"]["yEnd"] = [:]
+                    componentJSON["config"]["yEnd"]["field"] = JSON(yEnd.field)
+                }
+            case let .pointMarkRepeat1(dataKey, x, y):
+                componentJSON["type"] = "PointMark"
+                componentJSON["config"]["dataKey"] = JSON(dataKey)
+                componentJSON["config"]["x"] = [:]
+                componentJSON["config"]["x"]["field"] = JSON(x.field)
+                componentJSON["config"]["y"] = [:]
+                componentJSON["config"]["y"]["field"] = JSON(y.field)
+            }
+
+            // Component Common Config
+            try? componentJSON["config"].merge(with: JSON(parseJSON: commonConfig.prettyJSON))
+
+            // Interactions
+            let interactions = chartConfiguration.interactionData.componentInteraction[component, default: []]
+            if interactions.count > 0 {
+                componentJSON["interactions"] = JSON(interactions.map { interaction in
+                    var interactionJSON = JSON()
+                    switch interaction {
+                    case let .hover(tooltip):
+                        interactionJSON["type"] = "Hover"
+                        interactionJSON["tooltip"] = [:]
+                        switch tooltip {
+                        case let .manual(contents):
+                            interactionJSON["tooltip"]["type"] = "Manual"
+                            interactionJSON["tooltip"]["config"] = JSON(
+                                contents.map { content in
+                                    [
+                                        "field": content.field,
+                                        "value": content.value,
+                                        "content": JSON(parseJSON: content.content.prettyJSON),
+                                    ]
+                                }
+                            )
+                        case .auto:
+                            interactionJSON["tooltip"]["type"] = "Auto"
+                            // TODO: Auto mode
+                        }
+                    case let .click(action):
+                        interactionJSON["type"] = "Click"
+                        interactionJSON["action"] = [:]
+                        switch action {
+                        case let .openURL(url: url):
+                            interactionJSON["tooltip"]["type"] = "OpeURL"
+                            interactionJSON["tooltip"]["config"] = JSON(
+                                [
+                                    "url": url,
+                                ]
+                            )
+                        }
+                    }
+                    return interactionJSON
+                })
+            }
+
+            return componentJSON
+        })
+
+        // ChartXScale
+        if let chartXScale = chartConfiguration.chartXScale {
+            result["xScale"] = JSON(parseJSON: chartXScale.prettyJSON)
+        }
+
+        // ChartXAxis
+        if let chartXAxis = chartConfiguration.chartXAxis {
+            result["chartXAxis"] = JSON(parseJSON: chartXAxis.prettyJSON)
+        }
+
+        // ChartYAxis
+        if let chartYAxis = chartConfiguration.chartYAxis {
+            result["chartYAxis"] = JSON(parseJSON: chartYAxis.prettyJSON)
+        }
+
+        // Style Configuration
+        if let styleConfig = chartConfiguration.styleConfiguration {
+            result["styleConfig"] = JSON(parseJSON: styleConfig.prettyJSON)
+        }
+
+        return result
+    }
 }
 
 extension ChartConfigurationJSONParser {

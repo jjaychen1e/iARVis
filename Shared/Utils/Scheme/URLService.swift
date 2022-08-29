@@ -85,7 +85,8 @@ extension URL {
                         }
                         var position: SCNVector3
                         if let positionValue = params.first(where: { $0.name == "relativePosition" })?.value,
-                           let _position = JSON(positionValue).decode(SCNVector3.self) {
+                           let positionValueData = positionValue.data(using: .utf8),
+                           let _position = JSON(positionValueData).decode(SCNVector3.self) {
                             position = _position
                         } else {
                             position = .init(0, 0, 0)

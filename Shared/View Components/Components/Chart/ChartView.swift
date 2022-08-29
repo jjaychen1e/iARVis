@@ -19,63 +19,54 @@ struct ChartView: View {
                 componentConfig.toChartContent(configuration: chartConfiguration)
             }
         }
-        .if(chartConfiguration.chartXAxis != nil) { view in
-            if let chartXAxis = chartConfiguration.chartXAxis {
-                if chartXAxis.hidden == true {
-                    view.chartXAxis(.hidden)
-                } else {
-                    if let axisMarks = chartXAxis.axisMarks {
-                        let values: AxisMarkValues = {
-                            switch axisMarks.axisMarksValues {
-                            case let .strideByDateComponent(component, count):
-                                return AxisMarkValues.stride(by: .init(component), count: count)
-                            }
-                        }()
-                        view
-                            .chartXAxis {
-                                AxisMarks(values: values) { _ in
-                                    AxisGridLine()
-                                    AxisTick()
-                                    switch axisMarks.axisValueLabel.format {
-                                    case let .year(format):
-                                        switch format {
-                                        case .defaultDigits:
-                                            AxisValueLabel(format: .dateTime.year(.defaultDigits))
-                                        }
-                                    }
-                                }
-                            }
+        .chartXAxis(chartConfiguration.chartXAxis?.hidden == true ? .hidden : .automatic)
+        .chartXAxis {
+            let values: AxisMarkValues? = {
+                if let axisMarks = chartConfiguration.chartXAxis?.axisMarks {
+                    switch axisMarks.axisMarksValues {
+                    case let .strideByDateComponent(component, count):
+                        return AxisMarkValues.stride(by: .init(component), count: count)
                     }
+                }
+                return nil
+            }()
+            AxisMarks(values: values == nil ? .automatic : values!) { _ in
+                AxisGridLine()
+                AxisTick()
+                switch chartConfiguration.chartXAxis?.axisMarks?.axisValueLabel.format {
+                case let .year(format):
+                    switch format {
+                    case .defaultDigits:
+                        AxisValueLabel(format: .dateTime.year(.defaultDigits))
+                    }
+                case .none:
+                    AxisValueLabel()
                 }
             }
         }
-        .if(chartConfiguration.chartYAxis != nil) { view in
-            if let chartYAxis = chartConfiguration.chartYAxis {
-                if chartYAxis.hidden == true {
-                    view.chartYAxis(.hidden)
-                } else {
-                    if let axisMarks = chartYAxis.axisMarks {
-                        let values: AxisMarkValues = {
-                            switch axisMarks.axisMarksValues {
-                            case let .strideByDateComponent(component, count):
-                                return AxisMarkValues.stride(by: .init(component), count: count)
-                            }
-                        }()
-                        view
-                            .chartYAxis {
-                                AxisMarks(values: values) { _ in
-                                    AxisGridLine()
-                                    AxisTick()
-                                    switch axisMarks.axisValueLabel.format {
-                                    case let .year(format):
-                                        switch format {
-                                        case .defaultDigits:
-                                            AxisValueLabel(format: .dateTime.year(.defaultDigits))
-                                        }
-                                    }
-                                }
-                            }
+        .chartYAxis(chartConfiguration.chartYAxis?.hidden == true ? .hidden : .automatic)
+        .chartYAxis {
+            let values: AxisMarkValues? = {
+                if let axisMarks = chartConfiguration.chartYAxis?.axisMarks {
+                    switch axisMarks.axisMarksValues {
+                    case let .strideByDateComponent(component, count):
+                        return AxisMarkValues.stride(by: .init(component), count: count)
                     }
+                }
+                return nil
+            }()
+            AxisMarks(values: values == nil ? .automatic : values!) { _ in
+                AxisGridLine()
+                AxisTick()
+
+                switch chartConfiguration.chartYAxis?.axisMarks?.axisValueLabel.format {
+                case let .year(format):
+                    switch format {
+                    case .defaultDigits:
+                        AxisValueLabel(format: .dateTime.year(.defaultDigits))
+                    }
+                case .none:
+                    AxisValueLabel()
                 }
             }
         }

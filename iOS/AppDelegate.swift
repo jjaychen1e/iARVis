@@ -56,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window.rootViewController = rootVC
         #else
             let rootVC = UIHostingController(rootView:
-                ComponentView(.exampleJamesEnsorWidget)
+                ComponentView(.exampleArtworkWidget)
                     .environment(\.openURL, OpenURLAction { url in
                         openURL(url, widgetConfiguration: nil)
                         return .handled

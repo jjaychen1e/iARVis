@@ -42,7 +42,7 @@ enum ChartInteraction: Equatable {
     case click(action: ChartInteractionClickAction)
 }
 
-struct ChartInteractionData: Codable, Equatable {
+struct ChartInteractionData: Equatable {
     var componentSelectedElementInRangeX: [ChartComponent: JSON] = [:]
     var componentSelectedElementInRangeY: [ChartComponent: JSON] = [:]
     var componentSelectedElementInXY: [ChartComponent: JSON] = [:]
@@ -54,7 +54,4 @@ struct ChartInteractionData: Codable, Equatable {
     init(componentInteraction: [ChartComponent: [ChartInteraction]]) {
         self.componentInteraction = componentInteraction
     }
-
-    // TODO: Codable?
-    enum CodingKeys: CodingKey {}
 }

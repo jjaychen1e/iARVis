@@ -31,6 +31,89 @@ enum ViewElementComponent: Codable, Equatable {
     case grid(rows: [ViewElementComponent])
     case gridRow(rowElements: [ViewElementComponent])
 
+    enum CodingKeys: CodingKey {
+        case text
+        case image
+        case audio
+        case video
+        case link
+        case hStack
+        case vStack
+        case spacer
+        case divider
+        case table
+        case chart
+        case segmentedControl
+        case grid
+        case gridRow
+    }
+
+    enum TextCodingKeys: CodingKey {
+        case content
+        case multilineTextAlignment
+        case fontStyle
+    }
+
+    enum ImageCodingKeys: CodingKey {
+        case url
+        case contentMode
+        case width
+        case height
+    }
+
+    enum AudioCodingKeys: CodingKey {
+        case title
+        case url
+    }
+
+    enum VideoCodingKeys: CodingKey {
+        case url
+        case width
+        case height
+    }
+
+    enum LinkCodingKeys: CodingKey {
+        case url
+    }
+
+    enum HStackCodingKeys: CodingKey {
+        case elements
+        case alignment
+        case spacing
+    }
+
+    enum VStackCodingKeys: CodingKey {
+        case elements
+        case alignment
+        case spacing
+    }
+
+    enum SpacerCodingKeys: CodingKey {}
+
+    enum DividerCodingKeys: CodingKey {
+        case opacity
+    }
+
+    enum TableCodingKeys: CodingKey {
+        case configuration
+    }
+
+    enum ChartCodingKeys: CodingKey {
+        case configuration
+    }
+
+    enum SegmentedControlCodingKeys: CodingKey {
+        case items
+    }
+
+    enum GridCodingKeys: CodingKey {
+        case rows
+    }
+
+    enum GridRowCodingKeys: CodingKey {
+        case rowElements
+    }
+
     init(from decoder: Decoder) throws {
         let container: KeyedDecodingContainer<ViewElementComponent.CodingKeys> = try decoder.container(keyedBy: ViewElementComponent.CodingKeys.self)
         var allKeys = ArraySlice<ViewElementComponent.CodingKeys>(container.allKeys)
@@ -60,7 +143,7 @@ enum ViewElementComponent: Codable, Equatable {
             let nestedContainer: KeyedDecodingContainer<ViewElementComponent.VStackCodingKeys> = try container.nestedContainer(keyedBy: ViewElementComponent.VStackCodingKeys.self, forKey: ViewElementComponent.CodingKeys.vStack)
             self = ViewElementComponent.vStack(elements: try nestedContainer.decode([ViewElementComponent].self, forKey: ViewElementComponent.VStackCodingKeys.elements), alignment: try nestedContainer.decodeIfPresent(ARVisHorizontalAlignment.self, forKey: ViewElementComponent.VStackCodingKeys.alignment), spacing: try nestedContainer.decodeIfPresent(CGFloat.self, forKey: ViewElementComponent.VStackCodingKeys.spacing))
         case .spacer:
-            let nestedContainer: KeyedDecodingContainer<ViewElementComponent.SpacerCodingKeys> = try container.nestedContainer(keyedBy: ViewElementComponent.SpacerCodingKeys.self, forKey: ViewElementComponent.CodingKeys.spacer)
+            let _: KeyedDecodingContainer<ViewElementComponent.SpacerCodingKeys> = try container.nestedContainer(keyedBy: ViewElementComponent.SpacerCodingKeys.self, forKey: ViewElementComponent.CodingKeys.spacer)
             self = ViewElementComponent.spacer
         case .divider:
             let nestedContainer: KeyedDecodingContainer<ViewElementComponent.DividerCodingKeys> = try container.nestedContainer(keyedBy: ViewElementComponent.DividerCodingKeys.self, forKey: ViewElementComponent.CodingKeys.divider)
@@ -81,6 +164,66 @@ enum ViewElementComponent: Codable, Equatable {
         case .gridRow:
             let nestedContainer: KeyedDecodingContainer<ViewElementComponent.GridRowCodingKeys> = try container.nestedContainer(keyedBy: ViewElementComponent.GridRowCodingKeys.self, forKey: ViewElementComponent.CodingKeys.gridRow)
             self = ViewElementComponent.gridRow(rowElements: try nestedContainer.decode([ViewElementComponent].self, forKey: ViewElementComponent.GridRowCodingKeys.rowElements))
+        }
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container: KeyedEncodingContainer<ViewElementComponent.CodingKeys> = encoder.container(keyedBy: ViewElementComponent.CodingKeys.self)
+        switch self {
+        case let .text(content, multilineTextAlignment, fontStyle):
+            var nestedContainer: KeyedEncodingContainer<ViewElementComponent.TextCodingKeys> = container.nestedContainer(keyedBy: ViewElementComponent.TextCodingKeys.self, forKey: ViewElementComponent.CodingKeys.text)
+            try nestedContainer.encode(content, forKey: ViewElementComponent.TextCodingKeys.content)
+            try nestedContainer.encodeIfPresent(multilineTextAlignment, forKey: ViewElementComponent.TextCodingKeys.multilineTextAlignment)
+            try nestedContainer.encodeIfPresent(fontStyle, forKey: ViewElementComponent.TextCodingKeys.fontStyle)
+        case let .image(url, contentMode, width, height):
+            var nestedContainer: KeyedEncodingContainer<ViewElementComponent.ImageCodingKeys> = container.nestedContainer(keyedBy: ViewElementComponent.ImageCodingKeys.self, forKey: ViewElementComponent.CodingKeys.image)
+            try nestedContainer.encode(url, forKey: ViewElementComponent.ImageCodingKeys.url)
+            try nestedContainer.encode(contentMode, forKey: ViewElementComponent.ImageCodingKeys.contentMode)
+            try nestedContainer.encodeIfPresent(width, forKey: ViewElementComponent.ImageCodingKeys.width)
+            try nestedContainer.encodeIfPresent(height, forKey: ViewElementComponent.ImageCodingKeys.height)
+        case let .audio(title, url):
+            var nestedContainer: KeyedEncodingContainer<ViewElementComponent.AudioCodingKeys> = container.nestedContainer(keyedBy: ViewElementComponent.AudioCodingKeys.self, forKey: ViewElementComponent.CodingKeys.audio)
+            try nestedContainer.encodeIfPresent(title, forKey: ViewElementComponent.AudioCodingKeys.title)
+            try nestedContainer.encode(url, forKey: ViewElementComponent.AudioCodingKeys.url)
+        case let .video(url, width, height):
+            var nestedContainer: KeyedEncodingContainer<ViewElementComponent.VideoCodingKeys> = container.nestedContainer(keyedBy: ViewElementComponent.VideoCodingKeys.self, forKey: ViewElementComponent.CodingKeys.video)
+            try nestedContainer.encode(url, forKey: ViewElementComponent.VideoCodingKeys.url)
+            try nestedContainer.encodeIfPresent(width, forKey: ViewElementComponent.VideoCodingKeys.width)
+            try nestedContainer.encodeIfPresent(height, forKey: ViewElementComponent.VideoCodingKeys.height)
+        case let .link(url):
+            var nestedContainer: KeyedEncodingContainer<ViewElementComponent.LinkCodingKeys> = container.nestedContainer(keyedBy: ViewElementComponent.LinkCodingKeys.self, forKey: ViewElementComponent.CodingKeys.link)
+            try nestedContainer.encode(url, forKey: ViewElementComponent.LinkCodingKeys.url)
+        case let .hStack(elements, alignment, spacing):
+            var nestedContainer: KeyedEncodingContainer<ViewElementComponent.HStackCodingKeys> = container.nestedContainer(keyedBy: ViewElementComponent.HStackCodingKeys.self, forKey: ViewElementComponent.CodingKeys.hStack)
+            try nestedContainer.encode(elements, forKey: ViewElementComponent.HStackCodingKeys.elements)
+            try nestedContainer.encodeIfPresent(alignment, forKey: ViewElementComponent.HStackCodingKeys.alignment)
+            try nestedContainer.encodeIfPresent(spacing, forKey: ViewElementComponent.HStackCodingKeys.spacing)
+        case let .vStack(elements, alignment, spacing):
+            var nestedContainer: KeyedEncodingContainer<ViewElementComponent.VStackCodingKeys> = container.nestedContainer(keyedBy: ViewElementComponent.VStackCodingKeys.self, forKey: ViewElementComponent.CodingKeys.vStack)
+            try nestedContainer.encode(elements, forKey: ViewElementComponent.VStackCodingKeys.elements)
+            try nestedContainer.encodeIfPresent(alignment, forKey: ViewElementComponent.VStackCodingKeys.alignment)
+            try nestedContainer.encodeIfPresent(spacing, forKey: ViewElementComponent.VStackCodingKeys.spacing)
+        case .spacer:
+            var _: KeyedEncodingContainer<ViewElementComponent.SpacerCodingKeys> = container.nestedContainer(keyedBy: ViewElementComponent.SpacerCodingKeys.self, forKey: ViewElementComponent.CodingKeys.spacer)
+        case let .divider(opacity):
+            var nestedContainer: KeyedEncodingContainer<ViewElementComponent.DividerCodingKeys> = container.nestedContainer(keyedBy: ViewElementComponent.DividerCodingKeys.self, forKey: ViewElementComponent.CodingKeys.divider)
+            try nestedContainer.encode(opacity, forKey: ViewElementComponent.DividerCodingKeys.opacity)
+        case let .table(configuration):
+            var nestedContainer: KeyedEncodingContainer<ViewElementComponent.TableCodingKeys> = container.nestedContainer(keyedBy: ViewElementComponent.TableCodingKeys.self, forKey: ViewElementComponent.CodingKeys.table)
+            try nestedContainer.encode(configuration, forKey: ViewElementComponent.TableCodingKeys.configuration)
+        case let .chart(configuration):
+            if let encodedDict = ChartConfigurationJSONParser.default.encode(configuration).dictionaryObject {
+                try container.encodeIfPresent(encodedDict, forKey: ViewElementComponent.CodingKeys.chart)
+            }
+        case let .segmentedControl(items):
+            var nestedContainer: KeyedEncodingContainer<ViewElementComponent.SegmentedControlCodingKeys> = container.nestedContainer(keyedBy: ViewElementComponent.SegmentedControlCodingKeys.self, forKey: ViewElementComponent.CodingKeys.segmentedControl)
+            try nestedContainer.encode(items, forKey: ViewElementComponent.SegmentedControlCodingKeys.items)
+        case let .grid(rows):
+            var nestedContainer: KeyedEncodingContainer<ViewElementComponent.GridCodingKeys> = container.nestedContainer(keyedBy: ViewElementComponent.GridCodingKeys.self, forKey: ViewElementComponent.CodingKeys.grid)
+            try nestedContainer.encode(rows, forKey: ViewElementComponent.GridCodingKeys.rows)
+        case let .gridRow(rowElements):
+            var nestedContainer: KeyedEncodingContainer<ViewElementComponent.GridRowCodingKeys> = container.nestedContainer(keyedBy: ViewElementComponent.GridRowCodingKeys.self, forKey: ViewElementComponent.CodingKeys.gridRow)
+            try nestedContainer.encode(rowElements, forKey: ViewElementComponent.GridRowCodingKeys.rowElements)
         }
     }
 }

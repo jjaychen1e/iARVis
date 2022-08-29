@@ -22,6 +22,7 @@ struct ARVisSegmentedControlView: View {
             .frame(minWidth: CGFloat(items.count) * 70)
             .fixedSize()
             items[safe: selectedColorIndex]?.component.view()
+                .fixedSize(horizontal: false, vertical: true)
         }
     }
 }

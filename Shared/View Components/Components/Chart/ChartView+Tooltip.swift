@@ -14,7 +14,7 @@ extension ChartView {
     @ViewBuilder
     func chartOverlayHandler(proxy: ChartProxy) -> some View {
         GeometryReader { geoProxy in
-            let topOffset = -geoProxy.frame(in: .named("Widget")).origin.y
+            let topOffset = min(0, -geoProxy.frame(in: .named("Widget")).origin.y)
             ForEach(0 ..< chartConfiguration.componentConfigs.count, id: \.self) { index in
                 let component = chartConfiguration.componentConfigs[index].component
                 let viewComponent: ViewElementComponent? = chartConfiguration.interactionData.componentSelectedElementView[component]

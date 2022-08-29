@@ -19,8 +19,8 @@ class WidgetConfiguration: Codable, ObservableObject {
     var component: ViewElementComponent
     var relativeAnchorPoint: WidgetAnchorPoint
     var relativePosition: SCNVector3
-    var positionOffset: SCNVector3 = .init(x: 0, y: 0, z: 0)
-    var size: CGSize = .init(width: 1024, height: 768)
+    var positionOffset: SCNVector3
+    var size: CGSize
     var additionalWidgetConfiguration: [String: AdditionalWidgetConfiguration] = [:]
 
     enum CodingKeys: CodingKey {
@@ -28,22 +28,16 @@ class WidgetConfiguration: Codable, ObservableObject {
         case relativePosition
         case positionOffset
         case component
+        case size
     }
 
-    init(component: ViewElementComponent, relativeAnchorPoint: WidgetAnchorPoint, relativePosition: SCNVector3, positionOffset: SCNVector3 = .init(x: 0, y: 0, z: 0), size: CGSize = .init(width: 1024, height: 768)) {
+    init(component: ViewElementComponent, relativeAnchorPoint: WidgetAnchorPoint, relativePosition: SCNVector3, positionOffset: SCNVector3 = .zero, size: CGSize = .init(width: 1024, height: 768), additionalWidgetConfiguration: [String: AdditionalWidgetConfiguration] = [:]) {
         self.component = component
         self.relativeAnchorPoint = relativeAnchorPoint
         self.relativePosition = relativePosition
         self.positionOffset = positionOffset
         self.size = size
-    }
-
-    init(components: [ViewElementComponent] = [], relativeAnchorPoint: WidgetAnchorPoint, relativePosition: SCNVector3, positionOffset: SCNVector3 = .init(x: 0, y: 0, z: 0), size: CGSize = .init(width: 1024, height: 768)) {
-        component = .vStack(elements: components)
-        self.relativeAnchorPoint = relativeAnchorPoint
-        self.relativePosition = relativePosition
-        self.positionOffset = positionOffset
-        self.size = size
+        self.additionalWidgetConfiguration = additionalWidgetConfiguration
     }
 }
 

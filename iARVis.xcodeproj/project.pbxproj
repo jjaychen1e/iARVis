@@ -38,6 +38,8 @@
 		63254E0C28AB8FC6005E7599 /* chartConfigurationExample1.json in Resources */ = {isa = PBXBuildFile; fileRef = 63254E0A28AB8FC6005E7599 /* chartConfigurationExample1.json */; };
 		6339435928ABA9FB008A5ED1 /* View+Execute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6339435828ABA9FB008A5ED1 /* View+Execute.swift */; };
 		6339435A28ABA9FB008A5ED1 /* View+Execute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6339435828ABA9FB008A5ED1 /* View+Execute.swift */; };
+		6344285928BC6B5000339D2F /* NSNumber+Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6344285828BC6B5000339D2F /* NSNumber+Type.swift */; };
+		6344285A28BC6B5000339D2F /* NSNumber+Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6344285828BC6B5000339D2F /* NSNumber+Type.swift */; };
 		634B72B628B119EE000BBB05 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634B72B428B119EE000BBB05 /* Utility.swift */; };
 		634B72B728B119EE000BBB05 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634B72B428B119EE000BBB05 /* Utility.swift */; };
 		634B72B828B119EE000BBB05 /* CodableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634B72B528B119EE000BBB05 /* CodableExtensions.swift */; };
@@ -134,6 +136,7 @@
 		638DA98A2892C6030030D494 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638DA9892892C6030030D494 /* AppDelegate.swift */; };
 		638DA98D2892C63D0030D494 /* ARKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638DA98C2892C63D0030D494 /* ARKitViewController.swift */; };
 		638DA98F2892CA490030D494 /* ARKitViewController+ARSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638DA98E2892CA490030D494 /* ARKitViewController+ARSessionDelegate.swift */; };
+		6392ABFF28BB8A94002797D7 /* TimeMeasuring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392ABFE28BB8A94002797D7 /* TimeMeasuring.swift */; };
 		639A6D8928AB628F00527C37 /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639A6D8828AB628F00527C37 /* XCAssets+Generated.swift */; };
 		639A6D8A28AB628F00527C37 /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639A6D8828AB628F00527C37 /* XCAssets+Generated.swift */; };
 		639A6D8D28AB62F100527C37 /* SwiftGen+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639A6D8C28AB62F100527C37 /* SwiftGen+Color.swift */; };
@@ -217,6 +220,7 @@
 		63254E0A28AB8FC6005E7599 /* chartConfigurationExample1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chartConfigurationExample1.json; sourceTree = "<group>"; };
 		632ACE6928A93EE1001418E5 /* Pods_iARVis__iOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_iARVis__iOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6339435828ABA9FB008A5ED1 /* View+Execute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Execute.swift"; sourceTree = "<group>"; };
+		6344285828BC6B5000339D2F /* NSNumber+Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNumber+Type.swift"; sourceTree = "<group>"; };
 		634B72B428B119EE000BBB05 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		634B72B528B119EE000BBB05 /* CodableExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableExtensions.swift; sourceTree = "<group>"; };
 		634B730C28B1FF05000BBB05 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -258,6 +262,7 @@
 		638DA9892892C6030030D494 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		638DA98C2892C63D0030D494 /* ARKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARKitViewController.swift; sourceTree = "<group>"; };
 		638DA98E2892CA490030D494 /* ARKitViewController+ARSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ARKitViewController+ARSessionDelegate.swift"; sourceTree = "<group>"; };
+		6392ABFE28BB8A94002797D7 /* TimeMeasuring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeMeasuring.swift; sourceTree = "<group>"; };
 		63952BF628A92977008183BF /* Testsd_ViewElementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testsd_ViewElementComponent.swift; sourceTree = "<group>"; };
 		63952C1328A931BF008183BF /* ChartConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartConfiguration.swift; sourceTree = "<group>"; };
 		63952C1E28A93211008183BF /* ChartComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartComponent.swift; sourceTree = "<group>"; };
@@ -357,6 +362,7 @@
 		63027A5228A9337F00B06CFE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				6344285728BC6B4000339D2F /* Foudation */,
 				6315A46828AFE81E0045B685 /* SceneKit */,
 				63254DFE28AB885D005E7599 /* CoreGraphics */,
 				639A6D8B28AB62E500527C37 /* SwiftGen */,
@@ -480,6 +486,22 @@
 				63254E0A28AB8FC6005E7599 /* chartConfigurationExample1.json */,
 			);
 			path = "Example JSON";
+			sourceTree = "<group>";
+		};
+		6344281728BBC02B00339D2F /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				63027A6A28A934AC00B06CFE /* ChartConfigurationJSONParser.swift */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		6344285728BC6B4000339D2F /* Foudation */ = {
+			isa = PBXGroup;
+			children = (
+				6344285828BC6B5000339D2F /* NSNumber+Type.swift */,
+			);
+			path = Foudation;
 			sourceTree = "<group>";
 		};
 		634B72B328B119E3000BBB05 /* Codable */ = {
@@ -671,6 +693,14 @@
 			path = ARKit;
 			sourceTree = "<group>";
 		};
+		6392ABFD28BB8A7A002797D7 /* Performance */ = {
+			isa = PBXGroup;
+			children = (
+				6392ABFE28BB8A94002797D7 /* TimeMeasuring.swift */,
+			);
+			path = Performance;
+			sourceTree = "<group>";
+		};
 		63952BF528A92941008183BF /* View Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -683,11 +713,11 @@
 		63952C1228A931A1008183BF /* Chart */ = {
 			isa = PBXGroup;
 			children = (
+				6344281728BBC02B00339D2F /* JSON */,
 				636F742028B9EB2C00931762 /* ChartConfiguration */,
 				636C3EDA28B4FB68001412FE /* Enums */,
 				63952C2328A9322B008183BF /* ARVisPlottableValueFieldPair.swift */,
 				63952C1E28A93211008183BF /* ChartComponent.swift */,
-				63027A6A28A934AC00B06CFE /* ChartConfigurationJSONParser.swift */,
 				638730BD28ABBDAC0094AE12 /* ChartTooltipPresentationViewController.swift */,
 				639A6D8228AB5F2B00527C37 /* ChartTooltipView.swift */,
 				63027A6528A9340900B06CFE /* ChartView.swift */,
@@ -744,6 +774,7 @@
 		63AE065D2896DDC00061404E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				6392ABFD28BB8A7A002797D7 /* Performance */,
 				639EBF5128B2612F00C76969 /* Scheme */,
 				634B730F28B20A61000BBB05 /* SwiftUI */,
 				634B72B328B119E3000BBB05 /* Codable */,
@@ -1253,6 +1284,7 @@
 				6379F41028B8F1A70020BB1B /* ARVisLineStyle.swift in Sources */,
 				639EBF5828B277E300C76969 /* ARKitViewController+ARSCNViewDelegate.swift in Sources */,
 				6379F41328B8F21D0020BB1B /* ARVisAnnotation.swift in Sources */,
+				6392ABFF28BB8A94002797D7 /* TimeMeasuring.swift in Sources */,
 				639EBF6628B2952F00C76969 /* SceneKitUtils.swift in Sources */,
 				63CB2BBE28A40A9600BF7A1B /* ARVisColor.swift in Sources */,
 				63F7C99A28B5F6A600841EFA /* YoutubeVideoViewController.swift in Sources */,
@@ -1294,6 +1326,7 @@
 				63CB2BB728A3F39300BF7A1B /* ViewElementComponent.swift in Sources */,
 				638DA98A2892C6030030D494 /* AppDelegate.swift in Sources */,
 				634DEB5B28A415160019D3FF /* ViewElementComponent+Example.swift in Sources */,
+				6344285928BC6B5000339D2F /* NSNumber+Type.swift in Sources */,
 				634B730428B13869000BBB05 /* ChartView.swift in Sources */,
 				63CB2BC328A40D6500BF7A1B /* ARVisHorizontalAlignment.swift in Sources */,
 				639A6D8928AB628F00527C37 /* XCAssets+Generated.swift in Sources */,
@@ -1338,6 +1371,7 @@
 				634B72B728B119EE000BBB05 /* Utility.swift in Sources */,
 				636F742628B9EB5400931762 /* ChartXAxis.swift in Sources */,
 				63AE066728979EF10061404E /* Debug.swift in Sources */,
+				6344285A28BC6B5000339D2F /* NSNumber+Type.swift in Sources */,
 				634B72F628B13869000BBB05 /* ChartView.swift in Sources */,
 				63AE066128979D690061404E /* ImageDownloader.swift in Sources */,
 				636F742C28B9EB8B00931762 /* ChartStyleConfiguration.swift in Sources */,

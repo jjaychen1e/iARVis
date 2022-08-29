@@ -40,8 +40,7 @@ extension ViewElementComponent {
                             "weight": "light"
                         }
                     }
-                },
-                \(ViewElementComponent.text(content: "[Additional Widget Test](\(URLService.openComponent(config: .json(json: exampleArtworkTimeSheetTooltip.prettyJSON), anchor: .leading, relativePosition: .zero).url))", fontStyle: ARVisFontStyle(size: 24, weight: .bold)).prettyJSON)
+                }
             ]
         }
     }
@@ -79,9 +78,8 @@ extension ViewElementComponent {
             .hStack(elements: [
                 .vStack(elements: [
                     .text(content: "Christ's Entry into Brussels in 1889", fontStyle: ARVisFontStyle(size: 24, weight: .bold)),
-                    .text(content: "[Additional Widget Test](\(URLService.openComponent(config: .json(json: exampleChartConfigurationDecodeJSONStr), anchor: .top, relativePosition: .zero).url))", fontStyle: ARVisFontStyle(size: 24, weight: .bold)),
                     .text(content: "1888", fontStyle: ARVisFontStyle(size: 20, weight: .medium)),
-                    .text(content: "[James Ensor](https://www.getty.edu/art/collection/person/103JT2) (Belgian, 1860 - 1949)",
+                    .text(content: "[James Ensor](\(URLService.openComponent(config: .json(json: exampleJamesEnsorWidget.prettyJSON), anchor: .leading, relativePosition: .init(-0.005, 0, 0)).url)) (Belgian, 1860 - 1949)",
                           fontStyle: ARVisFontStyle(size: 20)),
                     .text(content: "On view at [Getty Center, Museum West Pavilion, Gallery W103](https://www.getty.edu/art/collection/gallery/103M5Q)"),
                     .spacer,

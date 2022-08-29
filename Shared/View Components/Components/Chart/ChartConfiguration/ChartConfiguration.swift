@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 import SwiftyJSON
 
-struct ChartConfiguration: Codable, Equatable {
+struct ChartConfiguration: Equatable{
     var chartData = ChartData()
     var componentConfigs: [ChartComponentConfiguration] = []
     var interactionData = ChartInteractionData()
