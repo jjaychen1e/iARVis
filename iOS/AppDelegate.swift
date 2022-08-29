@@ -18,12 +18,7 @@ class MyApplication: UIApplication {
                 switch urlService {
                 case let .link(href: href):
                     if let url = URL(string: href) {
-                        let safariViewController = SFSafariViewController(url: url)
-                        if UIDevice.current.userInterfaceIdiom == .phone {
-                            safariViewController.modalPresentationStyle = .popover
-                        } else {
-                            safariViewController.modalPresentationStyle = .pageSheet
-                        }
+                        let safariViewController = WebViewController(url: url)
                         presentOnTop(safariViewController)
                     }
                 case .openComponent:

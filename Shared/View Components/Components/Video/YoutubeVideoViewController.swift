@@ -9,12 +9,12 @@ import Foundation
 import UIKit
 import WebKit
 
-class YoutubeVideoViewController: UIViewController {
+class YoutubeVideoViewController: PartialViewController {
     var url: String
 
     init(url: String) {
         self.url = url
-        super.init(nibName: nil, bundle: nil)
+        super.init(direction: .center, viewSize: (.proportion(0.9), .proportion(0.9)))
     }
 
     @available(*, unavailable)

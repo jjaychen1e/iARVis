@@ -84,6 +84,9 @@
 		634DEB5828A414610019D3FF /* ComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DEB5628A414610019D3FF /* ComponentView.swift */; };
 		634DEB5B28A415160019D3FF /* ViewElementComponent+Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DEB5A28A415160019D3FF /* ViewElementComponent+Example.swift */; };
 		634DEB5C28A415160019D3FF /* ViewElementComponent+Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DEB5A28A415160019D3FF /* ViewElementComponent+Example.swift */; };
+		635266B328BCB40A0059682C /* PartialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635266B128BCB4090059682C /* PartialViewController.swift */; };
+		635266B428BCB40A0059682C /* PartialPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635266B228BCB40A0059682C /* PartialPresentationController.swift */; };
+		635266B728BCB93E0059682C /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635266B628BCB93E0059682C /* WebViewController.swift */; };
 		635D804728B9EBF10077C1B6 /* ChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635D804628B9EBF10077C1B6 /* ChartData.swift */; };
 		635D804828B9EBF10077C1B6 /* ChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635D804628B9EBF10077C1B6 /* ChartData.swift */; };
 		635D804A28B9EC070077C1B6 /* ChartComponentCommonConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635D804928B9EC070077C1B6 /* ChartComponentCommonConfig.swift */; };
@@ -230,6 +233,9 @@
 		634B732528B2252B000BBB05 /* AudioPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerView.swift; sourceTree = "<group>"; };
 		634DEB5628A414610019D3FF /* ComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentView.swift; sourceTree = "<group>"; };
 		634DEB5A28A415160019D3FF /* ViewElementComponent+Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewElementComponent+Example.swift"; sourceTree = "<group>"; };
+		635266B128BCB4090059682C /* PartialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartialViewController.swift; sourceTree = "<group>"; };
+		635266B228BCB40A0059682C /* PartialPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartialPresentationController.swift; sourceTree = "<group>"; };
+		635266B628BCB93E0059682C /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		635D804628B9EBF10077C1B6 /* ChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartData.swift; sourceTree = "<group>"; };
 		635D804928B9EC070077C1B6 /* ChartComponentCommonConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartComponentCommonConfig.swift; sourceTree = "<group>"; };
 		635D804C28B9EC2B0077C1B6 /* ChartComponentConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartComponentConfiguration.swift; sourceTree = "<group>"; };
@@ -555,6 +561,31 @@
 			path = Debug;
 			sourceTree = "<group>";
 		};
+		635266AE28BCB3FC0059682C /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				635266B028BCB4030059682C /* Presentation */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		635266B028BCB4030059682C /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				635266B228BCB40A0059682C /* PartialPresentationController.swift */,
+				635266B128BCB4090059682C /* PartialViewController.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		635266B528BCB9290059682C /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				635266B628BCB93E0059682C /* WebViewController.swift */,
+			);
+			path = Web;
+			sourceTree = "<group>";
+		};
 		635F526828967C7100FF40B6 /* Debug */ = {
 			isa = PBXGroup;
 			children = (
@@ -774,6 +805,8 @@
 		63AE065D2896DDC00061404E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				635266B528BCB9290059682C /* Web */,
+				635266AE28BCB3FC0059682C /* UIKit */,
 				6392ABFD28BB8A7A002797D7 /* Performance */,
 				639EBF5128B2612F00C76969 /* Scheme */,
 				634B730F28B20A61000BBB05 /* SwiftUI */,
@@ -1274,6 +1307,7 @@
 				636C3ED528B4D8EA001412FE /* ChartView+Tooltip.swift in Sources */,
 				63027A5B28A933B800B06CFE /* View+if.swift in Sources */,
 				63AE067A2898260B0061404E /* UIViewControllerUtils.swift in Sources */,
+				635266B328BCB40A0059682C /* PartialViewController.swift in Sources */,
 				634B72B628B119EE000BBB05 /* Utility.swift in Sources */,
 				63AE067D289839630061404E /* UIHostingController+SafeArea.swift in Sources */,
 				639A6D9028AB7FF400527C37 /* View+SizeThatFits.swift in Sources */,
@@ -1303,6 +1337,7 @@
 				635D804D28B9EC2B0077C1B6 /* ChartComponentConfiguration.swift in Sources */,
 				6315A46428AFE7530045B685 /* WidgetConfiguration.swift in Sources */,
 				634B72F828B13869000BBB05 /* ChartTooltipPresentationViewController.swift in Sources */,
+				635266B428BCB40A0059682C /* PartialPresentationController.swift in Sources */,
 				63AE06602896DDCE0061404E /* ImageDownloader.swift in Sources */,
 				636C3EDF28B50C0F001412FE /* ARVisSymbol.swift in Sources */,
 				634B732128B22528000BBB05 /* Player.swift in Sources */,
@@ -1331,6 +1366,7 @@
 				63CB2BC328A40D6500BF7A1B /* ARVisHorizontalAlignment.swift in Sources */,
 				639A6D8928AB628F00527C37 /* XCAssets+Generated.swift in Sources */,
 				636EDDC028964FF100639195 /* ImageTrackingExample.swift in Sources */,
+				635266B728BCB93E0059682C /* WebViewController.swift in Sources */,
 				634B72FE28B13869000BBB05 /* ChartTooltipView.swift in Sources */,
 				63CB2BC728A40E5500BF7A1B /* ARVisVerticalAlignment.swift in Sources */,
 				636F742828B9EB6800931762 /* ChartAxisMarks.swift in Sources */,

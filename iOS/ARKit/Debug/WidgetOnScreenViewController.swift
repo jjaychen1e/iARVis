@@ -8,12 +8,12 @@
 import SwiftUI
 import UIKit
 
-class WidgetOnScreenViewController: UIViewController {
+class WidgetOnScreenViewController: PartialViewController {
     var widgetConfiguration: WidgetConfiguration
 
     init(widgetConfiguration: WidgetConfiguration) {
         self.widgetConfiguration = widgetConfiguration
-        super.init(nibName: nil, bundle: nil)
+        super.init(direction: .center, viewSize: (.proportion(0.9), .proportion(0.9)))
     }
 
     @available(*, unavailable)
