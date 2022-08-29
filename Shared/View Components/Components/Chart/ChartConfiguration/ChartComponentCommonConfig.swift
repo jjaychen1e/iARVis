@@ -15,6 +15,7 @@ enum ChartComponentCommonConfigType: String, RawRepresentable, CaseIterable {
     case annotation
 }
 
+@available(iOS 16, *)
 struct ChartComponentCommonConfig: Codable, Equatable {
     var interpolationMethod: ARVisInterpolationMethod?
     var symbol: ARVisSymbol?

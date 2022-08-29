@@ -9,6 +9,7 @@ import Foundation
 import Charts
 import SwiftyJSON
 
+@available(iOS 16, *)
 extension ChartProxy {
     func position(at valuePoint: (x: JSON, y: JSON)) -> CGPoint? {
         if let xPoint = position(atX: valuePoint.x),

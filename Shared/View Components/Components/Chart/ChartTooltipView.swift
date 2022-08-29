@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftUIX
 
+@available(iOS 16, *)
 struct ChartTooltipView: View {
     @OptionalEnvironmentObject var widgetConfiguration: WidgetConfiguration?
     let component: ViewElementComponent

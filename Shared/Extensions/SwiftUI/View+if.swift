@@ -19,6 +19,7 @@ extension View {
     }
 }
 
+@available(iOS 16, *)
 extension ChartContent {
     @ChartContentBuilder
     func `if`<Content: ChartContent>(_ condition: @autoclosure () -> Bool, @ChartContentBuilder transform: (Self) -> Content) -> some ChartContent {

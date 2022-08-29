@@ -9,6 +9,7 @@ import CoreGraphics
 import Foundation
 import SwiftyJSON
 
+@available(iOS 16, *)
 class ChartConfigurationJSONParser {
     static let `default` = ChartConfigurationJSONParser()
 
@@ -340,19 +341,28 @@ class ChartConfigurationJSONParser {
     }
 }
 
-extension ChartConfigurationJSONParser {
+enum ChartConfigurationExample {
     static let exampleJSONString1: String = {
-        let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample1.json")
-        return try! String(contentsOfFile: path.path)
+        if #available(iOS 16, *) {
+            let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample1.json")
+            return try! String(contentsOfFile: path.path)
+        }
+        return "{}"
     }()
 
     static let exampleJSONString2: String = {
-        let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample2.json")
-        return try! String(contentsOfFile: path.path)
+        if #available(iOS 16, *) {
+            let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample2.json")
+            return try! String(contentsOfFile: path.path)
+        }
+        return "{}"
     }()
 
     static let exampleJSONString3: String = {
-        let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample3.json")
-        return try! String(contentsOfFile: path.path)
+        if #available(iOS 16, *) {
+            let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample3.json")
+            return try! String(contentsOfFile: path.path)
+        }
+        return "{}"
     }()
 }

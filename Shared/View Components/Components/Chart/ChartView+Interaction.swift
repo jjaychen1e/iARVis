@@ -10,6 +10,7 @@ import Foundation
 import SwiftUI
 import SwiftyJSON
 
+@available(iOS 16, *)
 extension ChartView {
     private func updateInteractionData(component: ChartComponent,
                                        location: CGPoint,

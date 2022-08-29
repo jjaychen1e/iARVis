@@ -10,6 +10,7 @@ import Foundation
 import SwiftUI
 import SwiftyJSON
 
+@available(iOS 16, *)
 extension ChartView {
     @ViewBuilder
     func chartOverlayHandler(proxy: ChartProxy) -> some View {

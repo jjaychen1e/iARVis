@@ -47,6 +47,7 @@ enum ARVisSymbolType: String, RawRepresentable, Codable {
     case square = "Square"
 }
 
+@available(iOS 16, *)
 extension ARVisSymbolType {
     var symbol: some ChartSymbolShape {
         switch self {

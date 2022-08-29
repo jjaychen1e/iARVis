@@ -9,6 +9,7 @@ import Charts
 import Foundation
 import SwiftyJSON
 
+@available(iOS 16, *)
 struct ARVisPlottableValueFieldPair: Codable, Hashable {
     var label: String
     var field: String

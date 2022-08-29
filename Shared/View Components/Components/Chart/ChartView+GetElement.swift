@@ -15,6 +15,7 @@ enum GetElementMode {
     case nearest
 }
 
+@available(iOS 16, *)
 func getElementInRangeX(proxy: ChartProxy, location: CGPoint, geo: GeometryProxy, chartData: ChartDataItem?, xStartField: String, xEndField: String, mode: GetElementMode = .accurate) -> [JSON] {
     guard let chartData = chartData else { return [] }
     let relativeX = location.x - geo[proxy.plotAreaFrame].origin.x
@@ -126,6 +127,7 @@ func getElementInRangeX(proxy: ChartProxy, location: CGPoint, geo: GeometryProxy
     return []
 }
 
+@available(iOS 16, *)
 func getElementInRangeY(proxy: ChartProxy, location: CGPoint, geo: GeometryProxy, chartData: ChartDataItem?, yStartField: String, yEndField: String, mode: GetElementMode = .accurate) -> [JSON] {
     guard let chartData = chartData else { return [] }
     let relativeY = location.y - geo[proxy.plotAreaFrame].origin.y
@@ -236,6 +238,7 @@ func getElementInRangeY(proxy: ChartProxy, location: CGPoint, geo: GeometryProxy
     return []
 }
 
+@available(iOS 16, *)
 func getElementInXY(proxy: ChartProxy, location: CGPoint, geo: GeometryProxy, chartData: ChartDataItem?, xField: String, yField: String) -> JSON? {
     guard let chartData = chartData else { return nil }
     let relativeX = location.x - geo[proxy.plotAreaFrame].origin.x

@@ -15,11 +15,13 @@ enum ARVisAnnotationPosition: String, RawRepresentable, Codable {
     case bottomLeading
 }
 
+@available(iOS 16, *)
 struct ARVisAnnotation: Codable, Equatable {
     var position: ARVisAnnotationPosition
     var content: ViewElementComponent
 }
 
+@available(iOS 16, *)
 extension AnnotationPosition {
     init(_ annotationPosition: ARVisAnnotationPosition) {
         switch annotationPosition {

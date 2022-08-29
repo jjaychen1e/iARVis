@@ -9,6 +9,7 @@ import Charts
 import SwiftUI
 import SwiftyJSON
 
+@available(iOS 16, *)
 struct ChartView: View {
     @State var chartConfiguration: ChartConfiguration
 
@@ -120,9 +121,10 @@ struct ChartView: View {
     }
 }
 
+@available(iOS 16, *)
 struct ChartView_Previews: PreviewProvider {
     static var previews: some View {
-        let chartConfiguration = ChartConfigurationJSONParser.default.parse(JSON(ChartConfigurationJSONParser.exampleJSONString1.data(using: .utf8)!))
+        let chartConfiguration = ChartConfigurationJSONParser.default.parse(JSON(ChartConfigurationExample.exampleJSONString1.data(using: .utf8)!))
         ChartView(chartConfiguration: chartConfiguration)
             .previewLayout(.fixed(width: 720, height: 540))
     }

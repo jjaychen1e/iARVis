@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 import UIKit
 
+@available(iOS 16, *)
 class ChartTooltipPresentationViewController: UIViewController {
     var widgetConfiguration: WidgetConfiguration?
     var component: ViewElementComponent

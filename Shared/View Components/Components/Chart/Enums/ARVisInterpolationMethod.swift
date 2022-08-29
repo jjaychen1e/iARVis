@@ -13,6 +13,7 @@ enum ARVisInterpolationMethod: String, RawRepresentable, Codable {
     case cardinal
 }
 
+@available(iOS 16, *)
 extension InterpolationMethod {
     init(_ interpolationMethod: ARVisInterpolationMethod) {
         switch interpolationMethod {

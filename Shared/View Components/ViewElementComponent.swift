@@ -152,9 +152,13 @@ enum ViewElementComponent: Codable, Equatable {
             let nestedContainer: KeyedDecodingContainer<ViewElementComponent.TableCodingKeys> = try container.nestedContainer(keyedBy: ViewElementComponent.TableCodingKeys.self, forKey: ViewElementComponent.CodingKeys.table)
             self = ViewElementComponent.table(configuration: try nestedContainer.decode(TableConfiguration.self, forKey: ViewElementComponent.TableCodingKeys.configuration))
         case .chart:
-            let dict = try container.decode([String: Any].self, forKey: .chart)
-            let json = JSON(dict)
-            self = ViewElementComponent.chart(configuration: ChartConfigurationJSONParser.default.parse(json))
+            if #available(iOS 16, *) {
+                let dict = try container.decode([String: Any].self, forKey: .chart)
+                let json = JSON(dict)
+                self = ViewElementComponent.chart(configuration: ChartConfigurationJSONParser.default.parse(json))
+            } else {
+                self = .text(content: "Chart component is not supported in iOS 15.")
+            }
         case .segmentedControl:
             let nestedContainer: KeyedDecodingContainer<ViewElementComponent.SegmentedControlCodingKeys> = try container.nestedContainer(keyedBy: ViewElementComponent.SegmentedControlCodingKeys.self, forKey: ViewElementComponent.CodingKeys.segmentedControl)
             self = ViewElementComponent.segmentedControl(items: try nestedContainer.decode([ARVisSegmentedControlItem].self, forKey: ViewElementComponent.SegmentedControlCodingKeys.items))
@@ -212,8 +216,10 @@ enum ViewElementComponent: Codable, Equatable {
             var nestedContainer: KeyedEncodingContainer<ViewElementComponent.TableCodingKeys> = container.nestedContainer(keyedBy: ViewElementComponent.TableCodingKeys.self, forKey: ViewElementComponent.CodingKeys.table)
             try nestedContainer.encode(configuration, forKey: ViewElementComponent.TableCodingKeys.configuration)
         case let .chart(configuration):
-            if let encodedDict = ChartConfigurationJSONParser.default.encode(configuration).dictionaryObject {
-                try container.encodeIfPresent(encodedDict, forKey: ViewElementComponent.CodingKeys.chart)
+            if #available(iOS 16, *) {
+                if let encodedDict = ChartConfigurationJSONParser.default.encode(configuration).dictionaryObject {
+                    try container.encodeIfPresent(encodedDict, forKey: ViewElementComponent.CodingKeys.chart)
+                }
             }
         case let .segmentedControl(items):
             var nestedContainer: KeyedEncodingContainer<ViewElementComponent.SegmentedControlCodingKeys> = container.nestedContainer(keyedBy: ViewElementComponent.SegmentedControlCodingKeys.self, forKey: ViewElementComponent.CodingKeys.segmentedControl)
@@ -288,21 +294,31 @@ extension ViewElementComponent {
             case let .table(configuration):
                 ARVisTableView(configuration: configuration)
             case let .chart(configuration):
-                ChartView(chartConfiguration: configuration)
-                    .id(UUID())
+                if #available(iOS 16, *) {
+                    ChartView(chartConfiguration: configuration)
+                        .id(UUID())
+                }
             case let .segmentedControl(items):
                 ARVisSegmentedControlView(items: items)
             case let .grid(rows):
-                Grid {
-                    ForEach(Array(zip(rows.indices, rows)), id: \.0) { _, row in
-                        AnyView(row.view())
+                if #available(iOS 16, *) {
+                    Grid {
+                        ForEach(Array(zip(rows.indices, rows)), id: \.0) { _, row in
+                            AnyView(row.view())
+                        }
                     }
+                } else {
+                    Text("Grid component is not supported in iOS 15.")
                 }
             case let .gridRow(rowElements):
-                GridRow {
-                    ForEach(Array(zip(rowElements.indices, rowElements)), id: \.0) { _, rowElement in
-                        AnyView(rowElement.view())
+                if #available(iOS 16, *) {
+                    GridRow {
+                        ForEach(Array(zip(rowElements.indices, rowElements)), id: \.0) { _, rowElement in
+                            AnyView(rowElement.view())
+                        }
                     }
+                } else {
+                    Text("GridRow component is not supported in iOS 15.")
                 }
             }
         }

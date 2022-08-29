@@ -8,6 +8,7 @@
 import Foundation
 import Charts
 
+@available(iOS 16, *)
 struct ChartComponentConfiguration: Codable, Equatable {
     var component: ChartComponent
     var commonConfig: ChartComponentCommonConfig

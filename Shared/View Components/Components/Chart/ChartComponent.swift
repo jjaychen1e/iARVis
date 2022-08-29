@@ -10,6 +10,7 @@ import Foundation
 import SwiftUI
 import SwiftyJSON
 
+@available(iOS 16, *)
 enum ChartComponent: Codable, Hashable {
     case barMarkRepeat1(dataKey: String, xStart: ARVisPlottableValueFieldPair, xEnd: ARVisPlottableValueFieldPair, y: ARVisPlottableValueFieldPair, height: CGFloat?)
     case lineMarkRepeat1(dataKey: String, x: ARVisPlottableValueFieldPair, y: ARVisPlottableValueFieldPair)
@@ -47,6 +48,7 @@ enum ChartComponentHoverType {
     case xy
 }
 
+@available(iOS 16, *)
 extension ChartComponent {
     var hoverType: ChartComponentHoverType {
         switch self {
@@ -64,6 +66,7 @@ extension ChartComponent {
     }
 }
 
+@available(iOS 16, *)
 extension ChartComponent {
     private func barMark<X: Plottable, Y: Plottable>(xStart: PlottableValue<X>, xEnd: PlottableValue<X>, y: PlottableValue<Y>, height: CGFloat?) -> some ChartContent {
         BarMark(xStart: xStart, xEnd: xEnd, y: y, height: height != nil ? .fixed(height!) : .automatic)

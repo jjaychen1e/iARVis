@@ -8,6 +8,7 @@
 import Foundation
 import SwiftyJSON
 
+@available(iOS 16, *)
 struct ChartInteractionHoverTooltipManualConfig: Equatable {
     var field: String
     var value: JSON
@@ -19,6 +20,7 @@ enum ChartInteractionHoverTooltipType: String, RawRepresentable {
     case auto = "Auto"
 }
 
+@available(iOS 16, *)
 enum ChartInteractionHoverTooltip: Equatable {
     case manual(contents: [ChartInteractionHoverTooltipManualConfig])
     case auto(content: ViewElementComponent)
@@ -37,11 +39,13 @@ enum ChartInteractionType: String, RawRepresentable {
     case click = "Click"
 }
 
+@available(iOS 16, *)
 enum ChartInteraction: Equatable {
     case hover(tooltip: ChartInteractionHoverTooltip)
     case click(action: ChartInteractionClickAction)
 }
 
+@available(iOS 16, *)
 struct ChartInteractionData: Equatable {
     var componentSelectedElementInRangeX: [ChartComponent: JSON] = [:]
     var componentSelectedElementInRangeY: [ChartComponent: JSON] = [:]
