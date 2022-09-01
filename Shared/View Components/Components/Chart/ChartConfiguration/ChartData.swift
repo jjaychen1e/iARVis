@@ -53,7 +53,7 @@ struct ChartDataItem: Codable, Equatable {
 }
 
 extension ChartDataItem {
-    func dataItem(at index: Int) -> JSON {
+    func datum(at index: Int) -> JSON {
         var dict: [String: JSON] = [:]
         for title in titles {
             dict[title] = data[title].array?[safe: index]

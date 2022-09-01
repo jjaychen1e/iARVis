@@ -16,20 +16,14 @@ struct ChartConfiguration {
         _chartData = ChartData()
         _componentConfigs = [ChartComponentConfiguration]()
         _interactionData = ChartInteractionData()
-        _chartXScale = nil
-        _chartXAxis = nil
-        _chartYAxis = nil
-        _styleConfiguration = nil
+        _swiftChartConfiguration = SwiftChartConfiguration()
     }
 
-    init(_chartData _: Any? = nil, _componentConfigs _: Any? = nil, _interactionData _: Any? = nil, _chartXScale _: Any? = nil, _chartXAxis _: Any? = nil, _chartYAxis _: Any? = nil, _styleConfiguration _: Any? = nil) {
+    init(_chartData _: Any? = nil, _componentConfigs _: Any? = nil, _interactionData _: Any? = nil, _swiftChartConfiguration _: Any? = nil) {
         _chartData = nil
         _componentConfigs = nil
         _interactionData = nil
-        _chartXScale = nil
-        _chartXAxis = nil
-        _chartYAxis = nil
-        _styleConfiguration = nil
+        _swiftChartConfiguration = nil
     }
 
     @available(iOS 16, *)
@@ -69,52 +63,16 @@ struct ChartConfiguration {
     private var _interactionData: Any?
 
     @available(iOS 16, *)
-    var chartXScale: ChartXScale? {
+    var swiftChartConfiguration: SwiftChartConfiguration {
         get {
-            _chartXScale as? ChartXScale
+            _swiftChartConfiguration as! SwiftChartConfiguration
         }
         set {
-            _chartXScale = newValue
+            _swiftChartConfiguration = newValue
         }
     }
 
-    private var _chartXScale: Any?
-
-    @available(iOS 16, *)
-    var chartXAxis: ChartXAxis? {
-        get {
-            _chartXAxis as? ChartXAxis
-        }
-        set {
-            _chartXAxis = newValue
-        }
-    }
-
-    private var _chartXAxis: Any?
-
-    @available(iOS 16, *)
-    var chartYAxis: ChartYAxis? {
-        get {
-            _chartYAxis as? ChartYAxis
-        }
-        set {
-            _chartYAxis = newValue
-        }
-    }
-
-    private var _chartYAxis: Any?
-
-    @available(iOS 16, *)
-    var styleConfiguration: ChartStyleConfiguration? {
-        get {
-            _styleConfiguration as? ChartStyleConfiguration
-        }
-        set {
-            _styleConfiguration = newValue
-        }
-    }
-
-    private var _styleConfiguration: Any?
+    private var _swiftChartConfiguration: Any?
 }
 
 extension ChartConfiguration: Equatable {
@@ -123,10 +81,7 @@ extension ChartConfiguration: Equatable {
             return lhs.chartData == rhs.chartData &&
                 lhs.componentConfigs == rhs.componentConfigs &&
                 lhs.interactionData == rhs.interactionData &&
-                lhs.chartXScale == rhs.chartXScale &&
-                lhs.chartXAxis == rhs.chartXAxis &&
-                lhs.chartYAxis == rhs.chartYAxis &&
-                lhs.styleConfiguration == rhs.styleConfiguration
+                lhs.swiftChartConfiguration == rhs.swiftChartConfiguration
         } else {
             return true
         }

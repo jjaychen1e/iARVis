@@ -10,8 +10,9 @@ import Foundation
 import Kingfisher
 import SwiftUI
 import SwiftyJSON
-import VideoPlayer
-import YouTubePlayerKit
+#if os(iOS)
+    import VideoPlayer
+#endif
 
 enum ViewElementComponent: Codable, Equatable {
     // font
@@ -266,8 +267,10 @@ extension ViewElementComponent {
                         YoutubeThumbnailView(url: url.absoluteString)
                             .frame(width: width, height: height)
                     } else {
-                        VideoPlayer(url: url, play: .constant(true))
-                            .frame(width: width, height: height)
+                        #if os(iOS)
+                            VideoPlayer(url: url, play: .constant(true))
+                                .frame(width: width, height: height)
+                        #endif
                     }
                 }
             case .link(url: _):

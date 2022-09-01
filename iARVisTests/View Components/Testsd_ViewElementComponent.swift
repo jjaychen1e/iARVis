@@ -62,6 +62,6 @@ class Tests_ViewElementComponent: XCTestCase {
     }
 
     func testViewElementComponentChartConfiguration() {
-        XCTAssertNoThrow(ViewElementComponent.exampleChartConfigurationDecode)
+        XCTAssertNoThrow(ViewElementComponent.example1_ProvenanceChartViewElementComponent)
     }
 }

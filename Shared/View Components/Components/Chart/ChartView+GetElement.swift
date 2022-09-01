@@ -28,7 +28,7 @@ func getElementInRangeX(proxy: ChartProxy, location: CGPoint, geo: GeometryProxy
                     if let xStartInt = chartData.data[xStartField].array?[safe: i]?.int,
                        let xEndInt = chartData.data[xEndField].array?[safe: i]?.int {
                         if intValue >= xStartInt, intValue <= xEndInt {
-                            return [chartData.dataItem(at: i)]
+                            return [chartData.datum(at: i)]
                         }
                     }
                 }
@@ -40,9 +40,9 @@ func getElementInRangeX(proxy: ChartProxy, location: CGPoint, geo: GeometryProxy
                         if let positionX = proxy.position(forX: xStartInt) {
                             let diff = abs(xStartInt - intValue)
                             if diff == minDiff {
-                                nearestItems.append(chartData.dataItem(at: i))
+                                nearestItems.append(chartData.datum(at: i))
                             } else if diff < minDiff, abs(positionX - relativeX) < 50.0 {
-                                nearestItems = [chartData.dataItem(at: i)]
+                                nearestItems = [chartData.datum(at: i)]
                                 minDiff = diff
                             }
                         }
@@ -59,7 +59,7 @@ func getElementInRangeX(proxy: ChartProxy, location: CGPoint, geo: GeometryProxy
                     if let xStartDouble = chartData.data[xStartField].array?[safe: i]?.double,
                        let xEndDouble = chartData.data[xEndField].array?[safe: i]?.double {
                         if doubleValue >= xStartDouble, doubleValue <= xEndDouble {
-                            return [chartData.dataItem(at: i)]
+                            return [chartData.datum(at: i)]
                         }
                     }
                 }
@@ -71,9 +71,9 @@ func getElementInRangeX(proxy: ChartProxy, location: CGPoint, geo: GeometryProxy
                         if let positionX = proxy.position(forX: xStartDouble) {
                             let diff = abs(xStartDouble - doubleValue)
                             if diff == minDiff {
-                                nearestItems.append(chartData.dataItem(at: i))
+                                nearestItems.append(chartData.datum(at: i))
                             } else if diff < minDiff, abs(positionX - relativeX) < 50.0 {
-                                nearestItems = [chartData.dataItem(at: i)]
+                                nearestItems = [chartData.datum(at: i)]
                                 minDiff = diff
                             }
                         }
@@ -90,7 +90,7 @@ func getElementInRangeX(proxy: ChartProxy, location: CGPoint, geo: GeometryProxy
                     if let xStartDate = chartData.data[xStartField].array?[safe: i]?.date,
                        let xEndDate = chartData.data[xEndField].array?[safe: i]?.date {
                         if dateValue >= xStartDate, dateValue <= xEndDate {
-                            return [chartData.dataItem(at: i)]
+                            return [chartData.datum(at: i)]
                         }
                     }
                 }
@@ -102,9 +102,9 @@ func getElementInRangeX(proxy: ChartProxy, location: CGPoint, geo: GeometryProxy
                         if let positionX = proxy.position(forX: xStartDate) {
                             let diff = abs(xStartDate.distance(to: dateValue))
                             if diff == minDiff {
-                                nearestItems.append(chartData.dataItem(at: i))
+                                nearestItems.append(chartData.datum(at: i))
                             } else if diff < minDiff, abs(positionX - relativeX) < 50.0 {
-                                nearestItems = [chartData.dataItem(at: i)]
+                                nearestItems = [chartData.datum(at: i)]
                                 minDiff = diff
                             }
                         }
@@ -118,7 +118,7 @@ func getElementInRangeX(proxy: ChartProxy, location: CGPoint, geo: GeometryProxy
             for i in 0 ..< chartData.length {
                 if stringValue == chartData.data[xStartField].array?[safe: i]?.string,
                    stringValue == chartData.data[xEndField].array?[safe: i]?.string {
-                    return [chartData.dataItem(at: i)]
+                    return [chartData.datum(at: i)]
                 }
             }
         }
@@ -140,7 +140,7 @@ func getElementInRangeY(proxy: ChartProxy, location: CGPoint, geo: GeometryProxy
                     if let yStartInt = chartData.data[yStartField].array?[safe: i]?.int,
                        let yEndInt = chartData.data[yEndField].array?[safe: i]?.int {
                         if intValue >= yStartInt, intValue <= yEndInt {
-                            return [chartData.dataItem(at: i)]
+                            return [chartData.datum(at: i)]
                         }
                     }
                 }
@@ -152,9 +152,9 @@ func getElementInRangeY(proxy: ChartProxy, location: CGPoint, geo: GeometryProxy
                         if let positionY = proxy.position(forY: yStartInt) {
                             let diff = abs(yStartInt - intValue)
                             if diff == minDiff {
-                                nearestItems.append(chartData.dataItem(at: i))
+                                nearestItems.append(chartData.datum(at: i))
                             } else if diff < minDiff, abs(positionY - relativeY) < 50.0 {
-                                nearestItems = [chartData.dataItem(at: i)]
+                                nearestItems = [chartData.datum(at: i)]
                                 minDiff = diff
                             }
                         }
@@ -171,7 +171,7 @@ func getElementInRangeY(proxy: ChartProxy, location: CGPoint, geo: GeometryProxy
                     if let yStartDouble = chartData.data[yStartField].array?[safe: i]?.double,
                        let yEndDouble = chartData.data[yEndField].array?[safe: i]?.double {
                         if doubleValue >= yStartDouble, doubleValue <= yEndDouble {
-                            return [chartData.dataItem(at: i)]
+                            return [chartData.datum(at: i)]
                         }
                     }
                 }
@@ -183,9 +183,9 @@ func getElementInRangeY(proxy: ChartProxy, location: CGPoint, geo: GeometryProxy
                         if let positionY = proxy.position(forY: yStartDouble) {
                             let diff = abs(yStartDouble - doubleValue)
                             if diff == minDiff {
-                                nearestItems.append(chartData.dataItem(at: i))
+                                nearestItems.append(chartData.datum(at: i))
                             } else if diff < minDiff, abs(positionY - relativeY) < 50.0 {
-                                nearestItems = [chartData.dataItem(at: i)]
+                                nearestItems = [chartData.datum(at: i)]
                                 minDiff = diff
                             }
                         }
@@ -202,7 +202,7 @@ func getElementInRangeY(proxy: ChartProxy, location: CGPoint, geo: GeometryProxy
                     if let yStartDate = chartData.data[yStartField].array?[safe: i]?.date,
                        let yEndDate = chartData.data[yEndField].array?[safe: i]?.date {
                         if dateValue >= yStartDate, dateValue <= yEndDate {
-                            return [chartData.dataItem(at: i)]
+                            return [chartData.datum(at: i)]
                         }
                     }
                 }
@@ -214,9 +214,9 @@ func getElementInRangeY(proxy: ChartProxy, location: CGPoint, geo: GeometryProxy
                         if let positionY = proxy.position(forY: yStartDate) {
                             let diff = abs(yStartDate.distance(to: dateValue))
                             if diff == minDiff {
-                                nearestItems.append(chartData.dataItem(at: i))
+                                nearestItems.append(chartData.datum(at: i))
                             } else if diff < minDiff, abs(positionY - relativeY) < 50.0 {
-                                nearestItems = [chartData.dataItem(at: i)]
+                                nearestItems = [chartData.datum(at: i)]
                                 minDiff = diff
                             }
                         }
@@ -230,7 +230,7 @@ func getElementInRangeY(proxy: ChartProxy, location: CGPoint, geo: GeometryProxy
             for i in 0 ..< chartData.length {
                 if stringValue == chartData.data[yStartField].array?[safe: i]?.string,
                    stringValue == chartData.data[yEndField].array?[safe: i]?.string {
-                    return [chartData.dataItem(at: i)]
+                    return [chartData.datum(at: i)]
                 }
             }
         }
@@ -253,7 +253,7 @@ func getElementInXY(proxy: ChartProxy, location: CGPoint, geo: GeometryProxy, ch
                 for i in 0 ..< chartData.length {
                     if xIntValue == chartData.data[xField].array?[safe: i]?.int,
                        yIntValue == chartData.data[yField].array?[safe: i]?.int {
-                        return chartData.dataItem(at: i)
+                        return chartData.datum(at: i)
                     }
                 }
             }
@@ -262,7 +262,7 @@ func getElementInXY(proxy: ChartProxy, location: CGPoint, geo: GeometryProxy, ch
                 for i in 0 ..< chartData.length {
                     if xIntValue == chartData.data[xField].array?[safe: i]?.int,
                        yDoubleValue == chartData.data[yField].array?[safe: i]?.double {
-                        return chartData.dataItem(at: i)
+                        return chartData.datum(at: i)
                     }
                 }
             }
@@ -271,7 +271,7 @@ func getElementInXY(proxy: ChartProxy, location: CGPoint, geo: GeometryProxy, ch
                 for i in 0 ..< chartData.length {
                     if xIntValue == chartData.data[xField].array?[safe: i]?.int,
                        yDateValue == chartData.data[yField].array?[safe: i]?.date {
-                        return chartData.dataItem(at: i)
+                        return chartData.datum(at: i)
                     }
                 }
             }
@@ -280,7 +280,7 @@ func getElementInXY(proxy: ChartProxy, location: CGPoint, geo: GeometryProxy, ch
                 for i in 0 ..< chartData.length {
                     if xIntValue == chartData.data[xField].array?[safe: i]?.int,
                        yStringValue == chartData.data[yField].array?[safe: i]?.string {
-                        return chartData.dataItem(at: i)
+                        return chartData.datum(at: i)
                     }
                 }
             }
@@ -291,7 +291,7 @@ func getElementInXY(proxy: ChartProxy, location: CGPoint, geo: GeometryProxy, ch
                 for i in 0 ..< chartData.length {
                     if xDoubleValue == chartData.data[xField].array?[safe: i]?.double,
                        yIntValue == chartData.data[yField].array?[safe: i]?.int {
-                        return chartData.dataItem(at: i)
+                        return chartData.datum(at: i)
                     }
                 }
             }
@@ -300,7 +300,7 @@ func getElementInXY(proxy: ChartProxy, location: CGPoint, geo: GeometryProxy, ch
                 for i in 0 ..< chartData.length {
                     if xDoubleValue == chartData.data[xField].array?[safe: i]?.double,
                        yDoubleValue == chartData.data[yField].array?[safe: i]?.double {
-                        return chartData.dataItem(at: i)
+                        return chartData.datum(at: i)
                     }
                 }
             }
@@ -309,7 +309,7 @@ func getElementInXY(proxy: ChartProxy, location: CGPoint, geo: GeometryProxy, ch
                 for i in 0 ..< chartData.length {
                     if xDoubleValue == chartData.data[xField].array?[safe: i]?.double,
                        yDateValue == chartData.data[yField].array?[safe: i]?.date {
-                        return chartData.dataItem(at: i)
+                        return chartData.datum(at: i)
                     }
                 }
             }
@@ -318,7 +318,7 @@ func getElementInXY(proxy: ChartProxy, location: CGPoint, geo: GeometryProxy, ch
                 for i in 0 ..< chartData.length {
                     if xDoubleValue == chartData.data[xField].array?[safe: i]?.double,
                        yStringValue == chartData.data[yField].array?[safe: i]?.string {
-                        return chartData.dataItem(at: i)
+                        return chartData.datum(at: i)
                     }
                 }
             }
@@ -329,7 +329,7 @@ func getElementInXY(proxy: ChartProxy, location: CGPoint, geo: GeometryProxy, ch
                 for i in 0 ..< chartData.length {
                     if xDateValue == chartData.data[xField].array?[safe: i]?.date,
                        yIntValue == chartData.data[yField].array?[safe: i]?.int {
-                        return chartData.dataItem(at: i)
+                        return chartData.datum(at: i)
                     }
                 }
             }
@@ -338,7 +338,7 @@ func getElementInXY(proxy: ChartProxy, location: CGPoint, geo: GeometryProxy, ch
                 for i in 0 ..< chartData.length {
                     if xDateValue == chartData.data[xField].array?[safe: i]?.date,
                        yDoubleValue == chartData.data[yField].array?[safe: i]?.double {
-                        return chartData.dataItem(at: i)
+                        return chartData.datum(at: i)
                     }
                 }
             }
@@ -347,7 +347,7 @@ func getElementInXY(proxy: ChartProxy, location: CGPoint, geo: GeometryProxy, ch
                 for i in 0 ..< chartData.length {
                     if xDateValue == chartData.data[xField].array?[safe: i]?.date,
                        yDateValue == chartData.data[yField].array?[safe: i]?.date {
-                        return chartData.dataItem(at: i)
+                        return chartData.datum(at: i)
                     }
                 }
             }
@@ -356,7 +356,7 @@ func getElementInXY(proxy: ChartProxy, location: CGPoint, geo: GeometryProxy, ch
                 for i in 0 ..< chartData.length {
                     if xDateValue == chartData.data[xField].array?[safe: i]?.date,
                        yStringValue == chartData.data[yField].array?[safe: i]?.string {
-                        return chartData.dataItem(at: i)
+                        return chartData.datum(at: i)
                     }
                 }
             }
@@ -367,7 +367,7 @@ func getElementInXY(proxy: ChartProxy, location: CGPoint, geo: GeometryProxy, ch
                 for i in 0 ..< chartData.length {
                     if xStringValue == chartData.data[xField].array?[safe: i]?.string,
                        yIntValue == chartData.data[yField].array?[safe: i]?.int {
-                        return chartData.dataItem(at: i)
+                        return chartData.datum(at: i)
                     }
                 }
             }
@@ -376,7 +376,7 @@ func getElementInXY(proxy: ChartProxy, location: CGPoint, geo: GeometryProxy, ch
                 for i in 0 ..< chartData.length {
                     if xStringValue == chartData.data[xField].array?[safe: i]?.string,
                        yDoubleValue == chartData.data[yField].array?[safe: i]?.double {
-                        return chartData.dataItem(at: i)
+                        return chartData.datum(at: i)
                     }
                 }
             }
@@ -385,7 +385,7 @@ func getElementInXY(proxy: ChartProxy, location: CGPoint, geo: GeometryProxy, ch
                 for i in 0 ..< chartData.length {
                     if xStringValue == chartData.data[xField].array?[safe: i]?.string,
                        yDateValue == chartData.data[yField].array?[safe: i]?.date {
-                        return chartData.dataItem(at: i)
+                        return chartData.datum(at: i)
                     }
                 }
             }
@@ -394,7 +394,7 @@ func getElementInXY(proxy: ChartProxy, location: CGPoint, geo: GeometryProxy, ch
                 for i in 0 ..< chartData.length {
                     if xStringValue == chartData.data[xField].array?[safe: i]?.string,
                        yStringValue == chartData.data[yField].array?[safe: i]?.string {
-                        return chartData.dataItem(at: i)
+                        return chartData.datum(at: i)
                     }
                 }
             }

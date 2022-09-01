@@ -44,4 +44,30 @@ extension ChartProxy {
         }
         return nil
     }
+    
+    func positionRange(atX x: JSON) -> ClosedRange<CGFloat>? {
+        if let intValue = x.strictInt {
+            return positionRange(forX: intValue)
+        } else if let doubleValue = x.strictDouble {
+            return positionRange(forX: doubleValue)
+        } else if let dateValue = x.date {
+            return positionRange(forX: dateValue)
+        } else if let stringValue = x.string {
+            return positionRange(forX: stringValue)
+        }
+        return nil
+    }
+    
+    func positionRange(atY y: JSON) -> ClosedRange<CGFloat>? {
+        if let intValue = y.strictInt {
+            return positionRange(forY: intValue)
+        } else if let doubleValue = y.strictDouble {
+            return positionRange(forY: doubleValue)
+        } else if let dateValue = y.date {
+            return positionRange(forY: dateValue)
+        } else if let stringValue = y.string {
+            return positionRange(forY: stringValue)
+        }
+        return nil
+    }
 }

@@ -50,14 +50,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let rootVC = ARKitViewController()
             window.rootViewController = rootVC
         #else
-            let rootVC = UIHostingController(rootView:
-                ComponentView(.exampleArtworkWidget)
-                    .environment(\.openURL, OpenURLAction { url in
-                        openURL(url, widgetConfiguration: nil)
-                        return .handled
-                    })
-            )
-            window.rootViewController = rootVC
+            if #available(iOS 16, *) {
+                let rootVC = UIHostingController(rootView:
+                    ComponentView(.example2_MacBookPro)
+                        .environment(\.openURL, OpenURLAction { url in
+                            openURL(url, widgetConfiguration: nil)
+                            return .handled
+                        })
+                )
+                window.rootViewController = rootVC
+            }
         #endif
         window.makeKeyAndVisible()
 

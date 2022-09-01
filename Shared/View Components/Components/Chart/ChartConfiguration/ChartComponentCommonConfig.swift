@@ -7,20 +7,14 @@
 
 import Foundation
 
-enum ChartComponentCommonConfigType: String, RawRepresentable, CaseIterable {
-    case interpolationMethod
-    case symbol
-    case foregroundStyleColor
-    case lineStyle
-    case annotation
-}
-
 @available(iOS 16, *)
 struct ChartComponentCommonConfig: Codable, Equatable {
     var interpolationMethod: ARVisInterpolationMethod?
     var symbol: ARVisSymbol?
     var symbolSize: ARVisSymbolSize?
     var foregroundStyleColor: ARVisColor?
+    var foregroundStyleField: String?
     var lineStyle: ARVisLineStyle?
-    var annotation: ARVisAnnotation?
+    var annotations: [ARVisAnnotation]?
+    var conditionalAnnotations: [ARVisConditionalAnnotation]?
 }

@@ -20,10 +20,11 @@ struct ChartView: View {
                 componentConfig.toChartContent(configuration: chartConfiguration)
             }
         }
-        .chartXAxis(chartConfiguration.chartXAxis?.hidden == true ? .hidden : .automatic)
+        .chartLegend(chartConfiguration.swiftChartConfiguration.chartLegend?.hidden == true ? .hidden : .automatic)
+        .chartXAxis(chartConfiguration.swiftChartConfiguration.chartXAxis?.hidden == true ? .hidden : .automatic)
         .chartXAxis {
             let values: AxisMarkValues? = {
-                if let axisMarks = chartConfiguration.chartXAxis?.axisMarks {
+                if let axisMarks = chartConfiguration.swiftChartConfiguration.chartXAxis?.axisMarks {
                     switch axisMarks.axisMarksValues {
                     case let .strideByDateComponent(component, count):
                         return AxisMarkValues.stride(by: .init(component), count: count)
@@ -34,7 +35,7 @@ struct ChartView: View {
             AxisMarks(values: values == nil ? .automatic : values!) { _ in
                 AxisGridLine()
                 AxisTick()
-                switch chartConfiguration.chartXAxis?.axisMarks?.axisValueLabel.format {
+                switch chartConfiguration.swiftChartConfiguration.chartXAxis?.axisMarks?.axisValueLabel.format {
                 case let .year(format):
                     switch format {
                     case .defaultDigits:
@@ -45,10 +46,10 @@ struct ChartView: View {
                 }
             }
         }
-        .chartYAxis(chartConfiguration.chartYAxis?.hidden == true ? .hidden : .automatic)
+        .chartYAxis(chartConfiguration.swiftChartConfiguration.chartYAxis?.hidden == true ? .hidden : .automatic)
         .chartYAxis {
             let values: AxisMarkValues? = {
-                if let axisMarks = chartConfiguration.chartYAxis?.axisMarks {
+                if let axisMarks = chartConfiguration.swiftChartConfiguration.chartYAxis?.axisMarks {
                     switch axisMarks.axisMarksValues {
                     case let .strideByDateComponent(component, count):
                         return AxisMarkValues.stride(by: .init(component), count: count)
@@ -60,7 +61,7 @@ struct ChartView: View {
                 AxisGridLine()
                 AxisTick()
 
-                switch chartConfiguration.chartYAxis?.axisMarks?.axisValueLabel.format {
+                switch chartConfiguration.swiftChartConfiguration.chartYAxis?.axisMarks?.axisValueLabel.format {
                 case let .year(format):
                     switch format {
                     case .defaultDigits:
@@ -71,13 +72,12 @@ struct ChartView: View {
                 }
             }
         }
-        .if(chartConfiguration.chartXScale?.includingZero != nil) { view in
-            if let includingZero = chartConfiguration.chartXScale?.includingZero {
-                view.chartXScale(domain: .automatic(includesZero: includingZero))
-            }
+        .if(chartConfiguration.swiftChartConfiguration.chartXScale?.includingZero != nil) { view in
+            let includingZero = chartConfiguration.swiftChartConfiguration.chartXScale!.includingZero!
+            view.chartXScale(domain: .automatic(includesZero: includingZero))
         }
-        .if(chartConfiguration.chartXScale?.domain != nil) { view in
-            if let domain = chartConfiguration.chartXScale?.domain, domain.count >= 2 {
+        .if(chartConfiguration.swiftChartConfiguration.chartXScale?.domain != nil) { view in
+            if let domain = chartConfiguration.swiftChartConfiguration.chartXScale?.domain, domain.count >= 2 {
                 if let xStart = domain[0].int, let xEnd = domain[1].int {
                     view.chartXScale(domain: min(xStart, xEnd) ... max(xStart, xEnd))
                 } else if let xStart = domain[0].double, let xEnd = domain[1].double {
@@ -86,6 +86,9 @@ struct ChartView: View {
                     view.chartXScale(domain: min(xStart, xEnd) ... max(xStart, xEnd))
                 }
             }
+        }
+        .chartOverlay { proxy in
+            chartAnnotationHandler(proxy: proxy, chartConfiguration: chartConfiguration)
         }
         .chartOverlay { proxy in
             chartInteractionHandler(proxy: proxy)
@@ -105,10 +108,10 @@ struct ChartView: View {
 //                }
 //            #endif
 //        }
-        .frame(width: chartConfiguration.styleConfiguration?.maxWidth, height: chartConfiguration.styleConfiguration?.maxHeight ?? nil)
-        .frame(maxHeight: chartConfiguration.styleConfiguration?.maxHeight == nil ? 200 : nil)
+        .frame(width: chartConfiguration.swiftChartConfiguration.styleConfiguration?.maxWidth, height: chartConfiguration.swiftChartConfiguration.styleConfiguration?.maxHeight ?? nil)
+        .frame(maxHeight: chartConfiguration.swiftChartConfiguration.styleConfiguration?.maxHeight == nil ? 200 : nil)
         .if(true) { view in
-            if let padding = chartConfiguration.styleConfiguration?.padding {
+            if let padding = chartConfiguration.swiftChartConfiguration.styleConfiguration?.padding {
                 view
                     .padding(.leading, padding[safe: 0])
                     .padding(.top, padding[safe: 1])
@@ -124,7 +127,7 @@ struct ChartView: View {
 @available(iOS 16, *)
 struct ChartView_Previews: PreviewProvider {
     static var previews: some View {
-        let chartConfiguration = ChartConfigurationJSONParser.default.parse(JSON(ChartConfigurationExample.exampleJSONString1.data(using: .utf8)!))
+        let chartConfiguration = ChartConfigurationJSONParser.default.parse(JSON(ChartConfigurationExample.chartConfigurationExample1_ProvenanceChart.data(using: .utf8)!))
         ChartView(chartConfiguration: chartConfiguration)
             .previewLayout(.fixed(width: 720, height: 540))
     }

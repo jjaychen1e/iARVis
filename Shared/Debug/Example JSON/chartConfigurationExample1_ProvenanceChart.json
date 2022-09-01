@@ -348,13 +348,13 @@
       ]
     }
   ],
-  "xScale": {
+  "chartXScale": {
     "domain": [
       "1888-01-01",
       "2022-01-01"
     ]
   },
-  "styleConfig": {
+  "styleConfiguration": {
     "maxHeight": 250
   }
 }

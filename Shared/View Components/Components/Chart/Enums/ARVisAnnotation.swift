@@ -6,6 +6,7 @@
 //
 
 import Charts
+import SwiftUI
 import Foundation
 
 enum ARVisAnnotationPosition: String, RawRepresentable, Codable {
@@ -13,6 +14,8 @@ enum ARVisAnnotationPosition: String, RawRepresentable, Codable {
     case topTrailing
     case bottomTrailing
     case bottomLeading
+    case leading
+    case trailing
 }
 
 @available(iOS 16, *)
@@ -33,6 +36,30 @@ extension AnnotationPosition {
             self = .bottomTrailing
         case .bottomLeading:
             self = .bottomLeading
+        case .leading:
+            self = .leading
+        case .trailing:
+            self = .trailing
+        }
+    }
+}
+
+@available(iOS 16, *)
+extension Alignment {
+    init(_ annotationPosition: ARVisAnnotationPosition) {
+        switch annotationPosition {
+        case .topLeading:
+            self = .topLeading
+        case .topTrailing:
+            self = .topTrailing
+        case .bottomTrailing:
+            self = .bottomTrailing
+        case .bottomLeading:
+            self = .bottomLeading
+        case .leading:
+            self = .leading
+        case .trailing:
+            self = .trailing
         }
     }
 }

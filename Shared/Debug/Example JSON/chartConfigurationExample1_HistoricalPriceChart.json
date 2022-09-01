@@ -118,7 +118,7 @@
       ]
     }
   ],
-  "styleConfig": {
+  "styleConfiguration": {
     "maxHeight": 250
   }
 }

@@ -15,7 +15,7 @@ struct ImageTrackingExample {
     static let exampleConfiguration1: ImageTrackingConfiguration = .init(
         imageURL: exampleImageURL1,
         relationships: [
-            .init(widgetConfiguration: .init(component: .exampleArtworkWidget,
+            .init(widgetConfiguration: .init(component: .example1_ArtworkWidget,
                                              relativeAnchorPoint: .trailing,
                                              relativePosition: SCNVector3(0.2, 0, 0))),
         ]
@@ -23,7 +23,7 @@ struct ImageTrackingExample {
     static let exampleConfiguration2: ImageTrackingConfiguration = .init(
         imageURL: exampleImageURL2,
         relationships: [
-            .init(widgetConfiguration: .init(component: .exampleArtworkWidget,
+            .init(widgetConfiguration: .init(component: .example1_ArtworkWidget,
                                              relativeAnchorPoint: .leading,
                                              relativePosition: SCNVector3(0.2, 0, 0))),
         ]

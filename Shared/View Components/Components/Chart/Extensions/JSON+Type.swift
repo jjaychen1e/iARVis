@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import SwiftyJSON
 import SwiftDate
+import SwiftyJSON
 
 extension JSON {
     var date: Date? {

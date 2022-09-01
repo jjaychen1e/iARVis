@@ -156,41 +156,8 @@ class ChartConfigurationJSONParser {
         }
         chartConfig.componentConfigs = componentConfigs
 
-        // ChartXScale
-        if let chartXScale = json["xScale"].decode(ChartXScale.self) {
-            chartConfig.chartXScale = chartXScale
-        } else {
-            if json["xScale"] != .null {
-                fatalErrorDebug()
-            }
-        }
-
-        // ChartXAxis
-        if let chartXAxis = json["chartXAxis"].decode(ChartXAxis.self) {
-            chartConfig.chartXAxis = chartXAxis
-        } else {
-            if json["chartXAxis"] != .null {
-                fatalErrorDebug()
-            }
-        }
-
-        // ChartYAxis
-        if let chartYAxis = json["chartYAxis"].decode(ChartYAxis.self) {
-            chartConfig.chartYAxis = chartYAxis
-        } else {
-            if json["chartYAxis"] != .null {
-                fatalErrorDebug()
-            }
-        }
-
-        // Style Configuration
-        if let chartStyleConfig = json["styleConfig"].decode(ChartStyleConfiguration.self) {
-            chartConfig.styleConfiguration = chartStyleConfig
-        } else {
-            if json["styleConfig"] != .null {
-                fatalErrorDebug()
-            }
-        }
+        let swiftChartConfiguration = json.decode(SwiftChartConfiguration.self) ?? .init()
+        chartConfig.swiftChartConfiguration = swiftChartConfiguration
 
         return chartConfig
     }
@@ -317,50 +284,41 @@ class ChartConfigurationJSONParser {
             return componentJSON
         })
 
-        // ChartXScale
-        if let chartXScale = chartConfiguration.chartXScale {
-            result["xScale"] = JSON(parseJSON: chartXScale.prettyJSON)
-        }
-
-        // ChartXAxis
-        if let chartXAxis = chartConfiguration.chartXAxis {
-            result["chartXAxis"] = JSON(parseJSON: chartXAxis.prettyJSON)
-        }
-
-        // ChartYAxis
-        if let chartYAxis = chartConfiguration.chartYAxis {
-            result["chartYAxis"] = JSON(parseJSON: chartYAxis.prettyJSON)
-        }
-
-        // Style Configuration
-        if let styleConfig = chartConfiguration.styleConfiguration {
-            result["styleConfig"] = JSON(parseJSON: styleConfig.prettyJSON)
-        }
+        // SwiftChartConfiguration
+        try? result.merge(with: JSON(parseJSON: chartConfiguration.swiftChartConfiguration.prettyJSON))
 
         return result
     }
 }
 
 enum ChartConfigurationExample {
-    static let exampleJSONString1: String = {
+    static let chartConfigurationExample1_ProvenanceChart: String = {
         if #available(iOS 16, *) {
-            let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample1.json")
+            let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample1_ProvenanceChart.json")
             return try! String(contentsOfFile: path.path)
         }
         return "{}"
     }()
 
-    static let exampleJSONString2: String = {
+    static let chartConfigurationExample1_HistoricalPriceChart: String = {
         if #available(iOS 16, *) {
-            let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample2.json")
+            let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample1_HistoricalPriceChart.json")
             return try! String(contentsOfFile: path.path)
         }
         return "{}"
     }()
 
-    static let exampleJSONString3: String = {
+    static let chartConfigurationExample1_JamesEnsorChart: String = {
         if #available(iOS 16, *) {
-            let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample3.json")
+            let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample1_JamesEnsorLifeChart.json")
+            return try! String(contentsOfFile: path.path)
+        }
+        return "{}"
+    }()
+
+    static let chartConfigurationExample2_MacBookProFamilyChart: String = {
+        if #available(iOS 16, *) {
+            let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample2_MacBookProFamilyChart.json")
             return try! String(contentsOfFile: path.path)
         }
         return "{}"

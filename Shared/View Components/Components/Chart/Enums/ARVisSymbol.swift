@@ -40,6 +40,9 @@ struct Square: ChartSymbolShape, InsettableShape {
 
 struct ARVisSymbol: Codable, Equatable {
     var type: ARVisSymbolType
+
+    static let circle = ARVisSymbol(type: .circle)
+    static let square = ARVisSymbol(type: .square)
 }
 
 enum ARVisSymbolType: String, RawRepresentable, Codable {
@@ -65,7 +68,7 @@ struct ARVisSymbolSize: Codable, Equatable {
 }
 
 extension CGSize {
-    init(_ size: ARVisSymbolSize){
+    init(_ size: ARVisSymbolSize) {
         self = .init(width: size.width, height: size.height)
     }
 }
