@@ -14,6 +14,45 @@ struct ChartView: View {
     @State var chartConfiguration: ChartConfiguration
 
     var body: some View {
+        let padding: (CGFloat?, CGFloat?, CGFloat?, CGFloat?) = {
+            if let padding = chartConfiguration.swiftChartConfiguration.styleConfiguration?.padding {
+                return (padding[safe: 0], padding[safe: 1], padding[safe: 2], padding[safe: 3])
+            }
+            return (0, 16, 0, 16)
+        }()
+
+        let xAxisDomain: AnyScaleDomain = {
+            if let includingZero = chartConfiguration.swiftChartConfiguration.chartXScale?.includingZero {
+                return AnyScaleDomain(.automatic(includesZero: includingZero))
+            } else if let domain = chartConfiguration.swiftChartConfiguration.chartXScale?.domain, domain.count >= 2 {
+                if let xStart = domain[0].int, let xEnd = domain[1].int {
+                    return AnyScaleDomain(min(xStart, xEnd) ... max(xStart, xEnd))
+                } else if let xStart = domain[0].double, let xEnd = domain[1].double {
+                    return AnyScaleDomain(min(xStart, xEnd) ... max(xStart, xEnd))
+                } else if let xStart = domain[0].date, let xEnd = domain[1].date {
+                    return AnyScaleDomain(min(xStart, xEnd) ... max(xStart, xEnd))
+                }
+            }
+
+            return AnyScaleDomain(.automatic)
+        }()
+        
+        let yAxisDomain: AnyScaleDomain = {
+            if let includingZero = chartConfiguration.swiftChartConfiguration.chartYScale?.includingZero {
+                return AnyScaleDomain(.automatic(includesZero: includingZero))
+            } else if let domain = chartConfiguration.swiftChartConfiguration.chartYScale?.domain, domain.count >= 2 {
+                if let yStart = domain[0].int, let yEnd = domain[1].int {
+                    return AnyScaleDomain(min(yStart, yEnd) ... max(yStart, yEnd))
+                } else if let yStart = domain[0].double, let yEnd = domain[1].double {
+                    return AnyScaleDomain(min(yStart, yEnd) ... max(yStart, yEnd))
+                } else if let yStart = domain[0].date, let yEnd = domain[1].date {
+                    return AnyScaleDomain(min(yStart, yEnd) ... max(yStart, yEnd))
+                }
+            }
+
+            return AnyScaleDomain(.automatic)
+        }()
+
         Chart {
             ForEach(0 ..< chartConfiguration.componentConfigs.count, id: \.self) { index in
                 let componentConfig = chartConfiguration.componentConfigs[index]
@@ -72,36 +111,8 @@ struct ChartView: View {
                 }
             }
         }
-        .if(chartConfiguration.swiftChartConfiguration.chartXScale?.includingZero != nil) { view in
-            let includingZero = chartConfiguration.swiftChartConfiguration.chartXScale!.includingZero!
-            view.chartXScale(domain: .automatic(includesZero: includingZero))
-        }
-        .if(chartConfiguration.swiftChartConfiguration.chartXScale?.domain != nil) { view in
-            if let domain = chartConfiguration.swiftChartConfiguration.chartXScale?.domain, domain.count >= 2 {
-                if let xStart = domain[0].int, let xEnd = domain[1].int {
-                    view.chartXScale(domain: min(xStart, xEnd) ... max(xStart, xEnd))
-                } else if let xStart = domain[0].double, let xEnd = domain[1].double {
-                    view.chartXScale(domain: min(xStart, xEnd) ... max(xStart, xEnd))
-                } else if let xStart = domain[0].date, let xEnd = domain[1].date {
-                    view.chartXScale(domain: min(xStart, xEnd) ... max(xStart, xEnd))
-                }
-            }
-        }
-        .if(chartConfiguration.swiftChartConfiguration.chartYScale?.includingZero != nil) { view in
-            let includingZero = chartConfiguration.swiftChartConfiguration.chartYScale!.includingZero!
-            view.chartYScale(domain: .automatic(includesZero: includingZero))
-        }
-        .if(chartConfiguration.swiftChartConfiguration.chartYScale?.domain != nil) { view in
-            if let domain = chartConfiguration.swiftChartConfiguration.chartYScale?.domain, domain.count >= 2 {
-                if let yStart = domain[0].int, let yEnd = domain[1].int {
-                    view.chartYScale(domain: min(yStart, yEnd) ... max(yStart, yEnd))
-                } else if let yStart = domain[0].double, let yEnd = domain[1].double {
-                    view.chartYScale(domain: min(yStart, yEnd) ... max(yStart, yEnd))
-                } else if let yStart = domain[0].date, let yEnd = domain[1].date {
-                    view.chartYScale(domain: min(yStart, yEnd) ... max(yStart, yEnd))
-                }
-            }
-        }
+        .chartXScale(domain: xAxisDomain)
+        .chartXScale(domain: yAxisDomain)
         .chartOverlay { proxy in
             chartAnnotationHandler(proxy: proxy, chartConfiguration: chartConfiguration)
         }
@@ -125,17 +136,10 @@ struct ChartView: View {
 //        }
         .frame(width: chartConfiguration.swiftChartConfiguration.styleConfiguration?.maxWidth, height: chartConfiguration.swiftChartConfiguration.styleConfiguration?.maxHeight ?? nil)
         .frame(maxHeight: chartConfiguration.swiftChartConfiguration.styleConfiguration?.maxHeight == nil ? 200 : nil)
-        .if(true) { view in
-            if let padding = chartConfiguration.swiftChartConfiguration.styleConfiguration?.padding {
-                view
-                    .padding(.leading, padding[safe: 0])
-                    .padding(.top, padding[safe: 1])
-                    .padding(.trailing, padding[safe: 2])
-                    .padding(.bottom, padding[safe: 3])
-            } else {
-                view.padding(.vertical)
-            }
-        }
+        .padding(.leading, padding.0)
+        .padding(.top, padding.1)
+        .padding(.trailing, padding.2)
+        .padding(.bottom, padding.3)
     }
 }
 
@@ -145,5 +149,18 @@ struct ChartView_Previews: PreviewProvider {
         let chartConfiguration = ChartConfigurationJSONParser.default.parse(JSON(ChartConfigurationExample.chartConfigurationExample1_ProvenanceChart.data(using: .utf8)!))
         ChartView(chartConfiguration: chartConfiguration)
             .previewLayout(.fixed(width: 720, height: 540))
+    }
+}
+
+@available(iOS 16, *)
+struct AnyScaleDomain: ScaleDomain {
+    private var domain: ScaleDomain
+
+    init<Domain: ScaleDomain>(_ domain: Domain) {
+        self.domain = domain
+    }
+
+    func _makeScaleDomain() -> _ScaleDomainOutputs {
+        domain._makeScaleDomain()
     }
 }
