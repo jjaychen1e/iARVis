@@ -13,7 +13,7 @@ extension ViewElementComponent {
             .vStack(elements: [
                 .text(content: "MacBook Pro (16-inch, 2021)", fontStyle: ARVisFontStyle(size: 40, weight: .bold)),
                 .text(content: """
-                The **MacBook Pro (16-inch, 2021)** was introduced at Apple's **'Unleashed'** event on 18 October 2021, and is the first MacBook Pro (16-inch) to feature [Apple Silicon](https://en.wikipedia.org/wiki/Apple_silicon#M_series) as part of the transition from x86_64-based Intel processors.
+                The **MacBook Pro (16-inch, 2021)** was introduced at Apple's **'Unleashed'** event on 18 October 2021, and is the first MacBook Pro (16-inch) to feature [Apple Silicon](\(URLService.openComponent(config: .json(json: example2_AppleSilicon.prettyJSON), anchor: .leading, relativePosition: .init(-0.005, 0, 0)).url)) as part of the transition from x86_64-based Intel processors.
                 It was made available for preorder on 18 October 2021, and for purchase on 26 October 2021.
                 The firmware identifiers are [MacBookPro18,1](https://www.theiphonewiki.com/wiki/J316sAP) ([M1 Pro](https://www.theiphonewiki.com/wiki/T6000)) and [MacBookPro18,2](https://www.theiphonewiki.com/wiki/J316cAP) ([M1 Max](https://www.theiphonewiki.com/wiki/T6001)).
                 """, fontStyle: ARVisFontStyle(size: 22)),

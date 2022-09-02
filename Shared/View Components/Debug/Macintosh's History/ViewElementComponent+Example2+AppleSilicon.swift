@@ -28,9 +28,9 @@ extension ViewElementComponent {
         .hStack(elements: [
             .vStack(elements: [
                 .text(content: "**In this article...**", fontStyle: ARVisFontStyle(size: 19)),
-                .text(content: "**1**. What is Apple Silicon?", fontStyle: ARVisFontStyle(size: 17, weight: .light)),
-                .text(content: "**2**. Does Apple Silicon use Arm architecture?", fontStyle: ARVisFontStyle(size: 17, weight: .light)),
-                .text(content: "**3**. You might like", fontStyle: ARVisFontStyle(size: 17, weight: .light)),
+                .text(content: "**1.** What is Apple Silicon?", fontStyle: ARVisFontStyle(size: 17, weight: .light)),
+                .text(content: "**2.** Does Apple Silicon use Arm architecture?", fontStyle: ARVisFontStyle(size: 17, weight: .light)),
+                .text(content: "**3.** You might like", fontStyle: ARVisFontStyle(size: 17, weight: .light)),
             ], alignment: .leading, spacing: 4),
             .vStack(elements: [
                 .text(content: "If you’ve considered buying one of Apple’s iMac or MacBook in recent years, you’ve likely come across the term ‘Apple Silicon’, but what does this mean?", fontStyle: ARVisFontStyle(size: 24, weight: .medium)),
