@@ -21,6 +21,6 @@ struct ChartComponentConfiguration: Codable, Equatable {
             .symbol(commonConfig.symbol != nil ? commonConfig.symbol!.type.symbol : ARVisSymbol.circle.type.symbol)
             .symbolSize(commonConfig.symbolSize != nil ? CGSize(commonConfig.symbolSize!) : CGSize(width: 5, height: 5))
             .lineStyle(commonConfig.lineStyle != nil ? .init(commonConfig.lineStyle!) : StrokeStyle())
-            .foregroundStyle(commonConfig.foregroundStyleColor != nil ? commonConfig.foregroundStyleColor!.toSwiftUIColor() : Color.blue)
+            .position(by: .value(commonConfig.positionByValue != nil ? commonConfig.positionByValue! : "position", commonConfig.positionByValue != nil ? commonConfig.positionByValue! : ""))
     }
 }

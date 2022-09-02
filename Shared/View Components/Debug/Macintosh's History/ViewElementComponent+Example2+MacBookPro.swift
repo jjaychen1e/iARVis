@@ -81,7 +81,19 @@ extension ViewElementComponent {
                         .vStack(elements: [
                             .image(url: "https://cdn.jsdelivr.net/gh/JJAYCHEN1e/Image@2022/default/Apple_M1-Pro-M1-Max_CPU-Performance_10182021.jpg", height: 400),
                             .text(content: "M1 Pro and M1 Max feature an up-to-10-core CPU that is up to 1.7x faster than the latest 8-core PC laptop chip at the same power level,\nand achieves the PC chip’s peak performance at up to 70 percent less power.", fontStyle: ARVisFontStyle(size: 12, weight: .medium, color: .rgbaHex(string: "#6e6e73"))),
-                            example2MacBookProPerformanceLineChartViewElementComponent,
+                            .divider(opacity: 0.2),
+                            .segmentedControl(items: [
+                                ARVisSegmentedControlItem(title: "Cinebench 23 - Multi", component: .vStack(elements: [
+                                    example2MacBookProPerformanceBarChartCPUViewElementComponent,
+                                ])),
+                                ARVisSegmentedControlItem(title: "Cinebench 23 - Single", component: .vStack(elements: [
+                                    example2MacBookProPerformanceBarChartCPU2ViewElementComponent,
+                                ])),
+                                ARVisSegmentedControlItem(title: "Blender", component: .vStack(elements: [
+                                    .text(content: "We use **Blender** to check whether the processors are affected by throttling. We render the same image repeatedly and each time the render time is almost the same as the previous image. The MacBook Air is passively cooled and the difference that makes is also clearly visible, because the line slowly rises because the hardware gets too hot and thus starts to throttle. The actively cooled MacBook Pros do not suffer from this.", fontStyle: ARVisFontStyle(size: 17)),
+                                    example2MacBookProPerformanceLineChartViewElementComponent,
+                                ])),
+                            ]),
                         ]),
                     ])),
                     ARVisSegmentedControlItem(title: "GPU", component: .vStack(elements: [
@@ -120,7 +132,35 @@ extension ViewElementComponent {
     }
     """
 
+    static let example2MacBookProPerformanceBarChartCPUViewElementComponentJSONStr = """
+    {
+        "vStack": {
+            "elements": [
+                {
+                    "chart": \(ChartConfigurationExample.chartConfigurationExample2_MacBookProPerformanceBarChartCPU)
+                },
+            ]
+        }
+    }
+    """
+
+    static let example2MacBookProPerformanceBarChartCPU2ViewElementComponentJSONStr = """
+    {
+        "vStack": {
+            "elements": [
+                {
+                    "chart": \(ChartConfigurationExample.chartConfigurationExample2_MacBookProPerformanceBarChartCPU2)
+                },
+            ]
+        }
+    }
+    """
+
     static let example2_MacBookProFamilyChartViewElementComponent: ViewElementComponent = try! JSONDecoder().decode(ViewElementComponent.self, from: example2_MacBookProFamilyChartViewElementComponentJSONStr.data(using: .utf8)!)
 
     static let example2MacBookProPerformanceLineChartViewElementComponent: ViewElementComponent = try! JSONDecoder().decode(ViewElementComponent.self, from: example2MacBookProPerformanceLineChartViewElementComponentJSONStr.data(using: .utf8)!)
+
+    static let example2MacBookProPerformanceBarChartCPUViewElementComponent: ViewElementComponent = try! JSONDecoder().decode(ViewElementComponent.self, from: example2MacBookProPerformanceBarChartCPUViewElementComponentJSONStr.data(using: .utf8)!)
+
+    static let example2MacBookProPerformanceBarChartCPU2ViewElementComponent: ViewElementComponent = try! JSONDecoder().decode(ViewElementComponent.self, from: example2MacBookProPerformanceBarChartCPU2ViewElementComponentJSONStr.data(using: .utf8)!)
 }

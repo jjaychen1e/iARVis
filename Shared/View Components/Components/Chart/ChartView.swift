@@ -112,7 +112,7 @@ struct ChartView: View {
             }
         }
         .chartXScale(domain: xAxisDomain)
-        .chartXScale(domain: yAxisDomain)
+        .chartYScale(domain: yAxisDomain)
         .chartOverlay { proxy in
             chartAnnotationHandler(proxy: proxy, chartConfiguration: chartConfiguration)
         }

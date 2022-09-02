@@ -18,7 +18,11 @@ struct KeyedCodable<T: KeyedCodableSource>: Codable {
         case failed
     }
 
-    var wrappedValue: T
+    var wrappedValue: T?
+    
+    init(wrappedValue: T? = nil) {
+        self.wrappedValue = wrappedValue
+    }
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: JSONCodingKeys.self)
@@ -26,9 +30,11 @@ struct KeyedCodable<T: KeyedCodableSource>: Codable {
         if let decoded = T.decode(json) {
             wrappedValue = decoded
         } else {
-            throw KeyedCodableError.failed
+            self.wrappedValue = nil
         }
     }
 
     func encode(to encoder: Encoder) throws {}
 }
+
+extension KeyedCodable: Equatable where T: Equatable {}

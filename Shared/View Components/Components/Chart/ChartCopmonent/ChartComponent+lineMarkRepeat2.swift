@@ -24,40 +24,41 @@ extension ChartComponent {
                        let yJSONValue = datum[y.field] {
                         if let xIntValue = x.plottableInt(xJSONValue) {
                             if let yIntValue = y.plottableInt(yJSONValue) {
-                                applyCommonConfig(lineMark(x: xIntValue, y: yIntValue), commonConfig: commonConfig, datumDictionary: datum)
+                                lineMark(x: xIntValue, y: yIntValue)
                             } else if let yDoubleValue = y.plottableDouble(yJSONValue) {
-                                applyCommonConfig(lineMark(x: xIntValue, y: yDoubleValue), commonConfig: commonConfig, datumDictionary: datum)
+                                lineMark(x: xIntValue, y: yDoubleValue)
                             } else if let yDateValue = y.plottableDate(yJSONValue) {
-                                applyCommonConfig(lineMark(x: xIntValue, y: yDateValue), commonConfig: commonConfig, datumDictionary: datum)
+                                lineMark(x: xIntValue, y: yDateValue)
                             }
                         } else if let xDoubleValue = x.plottableDouble(xJSONValue) {
                             if let yIntValue = y.plottableInt(yJSONValue) {
-                                applyCommonConfig(lineMark(x: xDoubleValue, y: yIntValue), commonConfig: commonConfig, datumDictionary: datum)
+                                lineMark(x: xDoubleValue, y: yIntValue)
                             } else if let yDoubleValue = y.plottableDouble(yJSONValue) {
-                                applyCommonConfig(lineMark(x: xDoubleValue, y: yDoubleValue), commonConfig: commonConfig, datumDictionary: datum)
+                                lineMark(x: xDoubleValue, y: yDoubleValue)
                             } else if let yDateValue = y.plottableDate(yJSONValue) {
-                                applyCommonConfig(lineMark(x: xDoubleValue, y: yDateValue), commonConfig: commonConfig, datumDictionary: datum)
+                                lineMark(x: xDoubleValue, y: yDateValue)
                             }
                         } else if let xDateValue = x.plottableDate(xJSONValue) {
                             if let yIntValue = y.plottableInt(yJSONValue) {
-                                applyCommonConfig(lineMark(x: xDateValue, y: yIntValue), commonConfig: commonConfig, datumDictionary: datum)
+                                lineMark(x: xDateValue, y: yIntValue)
                             } else if let yDoubleValue = y.plottableDouble(yJSONValue) {
-                                applyCommonConfig(lineMark(x: xDateValue, y: yDoubleValue), commonConfig: commonConfig, datumDictionary: datum)
+                                lineMark(x: xDateValue, y: yDoubleValue)
                             } else if let yDateValue = y.plottableDate(yJSONValue) {
-                                applyCommonConfig(lineMark(x: xDateValue, y: yDateValue), commonConfig: commonConfig, datumDictionary: datum)
+                                lineMark(x: xDateValue, y: yDateValue)
                             }
                         } else if let xStringValue = x.plottableString(xJSONValue) {
                             if let yIntValue = y.plottableInt(yJSONValue) {
-                                applyCommonConfig(lineMark(x: xStringValue, y: yIntValue), commonConfig: commonConfig, datumDictionary: datum)
+                                lineMark(x: xStringValue, y: yIntValue)
                             } else if let yDoubleValue = y.plottableDouble(yJSONValue) {
-                                applyCommonConfig(lineMark(x: xStringValue, y: yDoubleValue), commonConfig: commonConfig, datumDictionary: datum)
+                                lineMark(x: xStringValue, y: yDoubleValue)
                             } else if let yDateValue = y.plottableDate(yJSONValue) {
-                                applyCommonConfig(lineMark(x: xStringValue, y: yDateValue), commonConfig: commonConfig, datumDictionary: datum)
+                                lineMark(x: xStringValue, y: yDateValue)
                             }
                         }
                     }
                 }
                 .foregroundStyle(by: .value(y.field, y.field))
+                .applyCommonConfig(commonConfig: commonConfig, datumDictionary: datum)
             }
         }
     }

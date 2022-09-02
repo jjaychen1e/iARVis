@@ -276,3 +276,7 @@ extension Color {
         return (r, g, b, o)
     }
 }
+
+struct ARVisColorWrapper: Codable {
+    var color: ARVisColor
+}

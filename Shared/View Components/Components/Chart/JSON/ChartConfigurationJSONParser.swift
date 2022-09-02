@@ -56,6 +56,17 @@ class ChartConfigurationJSONParser {
                                                          y: .value(yField),
                                                          height: height)
                         componentConfigs.append(.init(component: chartComponent!, commonConfig: chartComponentCommonConfig))
+                    } else if let xField = config["x"]["field"].string,
+                              let yField = config["y"]["field"].string {
+                        var height: CGFloat?
+                        if let heightDouble = config["height"].double {
+                            height = heightDouble
+                        }
+                        chartComponent = .barMarkRepeat2(dataKey: dataKey,
+                                                         x: .value(xField),
+                                                         y: .value(yField),
+                                                         height: height)
+                        componentConfigs.append(.init(component: chartComponent!, commonConfig: chartComponentCommonConfig))
                     }
                 case .lineMark:
                     let config = component["config"]
@@ -202,6 +213,16 @@ class ChartConfigurationJSONParser {
                 if let height = height {
                     componentJSON["config"]["height"] = JSON(height)
                 }
+            case let .barMarkRepeat2(dataKey, x, y, height):
+                componentJSON["type"] = "BarMark"
+                componentJSON["config"]["dataKey"] = JSON(dataKey)
+                componentJSON["config"]["x"] = [:]
+                componentJSON["config"]["x"]["field"] = JSON(x.field)
+                componentJSON["config"]["y"] = [:]
+                componentJSON["config"]["y"]["field"] = JSON(y.field)
+                if let height = height {
+                    componentJSON["config"]["height"] = JSON(height)
+                }
             case let .lineMarkRepeat1(dataKey, x, y):
                 componentJSON["type"] = "LineMark"
                 componentJSON["config"]["dataKey"] = JSON(dataKey)
@@ -340,6 +361,22 @@ enum ChartConfigurationExample {
     static let chartConfigurationExample2_MacBookProPerformanceLineChart: String = {
         if #available(iOS 16, *) {
             let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample2_MacBookProPerformanceLineChart.json")
+            return try! String(contentsOfFile: path.path)
+        }
+        return "{}"
+    }()
+    
+    static let chartConfigurationExample2_MacBookProPerformanceBarChartCPU: String = {
+        if #available(iOS 16, *) {
+            let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample2_MacBookProPerformanceBarChartCPU.json")
+            return try! String(contentsOfFile: path.path)
+        }
+        return "{}"
+    }()
+    
+    static let chartConfigurationExample2_MacBookProPerformanceBarChartCPU2: String = {
+        if #available(iOS 16, *) {
+            let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample2_MacBookProPerformanceBarChartCPU2.json")
             return try! String(contentsOfFile: path.path)
         }
         return "{}"

@@ -13,6 +13,7 @@ import SwiftyJSON
 @available(iOS 16, *)
 enum ChartComponent: Codable, Hashable {
     case barMarkRepeat1(dataKey: String, xStart: ARVisPlottableValueFieldPair, xEnd: ARVisPlottableValueFieldPair, y: ARVisPlottableValueFieldPair, height: CGFloat?)
+    case barMarkRepeat2(dataKey: String, x: ARVisPlottableValueFieldPair, y: ARVisPlottableValueFieldPair, height: CGFloat?)
     case lineMarkRepeat1(dataKey: String, x: ARVisPlottableValueFieldPair, y: ARVisPlottableValueFieldPair)
     case lineMarkRepeat2(dataKey: String, x: ARVisPlottableValueFieldPair, ySeries: [ARVisPlottableValueFieldPair])
     case rectangleMarkRepeat1(dataKey: String, xStart: ARVisPlottableValueFieldPair, xEnd: ARVisPlottableValueFieldPair, yStart: ARVisPlottableValueFieldPair, yEnd: ARVisPlottableValueFieldPair)
@@ -22,6 +23,8 @@ enum ChartComponent: Codable, Hashable {
     var dataKey: String {
         switch self {
         case let .barMarkRepeat1(dataKey, _, _, _, _):
+            return dataKey
+        case let .barMarkRepeat2(dataKey, _, _, _):
             return dataKey
         case let .lineMarkRepeat1(dataKey, _, _):
             return dataKey

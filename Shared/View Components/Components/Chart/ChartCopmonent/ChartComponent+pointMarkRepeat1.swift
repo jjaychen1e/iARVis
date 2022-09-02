@@ -17,47 +17,50 @@ extension ChartComponent {
         let datumArray = dataItem.datumArray()
         ForEach(0 ..< dataItem.length, id: \.self) { index in
             let datum = datumArray[index]
-            if let xJSONValue = datum[x.field],
-               let yJSONValue = datum[y.field] {
-                // Possible case:
-                //  Int, Int; Int, Double; Int, Date;
-                //  Double, Int; Double, Double; Double, Date;
-                //  Date, Int; Date, Double; Date, Date;
-                //  String, Int; String, Double; String, Date;
-                if let xIntValue = x.plottableInt(xJSONValue) {
-                    if let yIntValue = y.plottableInt(yJSONValue) {
-                        applyCommonConfig(pointMark(x: xIntValue, y: yIntValue), commonConfig: commonConfig, datumDictionary: datum)
-                    } else if let yDoubleValue = y.plottableDouble(yJSONValue) {
-                        applyCommonConfig(pointMark(x: xIntValue, y: yDoubleValue), commonConfig: commonConfig, datumDictionary: datum)
-                    } else if let yDateValue = y.plottableDate(yJSONValue) {
-                        applyCommonConfig(pointMark(x: xIntValue, y: yDateValue), commonConfig: commonConfig, datumDictionary: datum)
-                    }
-                } else if let xDoubleValue = x.plottableDouble(xJSONValue) {
-                    if let yIntValue = y.plottableInt(yJSONValue) {
-                        applyCommonConfig(pointMark(x: xDoubleValue, y: yIntValue), commonConfig: commonConfig, datumDictionary: datum)
-                    } else if let yDoubleValue = y.plottableDouble(yJSONValue) {
-                        applyCommonConfig(pointMark(x: xDoubleValue, y: yDoubleValue), commonConfig: commonConfig, datumDictionary: datum)
-                    } else if let yDateValue = y.plottableDate(yJSONValue) {
-                        applyCommonConfig(pointMark(x: xDoubleValue, y: yDateValue), commonConfig: commonConfig, datumDictionary: datum)
-                    }
-                } else if let xDateValue = x.plottableDate(xJSONValue) {
-                    if let yIntValue = y.plottableInt(yJSONValue) {
-                        applyCommonConfig(pointMark(x: xDateValue, y: yIntValue), commonConfig: commonConfig, datumDictionary: datum)
-                    } else if let yDoubleValue = y.plottableDouble(yJSONValue) {
-                        applyCommonConfig(pointMark(x: xDateValue, y: yDoubleValue), commonConfig: commonConfig, datumDictionary: datum)
-                    } else if let yDateValue = y.plottableDate(yJSONValue) {
-                        applyCommonConfig(pointMark(x: xDateValue, y: yDateValue), commonConfig: commonConfig, datumDictionary: datum)
-                    }
-                } else if let xStringValue = x.plottableString(xJSONValue) {
-                    if let yIntValue = y.plottableInt(yJSONValue) {
-                        applyCommonConfig(pointMark(x: xStringValue, y: yIntValue), commonConfig: commonConfig, datumDictionary: datum)
-                    } else if let yDoubleValue = y.plottableDouble(yJSONValue) {
-                        applyCommonConfig(pointMark(x: xStringValue, y: yDoubleValue), commonConfig: commonConfig, datumDictionary: datum)
-                    } else if let yDateValue = y.plottableDate(yJSONValue) {
-                        applyCommonConfig(pointMark(x: xStringValue, y: yDateValue), commonConfig: commonConfig, datumDictionary: datum)
+            ChartGroup {
+                if let xJSONValue = datum[x.field],
+                   let yJSONValue = datum[y.field] {
+                    // Possible case:
+                    //  Int, Int; Int, Double; Int, Date;
+                    //  Double, Int; Double, Double; Double, Date;
+                    //  Date, Int; Date, Double; Date, Date;
+                    //  String, Int; String, Double; String, Date;
+                    if let xIntValue = x.plottableInt(xJSONValue) {
+                        if let yIntValue = y.plottableInt(yJSONValue) {
+                            pointMark(x: xIntValue, y: yIntValue)
+                        } else if let yDoubleValue = y.plottableDouble(yJSONValue) {
+                            pointMark(x: xIntValue, y: yDoubleValue)
+                        } else if let yDateValue = y.plottableDate(yJSONValue) {
+                            pointMark(x: xIntValue, y: yDateValue)
+                        }
+                    } else if let xDoubleValue = x.plottableDouble(xJSONValue) {
+                        if let yIntValue = y.plottableInt(yJSONValue) {
+                            pointMark(x: xDoubleValue, y: yIntValue)
+                        } else if let yDoubleValue = y.plottableDouble(yJSONValue) {
+                            pointMark(x: xDoubleValue, y: yDoubleValue)
+                        } else if let yDateValue = y.plottableDate(yJSONValue) {
+                            pointMark(x: xDoubleValue, y: yDateValue)
+                        }
+                    } else if let xDateValue = x.plottableDate(xJSONValue) {
+                        if let yIntValue = y.plottableInt(yJSONValue) {
+                            pointMark(x: xDateValue, y: yIntValue)
+                        } else if let yDoubleValue = y.plottableDouble(yJSONValue) {
+                            pointMark(x: xDateValue, y: yDoubleValue)
+                        } else if let yDateValue = y.plottableDate(yJSONValue) {
+                            pointMark(x: xDateValue, y: yDateValue)
+                        }
+                    } else if let xStringValue = x.plottableString(xJSONValue) {
+                        if let yIntValue = y.plottableInt(yJSONValue) {
+                            pointMark(x: xStringValue, y: yIntValue)
+                        } else if let yDoubleValue = y.plottableDouble(yJSONValue) {
+                            pointMark(x: xStringValue, y: yDoubleValue)
+                        } else if let yDateValue = y.plottableDate(yJSONValue) {
+                            pointMark(x: xStringValue, y: yDateValue)
+                        }
                     }
                 }
             }
+            .applyCommonConfig(commonConfig: commonConfig, datumDictionary: datum)
         }
     }
 }

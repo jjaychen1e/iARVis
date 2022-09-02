@@ -37,6 +37,9 @@ extension ChartView {
                                     .id(selectedElement.rawString(options: []))
                             }
                         }
+                    case let .barMarkRepeat2(_, x, y, height):
+                        // TODO: barMarkRepeat1
+                        EmptyView()
                     case let .lineMarkRepeat1(_, x, y):
                         let selectedElement: JSON? = chartConfiguration.interactionData.componentSelectedElementInRangeX[component]
                         if let selectedElement = selectedElement {

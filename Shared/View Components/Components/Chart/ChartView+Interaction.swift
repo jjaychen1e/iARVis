@@ -189,6 +189,9 @@ extension ChartView {
                                                           yStartField: y.field,
                                                           yEndField: y.field,
                                                           isClick: true)
+                                case let .barMarkRepeat2(dataKey, x, y, height):
+                                    // TODO: barMarkRepeat1
+                                    break
                                 case let .lineMarkRepeat1(_, x, y):
                                     updateInteractionData(component: componentConfig.component,
                                                           location: location,
@@ -257,6 +260,9 @@ extension ChartView {
                                                                   yStartField: y.field,
                                                                   yEndField: y.field,
                                                                   isClick: false)
+                                        case let .barMarkRepeat2(dataKey, x, y, height):
+                                            // TODO: barMarkRepeat1
+                                            break
                                         case let .lineMarkRepeat1(_, x, y):
                                             updateInteractionData(component: componentConfig.component,
                                                                   location: location,
@@ -270,6 +276,7 @@ extension ChartView {
                                                                   modeX: .nearest,
                                                                   modeY: .accurate)
                                         case let .lineMarkRepeat2(dataKey: dataKey, x: x, ySeries: ySeries):
+                                            // TODO: lineMarkRepeat2
                                             break
                                         case let .rectangleMarkRepeat1(_, xStart, xEnd, yStart, yEnd):
                                             updateInteractionData(component: componentConfig.component,

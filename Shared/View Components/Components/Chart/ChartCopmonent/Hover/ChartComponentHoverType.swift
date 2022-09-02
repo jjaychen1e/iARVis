@@ -19,6 +19,8 @@ extension ChartComponent {
         switch self {
         case .barMarkRepeat1:
             return .rangeX
+        case .barMarkRepeat2:
+            return .rangeX
         case .lineMarkRepeat1:
             return .rangeX
         case .lineMarkRepeat2:

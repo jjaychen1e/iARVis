@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 @available(iOS 16, *)
 struct ChartComponentCommonConfig: Codable, Equatable {
@@ -13,9 +14,17 @@ struct ChartComponentCommonConfig: Codable, Equatable {
     var symbol: ARVisSymbol?
     var symbolSize: ARVisSymbolSize?
     var foregroundStyleColor: ARVisColor?
+    var foregroundStyleColorMap: [ColorMap]?
     var foregroundStyleField: String?
     var foregroundStyleValue: String?
+    var positionByValue: String?
     var lineStyle: ARVisLineStyle?
     var annotations: [ARVisAnnotation]?
     var conditionalAnnotations: [ARVisConditionalAnnotation]?
+}
+
+struct ColorMap: Codable, Equatable {
+    var field: String
+    var value: JSON
+    var color: ARVisColor
 }
