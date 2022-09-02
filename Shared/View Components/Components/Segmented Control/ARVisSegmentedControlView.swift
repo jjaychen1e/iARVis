@@ -7,7 +7,12 @@
 
 import SwiftUI
 
-struct ARVisSegmentedControlView: View {
+struct ARVisSegmentedControlView: View, Equatable {
+    static func == (lhs: ARVisSegmentedControlView, rhs: ARVisSegmentedControlView) -> Bool {
+        lhs.selectedColorIndex == rhs.selectedColorIndex &&
+            lhs.items == rhs.items
+    }
+
     @State private var selectedColorIndex = 0
     @State var items: [ARVisSegmentedControlItem]
 

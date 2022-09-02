@@ -17,7 +17,7 @@ import SwiftyJSON
 enum ViewElementComponent: Codable, Equatable {
     // font
     case text(content: String, multilineTextAlignment: ARVisTextAlignment? = nil, fontStyle: ARVisFontStyle? = nil)
-    case image(url: String, contentMode: ARVisContentMode = .fit, width: CGFloat? = nil, height: CGFloat? = nil)
+    case image(url: String, contentMode: ARVisContentMode = .fit, width: CGFloat? = nil, height: CGFloat? = nil, clipToCircle: Bool? = nil)
     case audio(title: String? = nil, url: String)
     case video(url: String, width: CGFloat? = nil, height: CGFloat? = nil)
     case link(url: String) // how to integrate into text?
@@ -60,6 +60,7 @@ enum ViewElementComponent: Codable, Equatable {
         case contentMode
         case width
         case height
+        case clipToCircle
     }
 
     enum AudioCodingKeys: CodingKey {
@@ -127,7 +128,7 @@ enum ViewElementComponent: Codable, Equatable {
             self = ViewElementComponent.text(content: try nestedContainer.decode(String.self, forKey: ViewElementComponent.TextCodingKeys.content), multilineTextAlignment: try nestedContainer.decodeIfPresent(ARVisTextAlignment.self, forKey: ViewElementComponent.TextCodingKeys.multilineTextAlignment), fontStyle: try nestedContainer.decodeIfPresent(ARVisFontStyle.self, forKey: ViewElementComponent.TextCodingKeys.fontStyle))
         case .image:
             let nestedContainer: KeyedDecodingContainer<ViewElementComponent.ImageCodingKeys> = try container.nestedContainer(keyedBy: ViewElementComponent.ImageCodingKeys.self, forKey: ViewElementComponent.CodingKeys.image)
-            self = ViewElementComponent.image(url: try nestedContainer.decode(String.self, forKey: ViewElementComponent.ImageCodingKeys.url), contentMode: try nestedContainer.decode(ARVisContentMode.self, forKey: ViewElementComponent.ImageCodingKeys.contentMode), width: try nestedContainer.decodeIfPresent(CGFloat.self, forKey: ViewElementComponent.ImageCodingKeys.width), height: try nestedContainer.decodeIfPresent(CGFloat.self, forKey: ViewElementComponent.ImageCodingKeys.height))
+            self = ViewElementComponent.image(url: try nestedContainer.decode(String.self, forKey: ViewElementComponent.ImageCodingKeys.url), contentMode: try nestedContainer.decode(ARVisContentMode.self, forKey: ViewElementComponent.ImageCodingKeys.contentMode), width: try nestedContainer.decodeIfPresent(CGFloat.self, forKey: ViewElementComponent.ImageCodingKeys.width), height: try nestedContainer.decodeIfPresent(CGFloat.self, forKey: ViewElementComponent.ImageCodingKeys.height), clipToCircle: try nestedContainer.decodeIfPresent(Bool.self, forKey: ViewElementComponent.ImageCodingKeys.clipToCircle))
         case .audio:
             let nestedContainer: KeyedDecodingContainer<ViewElementComponent.AudioCodingKeys> = try container.nestedContainer(keyedBy: ViewElementComponent.AudioCodingKeys.self, forKey: ViewElementComponent.CodingKeys.audio)
             self = ViewElementComponent.audio(title: try nestedContainer.decodeIfPresent(String.self, forKey: ViewElementComponent.AudioCodingKeys.title), url: try nestedContainer.decode(String.self, forKey: ViewElementComponent.AudioCodingKeys.url))
@@ -180,12 +181,13 @@ enum ViewElementComponent: Codable, Equatable {
             try nestedContainer.encode(content, forKey: ViewElementComponent.TextCodingKeys.content)
             try nestedContainer.encodeIfPresent(multilineTextAlignment, forKey: ViewElementComponent.TextCodingKeys.multilineTextAlignment)
             try nestedContainer.encodeIfPresent(fontStyle, forKey: ViewElementComponent.TextCodingKeys.fontStyle)
-        case let .image(url, contentMode, width, height):
+        case let .image(url, contentMode, width, height, clipToCircle):
             var nestedContainer: KeyedEncodingContainer<ViewElementComponent.ImageCodingKeys> = container.nestedContainer(keyedBy: ViewElementComponent.ImageCodingKeys.self, forKey: ViewElementComponent.CodingKeys.image)
             try nestedContainer.encode(url, forKey: ViewElementComponent.ImageCodingKeys.url)
             try nestedContainer.encode(contentMode, forKey: ViewElementComponent.ImageCodingKeys.contentMode)
             try nestedContainer.encodeIfPresent(width, forKey: ViewElementComponent.ImageCodingKeys.width)
             try nestedContainer.encodeIfPresent(height, forKey: ViewElementComponent.ImageCodingKeys.height)
+            try nestedContainer.encodeIfPresent(clipToCircle, forKey: ViewElementComponent.ImageCodingKeys.clipToCircle)
         case let .audio(title, url):
             var nestedContainer: KeyedEncodingContainer<ViewElementComponent.AudioCodingKeys> = container.nestedContainer(keyedBy: ViewElementComponent.AudioCodingKeys.self, forKey: ViewElementComponent.CodingKeys.audio)
             try nestedContainer.encodeIfPresent(title, forKey: ViewElementComponent.AudioCodingKeys.title)
@@ -247,7 +249,7 @@ extension ViewElementComponent {
                         view.foregroundColor(.init(fontStyle?.color))
                     })
                     .multilineTextAlignment(.init(multilineTextAlignment))
-            case let .image(url, contentMode, width, height):
+            case let .image(url, contentMode, width, height, clipToCircle):
                 KFImage(URL(string: url))
                     .placeholder {
                         Image(systemName: "arrow.2.circlepath.circle")
@@ -257,6 +259,9 @@ extension ViewElementComponent {
                     .resizable()
                     .aspectRatio(contentMode: .init(contentMode))
                     .frame(width: width, height: height)
+                    .if(clipToCircle == true) { view in
+                        view.clipShape(Circle())
+                    }
             case let .audio(title, url):
                 AudioPlayerView(title: title, audioUrl: url)
             case let .video(url, width, height):
@@ -303,6 +308,7 @@ extension ViewElementComponent {
                 }
             case let .segmentedControl(items):
                 ARVisSegmentedControlView(items: items)
+                    .id(UUID())
             case let .grid(rows):
                 if #available(iOS 16, *) {
                     Grid {

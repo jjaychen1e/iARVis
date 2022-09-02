@@ -52,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #else
             if #available(iOS 16, *) {
                 let rootVC = UIHostingController(rootView:
-                    ComponentView(.example2_MacBookPro)
+                    ComponentView(.example2_AppleSilicon)
                         .environment(\.openURL, OpenURLAction { url in
                             openURL(url, widgetConfiguration: nil)
                             return .handled

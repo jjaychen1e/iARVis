@@ -71,6 +71,24 @@
         "y": {
           "field": "Cinebench 23 - Multi"
         },
+        "conditionalAnnotations": [
+          {
+            "field": "model",
+            "value": "Apple Macbook Pro 2021 16\" (10/32)",
+            "annotation": {
+              "position": "top",
+              "content": {
+                "text": {
+                  "content": "Apple Macbook Pro 2021 16\" (10/32)",
+                  "fontStyle": {
+                    "size": 14,
+                    "weight": "bold"
+                  }
+                }
+              }
+            }
+          }
+        ],
         "foregroundStyleColorMap": [
           {
             "field": "model",

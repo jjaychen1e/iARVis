@@ -74,8 +74,14 @@ extension ChartView {
                     place(geoProxy: geoProxy, annotation: annotation, in: CGRect(origin: rectangle.origin + additionalOffset, size: rectangle.size))
                 }
             case let .barMarkRepeat2(dataKey, x, y, height):
-                // TODO: barMarkRepeat1
-                EmptyView()
+                if let xPosition = proxy.position(atX: datum[x.field]),
+                   let yPosition = proxy.position(atY: datum[y.field]),
+                   let xRange = proxy.positionRange(atX: datum[x.field]),
+                   let yRange = proxy.positionRange(atY: datum[y.field]) {
+                    let yHeight = proxy.plotAreaSize.height - yPosition
+                    let rectangle = CGRect(origin: CGPoint(x: xPosition - xRange.length / 2, y: yPosition), size: CGSize(width: xRange.length, height: height ?? yHeight))
+                    place(geoProxy: geoProxy, annotation: annotation, in: CGRect(origin: rectangle.origin + additionalOffset, size: rectangle.size))
+                }
             case let .lineMarkRepeat1(_, x, y):
                 if let xPosition = proxy.position(atX: datum[x.field]),
                    let yPosition = proxy.position(atY: datum[y.field]) {
@@ -127,6 +133,7 @@ extension ChartView {
     private func place(geoProxy: GeometryProxy, annotation: ARVisAnnotation, in rectangle: CGRect) -> some View {
         let position = annotation.position
         Rectangle()
+//            .fill(.red.opacity(0.5))
             .fill(.clear)
             .frame(width: max(1, rectangle.size.width), height: max(1, rectangle.size.height))
             .outsideOverlay(alignment: .init(position)) {

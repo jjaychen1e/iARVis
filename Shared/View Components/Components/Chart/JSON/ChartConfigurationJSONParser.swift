@@ -381,4 +381,12 @@ enum ChartConfigurationExample {
         }
         return "{}"
     }()
+    
+    static let chartConfigurationExample2_MacBookProPerformanceBarChartGPU: String = {
+        if #available(iOS 16, *) {
+            let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample2_MacBookProPerformanceBarChartGPU.json")
+            return try! String(contentsOfFile: path.path)
+        }
+        return "{}"
+    }()
 }

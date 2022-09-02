@@ -84,9 +84,11 @@ extension ViewElementComponent {
                             .divider(opacity: 0.2),
                             .segmentedControl(items: [
                                 ARVisSegmentedControlItem(title: "Cinebench 23 - Multi", component: .vStack(elements: [
+                                    .text(content: "In the **multi-core test**, all cores are put to work and it is clear that **the 10-core M1 processors can compete with the Ryzen 5900HX with eight cores**. The great thing is that the cooling is particularly quiet in both cases. The fans do run, but make a soft noise and the cooling is therefore noticeably quieter than that of the majority of laptops. The M1 Pro processor with eight cores is just a bit faster than a Ryzen 5600H, which has six cores. In single-core applications, the new M1 processors still perform slightly better than the old M1, probably due to the better cooling, because the MacBook Air is passively cooled.", fontStyle: ARVisFontStyle(size: 17)),
                                     example2MacBookProPerformanceBarChartCPUViewElementComponent,
                                 ])),
                                 ARVisSegmentedControlItem(title: "Cinebench 23 - Single", component: .vStack(elements: [
+                                    .text(content: "In the multi-test, all cores are put to work and it is clear that the 10-core M1 processors can compete with the Ryzen 5900HX with eight cores. The great thing is that the cooling is particularly quiet in both cases. The fans do run, but make a soft noise and the cooling is therefore noticeably quieter than that of the majority of laptops. The M1 Pro processor with eight cores is just a bit faster than a Ryzen 5600H, which has six cores. In **single-core** applications, **the new M1 processors still perform slightly better than the old M1**, probably due to the better cooling, because the MacBook Air is passively cooled.", fontStyle: ARVisFontStyle(size: 17)),
                                     example2MacBookProPerformanceBarChartCPU2ViewElementComponent,
                                 ])),
                                 ARVisSegmentedControlItem(title: "Blender", component: .vStack(elements: [
@@ -100,11 +102,87 @@ extension ViewElementComponent {
                         .vStack(elements: [
                             .image(url: "https://cdn.jsdelivr.net/gh/JJAYCHEN1e/Image@2022/default/Apple_M1-Pro-M1-Max_M1-Max-GPU-Performance-vs-PC_10182021.jpg", height: 400),
                             .text(content: "M1 Max has an up-to-32-core GPU that delivers graphics performance comparable to that in a high-end compact PC pro laptop using up to 40 percent less power.", fontStyle: ARVisFontStyle(size: 12, weight: .medium, color: .rgbaHex(string: "#6e6e73"))),
+                            .divider(opacity: 0.2),
+                            .segmentedControl(items: [
+                                ARVisSegmentedControlItem(title: "3DMark Wild Life Extreme Unlimited", component: .vStack(elements: [
+                                    .text(content: "A somewhat 'neutral' benchmark is **3DMark Wild Life**. This test works on x86 and arm processors and on Windows, MacOS, Android and iOS. In Windows, the test uses Vulkan and under MacOS, of course, Metal. The benchmark is purely graphic, at a high resolution, and this also shows that **the M1 Max can hold its own and can come close to a mobile RTX 3080**. The 16-core GPU in the M1 Pro comes closer of an RTX 3050 Ti video card, while the 14-core model is about thirteen percent lower. That is entirely in line with expectations, because the GPU cores scale almost linearly.", fontStyle: ARVisFontStyle(size: 18)),
+                                    example2MacBookProPerformanceBarChartGPUViewElementComponent,
+                                ])),
+                            ]),
                         ]),
                     ])),
                 ]),
             ])),
-            ARVisSegmentedControlItem(title: "Technical Reviews", component: .spacer),
+            ARVisSegmentedControlItem(title: "Technical Reviews", component: .vStack(elements: [
+                .hStack(elements: [
+                    .video(url: "https://www.youtube.com/watch?v=rr2XfL_df3o", width: 450),
+                    .vStack(elements: [
+                        .text(content: "M1 Max MacBook Pro Review: Truly Next Level!", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                        .text(content: "22:38", fontStyle: ARVisFontStyle(size: 14, weight: .medium, color: .rgbaHex(string: "#6e6e73"))),
+                        .hStack(elements: [
+                            .image(url: "https://yt3.ggpht.com/lkH37D712tiyphnu0Id0D5MwwQ7IRuwgQLVD05iMXlDWO-kDHut3uI4MgIEAQ9StK0qOST7fiA=s68-c-k-c0x00ffffff-no-rj", width: 25, clipToCircle: true),
+                            .text(content: "Marques Brownlee", fontStyle: ARVisFontStyle(size: 14, weight: .medium)),
+                        ]),
+                        .text(content: """
+                        The 14" and 16" MacBook Pros are incredible. I can finally retire the travel iMac.
+                        0:00 Intro
+                        1:38 Top Notch Design
+                        2:27 Let's Talk Ports
+                        7:11 RIP Touchbar
+                        8:20 The new displays
+                        10:12 Living with the notch
+                        12:37 Performance
+                        19:39 Battery
+                        20:30 So should you get it?
+                        """, fontStyle: ARVisFontStyle(size: 14, weight: .light, color: .rgbaHex(string: "#6e6e73"))),
+                    ], alignment: .leading),
+                ], alignment: .top),
+                .hStack(elements: [
+                    .video(url: "https://www.youtube.com/watch?v=ftU1HzBKd5Y", width: 450),
+                    .vStack(elements: [
+                        .text(content: "MacBook Pro with M1 Pro and M1 Max review: laptop of the year", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                        .text(content: "22:04", fontStyle: ARVisFontStyle(size: 14, weight: .medium, color: .rgbaHex(string: "#6e6e73"))),
+                        .hStack(elements: [
+                            .image(url: "https://yt3.ggpht.com/ytc/AMLnZu_aCwxQLZtM1N2t1_dJ16UUOTArC2ogjNkusByP69U=s68-c-k-c0x00ffffff-no-rj", width: 25, clipToCircle: true),
+                            .text(content: "The Verge", fontStyle: ARVisFontStyle(size: 14, weight: .medium)),
+                        ]),
+                        .text(content: """
+                        Apple’s new MacBook Pro 14 and MacBook Pro 16 are a triumphant success — they have excellent performance, stunning battery life, useful ports, and incredible displays. The only knock against them is you’re going to pay a lot for all that good stuff.
+
+                        Read more: https://www.theverge.com/e/22515962
+
+                        0:00 Intro
+                        0:26 Specs & prices
+                        0:51 Design & hardware
+                        3:08 Mini LED Display (and the notch)
+                        7:32 Speakers
+                        8:00 Processors
+                        9:22 Benchmarks
+                        12:27 Gaming
+                        13:38 Video Editing
+                        16:06 Final Cut Pro
+                        16:33 After Effects
+                        17:03 Battery life
+                        19:37 M1 Pro vs M1 Max
+                        20:32 Conclusion
+                        """, fontStyle: ARVisFontStyle(size: 14, weight: .light, color: .rgbaHex(string: "#6e6e73"))),
+                    ], alignment: .leading),
+                ], alignment: .top),
+                .hStack(elements: [
+                    .video(url: "https://www.youtube.com/watch?v=IhqCC70ZfDM", width: 450),
+                    .vStack(elements: [
+                        .text(content: "M1 Max MacBook Pro Review! (14\" + 16\")", fontStyle: ARVisFontStyle(size: 17, weight: .medium)),
+                        .text(content: "8:36", fontStyle: ARVisFontStyle(size: 14, weight: .medium, color: .rgbaHex(string: "#6e6e73"))),
+                        .hStack(elements: [
+                            .image(url: "https://yt3.ggpht.com/ytc/AMLnZu-1SOWcwcK3QGxz1kl145xbRkD-n8PVrC9p8RVR4w=s68-c-k-c0x00ffffff-no-rj", width: 25, clipToCircle: true),
+                            .text(content: "Dave2D", fontStyle: ARVisFontStyle(size: 14, weight: .medium)),
+                        ]),
+                        .text(content: """
+                        My review of the best MacBook in 2021. The new Apple MacBook Pro with M1 Max and M1 Pro chips. The 14" and 16" MacBook Pro are built with professionals in mind but could be used for laptop gaming.
+                        """, fontStyle: ARVisFontStyle(size: 14, weight: .light, color: .rgbaHex(string: "#6e6e73"))),
+                    ], alignment: .leading),
+                ], alignment: .top),
+            ], alignment: .leading)),
         ]),
     ])
 
@@ -156,6 +234,18 @@ extension ViewElementComponent {
     }
     """
 
+    static let example2MacBookProPerformanceBarChartGPUViewElementComponentJSONStr = """
+    {
+        "vStack": {
+            "elements": [
+                {
+                    "chart": \(ChartConfigurationExample.chartConfigurationExample2_MacBookProPerformanceBarChartGPU)
+                },
+            ]
+        }
+    }
+    """
+
     static let example2_MacBookProFamilyChartViewElementComponent: ViewElementComponent = try! JSONDecoder().decode(ViewElementComponent.self, from: example2_MacBookProFamilyChartViewElementComponentJSONStr.data(using: .utf8)!)
 
     static let example2MacBookProPerformanceLineChartViewElementComponent: ViewElementComponent = try! JSONDecoder().decode(ViewElementComponent.self, from: example2MacBookProPerformanceLineChartViewElementComponentJSONStr.data(using: .utf8)!)
@@ -163,4 +253,6 @@ extension ViewElementComponent {
     static let example2MacBookProPerformanceBarChartCPUViewElementComponent: ViewElementComponent = try! JSONDecoder().decode(ViewElementComponent.self, from: example2MacBookProPerformanceBarChartCPUViewElementComponentJSONStr.data(using: .utf8)!)
 
     static let example2MacBookProPerformanceBarChartCPU2ViewElementComponent: ViewElementComponent = try! JSONDecoder().decode(ViewElementComponent.self, from: example2MacBookProPerformanceBarChartCPU2ViewElementComponentJSONStr.data(using: .utf8)!)
+
+    static let example2MacBookProPerformanceBarChartGPUViewElementComponent: ViewElementComponent = try! JSONDecoder().decode(ViewElementComponent.self, from: example2MacBookProPerformanceBarChartGPUViewElementComponentJSONStr.data(using: .utf8)!)
 }

@@ -47,6 +47,10 @@ private extension Alignment {
             return .bottomLeading
         } else if self == .bottomTrailing {
             return .topLeading
+        } else if self == .top {
+            return .bottom
+        } else if self == .bottom {
+            return .top
         } else {
             return .center
         }

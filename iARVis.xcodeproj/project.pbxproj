@@ -29,6 +29,10 @@
 		630BD1A42892C4AC00C9BEAC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630BD17A2892C4A900C9BEAC /* ContentView.swift */; };
 		630BD1A52892C4AC00C9BEAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 630BD17B2892C4AC00C9BEAC /* Assets.xcassets */; };
 		630BD1A62892C4AC00C9BEAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 630BD17B2892C4AC00C9BEAC /* Assets.xcassets */; };
+		6313907728C215F400A266B4 /* chartConfigurationExample2_MacBookProPerformanceBarChartGPU.json in Resources */ = {isa = PBXBuildFile; fileRef = 6313907628C215F400A266B4 /* chartConfigurationExample2_MacBookProPerformanceBarChartGPU.json */; };
+		6313907828C215F400A266B4 /* chartConfigurationExample2_MacBookProPerformanceBarChartGPU.json in Resources */ = {isa = PBXBuildFile; fileRef = 6313907628C215F400A266B4 /* chartConfigurationExample2_MacBookProPerformanceBarChartGPU.json */; };
+		6313907A28C2255400A266B4 /* ViewElementComponent+Example2+AppleSilicon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6313907928C2255400A266B4 /* ViewElementComponent+Example2+AppleSilicon.swift */; };
+		6313907B28C2255400A266B4 /* ViewElementComponent+Example2+AppleSilicon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6313907928C2255400A266B4 /* ViewElementComponent+Example2+AppleSilicon.swift */; };
 		6315A46428AFE7530045B685 /* WidgetConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6315A46328AFE7530045B685 /* WidgetConfiguration.swift */; };
 		6315A46528AFE7530045B685 /* WidgetConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6315A46328AFE7530045B685 /* WidgetConfiguration.swift */; };
 		6315A46A28AFE82B0045B685 /* SCNVector3+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6315A46928AFE82B0045B685 /* SCNVector3+Codable.swift */; };
@@ -209,7 +213,6 @@
 		63E726AE28B53D5100998DA9 /* YoutubeThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E726AD28B53D5100998DA9 /* YoutubeThumbnailView.swift */; };
 		63E8E24728BCEA2C00919D6F /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 63E8E24628BCEA2C00919D6F /* SwiftUIX */; };
 		63E8E24828BCEA5D00919D6F /* ChartTooltipPresentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638730BD28ABBDAC0094AE12 /* ChartTooltipPresentationViewController.swift */; };
-		63E8E24B28BCEA7600919D6F /* DebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E8E24A28BCEA7600919D6F /* DebugView.swift */; };
 		63E8E24F28BD034600919D6F /* ViewElementComponent+Example1+Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E8E24E28BD034600919D6F /* ViewElementComponent+Example1+Chart.swift */; };
 		63E8E25128BD047100919D6F /* ViewElementComponent+Example1+ArtworkWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E8E25028BD047100919D6F /* ViewElementComponent+Example1+ArtworkWidget.swift */; };
 		63E8E25328BD049A00919D6F /* ViewElementComponent+Example1+JamesEnsorWidegt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E8E25228BD049A00919D6F /* ViewElementComponent+Example1+JamesEnsorWidegt.swift */; };
@@ -257,6 +260,8 @@
 		630BD1802892C4AC00C9BEAC /* iARVis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iARVis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		630BD1862892C4AC00C9BEAC /* iARVis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iARVis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		630BD1882892C4AC00C9BEAC /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		6313907628C215F400A266B4 /* chartConfigurationExample2_MacBookProPerformanceBarChartGPU.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chartConfigurationExample2_MacBookProPerformanceBarChartGPU.json; sourceTree = "<group>"; };
+		6313907928C2255400A266B4 /* ViewElementComponent+Example2+AppleSilicon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewElementComponent+Example2+AppleSilicon.swift"; sourceTree = "<group>"; };
 		6315A46328AFE7530045B685 /* WidgetConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetConfiguration.swift; sourceTree = "<group>"; };
 		6315A46928AFE82B0045B685 /* SCNVector3+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNVector3+Codable.swift"; sourceTree = "<group>"; };
 		6315A46E28B0EA730045B685 /* TableConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableConfiguration.swift; sourceTree = "<group>"; };
@@ -357,7 +362,6 @@
 		63E44FCE28C1B85D00A63806 /* ChartComponent+barMarkRepeat2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartComponent+barMarkRepeat2.swift"; sourceTree = "<group>"; };
 		63E44FD128C1CAFA00A63806 /* chartConfigurationExample2_MacBookProPerformanceBarChartCPU2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chartConfigurationExample2_MacBookProPerformanceBarChartCPU2.json; sourceTree = "<group>"; };
 		63E726AD28B53D5100998DA9 /* YoutubeThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeThumbnailView.swift; sourceTree = "<group>"; };
-		63E8E24A28BCEA7600919D6F /* DebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugView.swift; sourceTree = "<group>"; };
 		63E8E24E28BD034600919D6F /* ViewElementComponent+Example1+Chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewElementComponent+Example1+Chart.swift"; sourceTree = "<group>"; };
 		63E8E25028BD047100919D6F /* ViewElementComponent+Example1+ArtworkWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewElementComponent+Example1+ArtworkWidget.swift"; sourceTree = "<group>"; };
 		63E8E25228BD049A00919D6F /* ViewElementComponent+Example1+JamesEnsorWidegt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewElementComponent+Example1+JamesEnsorWidegt.swift"; sourceTree = "<group>"; };
@@ -560,6 +564,7 @@
 				63E44FD128C1CAFA00A63806 /* chartConfigurationExample2_MacBookProPerformanceBarChartCPU2.json */,
 				6379F41528B912730020BB1B /* chartConfigurationExample1_JamesEnsorLifeChart.json */,
 				636C3ED728B4F52B001412FE /* chartConfigurationExample1_HistoricalPriceChart.json */,
+				6313907628C215F400A266B4 /* chartConfigurationExample2_MacBookProPerformanceBarChartGPU.json */,
 				63254E0A28AB8FC6005E7599 /* chartConfigurationExample1_ProvenanceChart.json */,
 			);
 			path = "Example JSON";
@@ -672,7 +677,6 @@
 		635F52692896AA1900FF40B6 /* Debug */ = {
 			isa = PBXGroup;
 			children = (
-				63E8E24928BCEA6C00919D6F /* Debug View */,
 				63254E0428AB8DBB005E7599 /* Example JSON */,
 				635F526A2896AA4100FF40B6 /* Debug.swift */,
 			);
@@ -1028,18 +1032,11 @@
 			path = Video;
 			sourceTree = "<group>";
 		};
-		63E8E24928BCEA6C00919D6F /* Debug View */ = {
-			isa = PBXGroup;
-			children = (
-				63E8E24A28BCEA7600919D6F /* DebugView.swift */,
-			);
-			path = "Debug View";
-			sourceTree = "<group>";
-		};
 		63E8E24C28BD031D00919D6F /* Macintosh's History */ = {
 			isa = PBXGroup;
 			children = (
 				63E8E25428BD04C200919D6F /* ViewElementComponent+Example2+MacBookPro.swift */,
+				6313907928C2255400A266B4 /* ViewElementComponent+Example2+AppleSilicon.swift */,
 			);
 			path = "Macintosh's History";
 			sourceTree = "<group>";
@@ -1251,6 +1248,7 @@
 			files = (
 				630BD1A52892C4AC00C9BEAC /* Assets.xcassets in Resources */,
 				63E8E25928BD232900919D6F /* chartConfigurationExample2_MacBookProFamilyChart.json in Resources */,
+				6313907728C215F400A266B4 /* chartConfigurationExample2_MacBookProPerformanceBarChartGPU.json in Resources */,
 				63E44FCC28C1B00300A63806 /* chartConfigurationExample2_MacBookProPerformanceBarChartCPU.json in Resources */,
 				635F52632896775300FF40B6 /* models.scnassets in Resources */,
 				63254E0B28AB8FC6005E7599 /* chartConfigurationExample1_ProvenanceChart.json in Resources */,
@@ -1267,6 +1265,7 @@
 			files = (
 				6379F41728B912730020BB1B /* chartConfigurationExample1_JamesEnsorLifeChart.json in Resources */,
 				63254E0C28AB8FC6005E7599 /* chartConfigurationExample1_ProvenanceChart.json in Resources */,
+				6313907828C215F400A266B4 /* chartConfigurationExample2_MacBookProPerformanceBarChartGPU.json in Resources */,
 				63E44FCD28C1B00300A63806 /* chartConfigurationExample2_MacBookProPerformanceBarChartCPU.json in Resources */,
 				636C3ED928B4F52B001412FE /* chartConfigurationExample1_HistoricalPriceChart.json in Resources */,
 				63E44FD328C1CAFA00A63806 /* chartConfigurationExample2_MacBookProPerformanceBarChartCPU2.json in Resources */,
@@ -1473,7 +1472,6 @@
 				6392ABFF28BB8A94002797D7 /* TimeMeasuring.swift in Sources */,
 				63AF737828BF171800A38418 /* SwiftChartConfiguration.swift in Sources */,
 				639EBF6628B2952F00C76969 /* SceneKitUtils.swift in Sources */,
-				63E8E24B28BCEA7600919D6F /* DebugView.swift in Sources */,
 				63AF737B28BF32B800A38418 /* ARVisConditionalAnnotation.swift in Sources */,
 				63CB2BBE28A40A9600BF7A1B /* ARVisColor.swift in Sources */,
 				63E44FCF28C1B85D00A63806 /* ChartComponent+barMarkRepeat2.swift in Sources */,
@@ -1512,6 +1510,7 @@
 				636C3EC928B49BD8001412FE /* WidgetOnScreenViewController.swift in Sources */,
 				6339435928ABA9FB008A5ED1 /* View+Execute.swift in Sources */,
 				636F742B28B9EB8B00931762 /* ChartStyleConfiguration.swift in Sources */,
+				6313907A28C2255400A266B4 /* ViewElementComponent+Example2+AppleSilicon.swift in Sources */,
 				636C3EDC28B4FB70001412FE /* ARVisInterpolationMethod.swift in Sources */,
 				635F526B2896AA4100FF40B6 /* Debug.swift in Sources */,
 				63027A6128A933E100B06CFE /* Date.swift in Sources */,
@@ -1576,6 +1575,7 @@
 				634B72F428B13869000BBB05 /* ARVisPlottableValueFieldPair.swift in Sources */,
 				634E9D7E28C1A3FF00742893 /* ChartCopmonent+rectangleMarkRepeat1.swift in Sources */,
 				634E9D7B28C1A3D500742893 /* ChartComponent+lineMarkRepeat2.swift in Sources */,
+				6313907B28C2255400A266B4 /* ViewElementComponent+Example2+AppleSilicon.swift in Sources */,
 				63CB2BC828A40EA400BF7A1B /* ARVisHorizontalAlignment.swift in Sources */,
 				634B72B728B119EE000BBB05 /* Utility.swift in Sources */,
 				636F742628B9EB5400931762 /* ChartXAxis.swift in Sources */,
