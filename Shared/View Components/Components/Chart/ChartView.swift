@@ -87,6 +87,21 @@ struct ChartView: View {
                 }
             }
         }
+        .if(chartConfiguration.swiftChartConfiguration.chartYScale?.includingZero != nil) { view in
+            let includingZero = chartConfiguration.swiftChartConfiguration.chartYScale!.includingZero!
+            view.chartYScale(domain: .automatic(includesZero: includingZero))
+        }
+        .if(chartConfiguration.swiftChartConfiguration.chartYScale?.domain != nil) { view in
+            if let domain = chartConfiguration.swiftChartConfiguration.chartYScale?.domain, domain.count >= 2 {
+                if let yStart = domain[0].int, let yEnd = domain[1].int {
+                    view.chartYScale(domain: min(yStart, yEnd) ... max(yStart, yEnd))
+                } else if let yStart = domain[0].double, let yEnd = domain[1].double {
+                    view.chartYScale(domain: min(yStart, yEnd) ... max(yStart, yEnd))
+                } else if let yStart = domain[0].date, let yEnd = domain[1].date {
+                    view.chartYScale(domain: min(yStart, yEnd) ... max(yStart, yEnd))
+                }
+            }
+        }
         .chartOverlay { proxy in
             chartAnnotationHandler(proxy: proxy, chartConfiguration: chartConfiguration)
         }

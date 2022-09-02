@@ -201,6 +201,10 @@ extension ChartView {
                                                           isClick: true,
                                                           modeX: .nearest,
                                                           modeY: .accurate)
+
+                                case let .lineMarkRepeat2(dataKey: dataKey, x: x, ySeries: ySeries):
+                                    // TODO: lineMarkRepeat2
+                                    break
                                 case let .rectangleMarkRepeat1(_, xStart, xEnd, yStart, yEnd):
                                     updateInteractionData(component: componentConfig.component,
                                                           location: location,
@@ -265,6 +269,8 @@ extension ChartView {
                                                                   isClick: false,
                                                                   modeX: .nearest,
                                                                   modeY: .accurate)
+                                        case let .lineMarkRepeat2(dataKey: dataKey, x: x, ySeries: ySeries):
+                                            break
                                         case let .rectangleMarkRepeat1(_, xStart, xEnd, yStart, yEnd):
                                             updateInteractionData(component: componentConfig.component,
                                                                   location: location,

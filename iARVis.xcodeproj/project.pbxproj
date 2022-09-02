@@ -32,6 +32,8 @@
 		6315A46428AFE7530045B685 /* WidgetConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6315A46328AFE7530045B685 /* WidgetConfiguration.swift */; };
 		6315A46528AFE7530045B685 /* WidgetConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6315A46328AFE7530045B685 /* WidgetConfiguration.swift */; };
 		6315A46A28AFE82B0045B685 /* SCNVector3+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6315A46928AFE82B0045B685 /* SCNVector3+Codable.swift */; };
+		6323815328C1A7230089A28C /* ChartComponent+ruleMarkRepeat1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6323815228C1A7230089A28C /* ChartComponent+ruleMarkRepeat1.swift */; };
+		6323815428C1A7230089A28C /* ChartComponent+ruleMarkRepeat1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6323815228C1A7230089A28C /* ChartComponent+ruleMarkRepeat1.swift */; };
 		63254E0028AB8869005E7599 /* CGPoint+Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63254DFF28AB8869005E7599 /* CGPoint+Operations.swift */; };
 		63254E0128AB8869005E7599 /* CGPoint+Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63254DFF28AB8869005E7599 /* CGPoint+Operations.swift */; };
 		63254E0B28AB8FC6005E7599 /* chartConfigurationExample1_ProvenanceChart.json in Resources */ = {isa = PBXBuildFile; fileRef = 63254E0A28AB8FC6005E7599 /* chartConfigurationExample1_ProvenanceChart.json */; };
@@ -83,9 +85,19 @@
 		634DEB5828A414610019D3FF /* ComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DEB5628A414610019D3FF /* ComponentView.swift */; };
 		634DEB5B28A415160019D3FF /* ViewElementComponent+Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DEB5A28A415160019D3FF /* ViewElementComponent+Example.swift */; };
 		634DEB5C28A415160019D3FF /* ViewElementComponent+Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DEB5A28A415160019D3FF /* ViewElementComponent+Example.swift */; };
+		634E9D7728C1A3C300742893 /* ChartComponent+lineMarkRepeat1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634E9D7628C1A3C300742893 /* ChartComponent+lineMarkRepeat1.swift */; };
+		634E9D7828C1A3C300742893 /* ChartComponent+lineMarkRepeat1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634E9D7628C1A3C300742893 /* ChartComponent+lineMarkRepeat1.swift */; };
+		634E9D7A28C1A3D500742893 /* ChartComponent+lineMarkRepeat2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634E9D7928C1A3D500742893 /* ChartComponent+lineMarkRepeat2.swift */; };
+		634E9D7B28C1A3D500742893 /* ChartComponent+lineMarkRepeat2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634E9D7928C1A3D500742893 /* ChartComponent+lineMarkRepeat2.swift */; };
+		634E9D7D28C1A3FF00742893 /* ChartCopmonent+rectangleMarkRepeat1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634E9D7C28C1A3FF00742893 /* ChartCopmonent+rectangleMarkRepeat1.swift */; };
+		634E9D7E28C1A3FF00742893 /* ChartCopmonent+rectangleMarkRepeat1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634E9D7C28C1A3FF00742893 /* ChartCopmonent+rectangleMarkRepeat1.swift */; };
+		634E9D8028C1A63B00742893 /* ChartComponent+pointMarkRepeat1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634E9D7F28C1A63B00742893 /* ChartComponent+pointMarkRepeat1.swift */; };
+		634E9D8128C1A63B00742893 /* ChartComponent+pointMarkRepeat1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634E9D7F28C1A63B00742893 /* ChartComponent+pointMarkRepeat1.swift */; };
 		635266B328BCB40A0059682C /* PartialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635266B128BCB4090059682C /* PartialViewController.swift */; };
 		635266B428BCB40A0059682C /* PartialPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635266B228BCB40A0059682C /* PartialPresentationController.swift */; };
 		635266B728BCB93E0059682C /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635266B628BCB93E0059682C /* WebViewController.swift */; };
+		635AD92228C195F800112E6E /* Any+Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635AD92128C195F800112E6E /* Any+Type.swift */; };
+		635AD92328C195F800112E6E /* Any+Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635AD92128C195F800112E6E /* Any+Type.swift */; };
 		635D804728B9EBF10077C1B6 /* ChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635D804628B9EBF10077C1B6 /* ChartData.swift */; };
 		635D804828B9EBF10077C1B6 /* ChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635D804628B9EBF10077C1B6 /* ChartData.swift */; };
 		635D804A28B9EC070077C1B6 /* ChartComponentCommonConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635D804928B9EC070077C1B6 /* ChartComponentCommonConfig.swift */; };
@@ -99,6 +111,7 @@
 		635F526628967BE600FF40B6 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 635F526528967BE600FF40B6 /* SnapKit */; };
 		635F526B2896AA4100FF40B6 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635F526A2896AA4100FF40B6 /* Debug.swift */; };
 		635F52722896D38600FF40B6 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 635F52712896D38600FF40B6 /* Kingfisher */; };
+		63666F4128C1A75E00A2C965 /* ChartComponentHoverType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63666F4028C1A75E00A2C965 /* ChartComponentHoverType.swift */; };
 		636C3EC928B49BD8001412FE /* WidgetOnScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636C3EC828B49BD8001412FE /* WidgetOnScreenViewController.swift */; };
 		636C3ECC28B4B298001412FE /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 636C3ECB28B4B298001412FE /* SwiftUIX */; };
 		636C3ED228B4D82E001412FE /* ChartView+Interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636C3ED128B4D82E001412FE /* ChartView+Interaction.swift */; };
@@ -143,6 +156,8 @@
 		639A6D8D28AB62F100527C37 /* SwiftGen+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639A6D8C28AB62F100527C37 /* SwiftGen+Color.swift */; };
 		639A6D8E28AB62F100527C37 /* SwiftGen+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639A6D8C28AB62F100527C37 /* SwiftGen+Color.swift */; };
 		639A6D9028AB7FF400527C37 /* View+SizeThatFits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639A6D8F28AB7FF400527C37 /* View+SizeThatFits.swift */; };
+		639C2B2628C1A788003A5390 /* ChartComponent+toChartContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C2B2528C1A788003A5390 /* ChartComponent+toChartContent.swift */; };
+		639C2B2728C1A788003A5390 /* ChartComponent+toChartContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C2B2528C1A788003A5390 /* ChartComponent+toChartContent.swift */; };
 		639EBF5328B2614C00C76969 /* URLService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639EBF5228B2614C00C76969 /* URLService.swift */; };
 		639EBF5428B2614C00C76969 /* URLService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639EBF5228B2614C00C76969 /* URLService.swift */; };
 		639EBF5828B277E300C76969 /* ARKitViewController+ARSCNViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639EBF5728B277E300C76969 /* ARKitViewController+ARSCNViewDelegate.swift */; };
@@ -168,6 +183,8 @@
 		63AF737F28BF910F00A38418 /* ChartView+Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AF737D28BF910F00A38418 /* ChartView+Annotation.swift */; };
 		63AF738228C0A50500A38418 /* OutsideOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AF738128C0A50500A38418 /* OutsideOverlay.swift */; };
 		63AF738328C0A50500A38418 /* OutsideOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AF738128C0A50500A38418 /* OutsideOverlay.swift */; };
+		63AF738528C0F09700A38418 /* chartConfigurationExample2_MacBookProPerformanceLineChart.json in Resources */ = {isa = PBXBuildFile; fileRef = 63AF738428C0F09600A38418 /* chartConfigurationExample2_MacBookProPerformanceLineChart.json */; };
+		63AF738628C0F09700A38418 /* chartConfigurationExample2_MacBookProPerformanceLineChart.json in Resources */ = {isa = PBXBuildFile; fileRef = 63AF738428C0F09600A38418 /* chartConfigurationExample2_MacBookProPerformanceLineChart.json */; };
 		63BDFA2E28B52AC3002D8254 /* VideoPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = 63BDFA2D28B52AC3002D8254 /* VideoPlayer */; };
 		63CB2BB728A3F39300BF7A1B /* ViewElementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CB2BB628A3F39300BF7A1B /* ViewElementComponent.swift */; };
 		63CB2BBA28A409DD00BF7A1B /* ARVisTextAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CB2BB928A409DD00BF7A1B /* ARVisTextAlignment.swift */; };
@@ -192,6 +209,10 @@
 		63E8E25328BD049A00919D6F /* ViewElementComponent+Example1+JamesEnsorWidegt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E8E25228BD049A00919D6F /* ViewElementComponent+Example1+JamesEnsorWidegt.swift */; };
 		63E8E25528BD04C200919D6F /* ViewElementComponent+Example2+MacBookPro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E8E25428BD04C200919D6F /* ViewElementComponent+Example2+MacBookPro.swift */; };
 		63E8E25928BD232900919D6F /* chartConfigurationExample2_MacBookProFamilyChart.json in Resources */ = {isa = PBXBuildFile; fileRef = 63E8E25828BD232900919D6F /* chartConfigurationExample2_MacBookProFamilyChart.json */; };
+		63E911DA28C1A315006D7F8C /* ChartComponent+barMarkRepeat1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E911D928C1A315006D7F8C /* ChartComponent+barMarkRepeat1.swift */; };
+		63E911DB28C1A315006D7F8C /* ChartComponent+barMarkRepeat1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E911D928C1A315006D7F8C /* ChartComponent+barMarkRepeat1.swift */; };
+		63E911DE28C1A336006D7F8C /* ChartGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E911DD28C1A336006D7F8C /* ChartGroup.swift */; };
+		63E911DF28C1A336006D7F8C /* ChartGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E911DD28C1A336006D7F8C /* ChartGroup.swift */; };
 		63EBEF5F28BB536600F112D5 /* KeyedCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EBEF5E28BB536500F112D5 /* KeyedCodable.swift */; };
 		63EBEF6028BB536600F112D5 /* KeyedCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EBEF5E28BB536500F112D5 /* KeyedCodable.swift */; };
 		63F7C99A28B5F6A600841EFA /* YoutubeVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F7C99928B5F6A600841EFA /* YoutubeVideoViewController.swift */; };
@@ -233,6 +254,7 @@
 		6315A46328AFE7530045B685 /* WidgetConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetConfiguration.swift; sourceTree = "<group>"; };
 		6315A46928AFE82B0045B685 /* SCNVector3+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNVector3+Codable.swift"; sourceTree = "<group>"; };
 		6315A46E28B0EA730045B685 /* TableConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableConfiguration.swift; sourceTree = "<group>"; };
+		6323815228C1A7230089A28C /* ChartComponent+ruleMarkRepeat1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartComponent+ruleMarkRepeat1.swift"; sourceTree = "<group>"; };
 		63254DF928AB870D005E7599 /* ChartProxy+PositionWithJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartProxy+PositionWithJSON.swift"; sourceTree = "<group>"; };
 		63254DFF28AB8869005E7599 /* CGPoint+Operations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Operations.swift"; sourceTree = "<group>"; };
 		63254E0A28AB8FC6005E7599 /* chartConfigurationExample1_ProvenanceChart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chartConfigurationExample1_ProvenanceChart.json; sourceTree = "<group>"; };
@@ -248,9 +270,14 @@
 		634B732528B2252B000BBB05 /* AudioPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerView.swift; sourceTree = "<group>"; };
 		634DEB5628A414610019D3FF /* ComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentView.swift; sourceTree = "<group>"; };
 		634DEB5A28A415160019D3FF /* ViewElementComponent+Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewElementComponent+Example.swift"; sourceTree = "<group>"; };
+		634E9D7628C1A3C300742893 /* ChartComponent+lineMarkRepeat1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartComponent+lineMarkRepeat1.swift"; sourceTree = "<group>"; };
+		634E9D7928C1A3D500742893 /* ChartComponent+lineMarkRepeat2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartComponent+lineMarkRepeat2.swift"; sourceTree = "<group>"; };
+		634E9D7C28C1A3FF00742893 /* ChartCopmonent+rectangleMarkRepeat1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartCopmonent+rectangleMarkRepeat1.swift"; sourceTree = "<group>"; };
+		634E9D7F28C1A63B00742893 /* ChartComponent+pointMarkRepeat1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartComponent+pointMarkRepeat1.swift"; sourceTree = "<group>"; };
 		635266B128BCB4090059682C /* PartialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartialViewController.swift; sourceTree = "<group>"; };
 		635266B228BCB40A0059682C /* PartialPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartialPresentationController.swift; sourceTree = "<group>"; };
 		635266B628BCB93E0059682C /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		635AD92128C195F800112E6E /* Any+Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Any+Type.swift"; sourceTree = "<group>"; };
 		635D804628B9EBF10077C1B6 /* ChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartData.swift; sourceTree = "<group>"; };
 		635D804928B9EC070077C1B6 /* ChartComponentCommonConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartComponentCommonConfig.swift; sourceTree = "<group>"; };
 		635D804C28B9EC2B0077C1B6 /* ChartComponentConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartComponentConfiguration.swift; sourceTree = "<group>"; };
@@ -259,6 +286,7 @@
 		635F52622896775300FF40B6 /* models.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = models.scnassets; sourceTree = "<group>"; };
 		635F526A2896AA4100FF40B6 /* Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		635F526E2896B29A00FF40B6 /* SceneKitUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitUtils.swift; sourceTree = "<group>"; };
+		63666F4028C1A75E00A2C965 /* ChartComponentHoverType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartComponentHoverType.swift; sourceTree = "<group>"; };
 		636C3EC828B49BD8001412FE /* WidgetOnScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetOnScreenViewController.swift; sourceTree = "<group>"; };
 		636C3ED128B4D82E001412FE /* ChartView+Interaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartView+Interaction.swift"; sourceTree = "<group>"; };
 		636C3ED428B4D8EA001412FE /* ChartView+Tooltip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartView+Tooltip.swift"; sourceTree = "<group>"; };
@@ -293,6 +321,7 @@
 		639A6D8828AB628F00527C37 /* XCAssets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCAssets+Generated.swift"; sourceTree = "<group>"; };
 		639A6D8C28AB62F100527C37 /* SwiftGen+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftGen+Color.swift"; sourceTree = "<group>"; };
 		639A6D8F28AB7FF400527C37 /* View+SizeThatFits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+SizeThatFits.swift"; sourceTree = "<group>"; };
+		639C2B2528C1A788003A5390 /* ChartComponent+toChartContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartComponent+toChartContent.swift"; sourceTree = "<group>"; };
 		639EBF5228B2614C00C76969 /* URLService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLService.swift; sourceTree = "<group>"; };
 		639EBF5728B277E300C76969 /* ARKitViewController+ARSCNViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ARKitViewController+ARSCNViewDelegate.swift"; sourceTree = "<group>"; };
 		639EBF5C28B2902700C76969 /* iARVis--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "iARVis--iOS--Info.plist"; sourceTree = "<group>"; };
@@ -310,6 +339,7 @@
 		63AF737A28BF32B800A38418 /* ARVisConditionalAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARVisConditionalAnnotation.swift; sourceTree = "<group>"; };
 		63AF737D28BF910F00A38418 /* ChartView+Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartView+Annotation.swift"; sourceTree = "<group>"; };
 		63AF738128C0A50500A38418 /* OutsideOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutsideOverlay.swift; sourceTree = "<group>"; };
+		63AF738428C0F09600A38418 /* chartConfigurationExample2_MacBookProPerformanceLineChart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chartConfigurationExample2_MacBookProPerformanceLineChart.json; sourceTree = "<group>"; };
 		63CB2BB628A3F39300BF7A1B /* ViewElementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewElementComponent.swift; sourceTree = "<group>"; };
 		63CB2BB928A409DD00BF7A1B /* ARVisTextAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARVisTextAlignment.swift; sourceTree = "<group>"; };
 		63CB2BBB28A40A8000BF7A1B /* ARVisFontStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARVisFontStyle.swift; sourceTree = "<group>"; };
@@ -324,6 +354,8 @@
 		63E8E25228BD049A00919D6F /* ViewElementComponent+Example1+JamesEnsorWidegt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewElementComponent+Example1+JamesEnsorWidegt.swift"; sourceTree = "<group>"; };
 		63E8E25428BD04C200919D6F /* ViewElementComponent+Example2+MacBookPro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewElementComponent+Example2+MacBookPro.swift"; sourceTree = "<group>"; };
 		63E8E25828BD232900919D6F /* chartConfigurationExample2_MacBookProFamilyChart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chartConfigurationExample2_MacBookProFamilyChart.json; sourceTree = "<group>"; };
+		63E911D928C1A315006D7F8C /* ChartComponent+barMarkRepeat1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartComponent+barMarkRepeat1.swift"; sourceTree = "<group>"; };
+		63E911DD28C1A336006D7F8C /* ChartGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartGroup.swift; sourceTree = "<group>"; };
 		63EBEF5E28BB536500F112D5 /* KeyedCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyedCodable.swift; sourceTree = "<group>"; };
 		63F7C99928B5F6A600841EFA /* YoutubeVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeVideoViewController.swift; sourceTree = "<group>"; };
 		76220422FED15D91588C9B52 /* Pods-Tests iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests iOS.debug.xcconfig"; path = "Target Support Files/Pods-Tests iOS/Pods-Tests iOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -408,6 +440,7 @@
 			isa = PBXGroup;
 			children = (
 				63027A5328A9338900B06CFE /* Collection+Safe.swift */,
+				635AD92128C195F800112E6E /* Any+Type.swift */,
 			);
 			path = Swift;
 			sourceTree = "<group>";
@@ -512,6 +545,7 @@
 		63254E0428AB8DBB005E7599 /* Example JSON */ = {
 			isa = PBXGroup;
 			children = (
+				63AF738428C0F09600A38418 /* chartConfigurationExample2_MacBookProPerformanceLineChart.json */,
 				63E8E25828BD232900919D6F /* chartConfigurationExample2_MacBookProFamilyChart.json */,
 				6379F41528B912730020BB1B /* chartConfigurationExample1_JamesEnsorLifeChart.json */,
 				636C3ED728B4F52B001412FE /* chartConfigurationExample1_HistoricalPriceChart.json */,
@@ -652,6 +686,14 @@
 			path = SceneKit;
 			sourceTree = "<group>";
 		};
+		63666F3F28C1A75300A2C965 /* Hover */ = {
+			isa = PBXGroup;
+			children = (
+				63666F4028C1A75E00A2C965 /* ChartComponentHoverType.swift */,
+			);
+			path = Hover;
+			sourceTree = "<group>";
+		};
 		636C3EDA28B4FB68001412FE /* Enums */ = {
 			isa = PBXGroup;
 			children = (
@@ -777,11 +819,12 @@
 		63952C1228A931A1008183BF /* Chart */ = {
 			isa = PBXGroup;
 			children = (
+				63E911DC28C1A32F006D7F8C /* Utils */,
+				63E911D828C1A306006D7F8C /* ChartCopmonent */,
 				6344281728BBC02B00339D2F /* JSON */,
 				636F742028B9EB2C00931762 /* ChartConfiguration */,
 				636C3EDA28B4FB68001412FE /* Enums */,
 				63952C2328A9322B008183BF /* ARVisPlottableValueFieldPair.swift */,
-				63952C1E28A93211008183BF /* ChartComponent.swift */,
 				638730BD28ABBDAC0094AE12 /* ChartTooltipPresentationViewController.swift */,
 				639A6D8228AB5F2B00527C37 /* ChartTooltipView.swift */,
 				63027A6528A9340900B06CFE /* ChartView.swift */,
@@ -1000,6 +1043,30 @@
 			path = "Christ's Entry into Brussels in 1889";
 			sourceTree = "<group>";
 		};
+		63E911D828C1A306006D7F8C /* ChartCopmonent */ = {
+			isa = PBXGroup;
+			children = (
+				63666F3F28C1A75300A2C965 /* Hover */,
+				63952C1E28A93211008183BF /* ChartComponent.swift */,
+				63E911D928C1A315006D7F8C /* ChartComponent+barMarkRepeat1.swift */,
+				634E9D7628C1A3C300742893 /* ChartComponent+lineMarkRepeat1.swift */,
+				634E9D7928C1A3D500742893 /* ChartComponent+lineMarkRepeat2.swift */,
+				634E9D7C28C1A3FF00742893 /* ChartCopmonent+rectangleMarkRepeat1.swift */,
+				634E9D7F28C1A63B00742893 /* ChartComponent+pointMarkRepeat1.swift */,
+				6323815228C1A7230089A28C /* ChartComponent+ruleMarkRepeat1.swift */,
+				639C2B2528C1A788003A5390 /* ChartComponent+toChartContent.swift */,
+			);
+			path = ChartCopmonent;
+			sourceTree = "<group>";
+		};
+		63E911DC28C1A32F006D7F8C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				63E911DD28C1A336006D7F8C /* ChartGroup.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		63EBEF6128BB55B700F112D5 /* Grid */ = {
 			isa = PBXGroup;
 			children = (
@@ -1176,6 +1243,7 @@
 				63254E0B28AB8FC6005E7599 /* chartConfigurationExample1_ProvenanceChart.json in Resources */,
 				636C3ED828B4F52B001412FE /* chartConfigurationExample1_HistoricalPriceChart.json in Resources */,
 				6379F41628B912730020BB1B /* chartConfigurationExample1_JamesEnsorLifeChart.json in Resources */,
+				63AF738528C0F09700A38418 /* chartConfigurationExample2_MacBookProPerformanceLineChart.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1187,6 +1255,7 @@
 				63254E0C28AB8FC6005E7599 /* chartConfigurationExample1_ProvenanceChart.json in Resources */,
 				636C3ED928B4F52B001412FE /* chartConfigurationExample1_HistoricalPriceChart.json in Resources */,
 				630BD1A62892C4AC00C9BEAC /* Assets.xcassets in Resources */,
+				63AF738628C0F09700A38418 /* chartConfigurationExample2_MacBookProPerformanceLineChart.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1349,9 +1418,13 @@
 			files = (
 				63AE067228980D8F0061404E /* CGSize+Operators.swift in Sources */,
 				63AE0675289823880061404E /* WidgetInARViewController.swift in Sources */,
+				634E9D7D28C1A3FF00742893 /* ChartCopmonent+rectangleMarkRepeat1.swift in Sources */,
+				63666F4128C1A75E00A2C965 /* ChartComponentHoverType.swift in Sources */,
 				636F742228B9EB3C00931762 /* ChartXScale.swift in Sources */,
+				635AD92228C195F800112E6E /* Any+Type.swift in Sources */,
 				634B732628B2252C000BBB05 /* AudioPlayerView.swift in Sources */,
 				634B72F928B13869000BBB05 /* ChartProxy+PositionWithJSON.swift in Sources */,
+				63E911DA28C1A315006D7F8C /* ChartComponent+barMarkRepeat1.swift in Sources */,
 				639EBF5328B2614C00C76969 /* URLService.swift in Sources */,
 				634B72FA28B13869000BBB05 /* TableData.swift in Sources */,
 				6315A46A28AFE82B0045B685 /* SCNVector3+Codable.swift in Sources */,
@@ -1365,6 +1438,7 @@
 				634B731528B214EE000BBB05 /* ARVisSegmentedControlItem.swift in Sources */,
 				636C3ED528B4D8EA001412FE /* ChartView+Tooltip.swift in Sources */,
 				63027A5B28A933B800B06CFE /* View+if.swift in Sources */,
+				634E9D7728C1A3C300742893 /* ChartComponent+lineMarkRepeat1.swift in Sources */,
 				63AE067A2898260B0061404E /* UIViewControllerUtils.swift in Sources */,
 				635266B328BCB40A0059682C /* PartialViewController.swift in Sources */,
 				634B72B628B119EE000BBB05 /* Utility.swift in Sources */,
@@ -1408,11 +1482,13 @@
 				634B732128B22528000BBB05 /* Player.swift in Sources */,
 				63E8E25128BD047100919D6F /* ViewElementComponent+Example1+ArtworkWidget.swift in Sources */,
 				63EBEF5F28BB536600F112D5 /* KeyedCodable.swift in Sources */,
+				634E9D8028C1A63B00742893 /* ChartComponent+pointMarkRepeat1.swift in Sources */,
 				636EDDC22896542A00639195 /* ImageTrackingConfiguration.swift in Sources */,
 				634B730328B13869000BBB05 /* ChartComponent.swift in Sources */,
 				634B730028B13869000BBB05 /* ChartConfigurationJSONParser.swift in Sources */,
 				63E726AE28B53D5100998DA9 /* YoutubeThumbnailView.swift in Sources */,
 				634B730228B13869000BBB05 /* ARVisPlottableValueFieldPair.swift in Sources */,
+				639C2B2628C1A788003A5390 /* ChartComponent+toChartContent.swift in Sources */,
 				63027A5428A9338900B06CFE /* Collection+Safe.swift in Sources */,
 				634B72FC28B13869000BBB05 /* TableView.swift in Sources */,
 				634B730128B13869000BBB05 /* TableConfiguration.swift in Sources */,
@@ -1423,7 +1499,10 @@
 				635F526B2896AA4100FF40B6 /* Debug.swift in Sources */,
 				63027A6128A933E100B06CFE /* Date.swift in Sources */,
 				635D805328B9FA7C0077C1B6 /* ChartYAxis.swift in Sources */,
+				63E911DE28C1A336006D7F8C /* ChartGroup.swift in Sources */,
 				634B731B28B215A9000BBB05 /* ARVisSegmentedControlView.swift in Sources */,
+				6323815328C1A7230089A28C /* ChartComponent+ruleMarkRepeat1.swift in Sources */,
+				634E9D7A28C1A3D500742893 /* ChartComponent+lineMarkRepeat2.swift in Sources */,
 				63CB2BB728A3F39300BF7A1B /* ViewElementComponent.swift in Sources */,
 				638DA98A2892C6030030D494 /* AppDelegate.swift in Sources */,
 				634DEB5B28A415160019D3FF /* ViewElementComponent+Example.swift in Sources */,
@@ -1450,6 +1529,7 @@
 				634B72F528B13869000BBB05 /* ChartComponent.swift in Sources */,
 				63AF737628BF155000A38418 /* ChartLegend.swift in Sources */,
 				63027A6228A933E100B06CFE /* Date.swift in Sources */,
+				63E911DB28C1A315006D7F8C /* ChartComponent+barMarkRepeat1.swift in Sources */,
 				63CB2BCC28A40EA400BF7A1B /* ARVisTextAlignment.swift in Sources */,
 				636C3ED628B4D8EA001412FE /* ChartView+Tooltip.swift in Sources */,
 				634B72F128B13869000BBB05 /* ChartConfiguration.swift in Sources */,
@@ -1470,11 +1550,15 @@
 				634B72B928B119EE000BBB05 /* CodableExtensions.swift in Sources */,
 				630BD1A42892C4AC00C9BEAC /* ContentView.swift in Sources */,
 				6379F41428B8F21D0020BB1B /* ARVisAnnotation.swift in Sources */,
+				639C2B2728C1A788003A5390 /* ChartComponent+toChartContent.swift in Sources */,
 				634B72EE28B13869000BBB05 /* TableView.swift in Sources */,
+				634E9D7828C1A3C300742893 /* ChartComponent+lineMarkRepeat1.swift in Sources */,
 				63254E0128AB8869005E7599 /* CGPoint+Operations.swift in Sources */,
 				634DEB5C28A415160019D3FF /* ViewElementComponent+Example.swift in Sources */,
 				6315A46528AFE7530045B685 /* WidgetConfiguration.swift in Sources */,
 				634B72F428B13869000BBB05 /* ARVisPlottableValueFieldPair.swift in Sources */,
+				634E9D7E28C1A3FF00742893 /* ChartCopmonent+rectangleMarkRepeat1.swift in Sources */,
+				634E9D7B28C1A3D500742893 /* ChartComponent+lineMarkRepeat2.swift in Sources */,
 				63CB2BC828A40EA400BF7A1B /* ARVisHorizontalAlignment.swift in Sources */,
 				634B72B728B119EE000BBB05 /* Utility.swift in Sources */,
 				636F742628B9EB5400931762 /* ChartXAxis.swift in Sources */,
@@ -1482,12 +1566,14 @@
 				6344285A28BC6B5000339D2F /* NSNumber+Type.swift in Sources */,
 				63AF738328C0A50500A38418 /* OutsideOverlay.swift in Sources */,
 				634B72F628B13869000BBB05 /* ChartView.swift in Sources */,
+				635AD92328C195F800112E6E /* Any+Type.swift in Sources */,
 				63AE066128979D690061404E /* ImageDownloader.swift in Sources */,
 				636F742C28B9EB8B00931762 /* ChartStyleConfiguration.swift in Sources */,
 				634B72EF28B13869000BBB05 /* ChartView+GetElement.swift in Sources */,
 				635D804828B9EBF10077C1B6 /* ChartData.swift in Sources */,
 				63CB2BC928A40EA400BF7A1B /* ARVisFontStyle.swift in Sources */,
 				639EBF5D28B2948200C76969 /* ImageTrackingConfiguration.swift in Sources */,
+				634E9D8128C1A63B00742893 /* ChartComponent+pointMarkRepeat1.swift in Sources */,
 				63027A7328A93AFB00B06CFE /* JSON+Decode.swift in Sources */,
 				639A6D8E28AB62F100527C37 /* SwiftGen+Color.swift in Sources */,
 				634B72F328B13869000BBB05 /* TableConfiguration.swift in Sources */,
@@ -1495,6 +1581,7 @@
 				634B72F228B13869000BBB05 /* ChartConfigurationJSONParser.swift in Sources */,
 				634B72F028B13869000BBB05 /* ChartTooltipView.swift in Sources */,
 				636C3EDD28B4FB70001412FE /* ARVisInterpolationMethod.swift in Sources */,
+				6323815428C1A7230089A28C /* ChartComponent+ruleMarkRepeat1.swift in Sources */,
 				63CB2BCA28A40EA400BF7A1B /* ARVisContentMode.swift in Sources */,
 				634B732728B2252C000BBB05 /* AudioPlayerView.swift in Sources */,
 				636F742928B9EB6800931762 /* ChartAxisMarks.swift in Sources */,
@@ -1502,6 +1589,7 @@
 				636C3EE028B50C0F001412FE /* ARVisSymbol.swift in Sources */,
 				634B72EC28B13869000BBB05 /* TableData.swift in Sources */,
 				636F742F28B9EB9C00931762 /* ChartInteractionData.swift in Sources */,
+				63E911DF28C1A336006D7F8C /* ChartGroup.swift in Sources */,
 				630BD1A22892C4AC00C9BEAC /* iARVisApp.swift in Sources */,
 				634B731628B214EE000BBB05 /* ARVisSegmentedControlItem.swift in Sources */,
 				6339435A28ABA9FB008A5ED1 /* View+Execute.swift in Sources */,

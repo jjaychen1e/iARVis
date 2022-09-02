@@ -60,4 +60,22 @@ extension ChartDataItem {
         }
         return JSON(dict)
     }
+
+    func datumArray() -> [NSDictionary] {
+        var resultArray: [NSDictionary] = []
+
+        let titleDataMap = data.object as? NSDictionary ?? [:]
+        for i in 0 ..< length {
+            let dict = NSMutableDictionary()
+            for title in titles {
+                if let array = titleDataMap[title] as? [Any] {
+                    if let any = array[safe: i] {
+                        dict[title] = toSwiftType(any)
+                    }
+                }
+            }
+            resultArray.append(dict)
+        }
+        return resultArray
+    }
 }

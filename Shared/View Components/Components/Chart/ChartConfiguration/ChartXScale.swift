@@ -12,3 +12,8 @@ struct ChartXScale: Codable, Equatable {
     var includingZero: Bool?
     var domain: [JSON]?
 }
+
+struct ChartYScale: Codable, Equatable {
+    var includingZero: Bool?
+    var domain: [JSON]?
+}

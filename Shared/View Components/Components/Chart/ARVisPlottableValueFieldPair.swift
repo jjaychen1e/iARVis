@@ -22,30 +22,30 @@ struct ARVisPlottableValueFieldPair: Codable, Hashable {
     static func value(_ field: String) -> Self {
         ARVisPlottableValueFieldPair(label: field, field: field)
     }
-
-    func plottableInt(_ json: JSON) -> PlottableValue<Int>? {
-        if let intValue = json.strictInt {
-            return PlottableValue.value(label, intValue)
+    
+    func plottableInt(_ any: Any) -> PlottableValue<Int>? {
+        if let int = any as? Int {
+            return PlottableValue.value(label, int)
         }
         return nil
     }
 
-    func plottableDouble(_ json: JSON) -> PlottableValue<Double>? {
-        if let doubleValue = json.strictDouble {
-            return PlottableValue.value(label, doubleValue)
+    func plottableDouble(_ any: Any) -> PlottableValue<Double>? {
+        if let double = any as? Double {
+            return PlottableValue.value(label, double)
         }
         return nil
     }
 
-    func plottableDate(_ json: JSON) -> PlottableValue<Date>? {
-        if let date = json.date {
+    func plottableDate(_ any: Any) -> PlottableValue<Date>? {
+        if let date = any as? Date {
             return PlottableValue.value(label, date)
         }
         return nil
     }
 
-    func plottableString(_ json: JSON) -> PlottableValue<String>? {
-        if let string = json.string {
+    func plottableString(_ any: Any) -> PlottableValue<String>? {
+        if let string = any as? String {
             return PlottableValue.value(label, string)
         }
         return nil
@@ -60,7 +60,7 @@ extension JSON {
         }
         return nil
     }
-    
+
     var strictDouble: Double? {
         if let number = number,
            let double = number.toSwiftType() as? Double {

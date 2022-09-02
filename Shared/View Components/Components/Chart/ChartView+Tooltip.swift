@@ -83,6 +83,9 @@ extension ChartView {
                                     .id(selectedElement.rawString(options: []))
                             }
                         }
+                    case let .lineMarkRepeat2(dataKey, x, ySeries):
+                        // TODO: lineMarkRepeat2
+                        EmptyView()
                     }
                 }
             }

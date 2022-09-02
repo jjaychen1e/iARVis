@@ -65,6 +65,12 @@ class ChartConfigurationJSONParser {
                                                           x: .value(xField),
                                                           y: .value(yField))
                         componentConfigs.append(.init(component: chartComponent!, commonConfig: chartComponentCommonConfig))
+                    } else if let xField = config["x"]["field"].string,
+                              let ySeries = config["ySeries"].arrayObject as? [String] {
+                        chartComponent = .lineMarkRepeat2(dataKey: dataKey,
+                                                          x: .value(xField),
+                                                          ySeries: ySeries.map { .value($0) })
+                        componentConfigs.append(.init(component: chartComponent!, commonConfig: chartComponentCommonConfig))
                     }
                 case .rectangleMark:
                     let config = component["config"]
@@ -203,6 +209,13 @@ class ChartConfigurationJSONParser {
                 componentJSON["config"]["x"]["field"] = JSON(x.field)
                 componentJSON["config"]["y"] = [:]
                 componentJSON["config"]["y"]["field"] = JSON(y.field)
+            case let .lineMarkRepeat2(dataKey: dataKey, x: x, ySeries: ySeries):
+                componentJSON["type"] = "LineMark"
+                componentJSON["config"]["dataKey"] = JSON(dataKey)
+                componentJSON["config"]["x"] = [:]
+                componentJSON["config"]["x"]["field"] = JSON(x.field)
+                componentJSON["config"]["y"] = [:]
+                componentJSON["config"]["ySeries"] = JSON(ySeries.map { $0.field })
             case let .rectangleMarkRepeat1(dataKey, xStart, xEnd, yStart, yEnd):
                 componentJSON["type"] = "RectangleMark"
                 componentJSON["config"]["dataKey"] = JSON(dataKey)
@@ -319,6 +332,14 @@ enum ChartConfigurationExample {
     static let chartConfigurationExample2_MacBookProFamilyChart: String = {
         if #available(iOS 16, *) {
             let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample2_MacBookProFamilyChart.json")
+            return try! String(contentsOfFile: path.path)
+        }
+        return "{}"
+    }()
+
+    static let chartConfigurationExample2_MacBookProPerformanceLineChart: String = {
+        if #available(iOS 16, *) {
+            let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample2_MacBookProPerformanceLineChart.json")
             return try! String(contentsOfFile: path.path)
         }
         return "{}"

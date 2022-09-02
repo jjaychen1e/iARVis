@@ -14,6 +14,7 @@ struct ChartComponentCommonConfig: Codable, Equatable {
     var symbolSize: ARVisSymbolSize?
     var foregroundStyleColor: ARVisColor?
     var foregroundStyleField: String?
+    var foregroundStyleValue: String?
     var lineStyle: ARVisLineStyle?
     var annotations: [ARVisAnnotation]?
     var conditionalAnnotations: [ARVisConditionalAnnotation]?

@@ -9,6 +9,7 @@ import Foundation
 
 struct SwiftChartConfiguration: Codable, Equatable {
     var chartXScale: ChartXScale?
+    var chartYScale: ChartYScale?
     var chartXAxis: ChartXAxis?
     var chartYAxis: ChartYAxis?
     var styleConfiguration: ChartStyleConfiguration?

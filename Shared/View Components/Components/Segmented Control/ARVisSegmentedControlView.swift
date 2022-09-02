@@ -21,8 +21,10 @@ struct ARVisSegmentedControlView: View {
             .pickerStyle(SegmentedPickerStyle())
             .frame(minWidth: CGFloat(items.count) * 70)
             .fixedSize()
-            items[safe: selectedColorIndex]?.component.view()
-                .fixedSize(horizontal: false, vertical: true)
+            if let component = items[safe: selectedColorIndex]?.component {
+                component.view()
+                    .fixedSize(horizontal: false, vertical: true)
+            }
         }
     }
 }
