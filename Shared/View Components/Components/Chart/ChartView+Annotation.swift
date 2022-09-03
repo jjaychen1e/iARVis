@@ -73,11 +73,10 @@ extension ChartView {
                     let rectangle = CGRect(origin: CGPoint(x: xStartPosition, y: yPosition), size: CGSize(width: xEndPosition - xStartPosition, height: height ?? yHeight))
                     place(geoProxy: geoProxy, annotation: annotation, in: CGRect(origin: rectangle.origin + additionalOffset, size: rectangle.size))
                 }
-            case let .barMarkRepeat2(dataKey, x, y, height):
+            case let .barMarkRepeat2(_, x, y, height):
                 if let xPosition = proxy.position(atX: datum[x.field]),
                    let yPosition = proxy.position(atY: datum[y.field]),
-                   let xRange = proxy.positionRange(atX: datum[x.field]),
-                   let yRange = proxy.positionRange(atY: datum[y.field]) {
+                   let xRange = proxy.positionRange(atX: datum[x.field]) {
                     let yHeight = proxy.plotAreaSize.height - yPosition
                     let rectangle = CGRect(origin: CGPoint(x: xPosition - xRange.length / 2, y: yPosition), size: CGSize(width: xRange.length, height: height ?? yHeight))
                     place(geoProxy: geoProxy, annotation: annotation, in: CGRect(origin: rectangle.origin + additionalOffset, size: rectangle.size))
@@ -88,7 +87,7 @@ extension ChartView {
                     let rectangle = CGRect(origin: CGPoint(x: xPosition, y: yPosition), size: CGSize(width: 1, height: 1))
                     place(geoProxy: geoProxy, annotation: annotation, in: CGRect(origin: rectangle.origin + additionalOffset, size: rectangle.size))
                 }
-            case let .lineMarkRepeat2(dataKey: dataKey, x: x, ySeries: ySeries):
+            case let .lineMarkRepeat2(_, x, ySeries):
                 // TODO: lineMarkRepeat2
                 EmptyView()
             case let .rectangleMarkRepeat1(_, xStart, xEnd, yStart, yEnd):

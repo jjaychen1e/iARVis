@@ -23,9 +23,19 @@ struct ImageTrackingExample {
     static let exampleConfiguration2: ImageTrackingConfiguration = .init(
         imageURL: exampleImageURL2,
         relationships: [
-            .init(widgetConfiguration: .init(component: .example1_ArtworkWidget,
-                                             relativeAnchorPoint: .leading,
-                                             relativePosition: SCNVector3(0.2, 0, 0))),
+            .init(widgetConfiguration: .init(component: .example2_AppleSilicon,
+                                             relativeAnchorPoint: .trailing,
+                                             relativePosition: SCNVector3(0.2, 0, 0),
+                                             additionalWidgetConfiguration: [
+                                                 ViewElementComponent.example2_AppleSilicon.prettyJSON: AdditionalWidgetConfiguration(
+                                                     key: ViewElementComponent.example2_AppleSilicon.prettyJSON,
+                                                     widgetConfiguration: WidgetConfiguration(
+                                                         component: .example2_AppleSilicon,
+                                                         relativeAnchorPoint: .leading,
+                                                         relativePosition: .init(-0.005, 0, 0)
+                                                     )
+                                                 ),
+                                             ])),
         ]
     )
 }

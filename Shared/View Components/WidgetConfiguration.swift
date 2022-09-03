@@ -5,31 +5,26 @@
 //  Created by Junjie Chen on 2022/8/19.
 //
 
+import DefaultCodable
 import Foundation
-import SwiftUI
 import SceneKit
+import SwiftUI
 
-struct AdditionalWidgetConfiguration: Codable {
-    var hidden: Bool = false
+struct AdditionalWidgetConfiguration: Codable, Equatable {
+    @Default<False>
+    var hidden: Bool
     var key: String
     var widgetConfiguration: WidgetConfiguration
 }
 
-class WidgetConfiguration: Codable, ObservableObject {
+class WidgetConfiguration: Codable, Equatable, ObservableObject {
     var component: ViewElementComponent
     var relativeAnchorPoint: WidgetAnchorPoint
     var relativePosition: SCNVector3
     var positionOffset: SCNVector3
     var size: CGSize
-    var additionalWidgetConfiguration: [String: AdditionalWidgetConfiguration] = [:]
-
-    enum CodingKeys: CodingKey {
-        case relativeAnchorPoint
-        case relativePosition
-        case positionOffset
-        case component
-        case size
-    }
+    @Default<AdditionalWidgetConfigurationDefaultValueProvider>
+    var additionalWidgetConfiguration: [String: AdditionalWidgetConfiguration]
 
     init(component: ViewElementComponent, relativeAnchorPoint: WidgetAnchorPoint, relativePosition: SCNVector3, positionOffset: SCNVector3 = .zero, size: CGSize = .init(width: 1024, height: 768), additionalWidgetConfiguration: [String: AdditionalWidgetConfiguration] = [:]) {
         self.component = component
@@ -38,6 +33,22 @@ class WidgetConfiguration: Codable, ObservableObject {
         self.positionOffset = positionOffset
         self.size = size
         self.additionalWidgetConfiguration = additionalWidgetConfiguration
+    }
+    
+    
+    static func == (lhs: WidgetConfiguration, rhs: WidgetConfiguration) -> Bool {
+        lhs.component == rhs.component &&
+        lhs.relativeAnchorPoint == rhs.relativeAnchorPoint &&
+        lhs.relativePosition == rhs.relativePosition &&
+        lhs.positionOffset == rhs.positionOffset &&
+        lhs.size == rhs.size &&
+        lhs.additionalWidgetConfiguration == rhs.additionalWidgetConfiguration
+    }
+
+    enum AdditionalWidgetConfigurationDefaultValueProvider: DefaultValueProvider {
+        typealias Value = [String: AdditionalWidgetConfiguration]
+
+        static let `default`: [String: AdditionalWidgetConfiguration] = [:]
     }
 }
 

@@ -86,7 +86,7 @@ extension ChartView {
                                     .id(selectedElement.rawString(options: []))
                             }
                         }
-                    case let .lineMarkRepeat2(dataKey, x, ySeries):
+                    case let .lineMarkRepeat2(_, x, ySeries):
                         // TODO: lineMarkRepeat2
                         EmptyView()
                     }

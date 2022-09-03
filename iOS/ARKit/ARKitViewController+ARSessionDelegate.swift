@@ -15,7 +15,7 @@ extension ARKitViewController: ARSessionDelegate {
         for imageTrackingConfig in visContext.visConfiguration?.imageTrackingConfigurations ?? [] {
             for relationship in imageTrackingConfig.relationships {
                 guard let nodePair = visContext.nodePairs(url: imageTrackingConfig.imageURL)?[relationship] else {
-                    return
+                    continue
                 }
                 updateAdditionalWidgetViewController(node: nodePair.node, widgetConfiguration: relationship.widgetConfiguration)
             }

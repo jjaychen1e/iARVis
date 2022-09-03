@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "defaultcodable",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/gonzalezreal/DefaultCodable",
+      "state" : {
+        "branch" : "master",
+        "revision" : "b75cdb44b772cdd278ea0d029d3f079384b0d87d"
+      }
+    },
+    {
       "identity" : "gsplayer",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/wxxsw/GSPlayer.git",
