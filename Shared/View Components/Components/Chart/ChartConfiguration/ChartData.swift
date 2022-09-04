@@ -18,6 +18,20 @@ struct ChartData: Codable, Equatable {
             }
         }
     }
+
+    mutating func update(typeInformation: [String: [String: ARVisPlottableValueTypeInformation]] = [:]) {
+        var newDataItems: [String: ChartDataItem] = [:]
+        for (label, dataItem) in dataItems {
+            if let typeInformation = typeInformation[label] {
+                var _dataItem = dataItem
+                _dataItem.typeInformation = typeInformation
+                newDataItems[label] = _dataItem
+            } else {
+                newDataItems[label] = dataItem
+            }
+        }
+        dataItems = newDataItems
+    }
 }
 
 struct ChartDataItem: Codable, Equatable {
@@ -25,7 +39,51 @@ struct ChartDataItem: Codable, Equatable {
     private(set) var titles: [String]
     private(set) var length: Int
 
-    init(data: JSON? = nil, titles: [String]? = nil) {
+    private(set) var datumArray: [NSDictionary] = []
+
+    fileprivate var typeInformation: [String: ARVisPlottableValueTypeInformation] = [:] {
+        didSet {
+            generateDatumArray()
+        }
+    }
+
+    enum CodingKeys: CodingKey {
+        case data
+        case titles
+        case length
+    }
+
+    mutating func generateDatumArray() {
+        var datumArray: [NSDictionary] = []
+        let titleDataMap = data.object as? NSDictionary ?? [:]
+        for i in 0 ..< length {
+            let dict = NSMutableDictionary()
+            for title in titles {
+                if let array = titleDataMap[title] as? [Any] {
+                    if let any = array[safe: i] {
+                        if let typeInformation = typeInformation[title] {
+                            switch typeInformation {
+                            case let .date(format: format):
+                                if let string = any as? String {
+                                    dict[title] = AutoDateParser.shared.parse(string, format: format)
+                                } else if let nsNumber = any as? NSNumber {
+                                    dict[title] = AutoDateParser.shared.parse(nsNumber.stringValue, format: format)
+                                } else {
+                                    dict[title] = toSwiftType(any)
+                                }
+                            }
+                        } else {
+                            dict[title] = toSwiftType(any)
+                        }
+                    }
+                }
+            }
+            datumArray.append(dict)
+        }
+        self.datumArray = datumArray
+    }
+
+    init(data: JSON? = nil, titles: [String]? = nil, typeInformation: [String: ARVisPlottableValueTypeInformation] = [:]) {
         let data = data ?? JSON()
         self.data = data
 
@@ -49,6 +107,8 @@ struct ChartDataItem: Codable, Equatable {
             }
         }
         length = maxLength
+        self.typeInformation = typeInformation
+        generateDatumArray()
     }
 }
 
@@ -59,23 +119,5 @@ extension ChartDataItem {
             dict[title] = data[title].array?[safe: index]
         }
         return JSON(dict)
-    }
-
-    func datumArray() -> [NSDictionary] {
-        var resultArray: [NSDictionary] = []
-
-        let titleDataMap = data.object as? NSDictionary ?? [:]
-        for i in 0 ..< length {
-            let dict = NSMutableDictionary()
-            for title in titles {
-                if let array = titleDataMap[title] as? [Any] {
-                    if let any = array[safe: i] {
-                        dict[title] = toSwiftType(any)
-                    }
-                }
-            }
-            resultArray.append(dict)
-        }
-        return resultArray
     }
 }

@@ -22,6 +22,8 @@ class ChartConfigurationJSONParser {
             chartConfig.chartData = chartData
         }
 
+        var typeInformation: [String: [String: ARVisPlottableValueTypeInformation]] = [:]
+
         // Components
         var componentConfigs: [ChartComponentConfiguration] = []
         for component in json["components"].arrayValue {
@@ -50,6 +52,10 @@ class ChartConfigurationJSONParser {
                         if let heightDouble = config["height"].double {
                             height = heightDouble
                         }
+                        typeInformation[dataKey, default: [:]][xStartField] = .extract(from: config["xStart"])
+                        typeInformation[dataKey, default: [:]][xEndField] = .extract(from: config["xEnd"])
+                        typeInformation[dataKey, default: [:]][yField] = .extract(from: config["y"])
+
                         chartComponent = .barMarkRepeat1(dataKey: dataKey,
                                                          xStart: .value(xStartField),
                                                          xEnd: .value(xEndField),
@@ -62,6 +68,8 @@ class ChartConfigurationJSONParser {
                         if let heightDouble = config["height"].double {
                             height = heightDouble
                         }
+                        typeInformation[dataKey, default: [:]][xField] = .extract(from: config["x"])
+                        typeInformation[dataKey, default: [:]][yField] = .extract(from: config["y"])
                         chartComponent = .barMarkRepeat2(dataKey: dataKey,
                                                          x: .value(xField),
                                                          y: .value(yField),
@@ -72,12 +80,15 @@ class ChartConfigurationJSONParser {
                     let config = component["config"]
                     if let xField = config["x"]["field"].string,
                        let yField = config["y"]["field"].string {
+                        typeInformation[dataKey, default: [:]][xField] = .extract(from: config["x"])
+                        typeInformation[dataKey, default: [:]][yField] = .extract(from: config["y"])
                         chartComponent = .lineMarkRepeat1(dataKey: dataKey,
                                                           x: .value(xField),
                                                           y: .value(yField))
                         componentConfigs.append(.init(component: chartComponent!, commonConfig: chartComponentCommonConfig))
                     } else if let xField = config["x"]["field"].string,
                               let ySeries = config["ySeries"].arrayObject as? [String] {
+                        typeInformation[dataKey, default: [:]][xField] = .extract(from: config["x"])
                         chartComponent = .lineMarkRepeat2(dataKey: dataKey,
                                                           x: .value(xField),
                                                           ySeries: ySeries.map { .value($0) })
@@ -89,6 +100,10 @@ class ChartConfigurationJSONParser {
                        let xEndField = config["xEnd"]["field"].string,
                        let yStartField = config["yStart"]["field"].string,
                        let yEndField = config["yEnd"]["field"].string {
+                        typeInformation[dataKey, default: [:]][xStartField] = .extract(from: config["xStart"])
+                        typeInformation[dataKey, default: [:]][xEndField] = .extract(from: config["xEnd"])
+                        typeInformation[dataKey, default: [:]][yStartField] = .extract(from: config["yStart"])
+                        typeInformation[dataKey, default: [:]][yEndField] = .extract(from: config["yEnd"])
                         chartComponent = .rectangleMarkRepeat1(dataKey: dataKey,
                                                                xStart: .value(xStartField),
                                                                xEnd: .value(xEndField),
@@ -99,8 +114,11 @@ class ChartConfigurationJSONParser {
                 case .ruleMark:
                     let config = component["config"]
                     if let xField = config["x"]["field"].string {
+                        typeInformation[dataKey, default: [:]][xField] = .extract(from: config["x"])
                         if let yStartField = config["yStart"]["field"].string,
                            let yEndField = config["yEnd"]["field"].string {
+                            typeInformation[dataKey, default: [:]][yStartField] = .extract(from: config["yStart"])
+                            typeInformation[dataKey, default: [:]][yEndField] = .extract(from: config["yEnd"])
                             chartComponent = .ruleMarkRepeat1(dataKey: dataKey,
                                                               x: .value(xField),
                                                               yStart: .value(yStartField),
@@ -115,6 +133,8 @@ class ChartConfigurationJSONParser {
                     let config = component["config"]
                     if let xField = config["x"]["field"].string,
                        let yField = config["y"]["field"].string {
+                        typeInformation[dataKey, default: [:]][xField] = .extract(from: config["x"])
+                        typeInformation[dataKey, default: [:]][yField] = .extract(from: config["y"])
                         chartComponent = .pointMarkRepeat1(dataKey: dataKey, x: .value(xField), y: .value(yField))
                         componentConfigs.append(.init(component: chartComponent!, commonConfig: chartComponentCommonConfig))
                     }
@@ -172,6 +192,8 @@ class ChartConfigurationJSONParser {
             }
         }
         chartConfig.componentConfigs = componentConfigs
+        
+        chartConfig.chartData.update(typeInformation: typeInformation)
 
         let swiftChartConfiguration = json.decode(SwiftChartConfiguration.self) ?? .init()
         chartConfig.swiftChartConfiguration = swiftChartConfiguration
@@ -365,7 +387,7 @@ enum ChartConfigurationExample {
         }
         return "{}"
     }()
-    
+
     static let chartConfigurationExample2_MacBookProPerformanceBarChartCPU: String = {
         if #available(iOS 16, *) {
             let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample2_MacBookProPerformanceBarChartCPU.json")
@@ -373,7 +395,7 @@ enum ChartConfigurationExample {
         }
         return "{}"
     }()
-    
+
     static let chartConfigurationExample2_MacBookProPerformanceBarChartCPU2: String = {
         if #available(iOS 16, *) {
             let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample2_MacBookProPerformanceBarChartCPU2.json")
@@ -381,10 +403,18 @@ enum ChartConfigurationExample {
         }
         return "{}"
     }()
-    
+
     static let chartConfigurationExample2_MacBookProPerformanceBarChartGPU: String = {
         if #available(iOS 16, *) {
             let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample2_MacBookProPerformanceBarChartGPU.json")
+            return try! String(contentsOfFile: path.path)
+        }
+        return "{}"
+    }()
+
+    static let chartConfigurationExample3_BabyNamesLineChart: String = {
+        if #available(iOS 16, *) {
+            let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample3_BabyNamesLineChart.json")
             return try! String(contentsOfFile: path.path)
         }
         return "{}"

@@ -14,7 +14,7 @@ import SwiftyJSON
 extension ChartComponent {
     @ChartContentBuilder
     func rectangleMarkRepeat1(configuration _: ChartConfiguration, commonConfig: ChartComponentCommonConfig, dataItem: ChartDataItem, xStart: ARVisPlottableValueFieldPair, xEnd: ARVisPlottableValueFieldPair, yStart: ARVisPlottableValueFieldPair, yEnd: ARVisPlottableValueFieldPair) -> some ChartContent {
-        let datumArray = dataItem.datumArray()
+        let datumArray = dataItem.datumArray
         ForEach(0 ..< dataItem.length, id: \.self) { index in
             let datum = datumArray[index]
             ChartGroup {

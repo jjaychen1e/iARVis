@@ -6,12 +6,11 @@
 //
 
 import Foundation
-import SwiftDate
 
 func toSwiftType(_ any: Any) -> Any {
     if let nsNumber = any as? NSNumber {
         return nsNumber.toSwiftType()
-    } else if let string = any as? String, let date = string.toDate(String.iARVisAutoFormats, region: SwiftDate.defaultRegion)?.date {
+    } else if let string = any as? String, let date =  AutoDateParser.shared.parse(string) {
         return date
     } else {
         return any

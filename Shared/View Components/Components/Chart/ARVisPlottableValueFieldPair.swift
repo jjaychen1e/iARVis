@@ -9,8 +9,22 @@ import Charts
 import Foundation
 import SwiftyJSON
 
+enum ARVisPlottableValueTypeInformation: Hashable {
+    case date(format: String)
+    
+    static func extract(from json: JSON?) -> ARVisPlottableValueTypeInformation? {
+        if let json = json {
+            if json["type"].string == "date",
+               let dateFormat = json["dateFormat"].string {
+                return .date(format: dateFormat)
+            }
+        }
+        return nil
+    }
+}
+
 @available(iOS 16, *)
-struct ARVisPlottableValueFieldPair: Codable, Hashable {
+struct ARVisPlottableValueFieldPair: Hashable {
     var label: String
     var field: String
 //    TODO: var unit: ... to support date unit

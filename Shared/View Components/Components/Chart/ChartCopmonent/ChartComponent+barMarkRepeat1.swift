@@ -14,7 +14,7 @@ import SwiftyJSON
 extension ChartComponent {
     @ChartContentBuilder
     func barMarkRepeat1(configuration _: ChartConfiguration, commonConfig: ChartComponentCommonConfig, dataItem: ChartDataItem, xStart: ARVisPlottableValueFieldPair, xEnd: ARVisPlottableValueFieldPair, y: ARVisPlottableValueFieldPair, height: CGFloat?) -> some ChartContent {
-        let datumArray = dataItem.datumArray()
+        let datumArray = dataItem.datumArray
         ForEach(0 ..< dataItem.length, id: \.self) { index in
             let datum = datumArray[index]
             ChartGroup {

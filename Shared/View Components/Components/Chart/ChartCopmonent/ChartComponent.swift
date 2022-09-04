@@ -11,7 +11,7 @@ import SwiftUI
 import SwiftyJSON
 
 @available(iOS 16, *)
-enum ChartComponent: Codable, Hashable {
+enum ChartComponent: Hashable {
     case barMarkRepeat1(dataKey: String, xStart: ARVisPlottableValueFieldPair, xEnd: ARVisPlottableValueFieldPair, y: ARVisPlottableValueFieldPair, height: CGFloat?)
     case barMarkRepeat2(dataKey: String, x: ARVisPlottableValueFieldPair, y: ARVisPlottableValueFieldPair, height: CGFloat?)
     case lineMarkRepeat1(dataKey: String, x: ARVisPlottableValueFieldPair, y: ARVisPlottableValueFieldPair)
