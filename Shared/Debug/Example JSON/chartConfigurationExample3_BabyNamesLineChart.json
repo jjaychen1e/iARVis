@@ -5835,12 +5835,15 @@
                     "field": "n"
                 },
                 "foregroundStyleField": "name",
-                "interpolationMethod": "linear"
+                "interpolationMethod": "linear",
+                "lineStyle": {
+                    "lineWidth": 2.0
+                }
             }
         }
     ],
     "styleConfiguration": {
-        "maxHeight": 450
+        "maxHeight": 600
     },
     "chartXScale": {
         "includingZero": false

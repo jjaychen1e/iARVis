@@ -14,6 +14,12 @@ import SwiftyJSON
 extension ChartView {
     @ViewBuilder
     func chartAnnotationHandler(proxy: ChartProxy, chartConfiguration: ChartConfiguration) -> some View {
+        annotationsViewForComponents(proxy: proxy, chartConfiguration: chartConfiguration)
+        annotationsViewGlobal(proxy: proxy, chartConfiguration: chartConfiguration)
+    }
+
+    @ViewBuilder
+    private func annotationsViewForComponents(proxy: ChartProxy, chartConfiguration: ChartConfiguration) -> some View {
         let componentConfigs = chartConfiguration.componentConfigs
         ForEach(0 ..< componentConfigs.count, id: \.self) { index in
             let componentConfig = componentConfigs[index]
@@ -27,6 +33,20 @@ extension ChartView {
                 if let conditionalAnnotations = commonConfig.conditionalAnnotations {
                     conditionalAnnotationsView(proxy: proxy, component: component, conditionalAnnotations: conditionalAnnotations, dataItem: dataItem)
                 }
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func annotationsViewGlobal(proxy: ChartProxy, chartConfiguration: ChartConfiguration) -> some View {
+        let annotations = chartConfiguration.swiftChartConfiguration.annotations ?? []
+        GeometryReader { geoProxy in
+            ForEach(0 ..< annotations.count, id: \.self) { index in
+                let annotation = annotations[index]
+                Color.clear
+                    .overlay(alignment: .init(annotation.position)) {
+                        annotation.content.view()
+                    }
             }
         }
     }
@@ -124,6 +144,8 @@ extension ChartView {
                     let rectangle = CGRect(origin: CGPoint(x: xPosition, y: yPosition), size: CGSize(width: 1, height: 1))
                     place(geoProxy: geoProxy, annotation: annotation, in: CGRect(origin: rectangle.origin + additionalOffset, size: rectangle.size))
                 }
+            case let .areaMarkRepeat1(dataKey, x, y, stacking):
+                EmptyView()
             }
         }
     }

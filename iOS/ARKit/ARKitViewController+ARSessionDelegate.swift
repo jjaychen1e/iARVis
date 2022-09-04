@@ -61,12 +61,11 @@ extension ARKitViewController {
                 // Add new additional widget!
                 DispatchQueue.main.async {
                     let newNode = SCNWidgetNode(widgetConfiguration: config.widgetConfiguration)
-                    newNode.geometry = {
-                        let plane = SCNPlane()
-                        plane.width = 0.4
-                        plane.height = 0.4
-                        return plane
-                    }()
+                    let plane = SCNPlane()
+                    plane.width = config.widgetConfiguration.size.width * config.widgetConfiguration.scale
+                    plane.height = config.widgetConfiguration.size.width * config.widgetConfiguration.scale
+                    newNode.geometry = plane
+
                     let widgetViewController = WidgetInARViewController(node: newNode)
                     node.additionalWidgetNodes[key] = newNode
                     node.additionalWidgetNodes[key]?.widgetViewController = widgetViewController

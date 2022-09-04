@@ -39,6 +39,10 @@ extension ChartComponent {
     func pointMark<X: Plottable, Y: Plottable>(x: PlottableValue<X>, y: PlottableValue<Y>) -> some ChartContent {
         PointMark(x: x, y: y)
     }
+    
+    func areaMark<X: Plottable, Y: Plottable>(x: PlottableValue<X>, y: PlottableValue<Y>, stacking: ARVisMarkStackingMethod?) -> some ChartContent {
+        AreaMark(x: x, y: y, stacking: .init(stacking))
+    }
 
     @ChartContentBuilder
     func toChartContent(configuration: ChartConfiguration, commonConfig: ChartComponentCommonConfig) -> some ChartContent {
@@ -58,6 +62,8 @@ extension ChartComponent {
                 ruleMarkRepeat1(configuration: configuration, commonConfig: commonConfig, dataItem: dataItem, x: x, yStart: yStart, yEnd: yEnd)
             case let .pointMarkRepeat1(_, x, y):
                 pointMarkRepeat1(configuration: configuration, commonConfig: commonConfig, dataItem: dataItem, x: x, y: y)
+            case let .areaMarkRepeat1(_, x, y, stacking):
+                areaMarkRepeat1(configuration: configuration, commonConfig: commonConfig, dataItem: dataItem, x: x, y: y, stacking: stacking)
             }
         }
     }

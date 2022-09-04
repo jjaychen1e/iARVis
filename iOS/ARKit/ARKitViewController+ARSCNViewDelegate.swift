@@ -26,12 +26,10 @@ extension ARKitViewController: ARSCNViewDelegate {
                 let nodePair = VisualizationContext.NodePair(node: widgetNode)
                 visContext.set(nodePair: nodePair, for: conf.imageURL, relationship: relationship)
                 DispatchQueue.main.async {
-                    nodePair.node.geometry = {
-                        let plane = SCNPlane()
-                        plane.width = 0.4
-                        plane.height = 0.4
-                        return plane
-                    }()
+                    let plane = SCNPlane()
+                    plane.width = relationship.widgetConfiguration.size.width * relationship.widgetConfiguration.scale
+                    plane.height = relationship.widgetConfiguration.size.width * relationship.widgetConfiguration.scale
+                    nodePair.node.geometry = plane
                     let widgetViewController = WidgetInARViewController(node: widgetNode)
                     widgetViewController.node = widgetNode
                     nodePair.node.widgetViewController = widgetViewController
@@ -123,31 +121,43 @@ extension ARKitViewController {
                 return relationship.widgetConfiguration.relativeAnchorPoint
             }
         }()
+        
+        let widgetConfig = nodePair.node.widgetConfiguration
+        
+        plane.width = widgetConfig.size.width * widgetConfig.scale
+        plane.height = widgetConfig.size.width * widgetConfig.scale
+        
+        let planeRealSize: CGSize = {
+            let widgetSize = widgetConfig.size
+            let planeSize = plane.size
+            let squareSize = max(widgetSize.width, widgetSize.height)
+            return CGSize(width: planeSize.width * widgetSize.width / squareSize, height: planeSize.height * widgetSize.height / squareSize)
+        }()
 
         let targetImageSize = imageAnchor.referenceImage.physicalSize * imageAnchor.estimatedScaleFactor
         var xOffset: CGFloat
         var yOffset: CGFloat
         switch anchor {
         case .bottom:
-            xOffset = -plane.width / 2
-            yOffset = -targetImageSize.height / 2 - plane.height / 2
+            xOffset = 0
+            yOffset = targetImageSize.height / 2 + planeRealSize.height / 2
         case .center:
-            xOffset = -plane.width / 2
-            yOffset = 0
-        case .leading:
-            xOffset = -targetImageSize.width / 2 - plane.width
-            yOffset = 0
-        case .top:
-            xOffset = -plane.width / 2
-            yOffset = targetImageSize.height / 2 + plane.height / 2
-        case .trailing:
-            xOffset = targetImageSize.width / 2
-            yOffset = 0
-        case .auto:
             xOffset = 0
             yOffset = 0
+        case .leading:
+            xOffset = -targetImageSize.width / 2 - planeRealSize.width / 2
+            yOffset = 0
+        case .top:
+            xOffset = 0
+            yOffset = -targetImageSize.height / 2 - planeRealSize.height / 2
+        case .trailing:
+            xOffset = targetImageSize.width / 2 + planeRealSize.width / 2
+            yOffset = 0
+        case .auto:
+            xOffset = targetImageSize.width / 2 + planeRealSize.width / 2
+            yOffset = 0
         }
-        nodePair._node.position = relationship.widgetConfiguration.relativePosition + relationship.widgetConfiguration.positionOffset + SCNVector3(Float(xOffset), Float(yOffset), 0)
+        nodePair._node.position = relationship.widgetConfiguration.relativePosition + relationship.widgetConfiguration.positionOffset + SCNVector3(Float(xOffset), 0, Float(yOffset))
         nodePair._node.eulerAngles = SCNVector3(-CGFloat.pi / 2, 0, 0)
         nodePair.node.setWorldTransform(nodePair._node.worldTransform)
     }

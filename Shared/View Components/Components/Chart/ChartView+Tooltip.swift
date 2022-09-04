@@ -89,6 +89,8 @@ extension ChartView {
                     case let .lineMarkRepeat2(_, x, ySeries):
                         // TODO: lineMarkRepeat2
                         EmptyView()
+                    case let .areaMarkRepeat1(dataKey, x, y, stacking):
+                        EmptyView()
                     }
                 }
             }

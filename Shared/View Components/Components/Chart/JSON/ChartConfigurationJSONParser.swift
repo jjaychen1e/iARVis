@@ -138,6 +138,22 @@ class ChartConfigurationJSONParser {
                         chartComponent = .pointMarkRepeat1(dataKey: dataKey, x: .value(xField), y: .value(yField))
                         componentConfigs.append(.init(component: chartComponent!, commonConfig: chartComponentCommonConfig))
                     }
+                case .areaMark:
+                    let config = component["config"]
+                    if let xField = config["x"]["field"].string,
+                       let yField = config["y"]["field"].string {
+                        typeInformation[dataKey, default: [:]][xField] = .extract(from: config["x"])
+                        typeInformation[dataKey, default: [:]][yField] = .extract(from: config["y"])
+                        let stacking: ARVisMarkStackingMethod? = {
+                            if let stackingString = config["stacking"].string,
+                               let stacking = ARVisMarkStackingMethod(rawValue: stackingString) {
+                                return stacking
+                            }
+                            return nil
+                        }()
+                        chartComponent = .areaMarkRepeat1(dataKey: dataKey, x: .value(xField), y: .value(yField), stacking: stacking)
+                        componentConfigs.append(.init(component: chartComponent!, commonConfig: chartComponentCommonConfig))
+                    }
                 }
 
                 // Interaction
@@ -192,7 +208,7 @@ class ChartConfigurationJSONParser {
             }
         }
         chartConfig.componentConfigs = componentConfigs
-        
+
         chartConfig.chartData.update(typeInformation: typeInformation)
 
         let swiftChartConfiguration = json.decode(SwiftChartConfiguration.self) ?? .init()
@@ -290,6 +306,16 @@ class ChartConfigurationJSONParser {
                 componentJSON["config"]["x"]["field"] = JSON(x.field)
                 componentJSON["config"]["y"] = [:]
                 componentJSON["config"]["y"]["field"] = JSON(y.field)
+            case let .areaMarkRepeat1(dataKey, x, y, stacking):
+                componentJSON["type"] = "AreaMark"
+                componentJSON["config"]["dataKey"] = JSON(dataKey)
+                componentJSON["config"]["x"] = [:]
+                componentJSON["config"]["x"]["field"] = JSON(x.field)
+                componentJSON["config"]["y"] = [:]
+                componentJSON["config"]["y"]["field"] = JSON(y.field)
+                if let stacking = stacking {
+                    componentJSON["config"]["stacking"] = JSON(stacking.rawValue)
+                }
             }
 
             // Component Common Config
@@ -415,6 +441,78 @@ enum ChartConfigurationExample {
     static let chartConfigurationExample3_BabyNamesLineChart: String = {
         if #available(iOS 16, *) {
             let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample3_BabyNamesLineChart.json")
+            return try! String(contentsOfFile: path.path)
+        }
+        return "{}"
+    }()
+
+    static let chartConfigurationExample3_BabyNamesAreaChartAshley: String = {
+        if #available(iOS 16, *) {
+            let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample3_BabyNamesAreaChartAshley.json")
+            return try! String(contentsOfFile: path.path)
+        }
+        return "{}"
+    }()
+
+    static let chartConfigurationExample3_BabyNamesAreaChartPatricia: String = {
+        if #available(iOS 16, *) {
+            let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample3_BabyNamesAreaChartPatricia.json")
+            return try! String(contentsOfFile: path.path)
+        }
+        return "{}"
+    }()
+
+    static let chartConfigurationExample3_BabyNamesAreaChartJessica: String = {
+        if #available(iOS 16, *) {
+            let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample3_BabyNamesAreaChartJessica.json")
+            return try! String(contentsOfFile: path.path)
+        }
+        return "{}"
+    }()
+
+    static let chartConfigurationExample3_BabyNamesAreaChartDeborah: String = {
+        if #available(iOS 16, *) {
+            let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample3_BabyNamesAreaChartDeborah.json")
+            return try! String(contentsOfFile: path.path)
+        }
+        return "{}"
+    }()
+
+    static let chartConfigurationExample3_BabyNamesAreaChartLinda: String = {
+        if #available(iOS 16, *) {
+            let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample3_BabyNamesAreaChartLinda.json")
+            return try! String(contentsOfFile: path.path)
+        }
+        return "{}"
+    }()
+
+    static let chartConfigurationExample3_BabyNamesAreaChartDorothy: String = {
+        if #available(iOS 16, *) {
+            let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample3_BabyNamesAreaChartDorothy.json")
+            return try! String(contentsOfFile: path.path)
+        }
+        return "{}"
+    }()
+
+    static let chartConfigurationExample3_BabyNamesAreaChartBetty: String = {
+        if #available(iOS 16, *) {
+            let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample3_BabyNamesAreaChartBetty.json")
+            return try! String(contentsOfFile: path.path)
+        }
+        return "{}"
+    }()
+
+    static let chartConfigurationExample3_BabyNamesAreaChartAmanda: String = {
+        if #available(iOS 16, *) {
+            let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample3_BabyNamesAreaChartAmanda.json")
+            return try! String(contentsOfFile: path.path)
+        }
+        return "{}"
+    }()
+
+    static let chartConfigurationExample3_BabyNamesAreaChartHelen: String = {
+        if #available(iOS 16, *) {
+            let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample3_BabyNamesAreaChartHelen.json")
             return try! String(contentsOfFile: path.path)
         }
         return "{}"

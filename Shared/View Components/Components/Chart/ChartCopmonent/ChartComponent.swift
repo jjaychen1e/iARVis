@@ -19,6 +19,7 @@ enum ChartComponent: Hashable {
     case rectangleMarkRepeat1(dataKey: String, xStart: ARVisPlottableValueFieldPair, xEnd: ARVisPlottableValueFieldPair, yStart: ARVisPlottableValueFieldPair, yEnd: ARVisPlottableValueFieldPair)
     case ruleMarkRepeat1(dataKey: String, x: ARVisPlottableValueFieldPair, yStart: ARVisPlottableValueFieldPair? = nil, yEnd: ARVisPlottableValueFieldPair? = nil)
     case pointMarkRepeat1(dataKey: String, x: ARVisPlottableValueFieldPair, y: ARVisPlottableValueFieldPair)
+    case areaMarkRepeat1(dataKey: String, x: ARVisPlottableValueFieldPair, y: ARVisPlottableValueFieldPair, stacking: ARVisMarkStackingMethod? = nil)
 
     var dataKey: String {
         switch self {
@@ -36,6 +37,8 @@ enum ChartComponent: Hashable {
             return dataKey
         case let .pointMarkRepeat1(dataKey, _, _):
             return dataKey
+        case let .areaMarkRepeat1(dataKey, _, _, _):
+            return dataKey
         }
     }
 }
@@ -46,4 +49,5 @@ enum ChartComponentType: String, RawRepresentable {
     case rectangleMark = "RectangleMark"
     case ruleMark = "RuleMark"
     case pointMark = "PointMark"
+    case areaMark = "AreaMark"
 }

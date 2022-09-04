@@ -195,6 +195,30 @@
 		63AF738528C0F09700A38418 /* chartConfigurationExample2_MacBookProPerformanceLineChart.json in Resources */ = {isa = PBXBuildFile; fileRef = 63AF738428C0F09600A38418 /* chartConfigurationExample2_MacBookProPerformanceLineChart.json */; };
 		63AF738628C0F09700A38418 /* chartConfigurationExample2_MacBookProPerformanceLineChart.json in Resources */ = {isa = PBXBuildFile; fileRef = 63AF738428C0F09600A38418 /* chartConfigurationExample2_MacBookProPerformanceLineChart.json */; };
 		63BDFA2E28B52AC3002D8254 /* VideoPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = 63BDFA2D28B52AC3002D8254 /* VideoPlayer */; };
+		63BFA49028C4C3340053FEE2 /* ARVisMarkStackingMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BFA48F28C4C3340053FEE2 /* ARVisMarkStackingMethod.swift */; };
+		63BFA49128C4C3340053FEE2 /* ARVisMarkStackingMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BFA48F28C4C3340053FEE2 /* ARVisMarkStackingMethod.swift */; };
+		63BFA49328C4C3C10053FEE2 /* ChartComponent+areaMarkRepeat1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BFA49228C4C3C10053FEE2 /* ChartComponent+areaMarkRepeat1.swift */; };
+		63BFA49428C4C3C10053FEE2 /* ChartComponent+areaMarkRepeat1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BFA49228C4C3C10053FEE2 /* ChartComponent+areaMarkRepeat1.swift */; };
+		63BFA49E28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartHelen.json in Resources */ = {isa = PBXBuildFile; fileRef = 63BFA49528C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartHelen.json */; };
+		63BFA49F28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartHelen.json in Resources */ = {isa = PBXBuildFile; fileRef = 63BFA49528C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartHelen.json */; };
+		63BFA4A028C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartPatricia.json in Resources */ = {isa = PBXBuildFile; fileRef = 63BFA49628C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartPatricia.json */; };
+		63BFA4A128C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartPatricia.json in Resources */ = {isa = PBXBuildFile; fileRef = 63BFA49628C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartPatricia.json */; };
+		63BFA4A228C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartDeborah.json in Resources */ = {isa = PBXBuildFile; fileRef = 63BFA49728C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartDeborah.json */; };
+		63BFA4A328C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartDeborah.json in Resources */ = {isa = PBXBuildFile; fileRef = 63BFA49728C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartDeborah.json */; };
+		63BFA4A428C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartJessica.json in Resources */ = {isa = PBXBuildFile; fileRef = 63BFA49828C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartJessica.json */; };
+		63BFA4A528C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartJessica.json in Resources */ = {isa = PBXBuildFile; fileRef = 63BFA49828C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartJessica.json */; };
+		63BFA4A628C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartDorothy.json in Resources */ = {isa = PBXBuildFile; fileRef = 63BFA49928C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartDorothy.json */; };
+		63BFA4A728C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartDorothy.json in Resources */ = {isa = PBXBuildFile; fileRef = 63BFA49928C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartDorothy.json */; };
+		63BFA4A828C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartLinda.json in Resources */ = {isa = PBXBuildFile; fileRef = 63BFA49A28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartLinda.json */; };
+		63BFA4A928C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartLinda.json in Resources */ = {isa = PBXBuildFile; fileRef = 63BFA49A28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartLinda.json */; };
+		63BFA4AA28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartBetty.json in Resources */ = {isa = PBXBuildFile; fileRef = 63BFA49B28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartBetty.json */; };
+		63BFA4AB28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartBetty.json in Resources */ = {isa = PBXBuildFile; fileRef = 63BFA49B28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartBetty.json */; };
+		63BFA4AC28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartAmanda.json in Resources */ = {isa = PBXBuildFile; fileRef = 63BFA49C28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartAmanda.json */; };
+		63BFA4AD28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartAmanda.json in Resources */ = {isa = PBXBuildFile; fileRef = 63BFA49C28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartAmanda.json */; };
+		63BFA4AE28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartAshley.json in Resources */ = {isa = PBXBuildFile; fileRef = 63BFA49D28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartAshley.json */; };
+		63BFA4AF28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartAshley.json in Resources */ = {isa = PBXBuildFile; fileRef = 63BFA49D28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartAshley.json */; };
+		63BFA4B128C4CD7A0053FEE2 /* ViewElementComponent+Example3+AreaChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BFA4B028C4CD7A0053FEE2 /* ViewElementComponent+Example3+AreaChart.swift */; };
+		63BFA4B228C4CD7A0053FEE2 /* ViewElementComponent+Example3+AreaChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BFA4B028C4CD7A0053FEE2 /* ViewElementComponent+Example3+AreaChart.swift */; };
 		63CB2BB728A3F39300BF7A1B /* ViewElementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CB2BB628A3F39300BF7A1B /* ViewElementComponent.swift */; };
 		63CB2BBA28A409DD00BF7A1B /* ARVisTextAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CB2BB928A409DD00BF7A1B /* ARVisTextAlignment.swift */; };
 		63CB2BBC28A40A8000BF7A1B /* ARVisFontStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CB2BBB28A40A8000BF7A1B /* ARVisFontStyle.swift */; };
@@ -362,6 +386,18 @@
 		63AF737D28BF910F00A38418 /* ChartView+Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartView+Annotation.swift"; sourceTree = "<group>"; };
 		63AF738128C0A50500A38418 /* OutsideOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutsideOverlay.swift; sourceTree = "<group>"; };
 		63AF738428C0F09600A38418 /* chartConfigurationExample2_MacBookProPerformanceLineChart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chartConfigurationExample2_MacBookProPerformanceLineChart.json; sourceTree = "<group>"; };
+		63BFA48F28C4C3340053FEE2 /* ARVisMarkStackingMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARVisMarkStackingMethod.swift; sourceTree = "<group>"; };
+		63BFA49228C4C3C10053FEE2 /* ChartComponent+areaMarkRepeat1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartComponent+areaMarkRepeat1.swift"; sourceTree = "<group>"; };
+		63BFA49528C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartHelen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chartConfigurationExample3_BabyNamesAreaChartHelen.json; sourceTree = "<group>"; };
+		63BFA49628C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartPatricia.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chartConfigurationExample3_BabyNamesAreaChartPatricia.json; sourceTree = "<group>"; };
+		63BFA49728C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartDeborah.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chartConfigurationExample3_BabyNamesAreaChartDeborah.json; sourceTree = "<group>"; };
+		63BFA49828C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartJessica.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chartConfigurationExample3_BabyNamesAreaChartJessica.json; sourceTree = "<group>"; };
+		63BFA49928C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartDorothy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chartConfigurationExample3_BabyNamesAreaChartDorothy.json; sourceTree = "<group>"; };
+		63BFA49A28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartLinda.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chartConfigurationExample3_BabyNamesAreaChartLinda.json; sourceTree = "<group>"; };
+		63BFA49B28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartBetty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chartConfigurationExample3_BabyNamesAreaChartBetty.json; sourceTree = "<group>"; };
+		63BFA49C28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartAmanda.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chartConfigurationExample3_BabyNamesAreaChartAmanda.json; sourceTree = "<group>"; };
+		63BFA49D28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartAshley.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chartConfigurationExample3_BabyNamesAreaChartAshley.json; sourceTree = "<group>"; };
+		63BFA4B028C4CD7A0053FEE2 /* ViewElementComponent+Example3+AreaChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewElementComponent+Example3+AreaChart.swift"; sourceTree = "<group>"; };
 		63CB2BB628A3F39300BF7A1B /* ViewElementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewElementComponent.swift; sourceTree = "<group>"; };
 		63CB2BB928A409DD00BF7A1B /* ARVisTextAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARVisTextAlignment.swift; sourceTree = "<group>"; };
 		63CB2BBB28A40A8000BF7A1B /* ARVisFontStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARVisFontStyle.swift; sourceTree = "<group>"; };
@@ -572,15 +608,24 @@
 		63254E0428AB8DBB005E7599 /* Example JSON */ = {
 			isa = PBXGroup;
 			children = (
-				635C123628C46A790066F008 /* chartConfigurationExample3_BabyNamesLineChart.json */,
-				63E44FCB28C1B00300A63806 /* chartConfigurationExample2_MacBookProPerformanceBarChartCPU.json */,
-				63AF738428C0F09600A38418 /* chartConfigurationExample2_MacBookProPerformanceLineChart.json */,
-				63E8E25828BD232900919D6F /* chartConfigurationExample2_MacBookProFamilyChart.json */,
-				63E44FD128C1CAFA00A63806 /* chartConfigurationExample2_MacBookProPerformanceBarChartCPU2.json */,
-				6379F41528B912730020BB1B /* chartConfigurationExample1_JamesEnsorLifeChart.json */,
 				636C3ED728B4F52B001412FE /* chartConfigurationExample1_HistoricalPriceChart.json */,
-				6313907628C215F400A266B4 /* chartConfigurationExample2_MacBookProPerformanceBarChartGPU.json */,
+				6379F41528B912730020BB1B /* chartConfigurationExample1_JamesEnsorLifeChart.json */,
 				63254E0A28AB8FC6005E7599 /* chartConfigurationExample1_ProvenanceChart.json */,
+				63E8E25828BD232900919D6F /* chartConfigurationExample2_MacBookProFamilyChart.json */,
+				63E44FCB28C1B00300A63806 /* chartConfigurationExample2_MacBookProPerformanceBarChartCPU.json */,
+				63E44FD128C1CAFA00A63806 /* chartConfigurationExample2_MacBookProPerformanceBarChartCPU2.json */,
+				6313907628C215F400A266B4 /* chartConfigurationExample2_MacBookProPerformanceBarChartGPU.json */,
+				63AF738428C0F09600A38418 /* chartConfigurationExample2_MacBookProPerformanceLineChart.json */,
+				63BFA49C28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartAmanda.json */,
+				63BFA49D28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartAshley.json */,
+				63BFA49B28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartBetty.json */,
+				63BFA49728C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartDeborah.json */,
+				63BFA49928C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartDorothy.json */,
+				63BFA49528C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartHelen.json */,
+				63BFA49828C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartJessica.json */,
+				63BFA49A28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartLinda.json */,
+				63BFA49628C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartPatricia.json */,
+				635C123628C46A790066F008 /* chartConfigurationExample3_BabyNamesLineChart.json */,
 			);
 			path = "Example JSON";
 			sourceTree = "<group>";
@@ -685,6 +730,7 @@
 			isa = PBXGroup;
 			children = (
 				635C123A28C46D720066F008 /* ViewElementComponent+Example3+LineChart.swift */,
+				63BFA4B028C4CD7A0053FEE2 /* ViewElementComponent+Example3+AreaChart.swift */,
 			);
 			path = "Baby Names";
 			sourceTree = "<group>";
@@ -749,6 +795,7 @@
 				6379F40F28B8F1A70020BB1B /* ARVisLineStyle.swift */,
 				6379F41228B8F21D0020BB1B /* ARVisAnnotation.swift */,
 				63AF737A28BF32B800A38418 /* ARVisConditionalAnnotation.swift */,
+				63BFA48F28C4C3340053FEE2 /* ARVisMarkStackingMethod.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -1094,8 +1141,9 @@
 				634E9D7928C1A3D500742893 /* ChartComponent+lineMarkRepeat2.swift */,
 				634E9D7F28C1A63B00742893 /* ChartComponent+pointMarkRepeat1.swift */,
 				6323815228C1A7230089A28C /* ChartComponent+ruleMarkRepeat1.swift */,
-				639C2B2528C1A788003A5390 /* ChartComponent+toChartContent.swift */,
 				634E9D7C28C1A3FF00742893 /* ChartCopmonent+rectangleMarkRepeat1.swift */,
+				63BFA49228C4C3C10053FEE2 /* ChartComponent+areaMarkRepeat1.swift */,
+				639C2B2528C1A788003A5390 /* ChartComponent+toChartContent.swift */,
 				63666F3F28C1A75300A2C965 /* Hover */,
 			);
 			path = ChartCopmonent;
@@ -1282,9 +1330,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				630BD1A52892C4AC00C9BEAC /* Assets.xcassets in Resources */,
+				63BFA4A228C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartDeborah.json in Resources */,
 				63E8E25928BD232900919D6F /* chartConfigurationExample2_MacBookProFamilyChart.json in Resources */,
+				63BFA4AE28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartAshley.json in Resources */,
+				63BFA4A828C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartLinda.json in Resources */,
+				63BFA4AA28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartBetty.json in Resources */,
 				6313907728C215F400A266B4 /* chartConfigurationExample2_MacBookProPerformanceBarChartGPU.json in Resources */,
 				63E44FCC28C1B00300A63806 /* chartConfigurationExample2_MacBookProPerformanceBarChartCPU.json in Resources */,
+				63BFA4A028C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartPatricia.json in Resources */,
+				63BFA49E28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartHelen.json in Resources */,
 				635F52632896775300FF40B6 /* models.scnassets in Resources */,
 				63254E0B28AB8FC6005E7599 /* chartConfigurationExample1_ProvenanceChart.json in Resources */,
 				636C3ED828B4F52B001412FE /* chartConfigurationExample1_HistoricalPriceChart.json in Resources */,
@@ -1292,6 +1346,9 @@
 				63E44FD228C1CAFA00A63806 /* chartConfigurationExample2_MacBookProPerformanceBarChartCPU2.json in Resources */,
 				6379F41628B912730020BB1B /* chartConfigurationExample1_JamesEnsorLifeChart.json in Resources */,
 				63AF738528C0F09700A38418 /* chartConfigurationExample2_MacBookProPerformanceLineChart.json in Resources */,
+				63BFA4AC28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartAmanda.json in Resources */,
+				63BFA4A428C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartJessica.json in Resources */,
+				63BFA4A628C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartDorothy.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1300,12 +1357,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				6379F41728B912730020BB1B /* chartConfigurationExample1_JamesEnsorLifeChart.json in Resources */,
+				63BFA4A728C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartDorothy.json in Resources */,
 				63254E0C28AB8FC6005E7599 /* chartConfigurationExample1_ProvenanceChart.json in Resources */,
 				6313907828C215F400A266B4 /* chartConfigurationExample2_MacBookProPerformanceBarChartGPU.json in Resources */,
 				63E44FCD28C1B00300A63806 /* chartConfigurationExample2_MacBookProPerformanceBarChartCPU.json in Resources */,
+				63BFA4A928C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartLinda.json in Resources */,
+				63BFA4A128C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartPatricia.json in Resources */,
+				63BFA4AD28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartAmanda.json in Resources */,
+				63BFA49F28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartHelen.json in Resources */,
 				636C3ED928B4F52B001412FE /* chartConfigurationExample1_HistoricalPriceChart.json in Resources */,
+				63BFA4A328C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartDeborah.json in Resources */,
 				63E44FD328C1CAFA00A63806 /* chartConfigurationExample2_MacBookProPerformanceBarChartCPU2.json in Resources */,
 				635C123828C46A790066F008 /* chartConfigurationExample3_BabyNamesLineChart.json in Resources */,
+				63BFA4AB28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartBetty.json in Resources */,
+				63BFA4A528C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartJessica.json in Resources */,
+				63BFA4AF28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartAshley.json in Resources */,
 				630BD1A62892C4AC00C9BEAC /* Assets.xcassets in Resources */,
 				63AF738628C0F09700A38418 /* chartConfigurationExample2_MacBookProPerformanceLineChart.json in Resources */,
 			);
@@ -1494,6 +1560,7 @@
 				634E9D7728C1A3C300742893 /* ChartComponent+lineMarkRepeat1.swift in Sources */,
 				63AE067A2898260B0061404E /* UIViewControllerUtils.swift in Sources */,
 				635266B328BCB40A0059682C /* PartialViewController.swift in Sources */,
+				63BFA49028C4C3340053FEE2 /* ARVisMarkStackingMethod.swift in Sources */,
 				634B72B628B119EE000BBB05 /* Utility.swift in Sources */,
 				63AE067D289839630061404E /* UIHostingController+SafeArea.swift in Sources */,
 				63E8E25528BD04C200919D6F /* ViewElementComponent+Example2+MacBookPro.swift in Sources */,
@@ -1504,6 +1571,7 @@
 				634B730D28B1FF05000BBB05 /* main.swift in Sources */,
 				63CB2BC528A40DB100BF7A1B /* ARVisContentMode.swift in Sources */,
 				63254E0028AB8869005E7599 /* CGPoint+Operations.swift in Sources */,
+				63BFA49328C4C3C10053FEE2 /* ChartComponent+areaMarkRepeat1.swift in Sources */,
 				6379F41028B8F1A70020BB1B /* ARVisLineStyle.swift in Sources */,
 				639EBF5828B277E300C76969 /* ARKitViewController+ARSCNViewDelegate.swift in Sources */,
 				6379F41328B8F21D0020BB1B /* ARVisAnnotation.swift in Sources */,
@@ -1556,6 +1624,7 @@
 				635D805328B9FA7C0077C1B6 /* ChartYAxis.swift in Sources */,
 				63E911DE28C1A336006D7F8C /* ChartGroup.swift in Sources */,
 				634B731B28B215A9000BBB05 /* ARVisSegmentedControlView.swift in Sources */,
+				63BFA4B128C4CD7A0053FEE2 /* ViewElementComponent+Example3+AreaChart.swift in Sources */,
 				6323815328C1A7230089A28C /* ChartComponent+ruleMarkRepeat1.swift in Sources */,
 				634E9D7A28C1A3D500742893 /* ChartComponent+lineMarkRepeat2.swift in Sources */,
 				635C123B28C46D720066F008 /* ViewElementComponent+Example3+LineChart.swift in Sources */,
@@ -1627,6 +1696,7 @@
 				63AE066128979D690061404E /* ImageDownloader.swift in Sources */,
 				635C123C28C46D720066F008 /* ViewElementComponent+Example3+LineChart.swift in Sources */,
 				636F742C28B9EB8B00931762 /* ChartStyleConfiguration.swift in Sources */,
+				63BFA4B228C4CD7A0053FEE2 /* ViewElementComponent+Example3+AreaChart.swift in Sources */,
 				634B72EF28B13869000BBB05 /* ChartView+GetElement.swift in Sources */,
 				635D804828B9EBF10077C1B6 /* ChartData.swift in Sources */,
 				63CB2BC928A40EA400BF7A1B /* ARVisFontStyle.swift in Sources */,
@@ -1637,6 +1707,7 @@
 				639A6D8E28AB62F100527C37 /* SwiftGen+Color.swift in Sources */,
 				634B72F328B13869000BBB05 /* TableConfiguration.swift in Sources */,
 				635D804B28B9EC070077C1B6 /* ChartComponentCommonConfig.swift in Sources */,
+				63BFA49128C4C3340053FEE2 /* ARVisMarkStackingMethod.swift in Sources */,
 				634B72F228B13869000BBB05 /* ChartConfigurationJSONParser.swift in Sources */,
 				634B72F028B13869000BBB05 /* ChartTooltipView.swift in Sources */,
 				636C3EDD28B4FB70001412FE /* ARVisInterpolationMethod.swift in Sources */,
@@ -1649,6 +1720,7 @@
 				636C3EE028B50C0F001412FE /* ARVisSymbol.swift in Sources */,
 				634B72EC28B13869000BBB05 /* TableData.swift in Sources */,
 				636F742F28B9EB9C00931762 /* ChartInteractionData.swift in Sources */,
+				63BFA49428C4C3C10053FEE2 /* ChartComponent+areaMarkRepeat1.swift in Sources */,
 				63E911DF28C1A336006D7F8C /* ChartGroup.swift in Sources */,
 				630BD1A22892C4AC00C9BEAC /* iARVisApp.swift in Sources */,
 				634B731628B214EE000BBB05 /* ARVisSegmentedControlItem.swift in Sources */,

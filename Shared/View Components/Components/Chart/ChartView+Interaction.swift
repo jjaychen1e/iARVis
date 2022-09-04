@@ -240,6 +240,8 @@ extension ChartView {
                                                           isClick: true,
                                                           modeX: .nearest,
                                                           modeY: .nearest)
+                                case let .areaMarkRepeat1(dataKey, x, y, stacking):
+                                    break
                                 }
                                 updateInteractionOverlay(component: componentConfig.component, isClick: true)
                             }
@@ -310,6 +312,8 @@ extension ChartView {
                                                                   isClick: false,
                                                                   modeX: .nearest,
                                                                   modeY: .nearest)
+                                        case let .areaMarkRepeat1(dataKey, x, y, stacking):
+                                            break
                                         }
                                         updateInteractionOverlay(component: componentConfig.component, isClick: false)
                                     }

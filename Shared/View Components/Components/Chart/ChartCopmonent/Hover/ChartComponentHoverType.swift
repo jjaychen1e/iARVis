@@ -31,6 +31,8 @@ extension ChartComponent {
             return .rangeX
         case .pointMarkRepeat1:
             return .xy
+        case .areaMarkRepeat1:
+            return .xy
         }
     }
 }

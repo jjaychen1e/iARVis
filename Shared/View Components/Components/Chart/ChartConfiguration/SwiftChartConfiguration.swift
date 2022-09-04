@@ -7,6 +7,7 @@
 
 import Foundation
 
+@available(iOS 16, *)
 struct SwiftChartConfiguration: Codable, Equatable {
     var chartXScale: ChartXScale?
     var chartYScale: ChartYScale?
@@ -14,4 +15,5 @@ struct SwiftChartConfiguration: Codable, Equatable {
     var chartYAxis: ChartYAxis?
     var styleConfiguration: ChartStyleConfiguration?
     var chartLegend: ChartLegend?
+    var annotations: [ARVisAnnotation]?
 }
