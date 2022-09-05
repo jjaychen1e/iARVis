@@ -35,5 +35,5 @@ extension VisualizationConfiguration {
 extension VisualizationConfiguration {
     static let example1 = VisualizationConfiguration(imageTrackingConfigurations: [.example1])
 
-    static let example2 = VisualizationConfiguration(imageTrackingConfigurations: [.example1, .example2])
+    static let example2 = VisualizationConfiguration(imageTrackingConfigurations: [.example1, .example3])
 }

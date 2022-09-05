@@ -47,4 +47,5 @@ enum WidgetAnchorPoint: String, Codable, Equatable, CaseIterable {
 extension ImageTrackingConfiguration {
     static let example1 = ImageTrackingExample.exampleConfiguration1
     static let example2 = ImageTrackingExample.exampleConfiguration2
+    static let example3 = ImageTrackingExample.exampleConfiguration3
 }

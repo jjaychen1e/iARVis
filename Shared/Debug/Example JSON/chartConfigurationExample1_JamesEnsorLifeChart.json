@@ -431,7 +431,7 @@
             "axisMarksValues": {
                 "strideByDateComponent": {
                     "component": "year",
-                    "count": 5
+                    "count": 10
                 }
             },
             "axisValueLabel": {

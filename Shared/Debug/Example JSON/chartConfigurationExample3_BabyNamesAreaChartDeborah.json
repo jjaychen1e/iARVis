@@ -24,14 +24,14 @@
         }
     ],
     "styleConfiguration": {
-        "maxHeight": 650
+        "maxHeight": 512
     },
     "chartXAxis": {
         "axisMarks": {
             "axisMarksValues": {
                 "strideByDateComponent": {
                     "component": "year",
-                    "count": 5
+                    "count": 10
                 }
             },
             "axisValueLabel": {

@@ -37,7 +37,7 @@ struct ComponentView: View {
 
 struct ComponentView_Previews: PreviewProvider {
     static var previews: some View {
-        ComponentView(.example2_AppleSilicon)
-            .previewLayout(.fixed(width: 1024, height: 768))
+        ComponentView(.example3_AreaChartMatrix)
+            .previewLayout(.fixed(width: 2048, height: 1680))
     }
 }

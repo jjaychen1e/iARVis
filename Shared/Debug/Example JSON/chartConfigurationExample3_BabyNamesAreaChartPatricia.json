@@ -19,19 +19,19 @@
                     "field": "n"
                 },
                 "interpolationMethod": "cardinal",
-                "foregroundStyleColor": "#E4FDE1"
+                "foregroundStyleColor": "#5F00BA"
             }
         }
     ],
     "styleConfiguration": {
-        "maxHeight": 650
+        "maxHeight": 512
     },
     "chartXAxis": {
         "axisMarks": {
             "axisMarksValues": {
                 "strideByDateComponent": {
                     "component": "year",
-                    "count": 5
+                    "count": 10
                 }
             },
             "axisValueLabel": {

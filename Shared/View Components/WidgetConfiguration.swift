@@ -64,9 +64,11 @@ enum AdditionalWidgetConfigurationDefaultValueProvider: DefaultValueProvider {
 enum ScaleDefaultValueProvider: DefaultValueProvider {
     typealias Value = CGFloat
 
-    static let `default`: CGFloat = 0.4 / 1024
-    static let high: CGFloat = 0.4 / 1600
-    static let highest: CGFloat = 0.4 / 2048
+    static let `default`: CGFloat = level_0
+    static let level_0: CGFloat = 0.4 / 1024
+    static let level_1: CGFloat = 0.4 / 1600
+    static let level_2: CGFloat = 0.4 / 2048
+    static let level_3: CGFloat = 0.4 / 3200
 }
 
 enum SizeDefaultValueProvider: DefaultValueProvider {
