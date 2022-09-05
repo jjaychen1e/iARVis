@@ -89,7 +89,7 @@ class WidgetInARViewController: UIViewController {
         view.isOpaque = false
         view.backgroundColor = .clear
 
-        let widgetView = ComponentView(widgetConfiguration.component)
+        let widgetView = ComponentView(widgetConfiguration.component, isScrollEnabled: widgetConfiguration.isScrollEnabled)
             .environment(\.openURL, OpenURLAction { [weak self] url in
                 if let self = self {
                     let widgetConfiguration = self.widgetConfiguration
@@ -100,7 +100,7 @@ class WidgetInARViewController: UIViewController {
             .environmentObject(widgetConfiguration)
 
         let hostingViewController = UIHostingController(rootView: widgetView)
-        hostingViewController.view.backgroundColor = .white
+        hostingViewController.view.backgroundColor = widgetConfiguration.isOpaque ? .white : .clear
         addChildViewController(hostingViewController)
         hostingViewController.view.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()

@@ -10,21 +10,24 @@ import SwiftUI
 
 struct ComponentView: View {
     let component: ViewElementComponent
+    let isScrollEnabled: Bool
 
-    init(_ component: ViewElementComponent) {
+    init(_ component: ViewElementComponent, isScrollEnabled: Bool = true) {
         self.component = component
+        self.isScrollEnabled = isScrollEnabled
     }
 
-    init(_ components: [ViewElementComponent]) {
+    init(_ components: [ViewElementComponent], isScrollEnabled: Bool = true) {
         if components.count == 1 {
             component = components[0]
         } else {
             component = .vStack(elements: components, alignment: .center)
         }
+        self.isScrollEnabled = isScrollEnabled
     }
 
     var body: some View {
-        ScrollView {
+        ScrollView(isScrollEnabled ? .vertical : []) {
             component.view()
                 .fixedSize(horizontal: false, vertical: true)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)

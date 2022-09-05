@@ -118,6 +118,7 @@ struct ImageTrackingExample {
             .init(widgetConfiguration: .init(component: .example3_AreaChartMatrix,
                                              relativeAnchorPoint: .trailing,
                                              relativePosition: SCNVector3(0, 0, 0),
+                                             isScrollEnabled: false,
                                              scale: ScaleDefaultValueProvider.level_3,
                                              size: CGSize(width: 2048, height: 1680))),
         ]

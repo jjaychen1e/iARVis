@@ -22,6 +22,10 @@ class WidgetConfiguration: Codable, Equatable, ObservableObject {
     var relativeAnchorPoint: WidgetAnchorPoint
     var relativePosition: SCNVector3
     var positionOffset: SCNVector3
+    @Default<True>
+    var isOpaque: Bool
+    @Default<True>
+    var isScrollEnabled: Bool
     @Default<ScaleDefaultValueProvider>
     var scale: CGFloat
     @Default<SizeDefaultValueProvider>
@@ -33,6 +37,8 @@ class WidgetConfiguration: Codable, Equatable, ObservableObject {
          relativeAnchorPoint: WidgetAnchorPoint,
          relativePosition: SCNVector3,
          positionOffset: SCNVector3 = .zero,
+         isOpaque: Bool = true,
+         isScrollEnabled: Bool = true,
          scale: CGFloat = ScaleDefaultValueProvider.default,
          size: CGSize = SizeDefaultValueProvider.default,
          additionalWidgetConfiguration: [String: AdditionalWidgetConfiguration] = AdditionalWidgetConfigurationDefaultValueProvider.default) {
@@ -40,6 +46,8 @@ class WidgetConfiguration: Codable, Equatable, ObservableObject {
         self.relativeAnchorPoint = relativeAnchorPoint
         self.relativePosition = relativePosition
         self.positionOffset = positionOffset
+        self.isOpaque = isOpaque
+        self.isScrollEnabled = isScrollEnabled
         self.scale = scale
         self.size = size
         self.additionalWidgetConfiguration = additionalWidgetConfiguration
@@ -50,6 +58,9 @@ class WidgetConfiguration: Codable, Equatable, ObservableObject {
             lhs.relativeAnchorPoint == rhs.relativeAnchorPoint &&
             lhs.relativePosition == rhs.relativePosition &&
             lhs.positionOffset == rhs.positionOffset &&
+            lhs.isOpaque == rhs.isOpaque &&
+            lhs.isScrollEnabled == rhs.isScrollEnabled &&
+            lhs.scale == rhs.scale &&
             lhs.size == rhs.size &&
             lhs.additionalWidgetConfiguration == rhs.additionalWidgetConfiguration
     }
