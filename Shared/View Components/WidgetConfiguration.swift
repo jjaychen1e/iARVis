@@ -26,6 +26,8 @@ class WidgetConfiguration: Codable, Equatable, ObservableObject {
     var isOpaque: Bool
     @Default<True>
     var isScrollEnabled: Bool
+    @Default<PaddingDefaultValueProvider>
+    var padding: [CGFloat]
     @Default<ScaleDefaultValueProvider>
     var scale: CGFloat
     @Default<SizeDefaultValueProvider>
@@ -39,6 +41,7 @@ class WidgetConfiguration: Codable, Equatable, ObservableObject {
          positionOffset: SCNVector3 = .zero,
          isOpaque: Bool = true,
          isScrollEnabled: Bool = true,
+         padding: [CGFloat] = PaddingDefaultValueProvider.default,
          scale: CGFloat = ScaleDefaultValueProvider.default,
          size: CGSize = SizeDefaultValueProvider.default,
          additionalWidgetConfiguration: [String: AdditionalWidgetConfiguration] = AdditionalWidgetConfigurationDefaultValueProvider.default) {
@@ -48,6 +51,7 @@ class WidgetConfiguration: Codable, Equatable, ObservableObject {
         self.positionOffset = positionOffset
         self.isOpaque = isOpaque
         self.isScrollEnabled = isScrollEnabled
+        self.padding = padding
         self.scale = scale
         self.size = size
         self.additionalWidgetConfiguration = additionalWidgetConfiguration
@@ -60,6 +64,7 @@ class WidgetConfiguration: Codable, Equatable, ObservableObject {
             lhs.positionOffset == rhs.positionOffset &&
             lhs.isOpaque == rhs.isOpaque &&
             lhs.isScrollEnabled == rhs.isScrollEnabled &&
+            lhs.padding == rhs.padding &&
             lhs.scale == rhs.scale &&
             lhs.size == rhs.size &&
             lhs.additionalWidgetConfiguration == rhs.additionalWidgetConfiguration
@@ -70,6 +75,12 @@ enum AdditionalWidgetConfigurationDefaultValueProvider: DefaultValueProvider {
     typealias Value = [String: AdditionalWidgetConfiguration]
 
     static let `default`: [String: AdditionalWidgetConfiguration] = [:]
+}
+
+enum PaddingDefaultValueProvider: DefaultValueProvider {
+    typealias Value = [CGFloat]
+
+    static let `default`: [CGFloat] = [16, 16, 16, 16]
 }
 
 enum ScaleDefaultValueProvider: DefaultValueProvider {

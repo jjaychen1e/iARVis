@@ -127,6 +127,9 @@ extension ARKitViewController {
                     case .trailing:
                         xOffset = oPlaneRealSize.width / 2 + nPlaneRealSize.width / 2
                         yOffset = 0
+                    case .cover:
+                        xOffset = 0
+                        yOffset = 0
                     case .auto:
                         xOffset = 0
                         yOffset = 0

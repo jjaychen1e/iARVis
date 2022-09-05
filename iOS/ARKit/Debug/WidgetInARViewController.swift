@@ -89,7 +89,7 @@ class WidgetInARViewController: UIViewController {
         view.isOpaque = false
         view.backgroundColor = .clear
 
-        let widgetView = ComponentView(widgetConfiguration.component, isScrollEnabled: widgetConfiguration.isScrollEnabled)
+        let widgetView = ComponentView(widgetConfiguration.component, isScrollEnabled: widgetConfiguration.isScrollEnabled, padding: widgetConfiguration.padding)
             .environment(\.openURL, OpenURLAction { [weak self] url in
                 if let self = self {
                     let widgetConfiguration = self.widgetConfiguration

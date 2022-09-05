@@ -121,12 +121,17 @@ extension ARKitViewController {
                 return relationship.widgetConfiguration.relativeAnchorPoint
             }
         }()
-        
+
         let widgetConfig = nodePair.node.widgetConfiguration
-        
+
         plane.width = widgetConfig.size.width * widgetConfig.scale
         plane.height = widgetConfig.size.width * widgetConfig.scale
-        
+
+        if case .cover = anchor {
+            plane.width = imageAnchor.referenceImage.physicalSize.width * imageAnchor.estimatedScaleFactor
+            plane.height = imageAnchor.referenceImage.physicalSize.height * imageAnchor.estimatedScaleFactor
+        }
+
         let planeRealSize: CGSize = {
             let widgetSize = widgetConfig.size
             let planeSize = plane.size
@@ -152,6 +157,9 @@ extension ARKitViewController {
             yOffset = -targetImageSize.height / 2 - planeRealSize.height / 2
         case .trailing:
             xOffset = targetImageSize.width / 2 + planeRealSize.width / 2
+            yOffset = 0
+        case .cover:
+            xOffset = 0
             yOffset = 0
         case .auto:
             xOffset = targetImageSize.width / 2 + planeRealSize.width / 2

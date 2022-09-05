@@ -120,6 +120,7 @@
 		635F526628967BE600FF40B6 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 635F526528967BE600FF40B6 /* SnapKit */; };
 		635F526B2896AA4100FF40B6 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635F526A2896AA4100FF40B6 /* Debug.swift */; };
 		635F52722896D38600FF40B6 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 635F52712896D38600FF40B6 /* Kingfisher */; };
+		635FBC9B28C5EC55009EC77A /* SFSymbolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635FBC9A28C5EC55009EC77A /* SFSymbolView.swift */; };
 		63666F4128C1A75E00A2C965 /* ChartComponentHoverType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63666F4028C1A75E00A2C965 /* ChartComponentHoverType.swift */; };
 		636C3EC928B49BD8001412FE /* WidgetOnScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636C3EC828B49BD8001412FE /* WidgetOnScreenViewController.swift */; };
 		636C3ECC28B4B298001412FE /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 636C3ECB28B4B298001412FE /* SwiftUIX */; };
@@ -235,6 +236,10 @@
 		63CB2BCC28A40EA400BF7A1B /* ARVisTextAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CB2BB928A409DD00BF7A1B /* ARVisTextAlignment.swift */; };
 		63CB2BCD28A40EA400BF7A1B /* ARVisVerticalAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CB2BC628A40E5500BF7A1B /* ARVisVerticalAlignment.swift */; };
 		63CB2BCE28A40EA400BF7A1B /* ViewElementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CB2BB628A3F39300BF7A1B /* ViewElementComponent.swift */; };
+		63CC014028C5C41100A25762 /* chartConfigurationExample4_ShanghaiWeatherPointChart.json in Resources */ = {isa = PBXBuildFile; fileRef = 63CC013F28C5C41100A25762 /* chartConfigurationExample4_ShanghaiWeatherPointChart.json */; };
+		63CC014128C5C41100A25762 /* chartConfigurationExample4_ShanghaiWeatherPointChart.json in Resources */ = {isa = PBXBuildFile; fileRef = 63CC013F28C5C41100A25762 /* chartConfigurationExample4_ShanghaiWeatherPointChart.json */; };
+		63CC014428C5C5C800A25762 /* ViewElementComponent+Example4+ShanghaiWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CC014328C5C5C800A25762 /* ViewElementComponent+Example4+ShanghaiWeather.swift */; };
+		63CC014528C5C5C800A25762 /* ViewElementComponent+Example4+ShanghaiWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CC014328C5C5C800A25762 /* ViewElementComponent+Example4+ShanghaiWeather.swift */; };
 		63D00A9C28C311B700595111 /* DefaultCodable in Frameworks */ = {isa = PBXBuildFile; productRef = 63D00A9B28C311B700595111 /* DefaultCodable */; };
 		63D00AA128C3144200595111 /* SCNVector3+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D00AA028C3144200595111 /* SCNVector3+Equatable.swift */; };
 		63D00AA228C3144200595111 /* SCNVector3+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D00AA028C3144200595111 /* SCNVector3+Equatable.swift */; };
@@ -334,6 +339,7 @@
 		635F52622896775300FF40B6 /* models.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = models.scnassets; sourceTree = "<group>"; };
 		635F526A2896AA4100FF40B6 /* Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		635F526E2896B29A00FF40B6 /* SceneKitUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitUtils.swift; sourceTree = "<group>"; };
+		635FBC9A28C5EC55009EC77A /* SFSymbolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolView.swift; sourceTree = "<group>"; };
 		63666F4028C1A75E00A2C965 /* ChartComponentHoverType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartComponentHoverType.swift; sourceTree = "<group>"; };
 		636C3EC828B49BD8001412FE /* WidgetOnScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetOnScreenViewController.swift; sourceTree = "<group>"; };
 		636C3ED128B4D82E001412FE /* ChartView+Interaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartView+Interaction.swift"; sourceTree = "<group>"; };
@@ -408,6 +414,8 @@
 		63CB2BC228A40D6500BF7A1B /* ARVisHorizontalAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARVisHorizontalAlignment.swift; sourceTree = "<group>"; };
 		63CB2BC428A40DB100BF7A1B /* ARVisContentMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARVisContentMode.swift; sourceTree = "<group>"; };
 		63CB2BC628A40E5500BF7A1B /* ARVisVerticalAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARVisVerticalAlignment.swift; sourceTree = "<group>"; };
+		63CC013F28C5C41100A25762 /* chartConfigurationExample4_ShanghaiWeatherPointChart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chartConfigurationExample4_ShanghaiWeatherPointChart.json; sourceTree = "<group>"; };
+		63CC014328C5C5C800A25762 /* ViewElementComponent+Example4+ShanghaiWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewElementComponent+Example4+ShanghaiWeather.swift"; sourceTree = "<group>"; };
 		63D00AA028C3144200595111 /* SCNVector3+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNVector3+Equatable.swift"; sourceTree = "<group>"; };
 		63E44FCB28C1B00300A63806 /* chartConfigurationExample2_MacBookProPerformanceBarChartCPU.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chartConfigurationExample2_MacBookProPerformanceBarChartCPU.json; sourceTree = "<group>"; };
 		63E44FCE28C1B85D00A63806 /* ChartComponent+barMarkRepeat2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartComponent+barMarkRepeat2.swift"; sourceTree = "<group>"; };
@@ -629,6 +637,7 @@
 				63BFA49A28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartLinda.json */,
 				63BFA49628C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartPatricia.json */,
 				635C123628C46A790066F008 /* chartConfigurationExample3_BabyNamesLineChart.json */,
+				63CC013F28C5C41100A25762 /* chartConfigurationExample4_ShanghaiWeatherPointChart.json */,
 			);
 			path = "Example JSON";
 			sourceTree = "<group>";
@@ -696,6 +705,7 @@
 		634DEB5928A415060019D3FF /* Debug */ = {
 			isa = PBXGroup;
 			children = (
+				63CC014228C5C5A900A25762 /* Shanghai Weather */,
 				635C123928C46D500066F008 /* Baby Names */,
 				63E8E24D28BD032200919D6F /* Christ's Entry into Brussels in 1889 */,
 				63E8E24C28BD031D00919D6F /* Macintosh's History */,
@@ -783,6 +793,14 @@
 			path = SceneKit;
 			sourceTree = "<group>";
 		};
+		635FBC9928C5EC48009EC77A /* SFSymbol */ = {
+			isa = PBXGroup;
+			children = (
+				635FBC9A28C5EC55009EC77A /* SFSymbolView.swift */,
+			);
+			path = SFSymbol;
+			sourceTree = "<group>";
+		};
 		63666F3F28C1A75300A2C965 /* Hover */ = {
 			isa = PBXGroup;
 			children = (
@@ -843,6 +861,7 @@
 		6376123428A56252008901C0 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				635FBC9928C5EC48009EC77A /* SFSymbol */,
 				63EBEF6128BB55B700F112D5 /* Grid */,
 				63E726AB28B53D4200998DA9 /* Video */,
 				634B731F28B22522000BBB05 /* Audio */,
@@ -1107,6 +1126,14 @@
 			path = "Interlayer SwiftUI Enums";
 			sourceTree = "<group>";
 		};
+		63CC014228C5C5A900A25762 /* Shanghai Weather */ = {
+			isa = PBXGroup;
+			children = (
+				63CC014328C5C5C800A25762 /* ViewElementComponent+Example4+ShanghaiWeather.swift */,
+			);
+			path = "Shanghai Weather";
+			sourceTree = "<group>";
+		};
 		63E726AB28B53D4200998DA9 /* Video */ = {
 			isa = PBXGroup;
 			children = (
@@ -1347,6 +1374,7 @@
 				63254E0B28AB8FC6005E7599 /* chartConfigurationExample1_ProvenanceChart.json in Resources */,
 				636C3ED828B4F52B001412FE /* chartConfigurationExample1_HistoricalPriceChart.json in Resources */,
 				635C123728C46A790066F008 /* chartConfigurationExample3_BabyNamesLineChart.json in Resources */,
+				63CC014028C5C41100A25762 /* chartConfigurationExample4_ShanghaiWeatherPointChart.json in Resources */,
 				63E44FD228C1CAFA00A63806 /* chartConfigurationExample2_MacBookProPerformanceBarChartCPU2.json in Resources */,
 				6379F41628B912730020BB1B /* chartConfigurationExample1_JamesEnsorLifeChart.json in Resources */,
 				63AF738528C0F09700A38418 /* chartConfigurationExample2_MacBookProPerformanceLineChart.json in Resources */,
@@ -1375,6 +1403,7 @@
 				635C123828C46A790066F008 /* chartConfigurationExample3_BabyNamesLineChart.json in Resources */,
 				63BFA4AB28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartBetty.json in Resources */,
 				63BFA4A528C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartJessica.json in Resources */,
+				63CC014128C5C41100A25762 /* chartConfigurationExample4_ShanghaiWeatherPointChart.json in Resources */,
 				63BFA4AF28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartAshley.json in Resources */,
 				630BD1A62892C4AC00C9BEAC /* Assets.xcassets in Resources */,
 				63AF738628C0F09700A38418 /* chartConfigurationExample2_MacBookProPerformanceLineChart.json in Resources */,
@@ -1555,6 +1584,7 @@
 				636F742E28B9EB9C00931762 /* ChartInteractionData.swift in Sources */,
 				63D00AA128C3144200595111 /* SCNVector3+Equatable.swift in Sources */,
 				63E8E24F28BD034600919D6F /* ViewElementComponent+Example1+Chart.swift in Sources */,
+				63CC014428C5C5C800A25762 /* ViewElementComponent+Example4+ShanghaiWeather.swift in Sources */,
 				635D804728B9EBF10077C1B6 /* ChartData.swift in Sources */,
 				634DEB5728A414610019D3FF /* ComponentView.swift in Sources */,
 				636F742528B9EB5400931762 /* ChartXAxis.swift in Sources */,
@@ -1640,6 +1670,7 @@
 				6344285928BC6B5000339D2F /* NSNumber+Type.swift in Sources */,
 				634B730428B13869000BBB05 /* ChartView.swift in Sources */,
 				63CB2BC328A40D6500BF7A1B /* ARVisHorizontalAlignment.swift in Sources */,
+				635FBC9B28C5EC55009EC77A /* SFSymbolView.swift in Sources */,
 				639A6D8928AB628F00527C37 /* XCAssets+Generated.swift in Sources */,
 				636EDDC028964FF100639195 /* ImageTrackingExample.swift in Sources */,
 				635266B728BCB93E0059682C /* WebViewController.swift in Sources */,
@@ -1674,6 +1705,7 @@
 				635D805428B9FA7C0077C1B6 /* ChartYAxis.swift in Sources */,
 				635D804E28B9EC2B0077C1B6 /* ChartComponentConfiguration.swift in Sources */,
 				63CB2BCD28A40EA400BF7A1B /* ARVisVerticalAlignment.swift in Sources */,
+				63CC014528C5C5C800A25762 /* ViewElementComponent+Example4+ShanghaiWeather.swift in Sources */,
 				63AF737928BF171800A38418 /* SwiftChartConfiguration.swift in Sources */,
 				63AF737C28BF32B800A38418 /* ARVisConditionalAnnotation.swift in Sources */,
 				639EBF5428B2614C00C76969 /* URLService.swift in Sources */,

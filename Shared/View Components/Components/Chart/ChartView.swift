@@ -114,13 +114,13 @@ struct ChartView: View {
         .chartXScale(domain: xAxisDomain)
         .chartYScale(domain: yAxisDomain)
         .chartOverlay { proxy in
-            chartAnnotationHandler(proxy: proxy, chartConfiguration: chartConfiguration)
-        }
-        .chartOverlay { proxy in
             chartInteractionHandler(proxy: proxy)
         }
         .chartOverlay { proxy in
             chartOverlayHandler(proxy: proxy)
+        }
+        .chartOverlay { proxy in
+            chartAnnotationHandler(proxy: proxy, chartConfiguration: chartConfiguration)
         }
 //        .chartOverlay { _ in
 //            #if DEBUG
@@ -134,7 +134,7 @@ struct ChartView: View {
 //                }
 //            #endif
 //        }
-        .frame(width: chartConfiguration.swiftChartConfiguration.styleConfiguration?.maxWidth, height: chartConfiguration.swiftChartConfiguration.styleConfiguration?.maxHeight ?? nil)
+        .frame(width: chartConfiguration.swiftChartConfiguration.styleConfiguration?.maxWidth, height: chartConfiguration.swiftChartConfiguration.styleConfiguration?.maxHeight)
         .frame(maxHeight: chartConfiguration.swiftChartConfiguration.styleConfiguration?.maxHeight == nil ? 200 : nil)
         .padding(.leading, padding.0)
         .padding(.top, padding.1)

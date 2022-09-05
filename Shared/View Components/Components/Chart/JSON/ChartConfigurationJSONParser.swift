@@ -517,4 +517,12 @@ enum ChartConfigurationExample {
         }
         return "{}"
     }()
+
+    static let chartConfigurationExample4_ShanghaiWeatherPointChart: String = {
+        if #available(iOS 16, *) {
+            let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample4_ShanghaiWeatherPointChart.json")
+            return try! String(contentsOfFile: path.path)
+        }
+        return "{}"
+    }()
 }

@@ -31,7 +31,7 @@ class MyApplication: UIApplication {
             } else {
                 // As a normal link
                 if let url = URLService.link(href: url.absoluteString).url.url {
-                    super.open(url, options: options, completionHandler: completion)
+                    open(url, options: options, completionHandler: completion)
                 }
             }
         }
@@ -52,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #else
             if #available(iOS 16, *) {
                 let rootVC = UIHostingController(rootView:
-                    ComponentView(.example2_AppleSilicon)
+                    ComponentView(.example4_ShanghaiWeatherPointChartJSONStrViewElementComponent)
                         .environment(\.openURL, OpenURLAction { url in
                             openURL(url, widgetConfiguration: nil)
                             return .handled

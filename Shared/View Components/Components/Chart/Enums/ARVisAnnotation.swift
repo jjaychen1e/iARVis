@@ -18,6 +18,7 @@ enum ARVisAnnotationPosition: String, RawRepresentable, Codable {
     case trailing
     case top
     case bottom
+    case center
 }
 
 @available(iOS 16, *)
@@ -46,6 +47,8 @@ extension AnnotationPosition {
             self = .top
         case .bottom:
             self = .bottom
+        case .center:
+            self = .overlay
         }
     }
 }
@@ -70,6 +73,8 @@ extension Alignment {
             self = .top
         case .bottom:
             self = .bottom
+        case .center:
+            self = .center
         }
     }
 }
