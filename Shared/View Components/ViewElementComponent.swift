@@ -18,6 +18,7 @@ enum ViewElementComponent: Codable, Equatable {
     // font
     case text(content: String, multilineTextAlignment: ARVisTextAlignment? = nil, fontStyle: ARVisFontStyle? = nil)
     case image(url: String, contentMode: ARVisContentMode = .fit, width: CGFloat? = nil, height: CGFloat? = nil, clipToCircle: Bool? = nil)
+    case sfSymbol(name: String)
     case audio(title: String? = nil, url: String)
     case video(url: String, width: CGFloat? = nil, height: CGFloat? = nil)
     case link(url: String) // how to integrate into text?
@@ -35,6 +36,7 @@ enum ViewElementComponent: Codable, Equatable {
     enum CodingKeys: CodingKey {
         case text
         case image
+        case sfSymbol
         case audio
         case video
         case link
@@ -61,6 +63,10 @@ enum ViewElementComponent: Codable, Equatable {
         case width
         case height
         case clipToCircle
+    }
+
+    enum SfSymbolCodingKeys: CodingKey {
+        case name
     }
 
     enum AudioCodingKeys: CodingKey {
@@ -129,6 +135,9 @@ enum ViewElementComponent: Codable, Equatable {
         case .image:
             let nestedContainer: KeyedDecodingContainer<ViewElementComponent.ImageCodingKeys> = try container.nestedContainer(keyedBy: ViewElementComponent.ImageCodingKeys.self, forKey: ViewElementComponent.CodingKeys.image)
             self = ViewElementComponent.image(url: try nestedContainer.decode(String.self, forKey: ViewElementComponent.ImageCodingKeys.url), contentMode: try nestedContainer.decode(ARVisContentMode.self, forKey: ViewElementComponent.ImageCodingKeys.contentMode), width: try nestedContainer.decodeIfPresent(CGFloat.self, forKey: ViewElementComponent.ImageCodingKeys.width), height: try nestedContainer.decodeIfPresent(CGFloat.self, forKey: ViewElementComponent.ImageCodingKeys.height), clipToCircle: try nestedContainer.decodeIfPresent(Bool.self, forKey: ViewElementComponent.ImageCodingKeys.clipToCircle))
+        case .sfSymbol:
+            let nestedContainer: KeyedDecodingContainer<ViewElementComponent.SfSymbolCodingKeys> = try container.nestedContainer(keyedBy: ViewElementComponent.SfSymbolCodingKeys.self, forKey: ViewElementComponent.CodingKeys.sfSymbol)
+            self = ViewElementComponent.sfSymbol(name: try nestedContainer.decode(String.self, forKey: ViewElementComponent.SfSymbolCodingKeys.name))
         case .audio:
             let nestedContainer: KeyedDecodingContainer<ViewElementComponent.AudioCodingKeys> = try container.nestedContainer(keyedBy: ViewElementComponent.AudioCodingKeys.self, forKey: ViewElementComponent.CodingKeys.audio)
             self = ViewElementComponent.audio(title: try nestedContainer.decodeIfPresent(String.self, forKey: ViewElementComponent.AudioCodingKeys.title), url: try nestedContainer.decode(String.self, forKey: ViewElementComponent.AudioCodingKeys.url))
@@ -188,6 +197,9 @@ enum ViewElementComponent: Codable, Equatable {
             try nestedContainer.encodeIfPresent(width, forKey: ViewElementComponent.ImageCodingKeys.width)
             try nestedContainer.encodeIfPresent(height, forKey: ViewElementComponent.ImageCodingKeys.height)
             try nestedContainer.encodeIfPresent(clipToCircle, forKey: ViewElementComponent.ImageCodingKeys.clipToCircle)
+        case let .sfSymbol(name):
+            var nestedContainer: KeyedEncodingContainer<ViewElementComponent.SfSymbolCodingKeys> = container.nestedContainer(keyedBy: ViewElementComponent.SfSymbolCodingKeys.self, forKey: ViewElementComponent.CodingKeys.sfSymbol)
+            try nestedContainer.encode(name, forKey: ViewElementComponent.SfSymbolCodingKeys.name)
         case let .audio(title, url):
             var nestedContainer: KeyedEncodingContainer<ViewElementComponent.AudioCodingKeys> = container.nestedContainer(keyedBy: ViewElementComponent.AudioCodingKeys.self, forKey: ViewElementComponent.CodingKeys.audio)
             try nestedContainer.encodeIfPresent(title, forKey: ViewElementComponent.AudioCodingKeys.title)
@@ -262,6 +274,10 @@ extension ViewElementComponent {
                     .if(clipToCircle == true) { view in
                         view.clipShape(Circle())
                     }
+
+            case let .sfSymbol(name: name):
+                Image(systemName: name)
+                    .symbolRenderingMode(.multicolor)
             case let .audio(title, url):
                 AudioPlayerView(title: title, audioUrl: url)
             case let .video(url, width, height):
