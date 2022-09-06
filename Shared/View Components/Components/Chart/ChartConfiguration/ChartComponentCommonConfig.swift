@@ -18,6 +18,7 @@ struct ChartComponentCommonConfig: Codable, Equatable {
     var foregroundStyleField: String?
     var foregroundStyleValue: String?
     var positionByValue: String?
+    var cornerRadius: CGFloat?
     var lineStyle: ARVisLineStyle?
     var annotations: [ARVisAnnotation]?
     var conditionalAnnotations: [ARVisConditionalAnnotation]?

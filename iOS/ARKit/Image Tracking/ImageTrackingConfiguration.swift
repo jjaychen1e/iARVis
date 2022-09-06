@@ -50,4 +50,5 @@ extension ImageTrackingConfiguration {
     static let example2 = ImageTrackingExample.exampleConfiguration2
     static let example3 = ImageTrackingExample.exampleConfiguration3
     static let example4 = ImageTrackingExample.exampleConfiguration4
+    static let example5 = ImageTrackingExample.exampleConfiguration5
 }

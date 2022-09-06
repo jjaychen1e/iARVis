@@ -22,6 +22,8 @@ class WidgetConfiguration: Codable, Equatable, ObservableObject {
     var relativeAnchorPoint: WidgetAnchorPoint
     var relativePosition: SCNVector3
     var positionOffset: SCNVector3
+    @Default<False>
+    var alignedToTarget: Bool
     @Default<True>
     var isOpaque: Bool
     @Default<True>
@@ -39,6 +41,7 @@ class WidgetConfiguration: Codable, Equatable, ObservableObject {
          relativeAnchorPoint: WidgetAnchorPoint,
          relativePosition: SCNVector3,
          positionOffset: SCNVector3 = .zero,
+         alignedToTarget: Bool = false,
          isOpaque: Bool = true,
          isScrollEnabled: Bool = true,
          padding: [CGFloat] = PaddingDefaultValueProvider.default,
@@ -49,6 +52,7 @@ class WidgetConfiguration: Codable, Equatable, ObservableObject {
         self.relativeAnchorPoint = relativeAnchorPoint
         self.relativePosition = relativePosition
         self.positionOffset = positionOffset
+        self.alignedToTarget = alignedToTarget
         self.isOpaque = isOpaque
         self.isScrollEnabled = isScrollEnabled
         self.padding = padding
@@ -62,6 +66,7 @@ class WidgetConfiguration: Codable, Equatable, ObservableObject {
             lhs.relativeAnchorPoint == rhs.relativeAnchorPoint &&
             lhs.relativePosition == rhs.relativePosition &&
             lhs.positionOffset == rhs.positionOffset &&
+            lhs.alignedToTarget == rhs.alignedToTarget &&
             lhs.isOpaque == rhs.isOpaque &&
             lhs.isScrollEnabled == rhs.isScrollEnabled &&
             lhs.padding == rhs.padding &&

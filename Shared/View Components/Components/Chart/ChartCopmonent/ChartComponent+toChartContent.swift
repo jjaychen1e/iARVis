@@ -120,5 +120,6 @@ extension ChartContent {
                 view.foregroundStyle(by: .value(foregroundStyleLabel, foregroundStyleValue))
             }
             .foregroundStyle(foregroundStyleColor)
+            .cornerRadius(commonConfig.cornerRadius ?? 2)
     }
 }

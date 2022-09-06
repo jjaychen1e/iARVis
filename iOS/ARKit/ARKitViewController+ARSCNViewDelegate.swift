@@ -126,10 +126,28 @@ extension ARKitViewController {
 
         plane.width = widgetConfig.size.width * widgetConfig.scale
         plane.height = widgetConfig.size.width * widgetConfig.scale
-
+        
+        let imagePhysicalWidth = imageAnchor.referenceImage.physicalSize.width * imageAnchor.estimatedScaleFactor
+        let imagePhysicalHeight = imageAnchor.referenceImage.physicalSize.height * imageAnchor.estimatedScaleFactor
+        
         if case .cover = anchor {
-            plane.width = imageAnchor.referenceImage.physicalSize.width * imageAnchor.estimatedScaleFactor
-            plane.height = imageAnchor.referenceImage.physicalSize.height * imageAnchor.estimatedScaleFactor
+            plane.width = imagePhysicalWidth
+            plane.height = imagePhysicalHeight
+        }
+
+        if widgetConfig.alignedToTarget {
+            switch anchor {
+            case .center:
+                break
+            case .leading, .trailing, .auto:
+                plane.width = imagePhysicalHeight / widgetConfig.size.height * max(widgetConfig.size.width, widgetConfig.size.height)
+                plane.height = plane.width
+            case .top, .bottom:
+                plane.width = imagePhysicalHeight / widgetConfig.size.width * max(widgetConfig.size.width, widgetConfig.size.height)
+                plane.height = plane.width
+            case .cover:
+                break
+            }
         }
 
         let planeRealSize: CGSize = {

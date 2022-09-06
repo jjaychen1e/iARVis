@@ -36,6 +36,10 @@
 		6315A46428AFE7530045B685 /* WidgetConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6315A46328AFE7530045B685 /* WidgetConfiguration.swift */; };
 		6315A46528AFE7530045B685 /* WidgetConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6315A46328AFE7530045B685 /* WidgetConfiguration.swift */; };
 		6315A46A28AFE82B0045B685 /* SCNVector3+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6315A46928AFE82B0045B685 /* SCNVector3+Codable.swift */; };
+		631BB38628C710BE00EB697E /* chartConfigurationExample5_WeatherHistoryChart.json in Resources */ = {isa = PBXBuildFile; fileRef = 631BB38528C710BE00EB697E /* chartConfigurationExample5_WeatherHistoryChart.json */; };
+		631BB38728C710BE00EB697E /* chartConfigurationExample5_WeatherHistoryChart.json in Resources */ = {isa = PBXBuildFile; fileRef = 631BB38528C710BE00EB697E /* chartConfigurationExample5_WeatherHistoryChart.json */; };
+		631BB38A28C7274E00EB697E /* ViewElementComponent+Example5+HistoricalWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631BB38928C7274E00EB697E /* ViewElementComponent+Example5+HistoricalWeather.swift */; };
+		631BB38B28C7274E00EB697E /* ViewElementComponent+Example5+HistoricalWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631BB38928C7274E00EB697E /* ViewElementComponent+Example5+HistoricalWeather.swift */; };
 		6323815328C1A7230089A28C /* ChartComponent+ruleMarkRepeat1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6323815228C1A7230089A28C /* ChartComponent+ruleMarkRepeat1.swift */; };
 		6323815428C1A7230089A28C /* ChartComponent+ruleMarkRepeat1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6323815228C1A7230089A28C /* ChartComponent+ruleMarkRepeat1.swift */; };
 		63254E0028AB8869005E7599 /* CGPoint+Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63254DFF28AB8869005E7599 /* CGPoint+Operations.swift */; };
@@ -304,6 +308,8 @@
 		6315A46328AFE7530045B685 /* WidgetConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetConfiguration.swift; sourceTree = "<group>"; };
 		6315A46928AFE82B0045B685 /* SCNVector3+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNVector3+Codable.swift"; sourceTree = "<group>"; };
 		6315A46E28B0EA730045B685 /* TableConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableConfiguration.swift; sourceTree = "<group>"; };
+		631BB38528C710BE00EB697E /* chartConfigurationExample5_WeatherHistoryChart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chartConfigurationExample5_WeatherHistoryChart.json; sourceTree = "<group>"; };
+		631BB38928C7274E00EB697E /* ViewElementComponent+Example5+HistoricalWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewElementComponent+Example5+HistoricalWeather.swift"; sourceTree = "<group>"; };
 		6323815228C1A7230089A28C /* ChartComponent+ruleMarkRepeat1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartComponent+ruleMarkRepeat1.swift"; sourceTree = "<group>"; };
 		63254DF928AB870D005E7599 /* ChartProxy+PositionWithJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartProxy+PositionWithJSON.swift"; sourceTree = "<group>"; };
 		63254DFF28AB8869005E7599 /* CGPoint+Operations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Operations.swift"; sourceTree = "<group>"; };
@@ -608,6 +614,14 @@
 			path = SceneKit;
 			sourceTree = "<group>";
 		};
+		631BB38828C7273900EB697E /* Historical Weather */ = {
+			isa = PBXGroup;
+			children = (
+				631BB38928C7274E00EB697E /* ViewElementComponent+Example5+HistoricalWeather.swift */,
+			);
+			path = "Historical Weather";
+			sourceTree = "<group>";
+		};
 		63254DFE28AB885D005E7599 /* CoreGraphics */ = {
 			isa = PBXGroup;
 			children = (
@@ -638,6 +652,7 @@
 				63BFA49628C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartPatricia.json */,
 				635C123628C46A790066F008 /* chartConfigurationExample3_BabyNamesLineChart.json */,
 				63CC013F28C5C41100A25762 /* chartConfigurationExample4_ShanghaiWeatherPointChart.json */,
+				631BB38528C710BE00EB697E /* chartConfigurationExample5_WeatherHistoryChart.json */,
 			);
 			path = "Example JSON";
 			sourceTree = "<group>";
@@ -705,6 +720,7 @@
 		634DEB5928A415060019D3FF /* Debug */ = {
 			isa = PBXGroup;
 			children = (
+				631BB38828C7273900EB697E /* Historical Weather */,
 				63CC014228C5C5A900A25762 /* Shanghai Weather */,
 				635C123928C46D500066F008 /* Baby Names */,
 				63E8E24D28BD032200919D6F /* Christ's Entry into Brussels in 1889 */,
@@ -1375,6 +1391,7 @@
 				636C3ED828B4F52B001412FE /* chartConfigurationExample1_HistoricalPriceChart.json in Resources */,
 				635C123728C46A790066F008 /* chartConfigurationExample3_BabyNamesLineChart.json in Resources */,
 				63CC014028C5C41100A25762 /* chartConfigurationExample4_ShanghaiWeatherPointChart.json in Resources */,
+				631BB38628C710BE00EB697E /* chartConfigurationExample5_WeatherHistoryChart.json in Resources */,
 				63E44FD228C1CAFA00A63806 /* chartConfigurationExample2_MacBookProPerformanceBarChartCPU2.json in Resources */,
 				6379F41628B912730020BB1B /* chartConfigurationExample1_JamesEnsorLifeChart.json in Resources */,
 				63AF738528C0F09700A38418 /* chartConfigurationExample2_MacBookProPerformanceLineChart.json in Resources */,
@@ -1389,6 +1406,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6379F41728B912730020BB1B /* chartConfigurationExample1_JamesEnsorLifeChart.json in Resources */,
+				631BB38728C710BE00EB697E /* chartConfigurationExample5_WeatherHistoryChart.json in Resources */,
 				63BFA4A728C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartDorothy.json in Resources */,
 				63254E0C28AB8FC6005E7599 /* chartConfigurationExample1_ProvenanceChart.json in Resources */,
 				6313907828C215F400A266B4 /* chartConfigurationExample2_MacBookProPerformanceBarChartGPU.json in Resources */,
@@ -1621,6 +1639,7 @@
 				638DA98D2892C63D0030D494 /* ARKitViewController.swift in Sources */,
 				635D804A28B9EC070077C1B6 /* ChartComponentCommonConfig.swift in Sources */,
 				635C123F28C47A4C0066F008 /* AutoDateParser.swift in Sources */,
+				631BB38A28C7274E00EB697E /* ViewElementComponent+Example5+HistoricalWeather.swift in Sources */,
 				63AE065C2896DAF80061404E /* VisualizationContext.swift in Sources */,
 				635F52612896769700FF40B6 /* DebugCommon.swift in Sources */,
 				639EBF6A28B295EE00C76969 /* SceneKitUtils2.swift in Sources */,
@@ -1731,6 +1750,7 @@
 				634B72F628B13869000BBB05 /* ChartView.swift in Sources */,
 				635AD92328C195F800112E6E /* Any+Type.swift in Sources */,
 				63AE066128979D690061404E /* ImageDownloader.swift in Sources */,
+				631BB38B28C7274E00EB697E /* ViewElementComponent+Example5+HistoricalWeather.swift in Sources */,
 				635C123C28C46D720066F008 /* ViewElementComponent+Example3+LineChart.swift in Sources */,
 				636F742C28B9EB8B00931762 /* ChartStyleConfiguration.swift in Sources */,
 				63BFA4B228C4CD7A0053FEE2 /* ViewElementComponent+Example3+AreaChart.swift in Sources */,

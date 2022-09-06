@@ -17,6 +17,8 @@ struct ImageTrackingExample {
 
     private static let exampleImageURL4: URL = .init(string: "https://cdn.jsdelivr.net/gh/JJAYCHEN1e/Image@2022/default/Shanghai.png")!
 
+    private static let exampleImageURL5: URL = .init(string: "https://cdn.jsdelivr.net/gh/JJAYCHEN1e/Image@2022/default/Example5.2.jpg")!
+
     static let exampleConfiguration1: ImageTrackingConfiguration = .init(
         imageURL: exampleImageURL1,
         relationships: [
@@ -129,13 +131,35 @@ struct ImageTrackingExample {
     static let exampleConfiguration4: ImageTrackingConfiguration = .init(
         imageURL: exampleImageURL4,
         relationships: [
-            .init(widgetConfiguration: .init(component: .example4_ShanghaiWeatherPointChartJSONStrViewElementComponent,
+            .init(widgetConfiguration: .init(component: .example4_ShanghaiWeatherPointChartViewElementComponent,
                                              relativeAnchorPoint: .cover,
                                              relativePosition: SCNVector3(0, 0, 0),
                                              isOpaque: false,
                                              isScrollEnabled: false,
                                              padding: [0, 0, 0, 0],
                                              size: CGSize(width: 1000, height: 1000))),
+        ]
+    )
+
+    static let exampleConfiguration5: ImageTrackingConfiguration = .init(
+        imageURL: exampleImageURL5,
+        relationships: [
+            .init(widgetConfiguration: .init(component: .example5_HistoricalWeatherPointChartViewElementComponent,
+                                             relativeAnchorPoint: .leading,
+                                             relativePosition: SCNVector3(0, 0, 0),
+                                             alignedToTarget: true,
+                                             isOpaque: false,
+                                             isScrollEnabled: false,
+                                             padding: [16, 12, 0, 0],
+                                             size: CGSize(width: 550, height: 330))),
+            .init(widgetConfiguration: .init(component: .example5_HistoricalWeatherPointChartViewElementComponent,
+                                             relativeAnchorPoint: .trailing,
+                                             relativePosition: SCNVector3(0, 0, 0),
+                                             alignedToTarget: true,
+                                             isOpaque: false,
+                                             isScrollEnabled: false,
+                                             padding: [16, 12, 0, 0],
+                                             size: CGSize(width: 550, height: 330))),
         ]
     )
 }
