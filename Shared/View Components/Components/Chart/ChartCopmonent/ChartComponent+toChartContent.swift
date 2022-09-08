@@ -74,9 +74,12 @@ extension ChartContent {
     @ChartContentBuilder
     func applyCommonConfig(commonConfig: ChartComponentCommonConfig, datumDictionary: NSDictionary) -> some ChartContent {
         let foregroundStyleBy: (String, String)? = {
-            if let foregroundStyleField = commonConfig.foregroundStyleField,
-               let data = datumDictionary[foregroundStyleField] as? String {
-                return (foregroundStyleField, data)
+            if let foregroundStyleField = commonConfig.foregroundStyleField {
+                if let data = datumDictionary[foregroundStyleField] as? String {
+                    return (foregroundStyleField, data)
+                } else if let data = datumDictionary[foregroundStyleField] as? Int {
+                    return (foregroundStyleField, String(data))
+                }
             } else if let foregroundStyleValue = commonConfig.foregroundStyleValue {
                 return (foregroundStyleValue, foregroundStyleValue)
             }

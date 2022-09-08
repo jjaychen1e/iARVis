@@ -21,7 +21,6 @@ enum ARVisAnnotationPosition: String, RawRepresentable, Codable {
     case center
 }
 
-@available(iOS 16, *)
 struct ARVisAnnotation: Codable, Equatable {
     var position: ARVisAnnotationPosition
     var content: ViewElementComponent

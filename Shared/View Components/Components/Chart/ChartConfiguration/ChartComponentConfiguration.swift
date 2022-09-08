@@ -17,7 +17,15 @@ struct ChartComponentConfiguration: Equatable {
     @ChartContentBuilder
     func toChartContent(configuration: ChartConfiguration) -> some ChartContent {
         component.toChartContent(configuration: configuration, commonConfig: commonConfig)
-            .interpolationMethod(commonConfig.interpolationMethod != nil ? InterpolationMethod(commonConfig.interpolationMethod!) : InterpolationMethod.linear)
+            .applyCommonConfig(commonConfig: commonConfig)
+    }
+}
+
+@available(iOS 16, *)
+extension ChartContent {
+    @ChartContentBuilder
+    func applyCommonConfig(commonConfig: ChartComponentCommonConfig) -> some ChartContent {
+        self.interpolationMethod(commonConfig.interpolationMethod != nil ? InterpolationMethod(commonConfig.interpolationMethod!) : InterpolationMethod.linear)
             .symbol(commonConfig.symbol != nil ? commonConfig.symbol!.type.symbol : ARVisSymbol.circle.type.symbol)
             .symbolSize(commonConfig.symbolSize != nil ? CGSize(commonConfig.symbolSize!) : commonConfig.symbol != nil ? CGSize(width: 5, height: 5) : CGSize(width: 0, height: 0))
             .lineStyle(commonConfig.lineStyle != nil ? .init(commonConfig.lineStyle!) : StrokeStyle())

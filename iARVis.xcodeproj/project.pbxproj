@@ -46,6 +46,7 @@
 		63254E0128AB8869005E7599 /* CGPoint+Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63254DFF28AB8869005E7599 /* CGPoint+Operations.swift */; };
 		63254E0B28AB8FC6005E7599 /* chartConfigurationExample1_ProvenanceChart.json in Resources */ = {isa = PBXBuildFile; fileRef = 63254E0A28AB8FC6005E7599 /* chartConfigurationExample1_ProvenanceChart.json */; };
 		63254E0C28AB8FC6005E7599 /* chartConfigurationExample1_ProvenanceChart.json in Resources */ = {isa = PBXBuildFile; fileRef = 63254E0A28AB8FC6005E7599 /* chartConfigurationExample1_ProvenanceChart.json */; };
+		6329087B28C8BA3300E3B494 /* SPLOMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6329087A28C8BA3300E3B494 /* SPLOMView.swift */; };
 		6339435928ABA9FB008A5ED1 /* View+Execute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6339435828ABA9FB008A5ED1 /* View+Execute.swift */; };
 		6339435A28ABA9FB008A5ED1 /* View+Execute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6339435828ABA9FB008A5ED1 /* View+Execute.swift */; };
 		6344285928BC6B5000339D2F /* NSNumber+Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6344285828BC6B5000339D2F /* NSNumber+Type.swift */; };
@@ -180,6 +181,8 @@
 		639EBF5D28B2948200C76969 /* ImageTrackingConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636EDDC12896542A00639195 /* ImageTrackingConfiguration.swift */; };
 		639EBF6628B2952F00C76969 /* SceneKitUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635F526E2896B29A00FF40B6 /* SceneKitUtils.swift */; };
 		639EBF6A28B295EE00C76969 /* SceneKitUtils2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639EBF6928B295EE00C76969 /* SceneKitUtils2.swift */; };
+		63A70F4128C9F12D00FF47AC /* View+onLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A70F4028C9F12D00FF47AC /* View+onLoad.swift */; };
+		63A70F4228C9F12D00FF47AC /* View+onLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A70F4028C9F12D00FF47AC /* View+onLoad.swift */; };
 		63AE065C2896DAF80061404E /* VisualizationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AE065B2896DAF80061404E /* VisualizationContext.swift */; };
 		63AE06602896DDCE0061404E /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AE065F2896DDCE0061404E /* ImageDownloader.swift */; };
 		63AE066128979D690061404E /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AE065F2896DDCE0061404E /* ImageDownloader.swift */; };
@@ -247,6 +250,8 @@
 		63D00A9C28C311B700595111 /* DefaultCodable in Frameworks */ = {isa = PBXBuildFile; productRef = 63D00A9B28C311B700595111 /* DefaultCodable */; };
 		63D00AA128C3144200595111 /* SCNVector3+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D00AA028C3144200595111 /* SCNVector3+Equatable.swift */; };
 		63D00AA228C3144200595111 /* SCNVector3+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D00AA028C3144200595111 /* SCNVector3+Equatable.swift */; };
+		63E43B6828C9CDF30033CEEA /* DetailedSPLOMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E43B6728C9CDF30033CEEA /* DetailedSPLOMView.swift */; };
+		63E43B6A28C9D3240033CEEA /* DetailedSPLOMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E43B6928C9D3240033CEEA /* DetailedSPLOMViewController.swift */; };
 		63E44FCC28C1B00300A63806 /* chartConfigurationExample2_MacBookProPerformanceBarChartCPU.json in Resources */ = {isa = PBXBuildFile; fileRef = 63E44FCB28C1B00300A63806 /* chartConfigurationExample2_MacBookProPerformanceBarChartCPU.json */; };
 		63E44FCD28C1B00300A63806 /* chartConfigurationExample2_MacBookProPerformanceBarChartCPU.json in Resources */ = {isa = PBXBuildFile; fileRef = 63E44FCB28C1B00300A63806 /* chartConfigurationExample2_MacBookProPerformanceBarChartCPU.json */; };
 		63E44FCF28C1B85D00A63806 /* ChartComponent+barMarkRepeat2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E44FCE28C1B85D00A63806 /* ChartComponent+barMarkRepeat2.swift */; };
@@ -314,6 +319,7 @@
 		63254DF928AB870D005E7599 /* ChartProxy+PositionWithJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartProxy+PositionWithJSON.swift"; sourceTree = "<group>"; };
 		63254DFF28AB8869005E7599 /* CGPoint+Operations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Operations.swift"; sourceTree = "<group>"; };
 		63254E0A28AB8FC6005E7599 /* chartConfigurationExample1_ProvenanceChart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chartConfigurationExample1_ProvenanceChart.json; sourceTree = "<group>"; };
+		6329087A28C8BA3300E3B494 /* SPLOMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPLOMView.swift; sourceTree = "<group>"; };
 		632ACE6928A93EE1001418E5 /* Pods_iARVis__iOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_iARVis__iOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6339435828ABA9FB008A5ED1 /* View+Execute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Execute.swift"; sourceTree = "<group>"; };
 		6344285828BC6B5000339D2F /* NSNumber+Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNumber+Type.swift"; sourceTree = "<group>"; };
@@ -387,6 +393,7 @@
 		639EBF5728B277E300C76969 /* ARKitViewController+ARSCNViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ARKitViewController+ARSCNViewDelegate.swift"; sourceTree = "<group>"; };
 		639EBF5C28B2902700C76969 /* iARVis--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "iARVis--iOS--Info.plist"; sourceTree = "<group>"; };
 		639EBF6928B295EE00C76969 /* SceneKitUtils2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitUtils2.swift; sourceTree = "<group>"; };
+		63A70F4028C9F12D00FF47AC /* View+onLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+onLoad.swift"; sourceTree = "<group>"; };
 		63AB7DC828AA970F00DA8295 /* ChartView+GetElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartView+GetElement.swift"; sourceTree = "<group>"; };
 		63AE065B2896DAF80061404E /* VisualizationContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualizationContext.swift; sourceTree = "<group>"; };
 		63AE065F2896DDCE0061404E /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
@@ -423,6 +430,8 @@
 		63CC013F28C5C41100A25762 /* chartConfigurationExample4_ShanghaiWeatherPointChart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chartConfigurationExample4_ShanghaiWeatherPointChart.json; sourceTree = "<group>"; };
 		63CC014328C5C5C800A25762 /* ViewElementComponent+Example4+ShanghaiWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewElementComponent+Example4+ShanghaiWeather.swift"; sourceTree = "<group>"; };
 		63D00AA028C3144200595111 /* SCNVector3+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNVector3+Equatable.swift"; sourceTree = "<group>"; };
+		63E43B6728C9CDF30033CEEA /* DetailedSPLOMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedSPLOMView.swift; sourceTree = "<group>"; };
+		63E43B6928C9D3240033CEEA /* DetailedSPLOMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedSPLOMViewController.swift; sourceTree = "<group>"; };
 		63E44FCB28C1B00300A63806 /* chartConfigurationExample2_MacBookProPerformanceBarChartCPU.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chartConfigurationExample2_MacBookProPerformanceBarChartCPU.json; sourceTree = "<group>"; };
 		63E44FCE28C1B85D00A63806 /* ChartComponent+barMarkRepeat2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartComponent+barMarkRepeat2.swift"; sourceTree = "<group>"; };
 		63E44FD128C1CAFA00A63806 /* chartConfigurationExample2_MacBookProPerformanceBarChartCPU2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chartConfigurationExample2_MacBookProPerformanceBarChartCPU2.json; sourceTree = "<group>"; };
@@ -530,6 +539,7 @@
 				63027A5A28A933B800B06CFE /* View+if.swift */,
 				639A6D8F28AB7FF400527C37 /* View+SizeThatFits.swift */,
 				6339435828ABA9FB008A5ED1 /* View+Execute.swift */,
+				63A70F4028C9F12D00FF47AC /* View+onLoad.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -655,6 +665,16 @@
 				631BB38528C710BE00EB697E /* chartConfigurationExample5_WeatherHistoryChart.json */,
 			);
 			path = "Example JSON";
+			sourceTree = "<group>";
+		};
+		6329087928C8B9A500E3B494 /* SPLOM */ = {
+			isa = PBXGroup;
+			children = (
+				6329087A28C8BA3300E3B494 /* SPLOMView.swift */,
+				63E43B6728C9CDF30033CEEA /* DetailedSPLOMView.swift */,
+				63E43B6928C9D3240033CEEA /* DetailedSPLOMViewController.swift */,
+			);
+			path = SPLOM;
 			sourceTree = "<group>";
 		};
 		6344281728BBC02B00339D2F /* JSON */ = {
@@ -877,6 +897,7 @@
 		6376123428A56252008901C0 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				6329087928C8B9A500E3B494 /* SPLOM */,
 				635FBC9928C5EC48009EC77A /* SFSymbol */,
 				63EBEF6128BB55B700F112D5 /* Grid */,
 				63E726AB28B53D4200998DA9 /* Video */,
@@ -1596,6 +1617,7 @@
 				634B72F928B13869000BBB05 /* ChartProxy+PositionWithJSON.swift in Sources */,
 				63E911DA28C1A315006D7F8C /* ChartComponent+barMarkRepeat1.swift in Sources */,
 				639EBF5328B2614C00C76969 /* URLService.swift in Sources */,
+				63E43B6828C9CDF30033CEEA /* DetailedSPLOMView.swift in Sources */,
 				634B72FA28B13869000BBB05 /* TableData.swift in Sources */,
 				6315A46A28AFE82B0045B685 /* SCNVector3+Codable.swift in Sources */,
 				63CB2BBC28A40A8000BF7A1B /* ARVisFontStyle.swift in Sources */,
@@ -1638,9 +1660,11 @@
 				63CB2BBA28A409DD00BF7A1B /* ARVisTextAlignment.swift in Sources */,
 				638DA98D2892C63D0030D494 /* ARKitViewController.swift in Sources */,
 				635D804A28B9EC070077C1B6 /* ChartComponentCommonConfig.swift in Sources */,
+				63E43B6A28C9D3240033CEEA /* DetailedSPLOMViewController.swift in Sources */,
 				635C123F28C47A4C0066F008 /* AutoDateParser.swift in Sources */,
 				631BB38A28C7274E00EB697E /* ViewElementComponent+Example5+HistoricalWeather.swift in Sources */,
 				63AE065C2896DAF80061404E /* VisualizationContext.swift in Sources */,
+				6329087B28C8BA3300E3B494 /* SPLOMView.swift in Sources */,
 				635F52612896769700FF40B6 /* DebugCommon.swift in Sources */,
 				639EBF6A28B295EE00C76969 /* SceneKitUtils2.swift in Sources */,
 				634B72F728B13869000BBB05 /* JSON+Type.swift in Sources */,
@@ -1658,6 +1682,7 @@
 				634B732128B22528000BBB05 /* Player.swift in Sources */,
 				63E8E25128BD047100919D6F /* ViewElementComponent+Example1+ArtworkWidget.swift in Sources */,
 				63EBEF5F28BB536600F112D5 /* KeyedCodable.swift in Sources */,
+				63A70F4128C9F12D00FF47AC /* View+onLoad.swift in Sources */,
 				634E9D8028C1A63B00742893 /* ChartComponent+pointMarkRepeat1.swift in Sources */,
 				636EDDC22896542A00639195 /* ImageTrackingConfiguration.swift in Sources */,
 				634B730328B13869000BBB05 /* ChartComponent.swift in Sources */,
@@ -1723,6 +1748,7 @@
 				63027A5C28A933B800B06CFE /* View+if.swift in Sources */,
 				635D805428B9FA7C0077C1B6 /* ChartYAxis.swift in Sources */,
 				635D804E28B9EC2B0077C1B6 /* ChartComponentConfiguration.swift in Sources */,
+				63A70F4228C9F12D00FF47AC /* View+onLoad.swift in Sources */,
 				63CB2BCD28A40EA400BF7A1B /* ARVisVerticalAlignment.swift in Sources */,
 				63CC014528C5C5C800A25762 /* ViewElementComponent+Example4+ShanghaiWeather.swift in Sources */,
 				63AF737928BF171800A38418 /* SwiftChartConfiguration.swift in Sources */,

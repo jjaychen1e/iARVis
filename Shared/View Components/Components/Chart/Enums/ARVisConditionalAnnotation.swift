@@ -8,7 +8,6 @@
 import Foundation
 import SwiftyJSON
 
-@available(iOS 16, *)
 struct ARVisConditionalAnnotation: Codable, Equatable {
     var field: String
     var value: JSON

@@ -78,6 +78,7 @@ enum ViewElementComponent: Codable, Equatable {
     case segmentedControl(items: [ARVisSegmentedControlItem], modifiers: [ViewElementComponentModifier]? = nil)
     case grid(rows: [ViewElementComponent], modifiers: [ViewElementComponentModifier]? = nil)
     case gridRow(rowElements: [ViewElementComponent], modifiers: [ViewElementComponentModifier]? = nil)
+    case splom(data: JSON, fields: [String], config: ChartComponentCommonConfig? = nil)
 
     enum CodingKeys: CodingKey {
         case text
@@ -95,6 +96,7 @@ enum ViewElementComponent: Codable, Equatable {
         case segmentedControl
         case grid
         case gridRow
+        case splom
     }
 
     enum TextCodingKeys: CodingKey {
@@ -182,6 +184,12 @@ enum ViewElementComponent: Codable, Equatable {
         case modifiers
     }
 
+    enum SplomCodingKeys: CodingKey {
+        case data
+        case fields
+        case config
+    }
+
     init(from decoder: Decoder) throws {
         let container: KeyedDecodingContainer<ViewElementComponent.CodingKeys> = try decoder.container(keyedBy: ViewElementComponent.CodingKeys.self)
         var allKeys = ArraySlice<ViewElementComponent.CodingKeys>(container.allKeys)
@@ -239,6 +247,9 @@ enum ViewElementComponent: Codable, Equatable {
         case .gridRow:
             let nestedContainer: KeyedDecodingContainer<ViewElementComponent.GridRowCodingKeys> = try container.nestedContainer(keyedBy: ViewElementComponent.GridRowCodingKeys.self, forKey: ViewElementComponent.CodingKeys.gridRow)
             self = ViewElementComponent.gridRow(rowElements: try nestedContainer.decode([ViewElementComponent].self, forKey: ViewElementComponent.GridRowCodingKeys.rowElements), modifiers: try nestedContainer.decodeIfPresent([ViewElementComponentModifier].self, forKey: ViewElementComponent.GridRowCodingKeys.modifiers))
+        case .splom:
+            let nestedContainer: KeyedDecodingContainer<ViewElementComponent.SplomCodingKeys> = try container.nestedContainer(keyedBy: ViewElementComponent.SplomCodingKeys.self, forKey: ViewElementComponent.CodingKeys.splom)
+            self = ViewElementComponent.splom(data: try nestedContainer.decode(JSON.self, forKey: ViewElementComponent.SplomCodingKeys.data), fields: try nestedContainer.decode([String].self, forKey: ViewElementComponent.SplomCodingKeys.fields), config: try nestedContainer.decodeIfPresent(ChartComponentCommonConfig.self, forKey: ViewElementComponent.SplomCodingKeys.config))
         }
     }
 
@@ -319,6 +330,11 @@ enum ViewElementComponent: Codable, Equatable {
             var nestedContainer: KeyedEncodingContainer<ViewElementComponent.GridRowCodingKeys> = container.nestedContainer(keyedBy: ViewElementComponent.GridRowCodingKeys.self, forKey: ViewElementComponent.CodingKeys.gridRow)
             try nestedContainer.encode(rowElements, forKey: ViewElementComponent.GridRowCodingKeys.rowElements)
             try nestedContainer.encodeIfPresent(modifiers, forKey: ViewElementComponent.GridRowCodingKeys.modifiers)
+        case let .splom(data, fields, config):
+            var nestedContainer: KeyedEncodingContainer<ViewElementComponent.SplomCodingKeys> = container.nestedContainer(keyedBy: ViewElementComponent.SplomCodingKeys.self, forKey: ViewElementComponent.CodingKeys.splom)
+            try nestedContainer.encode(data, forKey: ViewElementComponent.SplomCodingKeys.data)
+            try nestedContainer.encode(fields, forKey: ViewElementComponent.SplomCodingKeys.fields)
+            try nestedContainer.encodeIfPresent(config, forKey: ViewElementComponent.SplomCodingKeys.config)
         }
     }
 }
@@ -356,6 +372,8 @@ extension ViewElementComponent {
             return modifiers ?? []
         case let .gridRow(_, modifiers):
             return modifiers ?? []
+        case .splom:
+            return []
         }
     }
 }
@@ -456,6 +474,8 @@ extension ViewElementComponent {
                 } else {
                     Text("GridRow component is not supported in iOS 15.")
                 }
+            case let .splom(data, fields, config):
+                EmptyView()
             }
         }
         .apply(modifiers: modifiers)
