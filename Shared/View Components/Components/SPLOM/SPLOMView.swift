@@ -37,10 +37,10 @@ struct SPLOMView: View {
         GeometryReader { proxy in
             Grid {
                 ForEach(0 ..< fields.count, id: \.self) { index1 in
-                    let xField = fields[index1]
+                    let yField = fields[index1]
                     GridRow {
                         ForEach(0 ..< fields.count, id: \.self) { index2 in
-                            let yField = fields[index2]
+                            let xField = fields[index2]
                             DetailedSPLOMView(datumArray: datumArray, chartDataItem: chartDataItem, xField: xField, yField: yField, config: config)
                                 .onTapGesture {
                                     UIApplication.shared.presentOnTop(LargePartialViewController(
