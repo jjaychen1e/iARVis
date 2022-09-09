@@ -11,13 +11,15 @@ import SceneKit
 struct ImageTrackingExample {
     private static let exampleImageURL1: URL = .init(string: "https://media.getty.edu/iiif/image/ce4d5a1f-ee25-44b3-afa2-d597d43056ff/full/1024,/0/default.jpg?download=ce4d5a1f-ee25-44b3-afa2-d597d43056ff_1024.jpg&size=small")!
     private static let exampleImageURL2: URL = .init(string: "https://cdn.jsdelivr.net/gh/JJAYCHEN1e/Image@2022/default/Ashley5.jpg")!
-//    private static let exampleImageURL2: URL = .init(string: "https://cdn.jsdelivr.net/gh/JJAYCHEN1e/Image@2022/default/jasper-gribble-TgQUt4fz9s8-unsplash.jpg")!
+    //    private static let exampleImageURL2: URL = .init(string: "https://cdn.jsdelivr.net/gh/JJAYCHEN1e/Image@2022/default/jasper-gribble-TgQUt4fz9s8-unsplash.jpg")!
 
     private static let exampleImageURL3: URL = .init(string: "https://cdn.jsdelivr.net/gh/JJAYCHEN1e/Image@2022/default/Ridgeline%20Chart.jpg")!
 
     private static let exampleImageURL4: URL = .init(string: "https://cdn.jsdelivr.net/gh/JJAYCHEN1e/Image@2022/default/Shanghai.png")!
 
     private static let exampleImageURL5: URL = .init(string: "https://cdn.jsdelivr.net/gh/JJAYCHEN1e/Image@2022/default/Example5.2.jpg")!
+
+    private static let exampleImageURL6: URL = .init(string: "https://cdn.jsdelivr.net/gh/JJAYCHEN1e/Image@2022/default/example6-qrcode.png")!
 
     static let exampleConfiguration1: ImageTrackingConfiguration = .init(
         imageURL: exampleImageURL1,
@@ -160,6 +162,17 @@ struct ImageTrackingExample {
                                              isScrollEnabled: false,
                                              padding: [16, 12, 0, 0],
                                              size: CGSize(width: 550, height: 330))),
+        ]
+    )
+
+    static let exampleConfiguration6: ImageTrackingConfiguration = .init(
+        imageURL: exampleImageURL6,
+        relationships: [
+            .init(widgetConfiguration: .init(component: .example6_SPLOMViewElementComponent,
+                                             relativeAnchorPoint: .trailing,
+                                             relativePosition: SCNVector3(0, 0, 0),
+                                             isScrollEnabled: false,
+                                             size: CGSize(width: 1000, height: 1000))),
         ]
     )
 }

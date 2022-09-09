@@ -5,6 +5,7 @@
 //  Created by Junjie Chen on 2022/8/16.
 //
 
+import Charts
 import Foundation
 import SwiftUI
 
@@ -18,4 +19,10 @@ func executeAsync(closure: @escaping () -> Void) -> some View {
         closure()
     }
     return Color.clear.opacity(0)
+}
+
+@available(iOS 16, *)
+func executeChartContent(closure: () -> Void) -> some ChartContent {
+    closure()
+    return ChartGroup {}
 }

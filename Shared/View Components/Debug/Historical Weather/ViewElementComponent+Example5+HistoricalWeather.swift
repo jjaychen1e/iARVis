@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Foundation
+
 extension ViewElementComponent {
     static let example4_HistoricalWeatherPointChartJSONStr = """
     {

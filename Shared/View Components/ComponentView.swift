@@ -34,7 +34,6 @@ struct ComponentView: View {
 
         ScrollView(isScrollEnabled ? .vertical : []) {
             component.view()
-                .fixedSize(horizontal: false, vertical: true)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                 .padding(.leading, padding.0)
                 .padding(.top, padding.1)

@@ -18,12 +18,12 @@ private struct Range {
 
 private class ViewModel: ObservableObject {
     @Published var selectionRange: Range?
-    @Published var selectionData: [NSDictionary] = []
+    @Published var selectionData: [[String: Any]] = []
 }
 
 @available(iOS 16, *)
 struct DetailedSPLOMView: View {
-    init(datumArray: [NSDictionary], chartDataItem: ChartDataItem, xField: String, yField: String, config: ChartComponentCommonConfig, isPreview: Bool = true) {
+    init(datumArray: [[String: Any]], chartDataItem: ChartDataItem, xField: String, yField: String, config: ChartComponentCommonConfig, isPreview: Bool = true) {
         self.datumArray = datumArray
         self.chartDataItem = chartDataItem
         self.xField = xField
@@ -40,7 +40,7 @@ struct DetailedSPLOMView: View {
         self.isPreview = isPreview
     }
 
-    let datumArray: [NSDictionary]
+    let datumArray: [[String: Any]]
     let chartDataItem: ChartDataItem
     let xField: String
     let yField: String
@@ -318,7 +318,7 @@ private struct DataSummaryView: View {
 
 @available(iOS 16, *)
 private struct DataDistributionView: View {
-    let datumArray: [NSDictionary]
+    let datumArray: [[String: Any]]
     let chartDataItem: ChartDataItem
     let xField: String
     let yField: String

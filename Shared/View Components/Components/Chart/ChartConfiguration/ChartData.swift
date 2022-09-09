@@ -35,11 +35,17 @@ struct ChartData: Codable, Equatable {
 }
 
 struct ChartDataItem: Codable, Equatable {
+    static func == (lhs: ChartDataItem, rhs: ChartDataItem) -> Bool {
+        lhs.data == rhs.data &&
+        lhs.titles == rhs.titles &&
+        lhs.length == rhs.length
+    }
+    
     private(set) var data: JSON
     private(set) var titles: [String]
     private(set) var length: Int
 
-    private(set) var datumArray: [NSDictionary] = []
+    private(set) var datumArray: [[String : Any]] = []
 
     fileprivate var typeInformation: [String: ARVisPlottableValueTypeInformation] = [:] {
         didSet {
@@ -54,10 +60,10 @@ struct ChartDataItem: Codable, Equatable {
     }
 
     mutating func generateDatumArray() {
-        var datumArray: [NSDictionary] = []
-        let titleDataMap = data.object as? NSDictionary ?? [:]
+        var datumArray: [[String : Any]] = []
+        let titleDataMap = data.object as? [String : Any] ?? [:]
         for i in 0 ..< length {
-            let dict = NSMutableDictionary()
+            var dict: [String : Any] = [:]
             for title in titles {
                 if let array = titleDataMap[title] as? [Any] {
                     if let any = array[safe: i] {
