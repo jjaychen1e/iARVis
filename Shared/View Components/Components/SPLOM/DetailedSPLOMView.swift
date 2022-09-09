@@ -227,9 +227,15 @@ struct DetailedSPLOMView: View {
                             .frame(width: availableSize.width * 0.8, height: availableSize.height * 0.8)
                             .offset(x: 0, y: availableSize.height * 0.1)
 
-                            DataSummaryView(viewModel: viewModel, config: config)
-                                .frame(width: availableSize.width * 0.2, height: availableSize.height * 0.8)
-                                .offset(x: availableSize.width * 0.8, y: availableSize.height * 0.1)
+                            VStack {
+                                DataDistributionView(datumArray: datumArray, chartDataItem: chartDataItem, xField: xField, yField: yField, config: config)
+                                    .id(UUID())
+                                Spacer(minLength: 0)
+                                DataSummaryView(viewModel: viewModel, config: config)
+                            }
+                            .padding(.horizontal, 8)
+                            .frame(width: availableSize.width * 0.2, height: availableSize.height * 0.8)
+                            .offset(x: availableSize.width * 0.8, y: availableSize.height * 0.1)
                         }
                     }
                     .offset(x: padding, y: padding)
@@ -276,8 +282,8 @@ private struct DataSummaryView: View {
     let config: ChartComponentCommonConfig
 
     var body: some View {
-        let classField: String? = (config.foregroundStyleColorMap?.map { $0.field } ?? [config.foregroundStyleField]).compactMap { $0 }.first
-        if let field = classField {
+        let seriesField: String? = (config.foregroundStyleColorMap?.map { $0.field } ?? [config.foregroundStyleField]).compactMap { $0 }.first
+        if let field = seriesField {
             let map: [String: Int] = {
                 var map: [String: Int] = [:]
                 viewModel.selectionData.forEach { datum in
@@ -298,7 +304,7 @@ private struct DataSummaryView: View {
 
             let description = """
             You've selected **\(viewModel.selectionData.count)** items in **\(map.keys.count)** types.
-            \(distributionDescription).
+            \(distributionDescription)\(distributionDescription != "" ? "." : "")
             """
 
             VStack {
@@ -306,6 +312,107 @@ private struct DataSummaryView: View {
                     .font(.system(size: 15, weight: .light, design: .rounded))
             }
             .allowsHitTesting(false)
+        }
+    }
+}
+
+@available(iOS 16, *)
+private struct DataDistributionView: View {
+    let datumArray: [NSDictionary]
+    let chartDataItem: ChartDataItem
+    let xField: String
+    let yField: String
+    let config: ChartComponentCommonConfig
+
+    private let colorHelper = ColorHelper()
+
+    class ColorHelper {
+        private let colors: [Color] = [
+            .blue,
+            .green,
+            .orange,
+        ]
+
+        private var pointer = 0
+
+        private var cache: [String: Color] = [:]
+
+        func color(for series: String) -> Color {
+            return cache[series, default: {
+                let color = colors[pointer]
+                pointer = (pointer + 1) % colors.count
+                cache[series] = color
+                return color
+            }()]
+        }
+    }
+
+    @ChartContentBuilder
+    func mark(x: AnyHashable, series: String, count: Int) -> some ChartContent {
+        ChartGroup {
+            if let xValue = x as? Int {
+                AreaMark(x: .value("x", xValue), y: .value("y", count), stacking: .normalized)
+            } else if let xValue = x as? Double {
+                AreaMark(x: .value("x", xValue), y: .value("y", count), stacking: .normalized)
+            }
+        }
+//        .interpolationMethod(.cardinal)
+        .foregroundStyle(by: .value("foregroundStyleBy", series))
+    }
+
+    @ViewBuilder
+    func chart(seriesField: String, field: String) -> some View {
+        Chart {
+            ChartGroup {}
+            let map: [AnyHashable: [String: Int]] = {
+                var map: [AnyHashable: [String: Int]] = [:]
+                datumArray.forEach { datum in
+                    if let fieldValue = datum[field] as? AnyHashable {
+                        if let intValue = datum[seriesField] as? Int {
+                            map[fieldValue, default: [:]][String(intValue), default: 0] += 1
+                        } else if let doubleValue = datum[seriesField] as? Double {
+                            map[fieldValue, default: [:]][String(doubleValue), default: 0] += 1
+                        } else if let stringValue = datum[seriesField] as? String {
+                            map[fieldValue, default: [:]][stringValue, default: 0] += 1
+                        }
+                    }
+                }
+                return map
+            }()
+
+            let sortedMap = map.sorted { l, r in
+                if let l = l.key as? Int, let r = r.key as? Int {
+                    return l < r
+                } else if let l = l.key as? Double, let r = r.key as? Double {
+                    return l < r
+                }
+                return false
+            }
+
+            let possibleSeriesSet: Set<String> = Set(sortedMap.flatMap { Array($0.value.keys) })
+
+            ForEach(sortedMap, id: \.key) { x, innerMap in
+                ForEach(Array(zip(possibleSeriesSet.indices, possibleSeriesSet)), id: \.0) { index, possibleSeries in
+                    mark(x: x, series: possibleSeries, count: innerMap[possibleSeries, default: 0])
+                }
+            }
+        }
+        .chartForegroundStyleScale(mapping: { (p: String) in
+            colorHelper.color(for: p)
+        })
+        .height(100)
+    }
+
+    var body: some View {
+        if let seriesField: String = (config.foregroundStyleColorMap?.map { $0.field } ?? [config.foregroundStyleField]).compactMap({ $0 }).first {
+            VStack(alignment: .leading) {
+                chart(seriesField: seriesField, field: xField)
+                Text(xField)
+                    .font(.system(size: 12, weight: .light, design: .rounded))
+                chart(seriesField: seriesField, field: yField)
+                Text(yField)
+                    .font(.system(size: 12, weight: .light, design: .rounded))
+            }
         }
     }
 }
