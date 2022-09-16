@@ -30,7 +30,15 @@ extension ARKitViewController: ARSCNViewDelegate {
                     plane.width = relationship.widgetConfiguration.size.width * relationship.widgetConfiguration.scale
                     plane.height = relationship.widgetConfiguration.size.width * relationship.widgetConfiguration.scale
                     nodePair.node.geometry = plane
-                    let widgetViewController = WidgetInARViewController(node: widgetNode)
+                    let widgetViewController = WidgetInARViewController(node: widgetNode) { [weak self] widgetNode in
+                        if let self = self {
+                            self.focusedWidgetNode.send(widgetNode)
+                        }
+                    } chartConfigurationFocusCallback: { [weak self] chartConfiguration in
+                        if let self = self {
+                            self.focusedChartConfiguration.send(chartConfiguration)
+                        }
+                    }
                     widgetViewController.node = widgetNode
                     nodePair.node.widgetViewController = widgetViewController
 
@@ -126,10 +134,10 @@ extension ARKitViewController {
 
         plane.width = widgetConfig.size.width * widgetConfig.scale
         plane.height = widgetConfig.size.width * widgetConfig.scale
-        
+
         let imagePhysicalWidth = imageAnchor.referenceImage.physicalSize.width * imageAnchor.estimatedScaleFactor
         let imagePhysicalHeight = imageAnchor.referenceImage.physicalSize.height * imageAnchor.estimatedScaleFactor
-        
+
         if case .cover = anchor {
             plane.width = imagePhysicalWidth
             plane.height = imagePhysicalHeight

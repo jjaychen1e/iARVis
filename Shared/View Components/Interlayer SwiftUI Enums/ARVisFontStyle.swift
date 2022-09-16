@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct ARVisFontStyle: Codable, Equatable {
+struct ARVisFontStyle: Codable, Equatable, Hashable {
     let size: CGFloat
     let weight: Weight?
     let design: Design?

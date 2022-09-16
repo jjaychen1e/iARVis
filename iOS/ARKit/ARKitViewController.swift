@@ -6,6 +6,7 @@
 //
 
 import ARKit
+import Combine
 import SnapKit
 import SwiftUI
 import UIKit
@@ -29,6 +30,10 @@ class ARKitViewController: UIViewController {
         sceneView.session
     }
 
+    var focusedWidgetNode: CurrentValueSubject<SCNWidgetNode?, Never> = .init(nil)
+    var focusedChartConfiguration: CurrentValueSubject<ChartConfiguration?, Never> = .init(nil)
+    private var subscriptions: Set<AnyCancellable> = []
+
     // MARK: - View Controller Life Cycle
 
     override func viewDidLoad() {
@@ -51,6 +56,8 @@ class ARKitViewController: UIViewController {
             make.centerY.equalTo(trackingLabel)
         }
 
+        setUpSupplementaryViews()
+
         setVisualizationConfiguration(.example2)
     }
 
@@ -59,6 +66,79 @@ class ARKitViewController: UIViewController {
 
         // Prevent the screen from being dimmed to avoid interrupting the AR experience.
         UIApplication.shared.isIdleTimerDisabled = true
+    }
+
+    // MARK: - Set Up Views
+
+    private func setUpSupplementaryViews() {
+        // Share button
+        let shareButtonViewController = vibrantButton(systemImage: "square.and.arrow.up") {}
+        addChildViewController(shareButtonViewController)
+        shareButtonViewController.view.snp.makeConstraints { make in
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).inset(16)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+        }
+
+        // Transform Control View
+        let transformControlViewController = TransformControlViewController()
+        addChildViewController(transformControlViewController)
+        transformControlViewController.view.alpha = 0.0
+
+        let transformControlButtonViewController = vibrantButton(systemImage: "move.3d") {
+            UIView.animate(withDuration: 0.5) {
+                transformControlViewController.view.alpha = 1 - transformControlViewController.view.alpha
+            }
+        }
+        addChildViewController(transformControlButtonViewController)
+
+        transformControlButtonViewController.view.snp.makeConstraints { make in
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).inset(16)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
+        transformControlViewController.view.snp.makeConstraints { make in
+            make.bottom.equalTo(transformControlButtonViewController.view.snp.top).offset(-8)
+            make.trailing.equalTo(transformControlButtonViewController.view)
+        }
+
+        if #available(iOS 16, *) {
+            // Chart Configuration Setting View
+            let chartConfigurationSettingViewController = ChartConfigurationSettingViewController()
+            addChildViewController(chartConfigurationSettingViewController)
+            chartConfigurationSettingViewController.view.alpha = 0
+
+            let chartConfigurationSettingButtonViewController = vibrantButton(systemImage: "chart.xyaxis.line") {
+                UIView.animate(withDuration: 0.5) {
+                    chartConfigurationSettingViewController.view.alpha = 1 - chartConfigurationSettingViewController.view.alpha
+                }
+            }
+            addChildViewController(chartConfigurationSettingButtonViewController)
+
+            chartConfigurationSettingButtonViewController.view.snp.makeConstraints { make in
+                make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).inset(16)
+                make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            }
+            chartConfigurationSettingViewController.view.snp.makeConstraints { make in
+                make.top.equalTo(chartConfigurationSettingButtonViewController.view.snp.bottom).offset(8)
+                make.trailing.equalTo(chartConfigurationSettingButtonViewController.view)
+            }
+            
+            focusedChartConfiguration.sink { chartConfiguration in
+                if let chartConfiguration = chartConfiguration {
+                    UIView.animate(withDuration: 0.5) {
+                        chartConfigurationSettingButtonViewController.view.alpha = 1
+                    }
+                    chartConfigurationSettingButtonViewController.view.isUserInteractionEnabled = true
+                    chartConfigurationSettingViewController.update(chartConfiguration: chartConfiguration)
+                } else {
+                    UIView.animate(withDuration: 0.5) {
+                        chartConfigurationSettingButtonViewController.view.alpha = 0
+                        chartConfigurationSettingViewController.view.alpha = 0
+                    }
+                    chartConfigurationSettingButtonViewController.view.isUserInteractionEnabled = false
+                }
+            }
+            .store(in: &subscriptions)
+        }
     }
 
     // MARK: - Session management
@@ -100,4 +180,3 @@ extension ARKitViewController {
         }
     }
 }
-

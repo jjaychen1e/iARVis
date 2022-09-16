@@ -28,6 +28,8 @@ class WidgetConfiguration: Codable, Equatable, ObservableObject {
     var isOpaque: Bool
     @Default<True>
     var isScrollEnabled: Bool
+    @Default<True>
+    var showExpandButton: Bool
     @Default<PaddingDefaultValueProvider>
     var padding: [CGFloat]
     @Default<ScaleDefaultValueProvider>
@@ -44,6 +46,7 @@ class WidgetConfiguration: Codable, Equatable, ObservableObject {
          alignedToTarget: Bool = false,
          isOpaque: Bool = true,
          isScrollEnabled: Bool = true,
+         showExpandButton: Bool = true,
          padding: [CGFloat] = PaddingDefaultValueProvider.default,
          scale: CGFloat = ScaleDefaultValueProvider.default,
          size: CGSize = SizeDefaultValueProvider.default,
@@ -55,6 +58,7 @@ class WidgetConfiguration: Codable, Equatable, ObservableObject {
         self.alignedToTarget = alignedToTarget
         self.isOpaque = isOpaque
         self.isScrollEnabled = isScrollEnabled
+        self.showExpandButton = showExpandButton
         self.padding = padding
         self.scale = scale
         self.size = size
@@ -69,6 +73,7 @@ class WidgetConfiguration: Codable, Equatable, ObservableObject {
             lhs.alignedToTarget == rhs.alignedToTarget &&
             lhs.isOpaque == rhs.isOpaque &&
             lhs.isScrollEnabled == rhs.isScrollEnabled &&
+            lhs.showExpandButton == rhs.showExpandButton &&
             lhs.padding == rhs.padding &&
             lhs.scale == rhs.scale &&
             lhs.size == rhs.size &&

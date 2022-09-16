@@ -46,12 +46,20 @@ enum ChartInteraction: Equatable {
 }
 
 @available(iOS 16, *)
-struct ChartInteractionData: Equatable {
-    var componentSelectedElementInRangeX: [ChartComponent: JSON] = [:]
-    var componentSelectedElementInRangeY: [ChartComponent: JSON] = [:]
-    var componentSelectedElementInXY: [ChartComponent: JSON] = [:]
-    var componentInteraction: [ChartComponent: [ChartInteraction]] = [:]
-    var componentSelectedElementView: [ChartComponent: ViewElementComponent] = [:]
+class ChartInteractionData: Equatable, ObservableObject {
+    static func == (lhs: ChartInteractionData, rhs: ChartInteractionData) -> Bool {
+        lhs.componentSelectedElementInRangeX == rhs.componentSelectedElementInRangeX &&
+        lhs.componentSelectedElementInRangeY == rhs.componentSelectedElementInRangeY &&
+        lhs.componentSelectedElementInXY == rhs.componentSelectedElementInXY &&
+        lhs.componentInteraction == rhs.componentInteraction &&
+        lhs.componentSelectedElementView == rhs.componentSelectedElementView
+    }
+    
+    @Published var componentSelectedElementInRangeX: [ChartComponent: JSON] = [:]
+    @Published var componentSelectedElementInRangeY: [ChartComponent: JSON] = [:]
+    @Published var componentSelectedElementInXY: [ChartComponent: JSON] = [:]
+    @Published var componentInteraction: [ChartComponent: [ChartInteraction]] = [:]
+    @Published var componentSelectedElementView: [ChartComponent: ViewElementComponent] = [:]
 
     init() {}
 

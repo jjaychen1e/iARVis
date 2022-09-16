@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-enum ARVisContentMode: String, Codable {
+enum ARVisContentMode: String, Codable, Hashable {
     case fit
     case fill
 

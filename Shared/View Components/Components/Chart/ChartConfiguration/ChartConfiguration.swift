@@ -6,17 +6,18 @@
 //
 
 import Charts
+import Combine
 import Foundation
 import SwiftUI
 import SwiftyJSON
 
-struct ChartConfiguration {
+class ChartConfiguration: ObservableObject {
     @available(iOS 16, *)
     init() {
-        _chartData = ChartData()
-        _componentConfigs = [ChartComponentConfiguration]()
-        _interactionData = ChartInteractionData()
-        _swiftChartConfiguration = SwiftChartConfiguration()
+        chartData = ChartData()
+        componentConfigs = [ChartComponentConfiguration]()
+        interactionData = ChartInteractionData()
+        swiftChartConfiguration = SwiftChartConfiguration()
     }
 
     init(_chartData _: Any? = nil, _componentConfigs _: Any? = nil, _interactionData _: Any? = nil, _swiftChartConfiguration _: Any? = nil) {
@@ -57,6 +58,9 @@ struct ChartConfiguration {
         }
         set {
             _interactionData = newValue
+            anyCancellable = newValue.objectWillChange.sink { [weak self] _ in
+                self?.objectWillChange.send()
+            }
         }
     }
 
@@ -73,6 +77,8 @@ struct ChartConfiguration {
     }
 
     private var _swiftChartConfiguration: Any?
+
+    var anyCancellable: AnyCancellable?
 }
 
 extension ChartConfiguration: Equatable {

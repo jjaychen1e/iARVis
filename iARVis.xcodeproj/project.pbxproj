@@ -29,6 +29,8 @@
 		630BD1A42892C4AC00C9BEAC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630BD17A2892C4A900C9BEAC /* ContentView.swift */; };
 		630BD1A52892C4AC00C9BEAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 630BD17B2892C4AC00C9BEAC /* Assets.xcassets */; };
 		630BD1A62892C4AC00C9BEAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 630BD17B2892C4AC00C9BEAC /* Assets.xcassets */; };
+		6311BA4228D4997000ECBCB0 /* OnTouchOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6311BA4128D4997000ECBCB0 /* OnTouchOverlay.swift */; };
+		6311BA4328D4997000ECBCB0 /* OnTouchOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6311BA4128D4997000ECBCB0 /* OnTouchOverlay.swift */; };
 		6313907728C215F400A266B4 /* chartConfigurationExample2_MacBookProPerformanceBarChartGPU.json in Resources */ = {isa = PBXBuildFile; fileRef = 6313907628C215F400A266B4 /* chartConfigurationExample2_MacBookProPerformanceBarChartGPU.json */; };
 		6313907828C215F400A266B4 /* chartConfigurationExample2_MacBookProPerformanceBarChartGPU.json in Resources */ = {isa = PBXBuildFile; fileRef = 6313907628C215F400A266B4 /* chartConfigurationExample2_MacBookProPerformanceBarChartGPU.json */; };
 		6313907A28C2255400A266B4 /* ViewElementComponent+Example2+AppleSilicon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6313907928C2255400A266B4 /* ViewElementComponent+Example2+AppleSilicon.swift */; };
@@ -163,6 +165,7 @@
 		6379F41628B912730020BB1B /* chartConfigurationExample1_JamesEnsorLifeChart.json in Resources */ = {isa = PBXBuildFile; fileRef = 6379F41528B912730020BB1B /* chartConfigurationExample1_JamesEnsorLifeChart.json */; };
 		6379F41728B912730020BB1B /* chartConfigurationExample1_JamesEnsorLifeChart.json in Resources */ = {isa = PBXBuildFile; fileRef = 6379F41528B912730020BB1B /* chartConfigurationExample1_JamesEnsorLifeChart.json */; };
 		637C631328CB43390080510E /* ViewElementComponent+Example6+SPLOM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637C631228CB43390080510E /* ViewElementComponent+Example6+SPLOM.swift */; };
+		637D20EE28D2DDD500C562AF /* VibrantImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637D20ED28D2DDD500C562AF /* VibrantImageButton.swift */; };
 		638DA98A2892C6030030D494 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638DA9892892C6030030D494 /* AppDelegate.swift */; };
 		638DA98D2892C63D0030D494 /* ARKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638DA98C2892C63D0030D494 /* ARKitViewController.swift */; };
 		638DA98F2892CA490030D494 /* ARKitViewController+ARSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638DA98E2892CA490030D494 /* ARKitViewController+ARSessionDelegate.swift */; };
@@ -251,6 +254,8 @@
 		63D00A9C28C311B700595111 /* DefaultCodable in Frameworks */ = {isa = PBXBuildFile; productRef = 63D00A9B28C311B700595111 /* DefaultCodable */; };
 		63D00AA128C3144200595111 /* SCNVector3+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D00AA028C3144200595111 /* SCNVector3+Equatable.swift */; };
 		63D00AA228C3144200595111 /* SCNVector3+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D00AA028C3144200595111 /* SCNVector3+Equatable.swift */; };
+		63D8253B28D30068008455FC /* TransformControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D8253A28D30068008455FC /* TransformControlView.swift */; };
+		63D8253D28D30BCB008455FC /* ChartConfigurationSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D8253C28D30BCB008455FC /* ChartConfigurationSettingView.swift */; };
 		63E43B6828C9CDF30033CEEA /* DetailedSPLOMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E43B6728C9CDF30033CEEA /* DetailedSPLOMView.swift */; };
 		63E43B6A28C9D3240033CEEA /* DetailedSPLOMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E43B6928C9D3240033CEEA /* DetailedSPLOMViewController.swift */; };
 		63E44FCC28C1B00300A63806 /* chartConfigurationExample2_MacBookProPerformanceBarChartCPU.json in Resources */ = {isa = PBXBuildFile; fileRef = 63E44FCB28C1B00300A63806 /* chartConfigurationExample2_MacBookProPerformanceBarChartCPU.json */; };
@@ -309,6 +314,7 @@
 		630BD1802892C4AC00C9BEAC /* iARVis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iARVis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		630BD1862892C4AC00C9BEAC /* iARVis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iARVis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		630BD1882892C4AC00C9BEAC /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		6311BA4128D4997000ECBCB0 /* OnTouchOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnTouchOverlay.swift; sourceTree = "<group>"; };
 		6313907628C215F400A266B4 /* chartConfigurationExample2_MacBookProPerformanceBarChartGPU.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chartConfigurationExample2_MacBookProPerformanceBarChartGPU.json; sourceTree = "<group>"; };
 		6313907928C2255400A266B4 /* ViewElementComponent+Example2+AppleSilicon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewElementComponent+Example2+AppleSilicon.swift"; sourceTree = "<group>"; };
 		6315A46328AFE7530045B685 /* WidgetConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetConfiguration.swift; sourceTree = "<group>"; };
@@ -374,6 +380,7 @@
 		6379F41228B8F21D0020BB1B /* ARVisAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARVisAnnotation.swift; sourceTree = "<group>"; };
 		6379F41528B912730020BB1B /* chartConfigurationExample1_JamesEnsorLifeChart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chartConfigurationExample1_JamesEnsorLifeChart.json; sourceTree = "<group>"; };
 		637C631228CB43390080510E /* ViewElementComponent+Example6+SPLOM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewElementComponent+Example6+SPLOM.swift"; sourceTree = "<group>"; };
+		637D20ED28D2DDD500C562AF /* VibrantImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibrantImageButton.swift; sourceTree = "<group>"; };
 		638730BD28ABBDAC0094AE12 /* ChartTooltipPresentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTooltipPresentationViewController.swift; sourceTree = "<group>"; };
 		638DA9882892C6030030D494 /* iARVis (iOS)-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iARVis (iOS)-Bridging-Header.h"; sourceTree = "<group>"; };
 		638DA9892892C6030030D494 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -432,6 +439,8 @@
 		63CC013F28C5C41100A25762 /* chartConfigurationExample4_ShanghaiWeatherPointChart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chartConfigurationExample4_ShanghaiWeatherPointChart.json; sourceTree = "<group>"; };
 		63CC014328C5C5C800A25762 /* ViewElementComponent+Example4+ShanghaiWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewElementComponent+Example4+ShanghaiWeather.swift"; sourceTree = "<group>"; };
 		63D00AA028C3144200595111 /* SCNVector3+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNVector3+Equatable.swift"; sourceTree = "<group>"; };
+		63D8253A28D30068008455FC /* TransformControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformControlView.swift; sourceTree = "<group>"; };
+		63D8253C28D30BCB008455FC /* ChartConfigurationSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartConfigurationSettingView.swift; sourceTree = "<group>"; };
 		63E43B6728C9CDF30033CEEA /* DetailedSPLOMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedSPLOMView.swift; sourceTree = "<group>"; };
 		63E43B6928C9D3240033CEEA /* DetailedSPLOMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedSPLOMViewController.swift; sourceTree = "<group>"; };
 		63E44FCB28C1B00300A63806 /* chartConfigurationExample2_MacBookProPerformanceBarChartCPU.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chartConfigurationExample2_MacBookProPerformanceBarChartCPU.json; sourceTree = "<group>"; };
@@ -710,6 +719,7 @@
 			children = (
 				634B731028B20A65000BBB05 /* Layout */,
 				63AF738128C0A50500A38418 /* OutsideOverlay.swift */,
+				6311BA4128D4997000ECBCB0 /* OnTouchOverlay.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -930,6 +940,24 @@
 			path = SPLOM;
 			sourceTree = "<group>";
 		};
+		637D20EB28D2DDAC00C562AF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				637D20EC28D2DDB900C562AF /* Components */,
+				63D8253A28D30068008455FC /* TransformControlView.swift */,
+				63D8253C28D30BCB008455FC /* ChartConfigurationSettingView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		637D20EC28D2DDB900C562AF /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				637D20ED28D2DDD500C562AF /* VibrantImageButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		638730C228ABC6920094AE12 /* Global Events */ = {
 			isa = PBXGroup;
 			children = (
@@ -952,6 +980,7 @@
 		638DA98B2892C62C0030D494 /* ARKit */ = {
 			isa = PBXGroup;
 			children = (
+				637D20EB28D2DDAC00C562AF /* View */,
 				638730C228ABC6920094AE12 /* Global Events */,
 				63AE06732898236F0061404E /* Debug */,
 				63AE065A2896DAE90061404E /* Visualization Context */,
@@ -1703,12 +1732,15 @@
 				634B730228B13869000BBB05 /* ARVisPlottableValueFieldPair.swift in Sources */,
 				639C2B2628C1A788003A5390 /* ChartComponent+toChartContent.swift in Sources */,
 				63027A5428A9338900B06CFE /* Collection+Safe.swift in Sources */,
+				637D20EE28D2DDD500C562AF /* VibrantImageButton.swift in Sources */,
 				634B72FC28B13869000BBB05 /* TableView.swift in Sources */,
+				63D8253D28D30BCB008455FC /* ChartConfigurationSettingView.swift in Sources */,
 				634B730128B13869000BBB05 /* TableConfiguration.swift in Sources */,
 				636C3EC928B49BD8001412FE /* WidgetOnScreenViewController.swift in Sources */,
 				6339435928ABA9FB008A5ED1 /* View+Execute.swift in Sources */,
 				636F742B28B9EB8B00931762 /* ChartStyleConfiguration.swift in Sources */,
 				6313907A28C2255400A266B4 /* ViewElementComponent+Example2+AppleSilicon.swift in Sources */,
+				63D8253B28D30068008455FC /* TransformControlView.swift in Sources */,
 				636C3EDC28B4FB70001412FE /* ARVisInterpolationMethod.swift in Sources */,
 				635F526B2896AA4100FF40B6 /* Debug.swift in Sources */,
 				63027A6128A933E100B06CFE /* Date.swift in Sources */,
@@ -1725,6 +1757,7 @@
 				63E8E25328BD049A00919D6F /* ViewElementComponent+Example1+JamesEnsorWidegt.swift in Sources */,
 				6344285928BC6B5000339D2F /* NSNumber+Type.swift in Sources */,
 				634B730428B13869000BBB05 /* ChartView.swift in Sources */,
+				6311BA4228D4997000ECBCB0 /* OnTouchOverlay.swift in Sources */,
 				63CB2BC328A40D6500BF7A1B /* ARVisHorizontalAlignment.swift in Sources */,
 				635FBC9B28C5EC55009EC77A /* SFSymbolView.swift in Sources */,
 				639A6D8928AB628F00527C37 /* XCAssets+Generated.swift in Sources */,
@@ -1753,6 +1786,7 @@
 				634B72EB28B13869000BBB05 /* ChartProxy+PositionWithJSON.swift in Sources */,
 				63AF737F28BF910F00A38418 /* ChartView+Annotation.swift in Sources */,
 				634B731C28B215A9000BBB05 /* ARVisSegmentedControlView.swift in Sources */,
+				6311BA4328D4997000ECBCB0 /* OnTouchOverlay.swift in Sources */,
 				63027A5528A9338900B06CFE /* Collection+Safe.swift in Sources */,
 				639A6D8A28AB628F00527C37 /* XCAssets+Generated.swift in Sources */,
 				636C3ED328B4D82E001412FE /* ChartView+Interaction.swift in Sources */,

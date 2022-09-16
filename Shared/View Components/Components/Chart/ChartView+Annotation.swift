@@ -158,7 +158,19 @@ extension ChartView {
             .fill(.clear)
             .frame(width: max(1, rectangle.size.width), height: max(1, rectangle.size.height))
             .outsideOverlay(alignment: .init(position)) {
+                let maxWidth: CGFloat = {
+                    switch annotation.position {
+                    case .topLeading, .bottomLeading, .leading:
+                        return rectangle.minX
+                    case .topTrailing, .bottomTrailing, .trailing:
+                        return geoProxy.size.width - rectangle.maxX
+                    case .top, .bottom, .center:
+                        return .infinity
+                    }
+                }()
+                let size = annotation.content.view().adaptiveSizeThatFits(in: CGSize(width: maxWidth, height: .infinity), for: .regular)
                 annotation.content.view()
+                    .frame(size)
             }
             .offset(rectangle.origin)
     }

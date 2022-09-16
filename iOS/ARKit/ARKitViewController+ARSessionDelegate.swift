@@ -66,7 +66,15 @@ extension ARKitViewController {
                     plane.height = config.widgetConfiguration.size.width * config.widgetConfiguration.scale
                     newNode.geometry = plane
 
-                    let widgetViewController = WidgetInARViewController(node: newNode)
+                    let widgetViewController = WidgetInARViewController(node: newNode) { [weak self] widgetNode in
+                        if let self = self {
+                            self.focusedWidgetNode.send(widgetNode)
+                        }
+                    } chartConfigurationFocusCallback: { [weak self] chartConfiguration in
+                        if let self = self {
+                            self.focusedChartConfiguration.send(chartConfiguration)
+                        }
+                    }
                     node.additionalWidgetNodes[key] = newNode
                     node.additionalWidgetNodes[key]?.widgetViewController = widgetViewController
 

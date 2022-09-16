@@ -23,11 +23,13 @@ private class ViewModel: ObservableObject {
 
 @available(iOS 16, *)
 struct DetailedSPLOMView: View {
-    init(datumArray: [[String: Any]], chartDataItem: ChartDataItem, xField: String, yField: String, config: ChartComponentCommonConfig, isPreview: Bool = true) {
+    init(datumArray: [[String: Any]], chartDataItem: ChartDataItem, xField: String, yField: String, config: ChartComponentCommonConfig, showXAxis: Bool = true, showYAxis: Bool = false, isPreview: Bool = true) {
         self.datumArray = datumArray
         self.chartDataItem = chartDataItem
         self.xField = xField
         self.yField = yField
+        self.showXAxis = showXAxis
+        self.showYAxis = showYAxis
 
         var _config = config
         if !isPreview {
@@ -45,6 +47,8 @@ struct DetailedSPLOMView: View {
     let xField: String
     let yField: String
     let config: ChartComponentCommonConfig
+    let showXAxis: Bool
+    let showYAxis: Bool
     let isPreview: Bool
 
     private var viewModel = ViewModel()
@@ -160,6 +164,24 @@ struct DetailedSPLOMView: View {
                     }
                 }
                 .applyCommonConfig(commonConfig: config)
+            }
+            .chartXAxis {
+                AxisMarks(position: .bottom, values: .automatic) { _ in
+                    if showXAxis {
+                        AxisValueLabel()
+                    }
+                    AxisGridLine()
+                    AxisTick()
+                }
+            }
+            .chartYAxis {
+                AxisMarks(position: .leading, values: .automatic) { _ in
+                    if showYAxis {
+                        AxisValueLabel()
+                    }
+                    AxisGridLine()
+                    AxisTick()
+                }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         } else {

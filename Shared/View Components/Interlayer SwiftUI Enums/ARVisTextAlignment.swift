@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-enum ARVisTextAlignment: String, Codable {
+enum ARVisTextAlignment: String, Codable, Hashable {
     case center
     case leading
     case trailing

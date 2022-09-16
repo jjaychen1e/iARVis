@@ -43,6 +43,30 @@ enum ChartComponent: Hashable {
     }
 }
 
+@available(iOS 16, *)
+extension ChartComponent {
+    var typeDescription: String {
+        switch self {
+        case .barMarkRepeat1:
+            return "BarMark"
+        case .barMarkRepeat2:
+            return "BarMark"
+        case .lineMarkRepeat1:
+            return "LineMark"
+        case .lineMarkRepeat2:
+            return "LineMark"
+        case .rectangleMarkRepeat1:
+            return "RectangleMark"
+        case .ruleMarkRepeat1:
+            return "RectangleMark"
+        case .pointMarkRepeat1:
+            return "PointMark"
+        case .areaMarkRepeat1:
+            return "AreaMark"
+        }
+    }
+}
+
 enum ChartComponentType: String, RawRepresentable {
     case barMark = "BarMark"
     case lineMark = "LineMark"

@@ -11,7 +11,9 @@ import SwiftyJSON
 
 @available(iOS 16, *)
 struct ChartView: View {
-    @State var chartConfiguration: ChartConfiguration
+    @ObservedObject var chartConfiguration: ChartConfiguration
+
+    @Environment(\.chartFocusAction) var chartFocusAction: ChartFocusAction
 
     var body: some View {
         let padding: (CGFloat?, CGFloat?, CGFloat?, CGFloat?) = {
@@ -36,7 +38,7 @@ struct ChartView: View {
 
             return AnyScaleDomain(.automatic)
         }()
-        
+
         let yAxisDomain: AnyScaleDomain = {
             if let includingZero = chartConfiguration.swiftChartConfiguration.chartYScale?.includingZero {
                 return AnyScaleDomain(.automatic(includesZero: includingZero))
@@ -114,13 +116,16 @@ struct ChartView: View {
         .chartXScale(domain: xAxisDomain)
         .chartYScale(domain: yAxisDomain)
         .chartOverlay { proxy in
-            chartInteractionHandler(proxy: proxy)
-        }
-        .chartOverlay { proxy in
-            chartOverlayHandler(proxy: proxy)
-        }
-        .chartOverlay { proxy in
             chartAnnotationHandler(proxy: proxy, chartConfiguration: chartConfiguration)
+        }
+        .chartOverlay { proxy in
+            chartTooltipHandler(proxy: proxy)
+        }
+        .chartOverlay { proxy in
+            chartInteractionHandler(proxy: proxy)
+                .onTouch {
+                    chartFocusAction.focus(chartConfiguration)
+                }
         }
 //        .chartOverlay { _ in
 //            #if DEBUG

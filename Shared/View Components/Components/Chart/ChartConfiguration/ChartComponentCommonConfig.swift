@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-struct ChartComponentCommonConfig: Codable, Equatable {
+class ChartComponentCommonConfig: Codable, Equatable, ObservableObject {
     var interpolationMethod: ARVisInterpolationMethod?
     var symbol: ARVisSymbol?
     var symbolSize: ARVisSymbolSize?
@@ -21,10 +21,64 @@ struct ChartComponentCommonConfig: Codable, Equatable {
     var lineStyle: ARVisLineStyle?
     var annotations: [ARVisAnnotation]?
     var conditionalAnnotations: [ARVisConditionalAnnotation]?
+
+    init(interpolationMethod: ARVisInterpolationMethod? = nil, symbol: ARVisSymbol? = nil, symbolSize: ARVisSymbolSize? = nil, foregroundStyleColor: ARVisColor? = nil, foregroundStyleColorMap: [ColorMap]? = nil, foregroundStyleField: String? = nil, foregroundStyleValue: String? = nil, positionByValue: String? = nil, cornerRadius: CGFloat? = nil, lineStyle: ARVisLineStyle? = nil, annotations: [ARVisAnnotation]? = nil, conditionalAnnotations: [ARVisConditionalAnnotation]? = nil) {
+        self.interpolationMethod = interpolationMethod
+        self.symbol = symbol
+        self.symbolSize = symbolSize
+        self.foregroundStyleColor = foregroundStyleColor
+        self.foregroundStyleColorMap = foregroundStyleColorMap
+        self.foregroundStyleField = foregroundStyleField
+        self.foregroundStyleValue = foregroundStyleValue
+        self.positionByValue = positionByValue
+        self.cornerRadius = cornerRadius
+        self.lineStyle = lineStyle
+        self.annotations = annotations
+        self.conditionalAnnotations = conditionalAnnotations
+    }
+
+    static func == (lhs: ChartComponentCommonConfig, rhs: ChartComponentCommonConfig) -> Bool {
+        lhs.interpolationMethod == rhs.interpolationMethod &&
+            lhs.symbol == rhs.symbol &&
+            lhs.symbolSize == rhs.symbolSize &&
+            lhs.foregroundStyleColor == rhs.foregroundStyleColor &&
+            lhs.foregroundStyleColorMap == rhs.foregroundStyleColorMap &&
+            lhs.foregroundStyleField == rhs.foregroundStyleField &&
+            lhs.foregroundStyleValue == rhs.foregroundStyleValue &&
+            lhs.positionByValue == rhs.positionByValue &&
+            lhs.cornerRadius == rhs.cornerRadius &&
+            lhs.lineStyle == rhs.lineStyle &&
+            lhs.annotations == rhs.annotations &&
+            lhs.conditionalAnnotations == rhs.conditionalAnnotations
+    }
 }
 
-struct ColorMap: Codable, Equatable {
+class ColorMap: Codable, Equatable, Hashable, ObservableObject {
     var field: String
     var value: JSON
     var color: ARVisColor
+
+    init(field: String, value: JSON, color: ARVisColor) {
+        self.field = field
+        self.value = value
+        self.color = color
+    }
+
+    static func == (lhs: ColorMap, rhs: ColorMap) -> Bool {
+        return lhs.field == rhs.field && lhs.value == rhs.value && lhs.color == rhs.color
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(field)
+        if let int = value.strictInt {
+            hasher.combine(int)
+        } else if let double = value.strictDouble {
+            hasher.combine(double)
+        } else if let date = value.date {
+            hasher.combine(date)
+        } else if let string = value.string {
+            hasher.combine(string)
+        }
+        hasher.combine(color)
+    }
 }

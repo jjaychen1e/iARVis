@@ -45,9 +45,13 @@ struct ARVisSymbol: Codable, Equatable {
     static let square = ARVisSymbol(type: .square)
 }
 
-enum ARVisSymbolType: String, RawRepresentable, Codable {
+enum ARVisSymbolType: String, RawRepresentable, Codable, CaseIterable, Identifiable {
     case circle = "Circle"
     case square = "Square"
+    
+    var id: Self {
+        self
+    }
 }
 
 @available(iOS 16, *)

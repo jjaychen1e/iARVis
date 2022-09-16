@@ -9,7 +9,7 @@ import Charts
 import Foundation
 import SwiftUI
 
-enum ARVisAnnotationPosition: String, RawRepresentable, Codable {
+enum ARVisAnnotationPosition: String, RawRepresentable, Codable, Hashable, CaseIterable, Identifiable {
     case topLeading
     case topTrailing
     case bottomTrailing
@@ -19,11 +19,25 @@ enum ARVisAnnotationPosition: String, RawRepresentable, Codable {
     case top
     case bottom
     case center
+
+    var id: Self {
+        self
+    }
 }
 
-struct ARVisAnnotation: Codable, Equatable {
+class ARVisAnnotation: Codable, Equatable, Hashable {
     var position: ARVisAnnotationPosition
     var content: ViewElementComponent
+
+    static func == (lhs: ARVisAnnotation, rhs: ARVisAnnotation) -> Bool {
+        lhs.position == rhs.position &&
+            lhs.content == rhs.content
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(position)
+        hasher.combine(content.prettyJSON)
+    }
 }
 
 @available(iOS 16, *)

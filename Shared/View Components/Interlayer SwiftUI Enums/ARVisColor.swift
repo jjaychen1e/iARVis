@@ -17,7 +17,7 @@ import UIColorHexSwift
     typealias NativeColor = NSColor
 #endif
 
-enum ARVisColor: Equatable {
+enum ARVisColor: Equatable, Hashable {
     case black
     case blue
     case brown
@@ -138,6 +138,28 @@ extension ARVisColor: RawRepresentable {
         default:
             return nil
         }
+    }
+}
+
+extension ARVisColor: CustomStringConvertible {
+    var description: String {
+        if rawValue != "" {
+            return rawValue
+        }
+
+        if case let .rgbaHex(string) = self {
+            return string
+        }
+
+        if case let .rgba(r, g, b, a) = self {
+            return "(\(Int(r * 255)), \(Int(g * 255)), \(Int(b * 255)), \(Int(a * 255)))"
+        }
+
+        if case let .rgba256(r, g, b, a) = self {
+            return "(\(r), \(g), \(b), \(a))"
+        }
+
+        return ""
     }
 }
 
@@ -266,14 +288,30 @@ extension SwiftUI.Color {
 
 extension Color {
     var components: (red: CGFloat, green: CGFloat, blue: CGFloat, opacity: CGFloat) {
-        var r: CGFloat = 0
-        var g: CGFloat = 0
-        var b: CGFloat = 0
-        var o: CGFloat = 0
+        if let components = self.cgColor?.components {
+            let r: CGFloat = components[safe: 0] ?? 0
+            let g: CGFloat = components[safe: 1] ?? 0
+            let b: CGFloat = components[safe: 2] ?? 0
+            let o: CGFloat = components[safe: 3] ?? 0
 
-        NativeColor(self).getRed(&r, green: &g, blue: &b, alpha: &o)
+            return (r, g, b, o)
+        }
 
-        return (r, g, b, o)
+        return (0, 0, 0, 0)
+    }
+
+    var hexString: String {
+        let components = components
+        let rIntValue = components.red * 255
+        let rHexValue = String(format: "%02X", Int(rIntValue))
+        let gIntValue = components.green * 255
+        let gHexValue = String(format: "%02X", Int(gIntValue))
+        let bIntValue = components.blue * 255
+        let bHexValue = String(format: "%02X", Int(bIntValue))
+        let aIntValue = components.opacity * 255
+        let aHexValue = String(format: "%02X", Int(aIntValue))
+
+        return "#\(rHexValue)\(gHexValue)\(bHexValue)\(aHexValue)"
     }
 }
 

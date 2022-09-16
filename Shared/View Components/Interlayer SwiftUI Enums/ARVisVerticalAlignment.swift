@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-enum ARVisVerticalAlignment: String, Codable {
+enum ARVisVerticalAlignment: String, Codable, Hashable {
     case center
     case top
     case bottom

@@ -39,22 +39,40 @@ private class WidgetInARContainerView: UIView {
                     let projected = arSCNView.projectPoint(pointIn3D)
                     let projectedPoint = CGPoint(x: CGFloat(projected.x), y: CGFloat(projected.y))
 
+                    printDebug(projectedPoint.debugDescription)
+
                     if let hitView = arSCNView.hitTest(projectedPoint, with: event) {
-                        return hitView is ARSCNView
+                        let result = hitView is ARSCNView
+                        if result {
+                            viewController?.focusNode()
+                        }
+                        printDebug("1: \(result)")
+                        return result
                     }
                 }
             }
 
-            return super.point(inside: point, with: event)
+            let result = super.point(inside: point, with: event)
+            if result {
+                viewController?.focusNode()
+            }
+            printDebug("2: \(result)")
+            return result
         }
 
+        printDebug("3: false")
         return false
     }
 }
 
 class WidgetInARViewController: UIViewController {
-    init(node: SCNWidgetNode) {
+    let nodeFocusCallback: (SCNWidgetNode) -> Void
+    let chartConfigurationFocusCallback: (ChartConfiguration) -> Void
+
+    init(node: SCNWidgetNode, nodeFocusCallback: @escaping (SCNWidgetNode) -> Void, chartConfigurationFocusCallback: @escaping (ChartConfiguration) -> Void) {
         self.node = node
+        self.nodeFocusCallback = nodeFocusCallback
+        self.chartConfigurationFocusCallback = chartConfigurationFocusCallback
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -71,6 +89,14 @@ class WidgetInARViewController: UIViewController {
     var node: SCNWidgetNode
     var widgetConfiguration: WidgetConfiguration {
         node.widgetConfiguration
+    }
+
+    func focusNode() {
+        nodeFocusCallback(node)
+    }
+
+    func focus(chartConfiguration: ChartConfiguration) {
+        chartConfigurationFocusCallback(chartConfiguration)
     }
 
     override func loadView() {
@@ -90,6 +116,28 @@ class WidgetInARViewController: UIViewController {
         view.backgroundColor = .clear
 
         let widgetView = ComponentView(widgetConfiguration.component, isScrollEnabled: widgetConfiguration.isScrollEnabled, padding: widgetConfiguration.padding)
+            .overlay(alignment: .topTrailing) {
+                if widgetConfiguration.showExpandButton {
+                    Button { [weak self] in
+                        if let self = self {
+                            UIApplication.shared.presentOnTop(WidgetOnScreenViewController(widgetConfiguration: self.widgetConfiguration))
+                        }
+                    } label: {
+                        Image(systemName: "arrow.up.left.and.arrow.down.right")
+                            .font(.system(size: 15))
+                            .foregroundColor(.gray)
+                            .padding(.all, 8)
+                            .background(
+                                Circle()
+                                    .stroke(Asset.DynamicColors.dynamicWhite.swiftUIColor, lineWidth: 1)
+                                    .background(Asset.DynamicColors.dynamicWhite.swiftUIColor)
+                            )
+                            .clipShape(Circle())
+                            .shadow(color: .primary.opacity(0.1), radius: 5)
+                            .offset(x: -16, y: 16)
+                    }
+                }
+            }
             .environment(\.openURL, OpenURLAction { [weak self] url in
                 if let self = self {
                     let widgetConfiguration = self.widgetConfiguration
@@ -98,6 +146,11 @@ class WidgetInARViewController: UIViewController {
                 return .handled
             })
             .environmentObject(widgetConfiguration)
+            .environment(\.chartFocusAction, ChartFocusAction { [weak self] chartConfiguration in
+                if let self = self {
+                    self.focus(chartConfiguration: chartConfiguration)
+                }
+            })
 
         let hostingViewController = UIHostingController(rootView: widgetView)
         hostingViewController.view.backgroundColor = widgetConfiguration.isOpaque ? .white : .clear
@@ -190,5 +243,20 @@ func openURL(_ url: URL, widgetConfiguration: WidgetConfiguration? = nil) {
         if let url = URLService.link(href: url.absoluteString).url.url {
             UIApplication.shared.open(url)
         }
+    }
+}
+
+struct ChartFocusAction {
+    let focus: (ChartConfiguration) -> Void
+}
+
+struct ChartFocusActionEnvironmentKey: EnvironmentKey {
+    static let defaultValue = ChartFocusAction(focus: { _ in })
+}
+
+extension EnvironmentValues {
+    var chartFocusAction: ChartFocusAction {
+        get { self[ChartFocusActionEnvironmentKey.self] }
+        set { self[ChartFocusActionEnvironmentKey.self] = newValue }
     }
 }

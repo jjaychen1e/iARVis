@@ -8,9 +8,13 @@
 import Charts
 import Foundation
 
-enum ARVisInterpolationMethod: String, RawRepresentable, Codable {
+enum ARVisInterpolationMethod: String, RawRepresentable, Codable, CaseIterable, Identifiable {
     case linear
     case cardinal
+    
+    var id: Self {
+        self
+    }
 }
 
 @available(iOS 16, *)

@@ -41,7 +41,9 @@ struct SPLOMView: View {
                     GridRow {
                         ForEach(0 ..< fields.count, id: \.self) { index2 in
                             let xField = fields[index2]
-                            DetailedSPLOMView(datumArray: datumArray, chartDataItem: chartDataItem, xField: xField, yField: yField, config: config)
+                            let showXAxis: Bool = index1 == fields.count - 1
+                            let showYAxis: Bool = index2 == 0
+                            DetailedSPLOMView(datumArray: datumArray, chartDataItem: chartDataItem, xField: xField, yField: yField, config: config, showXAxis: showXAxis, showYAxis: showYAxis)
                                 .onTapGesture {
                                     UIApplication.shared.presentOnTop(LargePartialViewController(
                                         view: DetailedSPLOMView(datumArray: datumArray, chartDataItem: chartDataItem, xField: xField, yField: yField, config: config, isPreview: false),
@@ -51,6 +53,7 @@ struct SPLOMView: View {
                                 }
                         }
                     }
+                    .padding(.all, 1)
                 }
             }
             .padding(.leading, vStackWidth)
