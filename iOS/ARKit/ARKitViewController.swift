@@ -79,28 +79,28 @@ class ARKitViewController: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
         }
 
-        // Transform Control View
-        let transformControlViewController = TransformControlViewController()
-        addChildViewController(transformControlViewController)
-        transformControlViewController.view.alpha = 0.0
-
-        let transformControlButtonViewController = vibrantButton(systemImage: "move.3d") {
-            UIView.animate(withDuration: 0.5) {
-                transformControlViewController.view.alpha = 1 - transformControlViewController.view.alpha
-            }
-        }
-        addChildViewController(transformControlButtonViewController)
-
-        transformControlButtonViewController.view.snp.makeConstraints { make in
-            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).inset(16)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-        }
-        transformControlViewController.view.snp.makeConstraints { make in
-            make.bottom.equalTo(transformControlButtonViewController.view.snp.top).offset(-8)
-            make.trailing.equalTo(transformControlButtonViewController.view)
-        }
-
         if #available(iOS 16, *) {
+            // Transform Control View
+            let transformControlViewController = TransformControlViewController()
+            addChildViewController(transformControlViewController)
+            transformControlViewController.view.alpha = 0.0
+
+            let transformControlButtonViewController = vibrantButton(systemImage: "move.3d") {
+                UIView.animate(withDuration: 0.5) {
+                    transformControlViewController.view.alpha = 1 - transformControlViewController.view.alpha
+                }
+            }
+            addChildViewController(transformControlButtonViewController)
+
+            transformControlButtonViewController.view.snp.makeConstraints { make in
+                make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).inset(16)
+                make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            }
+            transformControlViewController.view.snp.makeConstraints { make in
+                make.bottom.equalTo(transformControlButtonViewController.view.snp.top).offset(-8)
+                make.trailing.equalTo(transformControlButtonViewController.view)
+            }
+
             // Chart Configuration Setting View
             let chartConfigurationSettingViewController = ChartConfigurationSettingViewController()
             addChildViewController(chartConfigurationSettingViewController)
@@ -121,7 +121,24 @@ class ARKitViewController: UIViewController {
                 make.top.equalTo(chartConfigurationSettingButtonViewController.view.snp.bottom).offset(8)
                 make.trailing.equalTo(chartConfigurationSettingButtonViewController.view)
             }
-            
+
+            focusedWidgetNode.sink { widgetNode in
+                if let widgetConfiguration = widgetNode?.widgetConfiguration {
+                    UIView.animate(withDuration: 0.5) {
+                        transformControlButtonViewController.view.alpha = 1
+                    }
+                    transformControlButtonViewController.view.isUserInteractionEnabled = true
+                    transformControlViewController.update(widgetConfiguration: widgetConfiguration)
+                } else {
+                    UIView.animate(withDuration: 0.5) {
+                        transformControlButtonViewController.view.alpha = 0
+                        transformControlButtonViewController.view.alpha = 0
+                    }
+                    transformControlButtonViewController.view.isUserInteractionEnabled = false
+                }
+            }
+            .store(in: &subscriptions)
+
             focusedChartConfiguration.sink { chartConfiguration in
                 if let chartConfiguration = chartConfiguration {
                     UIView.animate(withDuration: 0.5) {
