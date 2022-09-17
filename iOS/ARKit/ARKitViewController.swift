@@ -72,7 +72,22 @@ class ARKitViewController: UIViewController {
 
     private func setUpSupplementaryViews() {
         // Share button
-        let shareButtonViewController = vibrantButton(systemImage: "square.and.arrow.up") {}
+        var _shareButtonViewController: UIViewController?
+        let shareButtonViewController = vibrantButton(systemImage: "square.and.arrow.up") { [weak self] in
+            guard let self = self, let shareButtonViewController = _shareButtonViewController else { return }
+            if let visConfigJSONString = self.visContext.visConfiguration?.prettyJSON,
+//               let url = URL(string: "https://google.com") {
+               let url = URL(string: URLService.openVisConfig(config: .json(json: visConfigJSONString)).url) {
+                printDebug(url)
+                let activityViewController = UIActivityViewController(activityItems: [VisConfigShareSource(url: url)], applicationActivities: nil)
+                activityViewController.title = "Share Your Visualization Configuration"
+
+                activityViewController.popoverPresentationController?.sourceView = shareButtonViewController.view
+                activityViewController.popoverPresentationController?.sourceRect = shareButtonViewController.view.frame
+                self.present(activityViewController, animated: true, completion: nil)
+            }
+        }
+        _shareButtonViewController = shareButtonViewController
         addChildViewController(shareButtonViewController)
         shareButtonViewController.view.snp.makeConstraints { make in
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).inset(16)
@@ -185,6 +200,8 @@ class ARKitViewController: UIViewController {
 
 extension ARKitViewController {
     func setVisualizationConfiguration(_ conf: VisualizationConfiguration) {
+        sceneView.scene.rootNode.childNodes.forEach { $0.removeFromParentNode() }
+        resetTracking()
         visContext.reset()
 
         visContext.visConfiguration = conf

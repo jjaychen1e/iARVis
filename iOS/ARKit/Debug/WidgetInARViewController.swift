@@ -214,7 +214,7 @@ func openURL(_ url: URL, widgetConfiguration: WidgetConfiguration? = nil) {
         }
     }
 
-    if url.absoluteString.hasPrefix(URLService.scheme) {
+    if url.absoluteString.lowercased().hasPrefix(URLService.scheme.lowercased()) {
         if let service = url.urlService {
             switch service {
             case .link:
@@ -237,6 +237,8 @@ func openURL(_ url: URL, widgetConfiguration: WidgetConfiguration? = nil) {
                         }
                     }
                 }
+            case .openVisConfig:
+                break
             }
         }
     } else {

@@ -166,6 +166,7 @@
 		6379F41728B912730020BB1B /* chartConfigurationExample1_JamesEnsorLifeChart.json in Resources */ = {isa = PBXBuildFile; fileRef = 6379F41528B912730020BB1B /* chartConfigurationExample1_JamesEnsorLifeChart.json */; };
 		637C631328CB43390080510E /* ViewElementComponent+Example6+SPLOM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637C631228CB43390080510E /* ViewElementComponent+Example6+SPLOM.swift */; };
 		637D20EE28D2DDD500C562AF /* VibrantImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637D20ED28D2DDD500C562AF /* VibrantImageButton.swift */; };
+		6380A03F28D5BAA9008F3021 /* VisConfigShareSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6380A03E28D5BAA9008F3021 /* VisConfigShareSource.swift */; };
 		638DA98A2892C6030030D494 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638DA9892892C6030030D494 /* AppDelegate.swift */; };
 		638DA98D2892C63D0030D494 /* ARKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638DA98C2892C63D0030D494 /* ARKitViewController.swift */; };
 		638DA98F2892CA490030D494 /* ARKitViewController+ARSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638DA98E2892CA490030D494 /* ARKitViewController+ARSessionDelegate.swift */; };
@@ -381,6 +382,7 @@
 		6379F41528B912730020BB1B /* chartConfigurationExample1_JamesEnsorLifeChart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chartConfigurationExample1_JamesEnsorLifeChart.json; sourceTree = "<group>"; };
 		637C631228CB43390080510E /* ViewElementComponent+Example6+SPLOM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewElementComponent+Example6+SPLOM.swift"; sourceTree = "<group>"; };
 		637D20ED28D2DDD500C562AF /* VibrantImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibrantImageButton.swift; sourceTree = "<group>"; };
+		6380A03E28D5BAA9008F3021 /* VisConfigShareSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisConfigShareSource.swift; sourceTree = "<group>"; };
 		638730BD28ABBDAC0094AE12 /* ChartTooltipPresentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTooltipPresentationViewController.swift; sourceTree = "<group>"; };
 		638DA9882892C6030030D494 /* iARVis (iOS)-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iARVis (iOS)-Bridging-Header.h"; sourceTree = "<group>"; };
 		638DA9892892C6030030D494 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -958,6 +960,14 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		6380A03D28D5BA9F008F3021 /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				6380A03E28D5BAA9008F3021 /* VisConfigShareSource.swift */,
+			);
+			path = Share;
+			sourceTree = "<group>";
+		};
 		638730C228ABC6920094AE12 /* Global Events */ = {
 			isa = PBXGroup;
 			children = (
@@ -980,6 +990,7 @@
 		638DA98B2892C62C0030D494 /* ARKit */ = {
 			isa = PBXGroup;
 			children = (
+				6380A03D28D5BA9F008F3021 /* Share */,
 				637D20EB28D2DDAC00C562AF /* View */,
 				638730C228ABC6920094AE12 /* Global Events */,
 				63AE06732898236F0061404E /* Debug */,
@@ -1657,6 +1668,7 @@
 				634B72F928B13869000BBB05 /* ChartProxy+PositionWithJSON.swift in Sources */,
 				63E911DA28C1A315006D7F8C /* ChartComponent+barMarkRepeat1.swift in Sources */,
 				639EBF5328B2614C00C76969 /* URLService.swift in Sources */,
+				6380A03F28D5BAA9008F3021 /* VisConfigShareSource.swift in Sources */,
 				63E43B6828C9CDF30033CEEA /* DetailedSPLOMView.swift in Sources */,
 				634B72FA28B13869000BBB05 /* TableData.swift in Sources */,
 				6315A46A28AFE82B0045B685 /* SCNVector3+Codable.swift in Sources */,

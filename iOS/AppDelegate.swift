@@ -13,7 +13,7 @@ import UIKit
 class MyApplication: UIApplication {
     override func open(_ url: URL, options: [UIApplication.OpenExternalURLOptionsKey: Any] = [:], completionHandler completion: ((Bool) -> Void)? = nil) {
         if let components = URLComponents(url: url, resolvingAgainstBaseURL: true),
-           components.scheme == URLService.scheme {
+           components.scheme?.lowercased() == URLService.scheme.lowercased() {
             if let urlService = url.urlService {
                 switch urlService {
                 case let .link(href: href):
@@ -23,10 +23,21 @@ class MyApplication: UIApplication {
                     }
                 case .openComponent:
                     break
+                case let .openVisConfig(config):
+                    if let arkitViewController = delegate?.window??.rootViewController as? ARKitViewController {
+                        switch config {
+                        case let .url(url):
+                            break
+                        case let .json(json):
+                            if let visualizationConfiguration = JSON(parseJSON: json).decode(VisualizationConfiguration.self) {
+                                arkitViewController.setVisualizationConfiguration(visualizationConfiguration)
+                            }
+                        }
+                    }
                 }
             }
         } else {
-            if !["http", "https"].contains(URLComponents(url: url, resolvingAgainstBaseURL: true)?.scheme) {
+            if !["http", "https"].contains(URLComponents(url: url, resolvingAgainstBaseURL: true)?.scheme?.lowercased()) {
                 super.open(url, options: options, completionHandler: completion)
             } else {
                 // As a normal link
@@ -64,6 +75,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window.makeKeyAndVisible()
 
         self.window = window
+        return true
+    }
+
+    func application(_: UIApplication, open url: URL, options _: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+        UIApplication.shared.open(url)
         return true
     }
 }

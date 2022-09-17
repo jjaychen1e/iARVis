@@ -12,6 +12,7 @@ import SwiftyJSON
 enum URLServiceType: String, RawRepresentable {
     case link
     case openComponent
+    case openVisConfig
 }
 
 enum OpenComponentType: String, RawRepresentable, CaseIterable {
@@ -24,11 +25,22 @@ enum OpenComponent {
     case json(json: String)
 }
 
+enum OpenVisConfigType: String, RawRepresentable, CaseIterable {
+    case url
+    case json
+}
+
+enum OpenVisConfig {
+    case url(url: String)
+    case json(json: String)
+}
+
 enum URLService {
     static let scheme = "iARVis"
 
     case link(href: String)
     case openComponent(config: OpenComponent, anchor: WidgetAnchorPoint, relativePosition: SCNVector3)
+    case openVisConfig(config: OpenComponent)
 
     var schemePrefix: String {
         Self.scheme + "://"
@@ -53,6 +65,17 @@ enum URLService {
                     + "&anchor=\(anchor.rawValue)"
                     + "&relativePosition=\(relativePosition.prettyJSON.addingPercentEncoding(withAllowedCharacters: .alphanumerics) ?? "")"
             }
+        case let .openVisConfig(config):
+            switch config {
+            case let .url(url):
+                return schemePrefix
+                    + "openVisConfig?"
+                    + "url=\(url.addingPercentEncoding(withAllowedCharacters: .alphanumerics) ?? "")"
+            case let .json(json):
+                return schemePrefix
+                    + "openVisConfig?"
+                    + "json=\(json.addingPercentEncoding(withAllowedCharacters: .alphanumerics) ?? "")"
+            }
         }
     }
 }
@@ -75,7 +98,7 @@ extension URL {
                 }
             case .openComponent:
                 for type in OpenComponentType.allCases {
-                    if let value = params.first(where: { $0.name == type.rawValue })?.value {
+                    if let value = params.first(where: { $0.name == type.rawValue })?.value, value != "" {
                         var anchor: WidgetAnchorPoint
                         if let anchorValue = params.first(where: { $0.name == "anchor" })?.value,
                            let _anchor = WidgetAnchorPoint(rawValue: anchorValue) {
@@ -96,6 +119,17 @@ extension URL {
                             return .openComponent(config: .url(url: value), anchor: anchor, relativePosition: position)
                         case .json:
                             return .openComponent(config: .json(json: value), anchor: anchor, relativePosition: position)
+                        }
+                    }
+                }
+            case .openVisConfig:
+                for type in OpenVisConfigType.allCases {
+                    if let value = params.first(where: { $0.name == type.rawValue })?.value, value != "" {
+                        switch type {
+                        case .url:
+                            return .openVisConfig(config: .url(url: value))
+                        case .json:
+                            return .openVisConfig(config: .json(json: value))
                         }
                     }
                 }

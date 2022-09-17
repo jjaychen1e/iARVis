@@ -91,14 +91,13 @@ extension ARKitViewController: ARSCNViewDelegate {
             imageAnchor.removePlaneNode(on: node)
 
             guard let conf = visContext.visConfiguration?.findImageConfiguration(anchor: imageAnchor) else {
-                fatalErrorDebug("Cannot find corresponding image configuration for anchor: \(imageAnchor)")
                 return
             }
 
             guard let nodePairs = visContext.nodePairs(url: conf.imageURL) else {
-                fatalErrorDebug("Cannot find node pair for anchor: \(imageAnchor)")
                 return
             }
+            
             for (_, nodePair) in nodePairs {
                 nodePair._node.removeFromParentNode()
                 nodePair.node.removeFromParentNode()
