@@ -116,16 +116,16 @@ struct ChartView: View {
         .chartXScale(domain: xAxisDomain)
         .chartYScale(domain: yAxisDomain)
         .chartOverlay { proxy in
-            chartAnnotationHandler(proxy: proxy, chartConfiguration: chartConfiguration)
-        }
-        .chartOverlay { proxy in
-            chartTooltipHandler(proxy: proxy)
-        }
-        .chartOverlay { proxy in
             chartInteractionHandler(proxy: proxy)
                 .onTouch {
                     chartFocusAction.focus(chartConfiguration)
                 }
+        }
+        .chartOverlay { proxy in
+            chartAnnotationHandler(proxy: proxy, chartConfiguration: chartConfiguration)
+        }
+        .chartOverlay { proxy in
+            chartTooltipHandler(proxy: proxy)
         }
 //        .chartOverlay { _ in
 //            #if DEBUG
