@@ -10,9 +10,11 @@ import SwiftUI
 struct OnTouchOverlay: UIViewRepresentable {
     typealias Action = () -> Void
 
+    let base: AnyView
     let onTouch: Action
 
-    init(onTouch: @escaping Action) {
+    init<Base: View>(_ base: Base, onTouch: @escaping Action) {
+        self.base = AnyView(base)
         self.onTouch = onTouch
     }
 
@@ -20,6 +22,13 @@ struct OnTouchOverlay: UIViewRepresentable {
         let view = UIView(frame: .zero)
 
         view.backgroundColor = .clear
+
+        let hostingVC = UIHostingController(rootView: base)
+        hostingVC.view.backgroundColor = .clear
+        view.addSubview(hostingVC.view)
+        hostingVC.view.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
 
         let press = UILongPressGestureRecognizer(target: context.coordinator, action: #selector(context.coordinator.onTouch))
         press.minimumPressDuration = 0.01
@@ -60,8 +69,6 @@ struct OnTouchOverlay: UIViewRepresentable {
 
 extension View {
     func onTouch(_ action: @escaping () -> Void) -> some View {
-        overlay {
-            OnTouchOverlay(onTouch: action)
-        }
+        OnTouchOverlay(self, onTouch: action)
     }
 }
