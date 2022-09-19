@@ -57,8 +57,9 @@ class ARKitViewController: UIViewController {
         }
 
         setUpSupplementaryViews()
+        setUpDebugView()
 
-        setVisualizationConfiguration(.example2)
+        setVisualizationConfiguration(.example1)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -171,6 +172,22 @@ class ARKitViewController: UIViewController {
             }
             .store(in: &subscriptions)
         }
+    }
+
+    private func setUpDebugView() {
+        let doubleTapGesture = UITapGestureRecognizerWithClosure { _ in
+            var viewController: UIViewController?
+            let debugViewController = VisConfigDebugExampleListViewController { [weak self] config in
+                guard let self = self else { return }
+                self.setVisualizationConfiguration(config)
+                viewController?.dismiss(animated: true)
+            }
+            viewController = debugViewController
+            UIApplication.shared.presentOnTop(debugViewController)
+        }
+        doubleTapGesture.numberOfTapsRequired = 2
+        doubleTapGesture.numberOfTouchesRequired = 2
+        view.addGestureRecognizer(doubleTapGesture)
     }
 
     // MARK: - Session management

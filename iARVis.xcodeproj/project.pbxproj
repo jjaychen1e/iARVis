@@ -49,6 +49,7 @@
 		63254E0B28AB8FC6005E7599 /* chartConfigurationExample1_ProvenanceChart.json in Resources */ = {isa = PBXBuildFile; fileRef = 63254E0A28AB8FC6005E7599 /* chartConfigurationExample1_ProvenanceChart.json */; };
 		63254E0C28AB8FC6005E7599 /* chartConfigurationExample1_ProvenanceChart.json in Resources */ = {isa = PBXBuildFile; fileRef = 63254E0A28AB8FC6005E7599 /* chartConfigurationExample1_ProvenanceChart.json */; };
 		6329087B28C8BA3300E3B494 /* SPLOMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6329087A28C8BA3300E3B494 /* SPLOMView.swift */; };
+		6335042428D7794B006D5F11 /* VisConfigDebugExampleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6335042328D7794B006D5F11 /* VisConfigDebugExampleList.swift */; };
 		6339435928ABA9FB008A5ED1 /* View+Execute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6339435828ABA9FB008A5ED1 /* View+Execute.swift */; };
 		6339435A28ABA9FB008A5ED1 /* View+Execute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6339435828ABA9FB008A5ED1 /* View+Execute.swift */; };
 		6344285928BC6B5000339D2F /* NSNumber+Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6344285828BC6B5000339D2F /* NSNumber+Type.swift */; };
@@ -172,6 +173,7 @@
 		638DA98F2892CA490030D494 /* ARKitViewController+ARSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638DA98E2892CA490030D494 /* ARKitViewController+ARSessionDelegate.swift */; };
 		6391C0F828C59AB30018FAA0 /* ViewElementComponent+Example3+AreaChartMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6391C0F728C59AB30018FAA0 /* ViewElementComponent+Example3+AreaChartMatrix.swift */; };
 		6391C0F928C59AB30018FAA0 /* ViewElementComponent+Example3+AreaChartMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6391C0F728C59AB30018FAA0 /* ViewElementComponent+Example3+AreaChartMatrix.swift */; };
+		6392998528D776EF000DD130 /* UITapGestureRecognizerWithClosure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392998428D776EF000DD130 /* UITapGestureRecognizerWithClosure.swift */; };
 		6392ABFF28BB8A94002797D7 /* TimeMeasuring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392ABFE28BB8A94002797D7 /* TimeMeasuring.swift */; };
 		639A6D8928AB628F00527C37 /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639A6D8828AB628F00527C37 /* XCAssets+Generated.swift */; };
 		639A6D8A28AB628F00527C37 /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639A6D8828AB628F00527C37 /* XCAssets+Generated.swift */; };
@@ -329,6 +331,7 @@
 		63254E0A28AB8FC6005E7599 /* chartConfigurationExample1_ProvenanceChart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chartConfigurationExample1_ProvenanceChart.json; sourceTree = "<group>"; };
 		6329087A28C8BA3300E3B494 /* SPLOMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPLOMView.swift; sourceTree = "<group>"; };
 		632ACE6928A93EE1001418E5 /* Pods_iARVis__iOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_iARVis__iOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6335042328D7794B006D5F11 /* VisConfigDebugExampleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisConfigDebugExampleList.swift; sourceTree = "<group>"; };
 		6339435828ABA9FB008A5ED1 /* View+Execute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Execute.swift"; sourceTree = "<group>"; };
 		6344285828BC6B5000339D2F /* NSNumber+Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNumber+Type.swift"; sourceTree = "<group>"; };
 		634B72B428B119EE000BBB05 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
@@ -389,6 +392,7 @@
 		638DA98C2892C63D0030D494 /* ARKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARKitViewController.swift; sourceTree = "<group>"; };
 		638DA98E2892CA490030D494 /* ARKitViewController+ARSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ARKitViewController+ARSessionDelegate.swift"; sourceTree = "<group>"; };
 		6391C0F728C59AB30018FAA0 /* ViewElementComponent+Example3+AreaChartMatrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewElementComponent+Example3+AreaChartMatrix.swift"; sourceTree = "<group>"; };
+		6392998428D776EF000DD130 /* UITapGestureRecognizerWithClosure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITapGestureRecognizerWithClosure.swift; sourceTree = "<group>"; };
 		6392ABFE28BB8A94002797D7 /* TimeMeasuring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeMeasuring.swift; sourceTree = "<group>"; };
 		63952BF628A92977008183BF /* Testsd_ViewElementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testsd_ViewElementComponent.swift; sourceTree = "<group>"; };
 		63952C1328A931BF008183BF /* ChartConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartConfiguration.swift; sourceTree = "<group>"; };
@@ -688,6 +692,14 @@
 				63E43B6928C9D3240033CEEA /* DetailedSPLOMViewController.swift */,
 			);
 			path = SPLOM;
+			sourceTree = "<group>";
+		};
+		6335042228D77930006D5F11 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				6335042328D7794B006D5F11 /* VisConfigDebugExampleList.swift */,
+			);
+			path = Debug;
 			sourceTree = "<group>";
 		};
 		6344281728BBC02B00339D2F /* JSON */ = {
@@ -990,10 +1002,11 @@
 		638DA98B2892C62C0030D494 /* ARKit */ = {
 			isa = PBXGroup;
 			children = (
+				6335042228D77930006D5F11 /* Debug */,
 				6380A03D28D5BA9F008F3021 /* Share */,
 				637D20EB28D2DDAC00C562AF /* View */,
 				638730C228ABC6920094AE12 /* Global Events */,
-				63AE06732898236F0061404E /* Debug */,
+				63AE06732898236F0061404E /* Widget View Controller */,
 				63AE065A2896DAE90061404E /* Visualization Context */,
 				635F526C2896B28300FF40B6 /* Utils */,
 				636EDDBB28964FC200639195 /* Image Tracking */,
@@ -1002,6 +1015,14 @@
 				639EBF5728B277E300C76969 /* ARKitViewController+ARSCNViewDelegate.swift */,
 			);
 			path = ARKit;
+			sourceTree = "<group>";
+		};
+		6392998328D776CB000DD130 /* GestureRecognizer */ = {
+			isa = PBXGroup;
+			children = (
+				6392998428D776EF000DD130 /* UITapGestureRecognizerWithClosure.swift */,
+			);
+			path = GestureRecognizer;
 			sourceTree = "<group>";
 		};
 		6392ABFD28BB8A7A002797D7 /* Performance */ = {
@@ -1146,13 +1167,13 @@
 			path = Operators;
 			sourceTree = "<group>";
 		};
-		63AE06732898236F0061404E /* Debug */ = {
+		63AE06732898236F0061404E /* Widget View Controller */ = {
 			isa = PBXGroup;
 			children = (
 				63AE0674289823880061404E /* WidgetInARViewController.swift */,
 				636C3EC828B49BD8001412FE /* WidgetOnScreenViewController.swift */,
 			);
-			path = Debug;
+			path = "Widget View Controller";
 			sourceTree = "<group>";
 		};
 		63AE0676289825F90061404E /* Utils */ = {
@@ -1167,6 +1188,7 @@
 		63AE0677289825FC0061404E /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				6392998328D776CB000DD130 /* GestureRecognizer */,
 				63AE0678289826010061404E /* UIViewController */,
 			);
 			path = UIKit;
@@ -1699,6 +1721,7 @@
 				63CB2BC528A40DB100BF7A1B /* ARVisContentMode.swift in Sources */,
 				63254E0028AB8869005E7599 /* CGPoint+Operations.swift in Sources */,
 				63BFA49328C4C3C10053FEE2 /* ChartComponent+areaMarkRepeat1.swift in Sources */,
+				6335042428D7794B006D5F11 /* VisConfigDebugExampleList.swift in Sources */,
 				6379F41028B8F1A70020BB1B /* ARVisLineStyle.swift in Sources */,
 				639EBF5828B277E300C76969 /* ARKitViewController+ARSCNViewDelegate.swift in Sources */,
 				6379F41328B8F21D0020BB1B /* ARVisAnnotation.swift in Sources */,
@@ -1758,6 +1781,7 @@
 				63027A6128A933E100B06CFE /* Date.swift in Sources */,
 				635D805328B9FA7C0077C1B6 /* ChartYAxis.swift in Sources */,
 				63E911DE28C1A336006D7F8C /* ChartGroup.swift in Sources */,
+				6392998528D776EF000DD130 /* UITapGestureRecognizerWithClosure.swift in Sources */,
 				634B731B28B215A9000BBB05 /* ARVisSegmentedControlView.swift in Sources */,
 				63BFA4B128C4CD7A0053FEE2 /* ViewElementComponent+Example3+AreaChart.swift in Sources */,
 				6323815328C1A7230089A28C /* ChartComponent+ruleMarkRepeat1.swift in Sources */,
