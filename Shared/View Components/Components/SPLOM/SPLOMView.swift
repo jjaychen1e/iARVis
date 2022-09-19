@@ -70,18 +70,18 @@ struct SPLOMView: View {
                 ForEach(0 ..< labels.count, id: \.self) { index in
                     let title = labels[index]
                     Color.clear
-                        .frame(width: availableSizeForEachLabelV.width, height: availableSizeForEachLabelV.height)
+                        .frame(width: max(0, availableSizeForEachLabelV.width), height: max(0, availableSizeForEachLabelV.height))
                         .overlay {
                             Text(title)
                                 .font(.system(size: 12, weight: .light, design: .rounded))
                                 .lineLimit(1)
-                                .frame(width: availableSizeForEachLabelV.height, height: availableSizeForEachLabelV.width)
+                                .frame(width: max(0, availableSizeForEachLabelV.height), height: max(0, availableSizeForEachLabelV.width))
                                 .rotationEffect(Angle.degrees(-90))
                         }
                 }
             }
             .padding(.horizontal, vStackPaddingHorizontal)
-            .frame(width: vStackWidth, height: vStackHeight)
+            .frame(width: max(0, vStackWidth), height: max(0, vStackHeight))
 
             let hStackWidth: CGFloat = proxy.size.width - vStackWidth
             let hStackPaddingVertical: CGFloat = 2
@@ -92,7 +92,7 @@ struct SPLOMView: View {
                 ForEach(0 ..< labels.count, id: \.self) { index in
                     let title = labels[index]
                     Color.clear
-                        .frame(width: availableSizeForEachLabelH.width, height: availableSizeForEachLabelH.height)
+                        .frame(width: max(0, availableSizeForEachLabelH.width), height: max(0, availableSizeForEachLabelH.height))
                         .overlay {
                             Text(title)
                                 .font(.system(size: 12, weight: .light, design: .rounded))
@@ -101,7 +101,7 @@ struct SPLOMView: View {
                 }
                 .padding(.vertical, hStackSpacing)
             }
-            .frame(width: hStackWidth, height: hStackHeight)
+            .frame(width: max(0, hStackWidth), height: max(0, hStackHeight))
             .offset(x: vStackWidth, y: vStackHeight)
         }
     }

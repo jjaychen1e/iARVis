@@ -246,7 +246,7 @@ struct DetailedSPLOMView: View {
 
                                 OverlayRectangle(viewModel: viewModel)
                             }
-                            .frame(width: availableSize.width * 0.8, height: availableSize.height * 0.8)
+                            .frame(width: max(0, availableSize.width * 0.8), height: max(0, availableSize.height * 0.8))
                             .offset(x: 0, y: availableSize.height * 0.1)
 
                             VStack {

@@ -236,6 +236,7 @@
 		63BFA4AF28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartAshley.json in Resources */ = {isa = PBXBuildFile; fileRef = 63BFA49D28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartAshley.json */; };
 		63BFA4B128C4CD7A0053FEE2 /* ViewElementComponent+Example3+AreaChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BFA4B028C4CD7A0053FEE2 /* ViewElementComponent+Example3+AreaChart.swift */; };
 		63BFA4B228C4CD7A0053FEE2 /* ViewElementComponent+Example3+AreaChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BFA4B028C4CD7A0053FEE2 /* ViewElementComponent+Example3+AreaChart.swift */; };
+		63CA46F228D8202E0014C9FE /* WidgetDebug2DViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CA46F128D8202E0014C9FE /* WidgetDebug2DViewController.swift */; };
 		63CB2BB728A3F39300BF7A1B /* ViewElementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CB2BB628A3F39300BF7A1B /* ViewElementComponent.swift */; };
 		63CB2BBA28A409DD00BF7A1B /* ARVisTextAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CB2BB928A409DD00BF7A1B /* ARVisTextAlignment.swift */; };
 		63CB2BBC28A40A8000BF7A1B /* ARVisFontStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CB2BBB28A40A8000BF7A1B /* ARVisFontStyle.swift */; };
@@ -435,6 +436,7 @@
 		63BFA49C28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartAmanda.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chartConfigurationExample3_BabyNamesAreaChartAmanda.json; sourceTree = "<group>"; };
 		63BFA49D28C4CC050053FEE2 /* chartConfigurationExample3_BabyNamesAreaChartAshley.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chartConfigurationExample3_BabyNamesAreaChartAshley.json; sourceTree = "<group>"; };
 		63BFA4B028C4CD7A0053FEE2 /* ViewElementComponent+Example3+AreaChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewElementComponent+Example3+AreaChart.swift"; sourceTree = "<group>"; };
+		63CA46F128D8202E0014C9FE /* WidgetDebug2DViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDebug2DViewController.swift; sourceTree = "<group>"; };
 		63CB2BB628A3F39300BF7A1B /* ViewElementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewElementComponent.swift; sourceTree = "<group>"; };
 		63CB2BB928A409DD00BF7A1B /* ARVisTextAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARVisTextAlignment.swift; sourceTree = "<group>"; };
 		63CB2BBB28A40A8000BF7A1B /* ARVisFontStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARVisFontStyle.swift; sourceTree = "<group>"; };
@@ -698,6 +700,7 @@
 			isa = PBXGroup;
 			children = (
 				6335042328D7794B006D5F11 /* VisConfigDebugExampleList.swift */,
+				63CA46F128D8202E0014C9FE /* WidgetDebug2DViewController.swift */,
 			);
 			path = Debug;
 			sourceTree = "<group>";
@@ -1737,6 +1740,7 @@
 				635D804A28B9EC070077C1B6 /* ChartComponentCommonConfig.swift in Sources */,
 				63E43B6A28C9D3240033CEEA /* DetailedSPLOMViewController.swift in Sources */,
 				635C123F28C47A4C0066F008 /* AutoDateParser.swift in Sources */,
+				63CA46F228D8202E0014C9FE /* WidgetDebug2DViewController.swift in Sources */,
 				631BB38A28C7274E00EB697E /* ViewElementComponent+Example5+HistoricalWeather.swift in Sources */,
 				63AE065C2896DAF80061404E /* VisualizationContext.swift in Sources */,
 				6329087B28C8BA3300E3B494 /* SPLOMView.swift in Sources */,

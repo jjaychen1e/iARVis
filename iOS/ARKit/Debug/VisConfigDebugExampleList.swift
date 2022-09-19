@@ -79,6 +79,19 @@ private struct VisConfigDebugExampleList: View {
             .onTapGesture {
                 onSelection(.example6)
             }
+            HStack {
+                Text("Switch to 2D mode")
+                Color.primary.opacity(0.001)
+            }
+            .onTapGesture {
+                if #available(iOS 16, *) {
+                    if let _window = UIApplication.shared.delegate?.window,
+                       let window = _window {
+                        let rootVC = WidgetDebug2DViewController()
+                        window.rootViewController = rootVC
+                    }
+                }
+            }
         }
     }
 }
