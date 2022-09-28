@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ARVisSegmentedControlItem: Codable, Equatable {
+struct ARVisSegmentedControlItem: Codable, Hashable {
     var title: String
     var component: ViewElementComponent
 }

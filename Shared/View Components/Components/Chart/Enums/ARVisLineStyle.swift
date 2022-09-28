@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct ARVisLineStyle: Codable, Equatable, Hashable {
+struct ARVisLineStyle: Codable, Hashable {
     var lineWidth: CGFloat = 1
 }
 

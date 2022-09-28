@@ -25,7 +25,7 @@ enum ARVisAnnotationPosition: String, RawRepresentable, Codable, Hashable, CaseI
     }
 }
 
-class ARVisAnnotation: Codable, Equatable, Hashable {
+class ARVisAnnotation: Codable, Hashable {
     var position: ARVisAnnotationPosition
     var content: ViewElementComponent
 

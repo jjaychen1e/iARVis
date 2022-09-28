@@ -8,12 +8,12 @@
 import Foundation
 import SwiftyJSON
 
-struct ChartXScale: Codable, Equatable {
+struct ChartXScale: Codable, Hashable {
     var includingZero: Bool?
     var domain: [JSON]?
 }
 
-struct ChartYScale: Codable, Equatable {
+struct ChartYScale: Codable, Hashable {
     var includingZero: Bool?
     var domain: [JSON]?
 }

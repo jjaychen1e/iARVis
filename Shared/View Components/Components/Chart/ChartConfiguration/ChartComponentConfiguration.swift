@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 
 @available(iOS 16, *)
-struct ChartComponentConfiguration: Equatable {
+struct ChartComponentConfiguration: Hashable {
     var component: ChartComponent
     var commonConfig: ChartComponentCommonConfig
 

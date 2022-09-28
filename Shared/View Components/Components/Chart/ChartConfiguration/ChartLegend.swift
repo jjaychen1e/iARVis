@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct ChartLegend: Codable, Equatable {
+struct ChartLegend: Codable, Hashable {
     var hidden: Bool?
 }

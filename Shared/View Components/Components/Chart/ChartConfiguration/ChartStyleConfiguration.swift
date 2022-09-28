@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ChartStyleConfiguration: Codable, Equatable {
+struct ChartStyleConfiguration: Codable, Hashable {
     var maxWidth: CGFloat?
     var maxHeight: CGFloat?
     var padding: [CGFloat]?

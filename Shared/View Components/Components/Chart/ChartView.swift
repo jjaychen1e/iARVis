@@ -61,6 +61,9 @@ struct ChartView: View {
                 componentConfig.toChartContent(configuration: chartConfiguration)
             }
         }
+        .onAppear {
+            chartFocusAction.focus(chartConfiguration)
+        }
         .chartLegend(chartConfiguration.swiftChartConfiguration.chartLegend?.hidden == true ? .hidden : .automatic)
         .chartXAxis(chartConfiguration.swiftChartConfiguration.chartXAxis?.hidden == true ? .hidden : .automatic)
         .chartXAxis {
@@ -117,9 +120,9 @@ struct ChartView: View {
         .chartYScale(domain: yAxisDomain)
         .chartOverlay { proxy in
             chartInteractionHandler(proxy: proxy)
-                .onTouch {
-                    chartFocusAction.focus(chartConfiguration)
-                }
+//                .onTouch {
+//                    chartFocusAction.focus(chartConfiguration)
+//                }
         }
         .chartOverlay { proxy in
             chartAnnotationHandler(proxy: proxy, chartConfiguration: chartConfiguration)

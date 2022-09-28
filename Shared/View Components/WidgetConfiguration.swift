@@ -10,14 +10,14 @@ import Foundation
 import SceneKit
 import SwiftUI
 
-struct AdditionalWidgetConfiguration: Codable, Equatable {
+struct AdditionalWidgetConfiguration: Codable, Hashable {
     @Default<False>
     var hidden: Bool
     var key: String
     var widgetConfiguration: WidgetConfiguration
 }
 
-class WidgetConfiguration: Codable, Equatable, ObservableObject {
+class WidgetConfiguration: Codable, Hashable, ObservableObject {
     var component: ViewElementComponent
     var relativeAnchorPoint: WidgetAnchorPoint
     var relativePosition: SCNVector3
@@ -38,7 +38,22 @@ class WidgetConfiguration: Codable, Equatable, ObservableObject {
     var size: CGSize
     @Default<AdditionalWidgetConfigurationDefaultValueProvider>
     var additionalWidgetConfiguration: [String: AdditionalWidgetConfiguration]
-
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(component)
+        hasher.combine(relativeAnchorPoint)
+        hasher.combine(relativePosition)
+        hasher.combine(positionOffset)
+        hasher.combine(alignedToTarget)
+        hasher.combine(isOpaque)
+        hasher.combine(isScrollEnabled)
+        hasher.combine(showExpandButton)
+        hasher.combine(padding)
+        hasher.combine(scale)
+        hasher.combine(size)
+        hasher.combine(additionalWidgetConfiguration)
+    }
+    
     init(component: ViewElementComponent,
          relativeAnchorPoint: WidgetAnchorPoint,
          relativePosition: SCNVector3,

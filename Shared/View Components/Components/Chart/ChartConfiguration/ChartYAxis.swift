@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ChartYAxis: Codable, Equatable {
+struct ChartYAxis: Codable, Hashable {
     var hidden: Bool?
     var axisMarks: ChartAxisMarks?
 }

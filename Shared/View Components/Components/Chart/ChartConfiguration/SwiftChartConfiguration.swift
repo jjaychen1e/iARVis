@@ -8,7 +8,7 @@
 import Foundation
 
 @available(iOS 16, *)
-struct SwiftChartConfiguration: Codable, Equatable {
+struct SwiftChartConfiguration: Codable, Hashable {
     var chartXScale: ChartXScale?
     var chartYScale: ChartYScale?
     var chartXAxis: ChartXAxis?

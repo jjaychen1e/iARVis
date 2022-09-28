@@ -93,3 +93,14 @@ extension ChartConfiguration: Equatable {
         }
     }
 }
+
+extension ChartConfiguration: Hashable {
+    func hash(into hasher: inout Hasher) {
+        if #available(iOS 16, *) {
+            hasher.combine(chartData)
+            hasher.combine(componentConfigs)
+            hasher.combine(interactionData)
+            hasher.combine(swiftChartConfiguration)
+        }
+    }
+}

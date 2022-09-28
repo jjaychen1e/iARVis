@@ -17,7 +17,7 @@ import UIColorHexSwift
     typealias NativeColor = NSColor
 #endif
 
-enum ARVisColor: Equatable, Hashable {
+enum ARVisColor: Hashable {
     case black
     case blue
     case brown

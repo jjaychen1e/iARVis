@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TableConfiguration: Codable, Equatable {
+struct TableConfiguration: Codable, Hashable {
     var tableData: TableData
     var orientation: ARVisTableViewOrientation
 }

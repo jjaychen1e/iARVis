@@ -14,11 +14,11 @@ import SwiftyJSON
     import VideoPlayer
 #endif
 
-enum ViewElementClickAction: Codable, Equatable {
+enum ViewElementClickAction: Codable, Hashable {
     case openURL(url: String)
 }
 
-enum ViewElementComponentModifier: Codable, Equatable {
+enum ViewElementComponentModifier: Codable, Hashable {
     case padding(leading: CGFloat?, trailing: CGFloat?, top: CGFloat?, bottom: CGFloat?)
     case background(color: ARVisColor)
     case roundedCorner(radius: CGFloat)
@@ -60,7 +60,7 @@ extension View {
     }
 }
 
-enum ViewElementComponent: Codable, Equatable {
+enum ViewElementComponent: Codable, Hashable {
     // font
     case text(content: String, multilineTextAlignment: ARVisTextAlignment? = nil, fontStyle: ARVisFontStyle? = nil, modifiers: [ViewElementComponentModifier]? = nil)
     case image(url: String, contentMode: ARVisContentMode = .fit, width: CGFloat? = nil, height: CGFloat? = nil, clipToCircle: Bool? = nil, modifiers: [ViewElementComponentModifier]? = nil)

@@ -8,11 +8,11 @@
 import Charts
 import Foundation
 
-struct ChartAxisMarks: Codable, Equatable {
+struct ChartAxisMarks: Codable, Hashable {
     var axisMarksValues: AxisMarksValues
     var axisValueLabel: AxisMarksValueLabel
 
-    enum AxisMarksValues: Codable, Equatable {
+    enum AxisMarksValues: Codable, Hashable {
         case strideByDateComponent(component: Component, count: Int = 1)
 
         public enum Component: String, RawRepresentable, Codable, Equatable {
@@ -35,10 +35,10 @@ struct ChartAxisMarks: Codable, Equatable {
         }
     }
 
-    struct AxisMarksValueLabel: Codable, Equatable {
+    struct AxisMarksValueLabel: Codable, Hashable {
         var format: Format
 
-        enum Format: Codable, Equatable {
+        enum Format: Codable, Hashable {
             case year(format: YearFormat = .defaultDigits)
 
             enum YearFormat: String, RawRepresentable, Codable, Equatable, CaseIterable {

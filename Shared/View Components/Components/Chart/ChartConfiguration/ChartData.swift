@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-struct ChartData: Codable, Equatable {
+struct ChartData: Codable, Hashable {
     var dataItems: [String: ChartDataItem] = [:]
 
     init(_ dataSources: [JSON] = []) {
@@ -34,11 +34,17 @@ struct ChartData: Codable, Equatable {
     }
 }
 
-struct ChartDataItem: Codable, Equatable {
+struct ChartDataItem: Codable, Hashable {
     static func == (lhs: ChartDataItem, rhs: ChartDataItem) -> Bool {
         lhs.data == rhs.data &&
         lhs.titles == rhs.titles &&
         lhs.length == rhs.length
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(data)
+        hasher.combine(titles)
+        hasher.combine(length)
     }
     
     private(set) var data: JSON

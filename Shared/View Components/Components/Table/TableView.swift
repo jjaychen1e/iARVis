@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum ARVisTableViewOrientation: Codable {
+enum ARVisTableViewOrientation: Codable, Hashable {
     case horizontal
     case vertical
 }

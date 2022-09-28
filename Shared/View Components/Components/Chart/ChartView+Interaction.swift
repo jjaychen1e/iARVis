@@ -176,6 +176,7 @@ extension ChartView {
                 .gesture(
                     SpatialTapGesture()
                         .onEnded { value in
+                            chartFocusAction.focus(chartConfiguration)
                             let location = value.location
                             for componentConfig in chartConfiguration.componentConfigs {
                                 switch componentConfig.component {
@@ -247,8 +248,9 @@ extension ChartView {
                             }
                         }
                         .exclusively(
-                            before: DragGesture()
+                            before: DragGesture(minimumDistance: 0.01)
                                 .onChanged { value in
+                                    chartFocusAction.focus(chartConfiguration)
                                     let location = value.location
                                     for componentConfig in chartConfiguration.componentConfigs {
                                         switch componentConfig.component {

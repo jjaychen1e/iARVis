@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-class ChartComponentCommonConfig: Codable, Equatable, ObservableObject {
+class ChartComponentCommonConfig: Codable, Hashable, ObservableObject {
     var interpolationMethod: ARVisInterpolationMethod?
     var symbol: ARVisSymbol?
     var symbolSize: ARVisSymbolSize?
@@ -51,9 +51,24 @@ class ChartComponentCommonConfig: Codable, Equatable, ObservableObject {
             lhs.annotations == rhs.annotations &&
             lhs.conditionalAnnotations == rhs.conditionalAnnotations
     }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(interpolationMethod)
+        hasher.combine(symbol)
+        hasher.combine(symbolSize)
+        hasher.combine(foregroundStyleColor)
+        hasher.combine(foregroundStyleColorMap)
+        hasher.combine(foregroundStyleField)
+        hasher.combine(foregroundStyleValue)
+        hasher.combine(positionByValue)
+        hasher.combine(cornerRadius)
+        hasher.combine(lineStyle)
+        hasher.combine(annotations)
+        hasher.combine(conditionalAnnotations)
+    }
 }
 
-class ColorMap: Codable, Equatable, Hashable, ObservableObject {
+class ColorMap: Codable, Hashable, ObservableObject {
     var field: String
     var value: JSON
     var color: ARVisColor

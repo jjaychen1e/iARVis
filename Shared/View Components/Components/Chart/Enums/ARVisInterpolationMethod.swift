@@ -8,7 +8,7 @@
 import Charts
 import Foundation
 
-enum ARVisInterpolationMethod: String, RawRepresentable, Codable, CaseIterable, Identifiable {
+enum ARVisInterpolationMethod: String, RawRepresentable, Codable, CaseIterable, Identifiable, Hashable {
     case linear
     case cardinal
     

@@ -38,14 +38,14 @@ struct Square: ChartSymbolShape, InsettableShape {
     }
 }
 
-struct ARVisSymbol: Codable, Equatable {
+struct ARVisSymbol: Codable, Hashable {
     var type: ARVisSymbolType
 
     static let circle = ARVisSymbol(type: .circle)
     static let square = ARVisSymbol(type: .square)
 }
 
-enum ARVisSymbolType: String, RawRepresentable, Codable, CaseIterable, Identifiable {
+enum ARVisSymbolType: String, RawRepresentable, Codable, CaseIterable, Identifiable, Hashable {
     case circle = "Circle"
     case square = "Square"
     
@@ -66,7 +66,7 @@ extension ARVisSymbolType {
     }
 }
 
-struct ARVisSymbolSize: Codable, Equatable {
+struct ARVisSymbolSize: Codable, Hashable {
     var width: CGFloat
     var height: CGFloat
 }

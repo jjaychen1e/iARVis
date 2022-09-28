@@ -27,9 +27,9 @@ class WidgetImageRelationship: Codable, Hashable {
     static func == (lhs: WidgetImageRelationship, rhs: WidgetImageRelationship) -> Bool {
         lhs.widgetConfiguration == rhs.widgetConfiguration
     }
-
+    
     func hash(into hasher: inout Hasher) {
-        hasher.combine(widgetConfiguration.prettyJSON)
+        hasher.combine(widgetConfiguration)
     }
 
     var widgetConfiguration: WidgetConfiguration
