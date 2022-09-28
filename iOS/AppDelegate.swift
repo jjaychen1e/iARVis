@@ -82,6 +82,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.open(url)
         return true
     }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        if let arkitViewController = UIApplication.shared.topController() as? ARKitViewController {
+            if let string = UIPasteboard.general.string, let url = URL(string: string) {
+                if url.absoluteString.lowercased().hasPrefix(URLService.scheme.lowercased()) {
+                    if let service = url.urlService {
+                        switch service {
+                        case let .openVisConfig(config):
+                            switch config {
+                            case .url:
+                                break
+                            case let .json(json):
+                                if let visConfig = JSON(parseJSON: json).decode(VisualizationConfiguration.self) {
+                                    if visConfig != arkitViewController.visContext.visConfiguration {
+                                        DispatchQueue.main.async {
+                                            let alertController = UIAlertController(title: "Open", message: "Found a visualization configuration from your pasteboard, would you like to apply it?", preferredStyle: .alert)
+                                            alertController.addAction(UIAlertAction(title: "Apply", style: .destructive, handler: { action in
+                                                arkitViewController.setVisualizationConfiguration(visConfig)
+                                            }))
+                                            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in }))
+                                            UIApplication.shared.presentOnTop(alertController, animated: true)
+                                        }
+                                    }
+                                }
+                            }
+                        default:
+                            break
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 extension UIApplication {
