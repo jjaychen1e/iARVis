@@ -61,8 +61,8 @@ struct ComponentView_Previews: PreviewProvider {
         ], spacing: 4, modifiers: [.padding(leading: 8, trailing: 8, top: 8, bottom: 8), .background(color: .white), .roundedCorner(radius: 8)]))
         
         
-        ComponentView(.example5_HistoricalWeatherPointChartViewElementComponent)
+        ComponentView(.example3_AreaChartMatrix)
 //            .background(.blue)
-            .previewLayout(.fixed(width: 2048, height: 1680))
+            .previewLayout(.fixed(width: 2048, height: 1536))
     }
 }

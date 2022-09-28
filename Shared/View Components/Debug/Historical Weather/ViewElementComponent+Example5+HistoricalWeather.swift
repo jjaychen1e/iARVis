@@ -8,7 +8,7 @@
 import Foundation
 
 extension ViewElementComponent {
-    static let example4_HistoricalWeatherPointChartJSONStr = """
+    static let example5_HistoricalWeatherPointChartJSONStr = """
     {
         "vStack": {
             "elements": [
@@ -19,6 +19,34 @@ extension ViewElementComponent {
         }
     }
     """
+    
+    static let example5_HistoricalWeatherPointChartJSONStr_1 = """
+    {
+        "vStack": {
+            "elements": [
+                {
+                    "chart": \(ChartConfigurationExample.chartConfigurationExample5_WeatherHistoryChart_1)
+                },
+            ]
+        }
+    }
+    """
+    
+    static let example5_HistoricalWeatherPointChartJSONStr_2 = """
+    {
+        "vStack": {
+            "elements": [
+                {
+                    "chart": \(ChartConfigurationExample.chartConfigurationExample5_WeatherHistoryChart_2)
+                },
+            ]
+        }
+    }
+    """
 
-    static let example5_HistoricalWeatherPointChartViewElementComponent: ViewElementComponent = try! JSONDecoder().decode(ViewElementComponent.self, from: example4_HistoricalWeatherPointChartJSONStr.data(using: .utf8)!)
+    static let example5_HistoricalWeatherPointChartViewElementComponent: ViewElementComponent = try! JSONDecoder().decode(ViewElementComponent.self, from: example5_HistoricalWeatherPointChartJSONStr_1.data(using: .utf8)!)
+
+    static let example5_HistoricalWeatherPointChartViewElementComponent_1: ViewElementComponent = try! JSONDecoder().decode(ViewElementComponent.self, from: example5_HistoricalWeatherPointChartJSONStr_1.data(using: .utf8)!)
+    
+    static let example5_HistoricalWeatherPointChartViewElementComponent_2: ViewElementComponent = try! JSONDecoder().decode(ViewElementComponent.self, from: example5_HistoricalWeatherPointChartJSONStr_2.data(using: .utf8)!)
 }

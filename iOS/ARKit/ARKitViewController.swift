@@ -220,6 +220,8 @@ extension ARKitViewController {
         sceneView.scene.rootNode.childNodes.forEach { $0.removeFromParentNode() }
         resetTracking()
         visContext.reset()
+        focusedWidgetNode.send(nil)
+        focusedChartConfiguration.send(nil)
 
         visContext.visConfiguration = conf
         visContext.processVisualizationConfiguration { [weak self] result in

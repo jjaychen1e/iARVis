@@ -39,7 +39,7 @@ enum URLService {
     static let scheme = "iARVis"
 
     case link(href: String)
-    case openComponent(config: OpenComponent, anchor: WidgetAnchorPoint, relativePosition: SCNVector3)
+    case openComponent(config: OpenComponent, anchor: WidgetAnchorPoint, relativePosition: SCNVector3, size: CGSize? = nil, isScrollEnabled: Bool = true)
     case openVisConfig(config: OpenComponent)
 
     var schemePrefix: String {
@@ -50,7 +50,7 @@ enum URLService {
         switch self {
         case let .link(href):
             return schemePrefix + "link?" + "href=\(href.addingPercentEncoding(withAllowedCharacters: .alphanumerics) ?? "")"
-        case let .openComponent(config, anchor, relativePosition):
+        case let .openComponent(config, anchor, relativePosition, size, isScrollEnabled):
             switch config {
             case let .url(url):
                 return schemePrefix
@@ -58,12 +58,16 @@ enum URLService {
                     + "url=\(url.addingPercentEncoding(withAllowedCharacters: .alphanumerics) ?? "")"
                     + "&anchor=\(anchor.rawValue)"
                     + "&relativePosition=\(relativePosition.prettyJSON.addingPercentEncoding(withAllowedCharacters: .alphanumerics) ?? "")"
+                    + "\(size != nil ? "&size=" + size!.prettyJSON : "")"
+                    + "&isScrollEnabled=\(isScrollEnabled ? "true" : "false")"
             case let .json(json):
                 return schemePrefix
                     + "openComponent?"
                     + "json=\(json.addingPercentEncoding(withAllowedCharacters: .alphanumerics) ?? "")"
                     + "&anchor=\(anchor.rawValue)"
                     + "&relativePosition=\(relativePosition.prettyJSON.addingPercentEncoding(withAllowedCharacters: .alphanumerics) ?? "")"
+                    + "\(size != nil ? "&size=" + size!.prettyJSON : "")"
+                    + "&isScrollEnabled=\(isScrollEnabled ? "true" : "false")"
             }
         case let .openVisConfig(config):
             switch config {
@@ -114,11 +118,22 @@ extension URL {
                         } else {
                             position = .init(0, 0, 0)
                         }
+                        var size: CGSize?
+                        if let sizeValue = params.first(where: { $0.name == "size" })?.value,
+                           let sizeValueData = sizeValue.data(using: .utf8),
+                           let _size = JSON(sizeValueData).decode(CGSize.self) {
+                            size = _size
+                        }
+                        var isScrollEnabled = true
+                        if let isScrollEnabledValue = params.first(where: { $0.name == "isScrollEnabled" })?.value,
+                           isScrollEnabledValue.lowercased() == "false" {
+                            isScrollEnabled = false
+                        }
                         switch type {
                         case .url:
-                            return .openComponent(config: .url(url: value), anchor: anchor, relativePosition: position)
+                            return .openComponent(config: .url(url: value), anchor: anchor, relativePosition: position, size: size, isScrollEnabled: isScrollEnabled)
                         case .json:
-                            return .openComponent(config: .json(json: value), anchor: anchor, relativePosition: position)
+                            return .openComponent(config: .json(json: value), anchor: anchor, relativePosition: position, size: size, isScrollEnabled: isScrollEnabled)
                         }
                     }
                 }

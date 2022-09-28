@@ -168,7 +168,7 @@ struct ChartConfigurationSettingView: View {
             .navigationTitle("Chart Configuration")
             .navigationBarTitleDisplayMode(.inline)
         }
-        .frame(width: 400, height: 400)
+        .frame(width: 400, height: 700)
         .cornerRadius(16, style: .continuous)
         .onLoad {
             publisher

@@ -12,34 +12,42 @@ import SwiftyJSON
 
 @available(iOS 16, *)
 extension ChartComponent {
+    @inlinable
     func barMark<X: Plottable, Y: Plottable>(xStart: PlottableValue<X>, xEnd: PlottableValue<X>, y: PlottableValue<Y>, height: CGFloat?) -> some ChartContent {
         BarMark(xStart: xStart, xEnd: xEnd, y: y, height: height != nil ? .fixed(height!) : .automatic)
     }
 
+    @inlinable
     func barMark2<X: Plottable, Y: Plottable>(x: PlottableValue<X>, y: PlottableValue<Y>, height: CGFloat?) -> some ChartContent {
         BarMark(x: x, y: y, height: height != nil ? .fixed(height!) : .automatic)
     }
 
+    @inlinable
     func lineMark<X: Plottable, Y: Plottable>(x: PlottableValue<X>, y: PlottableValue<Y>) -> some ChartContent {
         LineMark(x: x, y: y)
     }
 
+    @inlinable
     func rectangleMark<X: Plottable, Y: Plottable>(xStart: PlottableValue<X>, xEnd: PlottableValue<X>, yStart: PlottableValue<Y>, yEnd: PlottableValue<Y>) -> some ChartContent {
         RectangleMark(xStart: xStart, xEnd: xEnd, yStart: yStart, yEnd: yEnd)
     }
 
+    @inlinable
     func ruleMark<X: Plottable>(x: PlottableValue<X>) -> some ChartContent {
         RuleMark(x: x)
     }
 
+    @inlinable
     func ruleMark<X: Plottable, Y: Plottable>(x: PlottableValue<X>, yStart: PlottableValue<Y>, yEnd: PlottableValue<Y>) -> some ChartContent {
         RuleMark(x: x, yStart: yStart, yEnd: yEnd)
     }
 
+    @inlinable
     func pointMark<X: Plottable, Y: Plottable>(x: PlottableValue<X>, y: PlottableValue<Y>) -> some ChartContent {
         PointMark(x: x, y: y)
     }
-    
+   
+    @inlinable
     func areaMark<X: Plottable, Y: Plottable>(x: PlottableValue<X>, y: PlottableValue<Y>, stacking: ARVisMarkStackingMethod?) -> some ChartContent {
         AreaMark(x: x, y: y, stacking: .init(stacking))
     }
@@ -72,7 +80,7 @@ extension ChartComponent {
 @available(iOS 16, *)
 extension ChartContent {
     @ChartContentBuilder
-    func applyCommonConfig(commonConfig: ChartComponentCommonConfig, datumDictionary: [String : Any]) -> some ChartContent {
+    func applyCommonConfig(commonConfig: ChartComponentCommonConfig, datumDictionary: [String: Any]) -> some ChartContent {
         let foregroundStyleBy: (String, String)? = {
             if let foregroundStyleField = commonConfig.foregroundStyleField {
                 if let data = datumDictionary[foregroundStyleField] as? String {
@@ -117,11 +125,17 @@ extension ChartContent {
             return .blue
         }()
 
-        self
-            .if(foregroundStyleBy != nil) { view in
-                let (foregroundStyleLabel, foregroundStyleValue) = foregroundStyleBy!
-                view.foregroundStyle(by: .value(foregroundStyleLabel, foregroundStyleValue))
+        let result: AnyChartContent = {
+            switch foregroundStyleBy {
+            case .none:
+                return AnyChartContent(self)
+            case let .some(foregroundStyleBy):
+                let (foregroundStyleLabel, foregroundStyleValue) = foregroundStyleBy
+                return AnyChartContent(self.foregroundStyle(by: .value(foregroundStyleLabel, foregroundStyleValue)))
             }
+        }()
+
+        result
             .foregroundStyle(foregroundStyleColor)
             .cornerRadius(commonConfig.cornerRadius ?? 2)
     }

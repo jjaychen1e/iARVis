@@ -13,6 +13,7 @@ import SwiftyJSON
 @available(iOS 16, *)
 extension ChartComponent {
     @ChartContentBuilder
+    @inlinable
     func pointMarkRepeat1(configuration _: ChartConfiguration, commonConfig: ChartComponentCommonConfig, dataItem: ChartDataItem, x: ARVisPlottableValueFieldPair, y: ARVisPlottableValueFieldPair) -> some ChartContent {
         let datumArray = dataItem.datumArray
         ForEach(0 ..< dataItem.length, id: \.self) { index in

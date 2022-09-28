@@ -19,12 +19,28 @@
                     "field": "n"
                 },
                 "interpolationMethod": "cardinal",
-                "foregroundStyleColor": "#F3DFBF"
+                "foregroundStyleColor": "#2076B4"
+            }
+        },
+        {
+            "type": "LineMark",
+            "config": {
+                "dataKey": "default",
+                "x": {
+                    "field": "year",
+                    "type": "date",
+                    "dateFormat": "YYYY"
+                },
+                "y": {
+                    "field": "n"
+                },
+                "interpolationMethod": "cardinal",
+                "foregroundStyleColor": "#000A"
             }
         }
     ],
     "styleConfiguration": {
-        "maxHeight": 512
+        "maxHeight": 470
     },
     "chartXAxis": {
         "axisMarks": {
@@ -48,11 +64,31 @@
             "position": "topLeading",
             "content": {
                 "text": {
-                    "content": "Name: Betty",
+                    "content": "Betty",
                     "fontStyle": {
                         "size": 32,
                         "weight": "medium"
-                    }
+                    },
+                    "modifiers": [
+                        {
+                            "padding": {
+                                "top": 12,
+                                "bottom": 12,
+                                "leading": 12,
+                                "trailing": 12
+                            }
+                        },
+                        {
+                            "background": {
+                                "color": "#65C37A"
+                            }
+                        },
+                        {
+                            "roundedCorner": {
+                                "radius": 8
+                            }
+                        }
+                    ]
                 }
             }
         }

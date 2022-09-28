@@ -14,7 +14,7 @@ extension ViewElementComponent {
                 .vStack(elements: [
                     .text(content: "Christ's Entry into Brussels in 1889", fontStyle: ARVisFontStyle(size: 24, weight: .bold)),
                     .text(content: "1888", fontStyle: ARVisFontStyle(size: 20, weight: .medium)),
-                    .text(content: "[James Ensor](\(URLService.openComponent(config: .json(json: example1_JamesEnsorWidget.prettyJSON), anchor: .leading, relativePosition: .init(-0.005, 0, 0)).url)) (Belgian, 1860 - 1949)",
+                    .text(content: "[James Ensor](\(URLService.openComponent(config: .json(json: example1_JamesEnsorWidget.prettyJSON), anchor: .top, relativePosition: .init(0, 0.005, 0)).url)) (Belgian, 1860 - 1949)",
                           fontStyle: ARVisFontStyle(size: 20)),
                     .text(content: "On view at [Getty Center, Museum West Pavilion, Gallery W103](https://www.getty.edu/art/collection/gallery/103M5Q)"),
                     .spacer,

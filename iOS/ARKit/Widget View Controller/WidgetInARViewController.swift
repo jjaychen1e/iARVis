@@ -152,7 +152,7 @@ class WidgetInARViewController: UIViewController {
                 }
             })
 
-        let hostingViewController = UIHostingController(rootView: widgetView)
+        let hostingViewController = UIHostingController(rootView: widgetView, ignoreSafeArea: true)
         hostingViewController.view.backgroundColor = widgetConfiguration.isOpaque ? .white : .clear
         addChildViewController(hostingViewController)
         hostingViewController.view.snp.makeConstraints { make in
@@ -164,11 +164,13 @@ class WidgetInARViewController: UIViewController {
 
 @MainActor
 func openURL(_ url: URL, widgetConfiguration: WidgetConfiguration? = nil) {
-    let processWidget = { (widgetConfiguration: WidgetConfiguration, key: String, component: ViewElementComponent, anchor: WidgetAnchorPoint, position: SCNVector3) in
+    let processWidget = { (widgetConfiguration: WidgetConfiguration, key: String, component: ViewElementComponent, anchor: WidgetAnchorPoint, position: SCNVector3, size: CGSize?, isScrollEnabled: Bool) in
         let newWidgetConfiguration = WidgetConfiguration(
             component: component,
             relativeAnchorPoint: anchor,
-            relativePosition: position
+            relativePosition: position,
+            isScrollEnabled: isScrollEnabled,
+            size: size ?? SizeDefaultValueProvider.default
         )
 
         let isPresentationMode: Bool = {
@@ -219,7 +221,7 @@ func openURL(_ url: URL, widgetConfiguration: WidgetConfiguration? = nil) {
             switch service {
             case .link:
                 UIApplication.shared.open(url)
-            case let .openComponent(config, anchor, position):
+            case let .openComponent(config, anchor, position, size, isScrollEnabled):
                 if let widgetConfiguration = widgetConfiguration {
                     Task {
                         switch config {
@@ -227,12 +229,12 @@ func openURL(_ url: URL, widgetConfiguration: WidgetConfiguration? = nil) {
                             if let configURL = url.url,
                                let (data, _) = try? await URLSession.shared.data(from: configURL),
                                let component = try? JSONDecoder().decode(ViewElementComponent.self, from: data) {
-                                processWidget(widgetConfiguration, configURL.absoluteString, component, anchor, position)
+                                processWidget(widgetConfiguration, configURL.absoluteString, component, anchor, position, size, isScrollEnabled)
                             }
                         case let .json(json):
                             if let data = json.data(using: .utf8) {
                                 let component = try! JSONDecoder().decode(ViewElementComponent.self, from: data)
-                                processWidget(widgetConfiguration, json, component, anchor, position)
+                                processWidget(widgetConfiguration, json, component, anchor, position, size, isScrollEnabled)
                             }
                         }
                     }

@@ -533,4 +533,21 @@ enum ChartConfigurationExample {
         }
         return "{}"
     }()
+    
+    static let chartConfigurationExample5_WeatherHistoryChart_1: String = {
+        if #available(iOS 16, *) {
+            let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample5_WeatherHistoryChart_1.json")
+            return try! String(contentsOfFile: path.path)
+        }
+        return "{}"
+    }()
+    
+    static let chartConfigurationExample5_WeatherHistoryChart_2: String = {
+        if #available(iOS 16, *) {
+            let path = Bundle(for: type(of: ChartConfigurationJSONParser.default)).bundleURL.appending(path: "chartConfigurationExample5_WeatherHistoryChart_2.json")
+            return try! String(contentsOfFile: path.path)
+        }
+        return "{}"
+    }()
+
 }

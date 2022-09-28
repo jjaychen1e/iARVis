@@ -31,7 +31,7 @@ struct DetailedSPLOMView: View {
         self.showXAxis = showXAxis
         self.showYAxis = showYAxis
 
-        var _config = config
+        let _config = config
         if !isPreview {
             if let symbolSize = _config.symbolSize {
                 _config.symbolSize?.width = max(5, symbolSize.width)
@@ -50,6 +50,7 @@ struct DetailedSPLOMView: View {
     let showXAxis: Bool
     let showYAxis: Bool
     let isPreview: Bool
+    @ObservedObject private var config: ChartComponentCommonConfig
 
     private var viewModel = ViewModel()
 
@@ -57,11 +58,13 @@ struct DetailedSPLOMView: View {
     @State private var publisher: CurrentValueSubject<(proxy: ChartProxy, range: Range)?, Never> = .init(nil)
 
     @ChartContentBuilder
+    @inlinable
     func pointMark<X: Plottable, Y: Plottable>(x: X, y: Y) -> some ChartContent {
         PointMark(x: .value("x", x), y: .value("y", y))
     }
 
     @ChartContentBuilder
+    @inlinable
     func mark(x: Any, y: Any) -> some ChartContent {
         if let xIntValue = x as? Int {
             if let yIntValue = y as? Int {
@@ -78,14 +81,14 @@ struct DetailedSPLOMView: View {
         }
     }
 
-    func updateSelectedData(proxy: ChartProxy, xStart: CGFloat, xEnd: CGFloat, yStart: CGFloat, yEnd: CGFloat) {
+    func selectedData(proxy: ChartProxy, xStart: CGFloat, xEnd: CGFloat, yStart: CGFloat, yEnd: CGFloat) -> [[String: Any]] {
         if let _ = datumArray[safe: 0]?[xField] as? Int {
             if let _ = datumArray[safe: 0]?[yField] as? Int {
                 if let xStart: Int = proxy.value(atX: xStart),
                    let xEnd: Int = proxy.value(atX: xEnd),
                    let yStart: Int = proxy.value(atY: yStart),
                    let yEnd: Int = proxy.value(atY: yEnd) {
-                    viewModel.selectionData = datumArray.filter { element in
+                    return datumArray.filter { element in
                         if let xValue = element[xField] as? Int,
                            let yValue = element[yField] as? Int {
                             if xValue >= min(xStart, xEnd), xValue <= max(xStart, xEnd),
@@ -101,7 +104,7 @@ struct DetailedSPLOMView: View {
                    let xEnd: Int = proxy.value(atX: xEnd),
                    let yStart: Double = proxy.value(atY: yStart),
                    let yEnd: Double = proxy.value(atY: yEnd) {
-                    viewModel.selectionData = datumArray.filter { element in
+                    return datumArray.filter { element in
                         if let xValue = element[xField] as? Int,
                            let yValue = element[yField] as? Double {
                             if xValue >= min(xStart, xEnd), xValue <= max(xStart, xEnd),
@@ -119,7 +122,7 @@ struct DetailedSPLOMView: View {
                    let xEnd: Double = proxy.value(atX: xEnd),
                    let yStart: Int = proxy.value(atY: yStart),
                    let yEnd: Int = proxy.value(atY: yEnd) {
-                    viewModel.selectionData = datumArray.filter { element in
+                    return datumArray.filter { element in
                         if let xValue = element[xField] as? Double,
                            let yValue = element[yField] as? Int {
                             if xValue >= min(xStart, xEnd), xValue <= max(xStart, xEnd),
@@ -135,7 +138,7 @@ struct DetailedSPLOMView: View {
                    let xEnd: Double = proxy.value(atX: xEnd),
                    let yStart: Double = proxy.value(atY: yStart),
                    let yEnd: Double = proxy.value(atY: yEnd) {
-                    viewModel.selectionData = datumArray.filter { element in
+                    return datumArray.filter { element in
                         if let xValue = element[xField] as? Double,
                            let yValue = element[yField] as? Double {
                             if xValue >= min(xStart, xEnd), xValue <= max(xStart, xEnd),
@@ -148,6 +151,7 @@ struct DetailedSPLOMView: View {
                 }
             }
         }
+        return []
     }
 
     var body: some View {
@@ -263,13 +267,35 @@ struct DetailedSPLOMView: View {
                     .offset(x: padding, y: padding)
             }
             .onLoad {
+                var timeInterval: Int
+                if chartDataItem.length <= 60000 {
+                    timeInterval = 17
+                } else if chartDataItem.length <= 100_000 {
+                    timeInterval = 25
+                } else {
+                    timeInterval = 35
+                }
+
+                var lastTime: TimeInterval = 0
                 publisher
-//                    .debounce(for: .milliseconds(100), scheduler: DispatchQueue.main)
-                    .receive(on: DispatchQueue.main)
-                    .sink { result in
+                    .throttle(for: .milliseconds(timeInterval), scheduler: DispatchQueue.main, latest: true)
+                    .map { result in
+                        (Date().timeIntervalSince1970, result)
+                    }
+                    .receive(on: DispatchQueue.global())
+                    .map { time, result in
                         if let (proxy, range) = result {
-                            updateSelectedData(proxy: proxy, xStart: range.xStart, xEnd: range.xEnd, yStart: range.yStart, yEnd: range.yEnd)
+                            return (time, selectedData(proxy: proxy, xStart: range.xStart, xEnd: range.xEnd, yStart: range.yStart, yEnd: range.yEnd))
                         }
+                        return (time, [])
+                    }
+                    .receive(on: DispatchQueue.main)
+                    .filter { time, result in
+                        lastTime = max(time, lastTime)
+                        return time >= lastTime
+                    }
+                    .sink { _, result in
+                        viewModel.selectionData = result
                     }
                     .store(in: &subscriptions)
             }
