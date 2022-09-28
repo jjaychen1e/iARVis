@@ -8,7 +8,11 @@
 import ARKit
 import Foundation
 
-class VisualizationConfiguration: Codable {
+class VisualizationConfiguration: Codable, Equatable {
+    static func == (lhs: VisualizationConfiguration, rhs: VisualizationConfiguration) -> Bool {
+        lhs.imageTrackingConfigurations == rhs.imageTrackingConfigurations
+    }
+    
     var imageTrackingConfigurations: [ImageTrackingConfiguration]
 
     init(imageTrackingConfigurations: [ImageTrackingConfiguration]) {

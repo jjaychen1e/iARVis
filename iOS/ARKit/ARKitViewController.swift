@@ -34,6 +34,10 @@ class ARKitViewController: UIViewController {
     var focusedChartConfiguration: CurrentValueSubject<ChartConfiguration?, Never> = .init(nil)
     private var subscriptions: Set<AnyCancellable> = []
 
+    // MARK: - Hot reload
+
+    private var hotReloadCenter: HotReloadCenter!
+
     // MARK: - View Controller Life Cycle
 
     override func viewDidLoad() {
@@ -59,7 +63,27 @@ class ARKitViewController: UIViewController {
         setUpSupplementaryViews()
         setUpDebugView()
 
+        // Hot reload
+        hotReloadCenter = .init(config: .init(), isChanged: { newValue in
+            newValue != self.visContext.visConfiguration
+        }, didUpdate: { newValue in
+            DispatchQueue.main.async {
+                if UIApplication.shared.topController() == self {
+                    let alertController = UIAlertController(title: "Update", message: "A new visualization configuration is detected, would you like to update now?", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "Update", style: .destructive, handler: { action in
+                        self.setVisualizationConfiguration(newValue)
+                    }))
+                    alertController.addAction(UIAlertAction(title: "Later", style: .cancel, handler: { _ in }))
+                    UIApplication.shared.presentOnTop(alertController, animated: true)
+                }
+            }
+        })
+
+        setUpSettingView()
+
+        // set VisualizationConfiguration
         setVisualizationConfiguration(.example1)
+        printDebug(VisualizationConfiguration.example1.prettyJSON)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -172,6 +196,18 @@ class ARKitViewController: UIViewController {
             }
             .store(in: &subscriptions)
         }
+    }
+
+    private func setUpSettingView() {
+        let doubleTapGesture = UITapGestureRecognizerWithClosure { [weak self] _ in
+            guard let self = self else { return }
+            let settingViewController = SettingViewController(hotReloadConfiguration: self.hotReloadCenter.config)
+            settingViewController.modalPresentationStyle = .fullScreen
+            UIApplication.shared.presentOnTop(settingViewController)
+        }
+        doubleTapGesture.numberOfTapsRequired = 2
+        doubleTapGesture.numberOfTouchesRequired = 3
+        view.addGestureRecognizer(doubleTapGesture)
     }
 
     private func setUpDebugView() {

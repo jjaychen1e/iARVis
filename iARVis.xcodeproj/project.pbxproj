@@ -31,6 +31,9 @@
 		630BD1A62892C4AC00C9BEAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 630BD17B2892C4AC00C9BEAC /* Assets.xcassets */; };
 		6311BA4228D4997000ECBCB0 /* OnTouchOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6311BA4128D4997000ECBCB0 /* OnTouchOverlay.swift */; };
 		6311BA4328D4997000ECBCB0 /* OnTouchOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6311BA4128D4997000ECBCB0 /* OnTouchOverlay.swift */; };
+		6312CEEC28E41CA00096C47E /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6312CEEB28E41C9F0096C47E /* SettingView.swift */; };
+		6312CEEF28E427F60096C47E /* HotReloadCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6312CEEE28E427F60096C47E /* HotReloadCenter.swift */; };
+		6312CEF128E428140096C47E /* HotReloadConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6312CEF028E428140096C47E /* HotReloadConfiguration.swift */; };
 		6313907728C215F400A266B4 /* chartConfigurationExample2_MacBookProPerformanceBarChartGPU.json in Resources */ = {isa = PBXBuildFile; fileRef = 6313907628C215F400A266B4 /* chartConfigurationExample2_MacBookProPerformanceBarChartGPU.json */; };
 		6313907828C215F400A266B4 /* chartConfigurationExample2_MacBookProPerformanceBarChartGPU.json in Resources */ = {isa = PBXBuildFile; fileRef = 6313907628C215F400A266B4 /* chartConfigurationExample2_MacBookProPerformanceBarChartGPU.json */; };
 		6313907A28C2255400A266B4 /* ViewElementComponent+Example2+AppleSilicon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6313907928C2255400A266B4 /* ViewElementComponent+Example2+AppleSilicon.swift */; };
@@ -327,6 +330,9 @@
 		630BD1862892C4AC00C9BEAC /* iARVis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iARVis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		630BD1882892C4AC00C9BEAC /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		6311BA4128D4997000ECBCB0 /* OnTouchOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnTouchOverlay.swift; sourceTree = "<group>"; };
+		6312CEEB28E41C9F0096C47E /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		6312CEEE28E427F60096C47E /* HotReloadCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotReloadCenter.swift; sourceTree = "<group>"; };
+		6312CEF028E428140096C47E /* HotReloadConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotReloadConfiguration.swift; sourceTree = "<group>"; };
 		6313907628C215F400A266B4 /* chartConfigurationExample2_MacBookProPerformanceBarChartGPU.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chartConfigurationExample2_MacBookProPerformanceBarChartGPU.json; sourceTree = "<group>"; };
 		6313907928C2255400A266B4 /* ViewElementComponent+Example2+AppleSilicon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewElementComponent+Example2+AppleSilicon.swift"; sourceTree = "<group>"; };
 		6315A46328AFE7530045B685 /* WidgetConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetConfiguration.swift; sourceTree = "<group>"; };
@@ -646,6 +652,15 @@
 				630BD1882892C4AC00C9BEAC /* macOS.entitlements */,
 			);
 			path = macOS;
+			sourceTree = "<group>";
+		};
+		6312CEED28E427E80096C47E /* Hot-reload */ = {
+			isa = PBXGroup;
+			children = (
+				6312CEEE28E427F60096C47E /* HotReloadCenter.swift */,
+				6312CEF028E428140096C47E /* HotReloadConfiguration.swift */,
+			);
+			path = "Hot-reload";
 			sourceTree = "<group>";
 		};
 		6315A46828AFE81E0045B685 /* SceneKit */ = {
@@ -987,6 +1002,7 @@
 				637D20EC28D2DDB900C562AF /* Components */,
 				63D8253A28D30068008455FC /* TransformControlView.swift */,
 				63D8253C28D30BCB008455FC /* ChartConfigurationSettingView.swift */,
+				6312CEEB28E41C9F0096C47E /* SettingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1029,6 +1045,7 @@
 		638DA98B2892C62C0030D494 /* ARKit */ = {
 			isa = PBXGroup;
 			children = (
+				6312CEED28E427E80096C47E /* Hot-reload */,
 				6335042228D77930006D5F11 /* Debug */,
 				6380A03D28D5BA9F008F3021 /* Share */,
 				637D20EB28D2DDAC00C562AF /* View */,
@@ -1721,8 +1738,10 @@
 				634B72F928B13869000BBB05 /* ChartProxy+PositionWithJSON.swift in Sources */,
 				63E911DA28C1A315006D7F8C /* ChartComponent+barMarkRepeat1.swift in Sources */,
 				639EBF5328B2614C00C76969 /* URLService.swift in Sources */,
+				6312CEEF28E427F60096C47E /* HotReloadCenter.swift in Sources */,
 				6380A03F28D5BAA9008F3021 /* VisConfigShareSource.swift in Sources */,
 				63E43B6828C9CDF30033CEEA /* DetailedSPLOMView.swift in Sources */,
+				6312CEF128E428140096C47E /* HotReloadConfiguration.swift in Sources */,
 				634B72FA28B13869000BBB05 /* TableData.swift in Sources */,
 				6315A46A28AFE82B0045B685 /* SCNVector3+Codable.swift in Sources */,
 				63CB2BBC28A40A8000BF7A1B /* ARVisFontStyle.swift in Sources */,
@@ -1798,6 +1817,7 @@
 				634B730328B13869000BBB05 /* ChartComponent.swift in Sources */,
 				634B730028B13869000BBB05 /* ChartConfigurationJSONParser.swift in Sources */,
 				63E726AE28B53D5100998DA9 /* YoutubeThumbnailView.swift in Sources */,
+				6312CEEC28E41CA00096C47E /* SettingView.swift in Sources */,
 				634B730228B13869000BBB05 /* ARVisPlottableValueFieldPair.swift in Sources */,
 				639C2B2628C1A788003A5390 /* ChartComponent+toChartContent.swift in Sources */,
 				63027A5428A9338900B06CFE /* Collection+Safe.swift in Sources */,

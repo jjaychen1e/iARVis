@@ -8,7 +8,12 @@
 import Foundation
 import SceneKit
 
-class ImageTrackingConfiguration: Codable {
+class ImageTrackingConfiguration: Codable, Equatable {
+    static func == (lhs: ImageTrackingConfiguration, rhs: ImageTrackingConfiguration) -> Bool {
+        lhs.imageURL == rhs.imageURL &&
+            lhs.relationships == rhs.relationships
+    }
+
     var imageURL: URL
     var relationships: [WidgetImageRelationship] = []
 
@@ -20,14 +25,13 @@ class ImageTrackingConfiguration: Codable {
 
 class WidgetImageRelationship: Codable, Hashable {
     static func == (lhs: WidgetImageRelationship, rhs: WidgetImageRelationship) -> Bool {
-        lhs.id == rhs.id
+        lhs.widgetConfiguration == rhs.widgetConfiguration
     }
 
     func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
+        hasher.combine(widgetConfiguration.prettyJSON)
     }
 
-    var id = UUID()
     var widgetConfiguration: WidgetConfiguration
 
     init(widgetConfiguration: WidgetConfiguration) {
